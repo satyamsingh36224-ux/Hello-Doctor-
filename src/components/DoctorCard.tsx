@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -60,6 +61,7 @@ const specializationEmoji: { [key: string]: string } = {
     'स्त्री रोग विशेषज्ञ': '♀️',
     'हड्डी रोग विशेषज्ञ': '🦴',
     'सामान्य चिकित्सक': '🩺',
+    'जनरल सर्जन': '🩹',
   };
 
 export function DoctorCard({ doctor }: DoctorCardProps) {
