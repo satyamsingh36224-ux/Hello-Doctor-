@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Stethoscope, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles } from "lucide-react";
+import { Heart, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -70,6 +70,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const [isBookingOpen, setIsBookingOpen] = React.useState(false);
   const [summary, setSummary] = React.useState("");
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
 
   const handleBooking = (event: React.FormEvent) => {
     event.preventDefault();
@@ -94,11 +95,19 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
     }
   };
 
+  const handleFavoriteToggle = () => {
+    setIsFavorite(!isFavorite);
+    toast({
+        title: isFavorite ? "पसंदीदा से हटाया गया" : "पसंदीदा में जोड़ा गया",
+        description: `${doctor.name} को ${isFavorite ? "पसंदीदा से हटा दिया गया है।" : "आपके पसंदीदा में जोड़ दिया गया है।"}`,
+    })
+  }
+
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.location)}`;
 
   return (
     <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-xl border-border/60">
-      <CardHeader className="p-0">
+      <CardHeader className="p-0 relative">
         <div className="relative h-56 w-full">
             <Image
                 src={doctor.imageUrl}
@@ -111,6 +120,10 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                 <IndianRupee className="h-4 w-4 mr-1" />
                 {doctor.fee}
             </Badge>
+            <Button size="icon" variant="secondary" className="absolute top-4 left-4 rounded-full h-9 w-9 bg-white/80 backdrop-blur-sm hover:bg-white" onClick={handleFavoriteToggle}>
+                <Heart className={`h-5 w-5 transition-all ${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-500'}`} />
+                <span className="sr-only">पसंदीदा</span>
+            </Button>
         </div>
         <div className="p-6 pb-2">
             <CardTitle className="text-2xl font-headline font-bold">{doctor.name}</CardTitle>

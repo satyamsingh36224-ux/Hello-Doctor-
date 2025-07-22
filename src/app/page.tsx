@@ -1,6 +1,7 @@
 
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
+import { AppointmentHistory } from "@/components/AppointmentHistory";
 import type { Doctor } from "@/types";
 
 const doctors: Doctor[] = [
@@ -96,6 +97,9 @@ export default function Home() {
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
+
+        <AppointmentHistory />
+
       </main>
       <footer className="bg-background border-t p-6 text-center text-muted-foreground">
         <p>&copy; {new Date().getFullYear()} गोपालगंज विकास हेल्थ केयर। सर्वाधिकार सुरक्षित।</p>
