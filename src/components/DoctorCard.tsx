@@ -76,7 +76,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
     event.preventDefault();
     setIsBookingOpen(false);
     toast({
-      title: "अपॉइंटमेंट बुक हो गया!",
+      title: "अपॉइंटमेंट बुक हो गया! 🎉",
       description: `${doctor.name} के साथ आपका अपॉइंटमेंट सफलतापूर्वक अनुरोध किया गया है।`,
     });
   };
@@ -98,7 +98,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const handleFavoriteToggle = () => {
     setIsFavorite(!isFavorite);
     toast({
-        title: isFavorite ? "पसंदीदा से हटाया गया" : "पसंदीदा में जोड़ा गया",
+        title: isFavorite ? "💔 पसंदीदा से हटाया गया" : "❤️ पसंदीदा में जोड़ा गया",
         description: `${doctor.name} को ${isFavorite ? "पसंदीदा से हटा दिया गया है।" : "आपके पसंदीदा में जोड़ दिया गया है।"}`,
     })
   }
@@ -177,35 +177,35 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>{doctor.name} के साथ अपॉइंटमेंट बुक करें</DialogTitle>
+              <DialogTitle>📝 {doctor.name} के साथ अपॉइंटमेंट बुक करें</DialogTitle>
               <DialogDescription>
                 अपॉइंटमेंट का अनुरोध करने के लिए नीचे दिए गए विवरण भरें। डॉक्टर का कार्यालय बुकिंग की पुष्टि करेगा।
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleBooking}>
                 <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right"><User className="inline-block h-4 w-4 mr-1" /></Label>
-                        <Input id="name" placeholder="मरीज का नाम" className="col-span-3" required />
+                    <div className="relative">
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input id="name" placeholder="मरीज का नाम" className="pl-10" required />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="phone" className="text-right"><Phone className="inline-block h-4 w-4 mr-1" /></Label>
-                        <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="col-span-3" required />
+                    <div className="relative">
+                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="pl-10" required />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="date" className="text-right"><Calendar className="inline-block h-4 w-4 mr-1" /></Label>
+                    <div className="relative">
+                        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <CalendarPicker
                             mode="single"
                             selected={date}
                             onSelect={setDate}
-                            className="col-span-3 rounded-md border p-0"
+                            className="w-full rounded-md border pl-10"
                             disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() -1))}
                         />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="time" className="text-right"><Clock className="inline-block h-4 w-4 mr-1" /></Label>
+                    <div className="relative">
+                         <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                          <Select required>
-                            <SelectTrigger className="col-span-3">
+                            <SelectTrigger className="pl-10">
                                 <SelectValue placeholder="एक समय स्लॉट चुनें" />
                             </SelectTrigger>
                             <SelectContent>
@@ -217,7 +217,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button type="submit">बुकिंग की पुष्टि करें</Button>
+                    <Button type="submit" className="w-full">बुकिंग की पुष्टि करें</Button>
                 </DialogFooter>
             </form>
           </DialogContent>

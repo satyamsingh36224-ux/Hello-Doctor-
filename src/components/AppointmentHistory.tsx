@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { History } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 const appointments = [
   {
@@ -42,50 +43,57 @@ const appointments = [
 
 export function AppointmentHistory() {
   return (
-    <div className="mt-16">
-        <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold font-headline text-primary/90 flex items-center justify-center gap-3">
-                <History className="h-8 w-8" />
+    <Card className="shadow-lg rounded-xl h-full">
+        <CardHeader>
+             <CardTitle className="flex items-center gap-3">
+                <History className="h-6 w-6" />
                 अपॉइंटमेंट इतिहास
-            </h2>
-            <p className="mt-2 text-muted-foreground">
+            </CardTitle>
+            <CardDescription>
                 अपने पिछले और आने वाले अपॉइंटमेंट देखें।
-            </p>
-        </div>
-      <div className="rounded-xl border bg-card text-card-foreground shadow-lg overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="font-semibold text-base">डॉक्टर</TableHead>
-              <TableHead className="font-semibold text-base">दिनांक</TableHead>
-              <TableHead className="font-semibold text-base">समय</TableHead>
-              <TableHead className="text-right font-semibold text-base">स्थिति</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {appointments.map((appointment, index) => (
-              <TableRow key={index}>
-                <TableCell className="font-medium">{appointment.doctor}</TableCell>
-                <TableCell>{appointment.date}</TableCell>
-                <TableCell>{appointment.time}</TableCell>
-                <TableCell className="text-right">
-                    <Badge variant={
-                        appointment.status === "पूर्ण" ? "default" :
-                        appointment.status === "पुष्टि" ? "secondary" :
-                        "destructive"
-                    }
-                    className={`capitalize ${
-                        appointment.status === 'पुष्टि' && 'bg-green-100 text-green-800'
-                    }`}
-                    >
-                        {appointment.status}
-                    </Badge>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <div className="rounded-md border overflow-hidden">
+                <Table>
+                <TableHeader>
+                    <TableRow>
+                    <TableHead className="font-semibold">डॉक्टर</TableHead>
+                    <TableHead className="font-semibold">दिनांक</TableHead>
+                    <TableHead className="text-right font-semibold">स्थिति</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {appointments.map((appointment, index) => (
+                    <TableRow key={index}>
+                        <TableCell>
+                            <div className="font-medium">{appointment.doctor}</div>
+                            <div className="text-sm text-muted-foreground">{appointment.time}</div>
+                        </TableCell>
+                        <TableCell>{appointment.date}</TableCell>
+                        <TableCell className="text-right">
+                            <Badge variant={
+                                appointment.status === "पूर्ण" ? "default" :
+                                appointment.status === "पुष्टि" ? "secondary" :
+                                "destructive"
+                            }
+                            className={`capitalize text-xs ${
+                                appointment.status === 'पुष्टि' && 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300'
+                            } ${
+                                appointment.status === 'पूर्ण' && 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300'
+                            } ${
+                                appointment.status === 'रद्द' && 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300'
+                            }`}
+                            >
+                                {appointment.status}
+                            </Badge>
+                        </TableCell>
+                    </TableRow>
+                    ))}
+                </TableBody>
+                </Table>
+            </div>
+      </CardContent>
+    </Card>
   );
 }
