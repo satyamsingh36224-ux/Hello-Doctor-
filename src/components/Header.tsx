@@ -1,28 +1,26 @@
-import { Stethoscope, Phone, Menu } from "lucide-react";
+import { Bell, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Header() {
   return (
-    <header className="bg-card shadow-sm sticky top-0 z-40">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+    <header className="bg-transparent sticky top-0 z-40">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <SidebarTrigger className="md:hidden" />
-          <div className="bg-primary/10 p-2 rounded-full">
-            <Stethoscope className="h-7 w-7 text-primary" />
-          </div>
-          <h1 className="text-xl sm:text-2xl font-bold font-headline text-primary tracking-tight">
-            गोपालगंज विकास हेल्थ केयर
-          </h1>
+          <Avatar className="h-10 w-10">
+            <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="person" />
+            <AvatarFallback>U</AvatarFallback>
+          </Avatar>
         </div>
         <div className="flex items-center gap-2">
-            <Button asChild variant="ghost" className="hidden sm:flex">
-                <a href="tel:9771264784" className="flex items-center space-x-2 text-base font-semibold">
-                    <Phone className="h-5 w-5" />
-                    <span>9771264784</span>
+            <Button asChild variant="ghost" size="icon" className="rounded-full">
+                <a href="#" className="flex items-center justify-center">
+                    <Bell className="h-5 w-5" />
+                    <span className="sr-only">सूचनाएं</span>
                 </a>
             </Button>
-            <Button className="hidden sm:flex">अपॉइंटमेंट बुक करें</Button>
         </div>
       </div>
     </header>
