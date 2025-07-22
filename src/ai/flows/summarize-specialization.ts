@@ -24,7 +24,7 @@ const SummarizeSpecializationOutputSchema = z.object({
   summary: z
     .string()
     .describe(
-      'A concise summary of the doctor\u0027s specialization, no more than 50 words.'
+      'A concise summary of the doctor\u0027s specialization, no more than 50 words, in Hindi.'
     ),
 });
 export type SummarizeSpecializationOutput = z.infer<
@@ -43,7 +43,7 @@ const summarizeSpecializationPrompt = ai.definePrompt({
   output: {schema: SummarizeSpecializationOutputSchema},
   prompt: `You are an AI assistant specializing in summarizing doctor specializations for patients.
 
-  Given the following text describing a doctor's specialization, create a concise and easy-to-understand summary, no more than 50 words, highlighting the key areas of their expertise.
+  Given the following text describing a doctor's specialization, create a concise and easy-to-understand summary in HINDI, no more than 50 words, highlighting the key areas of their expertise.
 
   Specialization Text: {{{specializationText}}}`,
 });

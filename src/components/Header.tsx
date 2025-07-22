@@ -7,7 +7,7 @@ export function Header() {
         <div className="flex items-center space-x-2">
           <Stethoscope className="h-8 w-8 text-primary" />
           <h1 className="text-2xl font-bold font-headline text-primary">
-            Gopalganj Swasthya Seva
+            गोपालगंज विकास हेल्थ केयर
           </h1>
         </div>
         <a href="tel:9771264784" className="flex items-center space-x-2 text-lg font-semibold text-gray-700 dark:text-gray-200 hover:text-primary transition-colors duration-300">

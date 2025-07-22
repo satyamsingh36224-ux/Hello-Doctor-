@@ -5,57 +5,57 @@ import type { Doctor } from "@/types";
 const doctors: Doctor[] = [
   {
     id: "1",
-    name: "Dr. Ramesh Kumar",
-    specialization: "Cardiologist",
-    description: "Dr. Ramesh Kumar is a leading cardiologist in Gopalganj, specializing in heart-related diseases and preventive care. With over 15 years of experience, he is known for his patient-centric approach and expertise in managing complex cardiac conditions.",
+    name: "डॉ. रमेश कुमार",
+    specialization: "हृदय रोग विशेषज्ञ",
+    description: "डॉ. रमेश कुमार गोपालगंज में एक प्रमुख हृदय रोग विशेषज्ञ हैं, जो हृदय से संबंधित बीमारियों और निवारक देखभाल में विशेषज्ञता रखते हैं। 15 से अधिक वर्षों के अनुभव के साथ, वह अपने रोगी-केंद्रित दृष्टिकोण और जटिल हृदय स्थितियों के प्रबंधन में अपनी विशेषज्ञता के लिए जाने जाते हैं।",
     fee: 500,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
   {
     id: "2",
-    name: "Dr. Sunita Sharma",
-    specialization: "Pediatrician",
-    description: "Dr. Sunita Sharma is a dedicated pediatrician committed to the health and well-being of children. She provides comprehensive care from infancy through adolescence, focusing on developmental monitoring, immunizations, and treatment of common childhood illnesses.",
+    name: "डॉ. सुनीता शर्मा",
+    specialization: "बच्चों का चिकित्सक",
+    description: "डॉ. सुनीता शर्मा बच्चों के स्वास्थ्य और कल्याण के लिए समर्पित एक बाल रोग विशेषज्ञ हैं। वह शैशवावस्था से किशोरावस्था तक व्यापक देखभाल प्रदान करती हैं, जिसमें विकासात्मक निगरानी, टीकाकरण और सामान्य बचपन की बीमारियों का उपचार शामिल है।",
     fee: 400,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
   {
     id: "3",
-    name: "Dr. Anil Singh",
-    specialization: "Dermatologist",
-    description: "Dr. Anil Singh is an experienced dermatologist who treats a wide range of skin, hair, and nail conditions. His expertise includes cosmetic dermatology, acne treatment, and management of chronic skin diseases like psoriasis and eczema.",
+    name: "डॉ. अनिल सिंह",
+    specialization: "त्वचा विशेषज्ञ",
+    description: "डॉ. अनिल सिंह एक अनुभवी त्वचा विशेषज्ञ हैं जो त्वचा, बाल और नाखूनों की कई स्थितियों का इलाज करते हैं। उनकी विशेषज्ञता में कॉस्मेटिक त्वचाविज्ञान, मुँहासे का उपचार और सोरायसिस और एक्जिमा जैसी पुरानी त्वचा रोगों का प्रबंधन शामिल है।",
     fee: 600,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
   {
     id: "4",
-    name: "Dr. Meena Gupta",
-    specialization: "Gynecologist",
-    description: "Dr. Meena Gupta is a compassionate gynecologist and obstetrician offering a full spectrum of women's health services. She specializes in prenatal care, delivery, and managing gynecological issues with a focus on patient comfort and care.",
+    name: "डॉ. मीना गुप्ता",
+    specialization: "स्त्री रोग विशेषज्ञ",
+    description: "डॉ. मीना गुप्ता एक दयालु स्त्री रोग विशेषज्ञ और प्रसूति विशेषज्ञ हैं जो महिलाओं की स्वास्थ्य सेवाओं की पूरी श्रृंखला प्रदान करती हैं। वह रोगी के आराम और देखभाल पर ध्यान देने के साथ प्रसव पूर्व देखभाल, प्रसव और स्त्री रोग संबंधी समस्याओं के प्रबंधन में माहिर हैं।",
     fee: 550,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
     {
     id: "5",
-    name: "Dr. Vikram Patel",
-    specialization: "Orthopedic Surgeon",
-    description: "Dr. Vikram Patel is a renowned orthopedic surgeon with expertise in joint replacement, sports injuries, and fracture care. He is dedicated to restoring mobility and improving the quality of life for his patients through surgical and non-surgical treatments.",
+    name: "डॉ. विक्रम पटेल",
+    specialization: "हड्डी रोग विशेषज्ञ",
+    description: "डॉ. विक्रम पटेल एक प्रसिद्ध हड्डी रोग विशेषज्ञ हैं, जिन्हें जोड़ों के प्रतिस्थापन, खेल की चोटों और फ्रैक्चर की देखभाल में विशेषज्ञता हासिल है। वह सर्जिकल और गैर-सर्जिकल उपचारों के माध्यम से गतिशीलता बहाल करने और अपने रोगियों के जीवन की गुणवत्ता में सुधार करने के लिए समर्पित हैं।",
     fee: 700,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
   {
     id: "6",
-    name: "Dr. Priya Desai",
-    specialization: "General Physician",
-    description: "Dr. Priya Desai is a trusted general physician who provides primary care for adults. She focuses on diagnosing and treating a wide variety of illnesses, managing chronic conditions, and promoting overall health and wellness through preventive care.",
+    name: "डॉ. प्रिया देसाई",
+    specialization: "सामान्य चिकित्सक",
+    description: "डॉ. प्रिया देसाई एक विश्वसनीय सामान्य चिकित्सक हैं जो वयस्कों के लिए प्राथमिक देखभाल प्रदान करती हैं। वह विभिन्न प्रकार की बीमारियों का निदान और उपचार करने, पुरानी स्थितियों का प्रबंधन करने और निवारक देखभाल के माध्यम से समग्र स्वास्थ्य और कल्याण को बढ़ावा देने पर ध्यान केंद्रित करती हैं।",
     fee: 300,
     imageUrl: "https://placehold.co/600x400.png",
-    location: "Gopalganj, Bihar, India",
+    location: "गोपालगंज, बिहार, भारत",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function Home() {
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
         <h2 className="text-3xl font-headline font-bold text-center mb-8 text-primary">
-          Our Doctors
+          हमारे डॉक्टर
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor) => (
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="bg-gray-100 dark:bg-gray-800 p-4 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Gopalganj Swasthya Seva. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} गोपालगंज विकास हेल्थ केयर। सर्वाधिकार सुरक्षित।</p>
       </footer>
     </div>
   );

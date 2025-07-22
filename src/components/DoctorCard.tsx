@@ -50,7 +50,7 @@ interface DoctorCardProps {
   doctor: Doctor;
 }
 
-const timeSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "02:00 PM", "03:00 PM", "04:00 PM"];
+const timeSlots = ["10:00 सुबह", "11:00 सुबह", "12:00 दोपहर", "02:00 दोपहर", "03:00 दोपहर", "04:00 दोपहर"];
 
 export function DoctorCard({ doctor }: DoctorCardProps) {
   const { toast } = useToast();
@@ -63,8 +63,8 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
     event.preventDefault();
     setIsBookingOpen(false);
     toast({
-      title: "Appointment Booked!",
-      description: `Your appointment with ${doctor.name} has been successfully requested.`,
+      title: "अपॉइंटमेंट बुक हो गया!",
+      description: `${doctor.name} के साथ आपका अपॉइंटमेंट सफलतापूर्वक अनुरोध किया गया है।`,
     });
   };
 
@@ -75,7 +75,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
       const result = await getSpecializationSummary({ specializationText: doctor.description });
       setSummary(result.summary);
     } catch (error) {
-      setSummary("Could not generate summary at this time.");
+      setSummary("इस समय सारांश उत्पन्न नहीं किया जा सका।");
       console.error(error);
     } finally {
       setIsLoadingSummary(false);
@@ -112,7 +112,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
         <div className="mt-4 flex flex-wrap gap-4 text-sm">
             <div className="flex items-center gap-2">
                 <IndianRupee className="h-5 w-5 text-primary" />
-                <span className="font-semibold text-lg">{doctor.fee} Consultation Fee</span>
+                <span className="font-semibold text-lg">{doctor.fee} परामर्श शुल्क</span>
             </div>
             <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <MapPin className="h-5 w-5 text-primary" />
@@ -125,48 +125,48 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
           <AlertDialogTrigger asChild>
             <Button variant="outline" onClick={handleGetSummary}>
                 <Bot className="mr-2 h-4 w-4" />
-                AI Summary
+                एआई सारांश
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle className="flex items-center gap-2"><Bot /> AI Summary for {doctor.name}</AlertDialogTitle>
+              <AlertDialogTitle className="flex items-center gap-2"><Bot /> {doctor.name} के लिए एआई सारांश</AlertDialogTitle>
               <AlertDialogDescription>
                 {isLoadingSummary ? (
                     <div className="flex items-center justify-center p-8">
                         <Loader2 className="h-8 w-8 animate-spin text-primary" />
                     </div>
                 ) : (
-                    summary || "Click the button to generate an AI-powered summary."
+                    summary || "एआई-संचालित सारांश उत्पन्न करने के लिए बटन पर क्लिक करें।"
                 )}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Close</AlertDialogCancel>
+              <AlertDialogCancel>बंद करें</AlertDialogCancel>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
 
         <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
           <DialogTrigger asChild>
-            <Button>Book Appointment</Button>
+            <Button>अपॉइंटमेंट बुक करें</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-              <DialogTitle>Book Appointment with {doctor.name}</DialogTitle>
+              <DialogTitle>{doctor.name} के साथ अपॉइंटमेंट बुक करें</DialogTitle>
               <DialogDescription>
-                Fill in the details below to request an appointment. The doctor's office will confirm the booking.
+                अपॉइंटमेंट का अनुरोध करने के लिए नीचे दिए गए विवरण भरें। डॉक्टर का कार्यालय बुकिंग की पुष्टि करेगा।
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleBooking}>
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right"><User className="inline-block h-4 w-4 mr-1" /></Label>
-                        <Input id="name" placeholder="Patient's Name" className="col-span-3" required />
+                        <Input id="name" placeholder="मरीज का नाम" className="col-span-3" required />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="phone" className="text-right"><Phone className="inline-block h-4 w-4 mr-1" /></Label>
-                        <Input id="phone" type="tel" placeholder="Phone Number" className="col-span-3" required />
+                        <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="col-span-3" required />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="date" className="text-right"><Calendar className="inline-block h-4 w-4 mr-1" /></Label>
@@ -182,7 +182,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                         <Label htmlFor="time" className="text-right"><Clock className="inline-block h-4 w-4 mr-1" /></Label>
                          <Select required>
                             <SelectTrigger className="col-span-3">
-                                <SelectValue placeholder="Select a time slot" />
+                                <SelectValue placeholder="एक समय स्लॉट चुनें" />
                             </SelectTrigger>
                             <SelectContent>
                                 {timeSlots.map(slot => (
@@ -193,7 +193,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button type="submit">Confirm Booking</Button>
+                    <Button type="submit">बुकिंग की पुष्टि करें</Button>
                 </DialogFooter>
             </form>
           </DialogContent>

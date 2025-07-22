@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Gopalganj Swasthya Seva',
-  description: 'Book doctor appointments in Gopalganj, Bihar.',
+  title: 'गोपालगंज विकास हेल्थ केयर',
+  description: 'गोपालगंज, बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।',
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="hi">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
