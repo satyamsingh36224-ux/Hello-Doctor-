@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Stethoscope, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone } from "lucide-react";
+import { Stethoscope, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -45,12 +45,22 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { getSpecializationSummary } from "@/app/actions";
 import type { Doctor } from "@/types";
+import { Badge } from "@/components/ui/badge";
 
 interface DoctorCardProps {
   doctor: Doctor;
 }
 
 const timeSlots = ["10:00 सुबह", "11:00 सुबह", "12:00 दोपहर", "02:00 दोपहर", "03:00 दोपहर", "04:00 दोपहर"];
+
+const specializationEmoji: { [key: string]: string } = {
+    'हृदय रोग विशेषज्ञ': '❤️',
+    'बच्चों का चिकित्सक': '👶',
+    'त्वचा विशेषज्ञ': '✨',
+    'स्त्री रोग विशेषज्ञ': '♀️',
+    'हड्डी रोग विशेषज्ञ': '🦴',
+    'सामान्य चिकित्सक': '🩺',
+  };
 
 export function DoctorCard({ doctor }: DoctorCardProps) {
   const { toast } = useToast();
@@ -85,53 +95,52 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.location)}`;
 
   return (
-    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card className="flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-xl border-border/60">
       <CardHeader className="p-0">
-        <div className="relative h-48 w-full">
+        <div className="relative h-56 w-full">
             <Image
-            src={doctor.imageUrl}
-            alt={doctor.name}
-            layout="fill"
-            objectFit="cover"
-            data-ai-hint="doctor portrait"
+                src={doctor.imageUrl}
+                alt={doctor.name}
+                fill
+                style={{objectFit:"cover"}}
+                data-ai-hint={doctor.aiHint}
             />
+            <Badge variant="destructive" className="absolute top-4 right-4 text-sm py-1 px-3">
+                <IndianRupee className="h-4 w-4 mr-1" />
+                {doctor.fee}
+            </Badge>
         </div>
-        <div className="p-6">
-            <CardTitle className="text-2xl font-headline">{doctor.name}</CardTitle>
-            <CardDescription className="flex items-center gap-2 text-accent-foreground pt-1">
-                <Stethoscope className="h-5 w-5" />
+        <div className="p-6 pb-2">
+            <CardTitle className="text-2xl font-headline font-bold">{doctor.name}</CardTitle>
+            <CardDescription className="flex items-center gap-2 text-base text-primary font-semibold pt-1">
+                <span className="text-xl">{specializationEmoji[doctor.specialization] || '⚕️'}</span>
                 <span>{doctor.specialization}</span>
             </CardDescription>
         </div>
       </CardHeader>
       <CardContent className="flex-grow px-6 pb-4">
-        <p className="text-muted-foreground flex items-start gap-2">
-            <Info className="h-5 w-5 mt-1 shrink-0" />
-            <span>{doctor.description}</span>
+        <p className="text-muted-foreground text-sm line-clamp-3">
+            {doctor.description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-4 text-sm">
-            <div className="flex items-center gap-2">
-                <IndianRupee className="h-5 w-5 text-primary" />
-                <span className="font-semibold text-lg">{doctor.fee} परामर्श शुल्क</span>
-            </div>
-            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <MapPin className="h-5 w-5 text-primary" />
-                <span className="font-semibold">{doctor.location}</span>
+        <div className="mt-4 flex flex-col gap-2 text-sm">
+            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                <MapPin className="h-4 w-4 text-primary/80" />
+                <span className="font-medium">{doctor.location}</span>
             </a>
         </div>
       </CardContent>
-      <CardFooter className="bg-gray-50 dark:bg-gray-800/50 p-4 flex justify-between">
+      <CardFooter className="bg-secondary/50 p-4 flex justify-between">
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="outline" onClick={handleGetSummary}>
-                <Bot className="mr-2 h-4 w-4" />
+            <Button variant="ghost" onClick={handleGetSummary}>
+                <Sparkles className="mr-2 h-4 w-4" />
                 एआई सारांश
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle className="flex items-center gap-2"><Bot /> {doctor.name} के लिए एआई सारांश</AlertDialogTitle>
-              <AlertDialogDescription>
+              <AlertDialogDescription className="pt-4">
                 {isLoadingSummary ? (
                     <div className="flex items-center justify-center p-8">
                         <Loader2 className="h-8 w-8 animate-spin text-primary" />

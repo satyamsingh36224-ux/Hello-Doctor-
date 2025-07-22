@@ -11,6 +11,7 @@ const doctors: Doctor[] = [
     fee: 500,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "male doctor portrait",
   },
   {
     id: "2",
@@ -20,6 +21,7 @@ const doctors: Doctor[] = [
     fee: 400,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "female doctor portrait",
   },
   {
     id: "3",
@@ -29,6 +31,7 @@ const doctors: Doctor[] = [
     fee: 600,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "male doctor face",
   },
   {
     id: "4",
@@ -38,6 +41,7 @@ const doctors: Doctor[] = [
     fee: 550,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "female doctor face",
   },
     {
     id: "5",
@@ -47,6 +51,7 @@ const doctors: Doctor[] = [
     fee: 700,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "male doctor serious",
   },
   {
     id: "6",
@@ -56,25 +61,32 @@ const doctors: Doctor[] = [
     fee: 300,
     imageUrl: "https://placehold.co/600x400.png",
     location: "गोपालगंज, बिहार, भारत",
+    aiHint: "female doctor serious",
   },
 ];
 
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-secondary/50">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-headline font-bold text-center mb-8 text-primary">
-          हमारे डॉक्टर
-        </h2>
+        <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight">
+                गोपालगंज में सही डॉक्टर खोजें
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                हमारे अनुभवी विशेषज्ञों के नेटवर्क के साथ आसानी से अपॉइंटमेंट बुक करें। आपकी स्वास्थ्य संबंधी ज़रूरतें, हमारी प्राथमिकता।
+            </p>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>
       </main>
-      <footer className="bg-gray-100 dark:bg-gray-800 p-4 text-center text-muted-foreground">
+      <footer className="bg-background border-t p-6 text-center text-muted-foreground">
         <p>&copy; {new Date().getFullYear()} गोपालगंज विकास हेल्थ केयर। सर्वाधिकार सुरक्षित।</p>
       </footer>
     </div>

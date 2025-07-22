@@ -6,5 +6,6 @@ export interface Doctor {
     fee: number;
     imageUrl: string;
     location: string;
+    aiHint: string;
   }
   
