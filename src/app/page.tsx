@@ -1,10 +1,16 @@
 
+"use client";
+
+import { useState } from 'react';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { AppointmentHistory } from "@/components/AppointmentHistory";
 import type { Doctor } from "@/types";
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Search } from 'lucide-react';
 
-const doctors: Doctor[] = [
+const doctorsData: Doctor[] = [
   {
     id: "1",
     name: "डॉ. रमेश कुमार",
@@ -77,13 +83,23 @@ const doctors: Doctor[] = [
   }
 ];
 
+const specializations = Array.from(new Set(doctorsData.map(d => d.specialization)));
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSpecialization, setSelectedSpecialization] = useState('all');
+
+  const filteredDoctors = doctorsData.filter(doctor => {
+    const nameMatch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const specializationMatch = selectedSpecialization === 'all' || doctor.specialization === selectedSpecialization;
+    return nameMatch && specializationMatch;
+  });
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-extrabold font-headline text-primary tracking-tight">
                 गोपालगंज में सही डॉक्टर खोजें
             </h1>
@@ -91,11 +107,43 @@ export default function Home() {
                 हमारे अनुभवी विशेषज्ञों के नेटवर्क के साथ आसानी से अपॉइंटमेंट बुक करें। आपकी स्वास्थ्य संबंधी ज़रूरतें, हमारी प्राथमिकता।
             </p>
         </div>
+
+        <div className="mb-8 p-4 bg-card rounded-xl shadow-md border">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input
+                        type="text"
+                        placeholder="डॉक्टर का नाम खोजें..."
+                        className="pl-10"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+                <Select value={selectedSpecialization} onValueChange={setSelectedSpecialization}>
+                    <SelectTrigger>
+                        <SelectValue placeholder="विशेषज्ञता के अनुसार फ़िल्टर करें" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">सभी विशेषज्ञता</SelectItem>
+                        {specializations.map(spec => (
+                            <SelectItem key={spec} value={spec}>{spec}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {doctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
-          ))}
+          {filteredDoctors.length > 0 ? (
+            filteredDoctors.map((doctor) => (
+              <DoctorCard key={doctor.id} doctor={doctor} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+                <p className="text-muted-foreground text-lg">कोई डॉक्टर नहीं मिला। कृपया अपनी खोज मानदंडों को समायोजित करें।</p>
+            </div>
+          )}
         </div>
 
         <AppointmentHistory />
