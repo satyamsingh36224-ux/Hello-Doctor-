@@ -8,7 +8,7 @@ import { DoctorCard } from "@/components/DoctorCard";
 import { AppointmentHistory } from "@/components/AppointmentHistory";
 import type { Doctor } from "@/types";
 import { Button } from '@/components/ui/button';
-import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye } from 'lucide-react';
+import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, UserCog } from 'lucide-react';
 
 const doctorsData: Doctor[] = [
   {
@@ -110,6 +110,16 @@ const doctorsData: Doctor[] = [
     imageUrl: "https://placehold.co/128x128.png",
     location: "गोपालगंज, बिहार, भारत",
     aiHint: "indian male doctor",
+  },
+  {
+    id: "11",
+    name: "डॉ. पवन कुमार",
+    specialization: "मनोचिकित्सक",
+    description: "डॉ. पवन कुमार एक अनुभवी मनोचिकित्सक हैं जो मानसिक स्वास्थ्य संबंधी समस्याओं का इलाज करते हैं। वह तनाव, अवसाद और चिंता जैसे मुद्दों पर विशेषज्ञ परामर्श प्रदान करते हैं।",
+    fee: 650,
+    imageUrl: "https://placehold.co/128x128.png",
+    location: "गोपालगंज, बिहार, भारत",
+    aiHint: "indian male doctor",
   }
 ];
 
@@ -123,7 +133,8 @@ const specializationMap = [
   { name: "जनरल सर्जन", icon: Stethoscope },
   { name: "तंत्रिका विज्ञानी", icon: Brain },
   { name: "ईएनटी विशेषज्ञ", icon: Ear },
-  { name: "नेत्र रोग विशेषज्ञ", icon: Eye }
+  { name: "नेत्र रोग विशेषज्ञ", icon: Eye },
+  { name: "मनोचिकित्सक", icon: UserCog },
 ];
 
 function DoctorsList() {

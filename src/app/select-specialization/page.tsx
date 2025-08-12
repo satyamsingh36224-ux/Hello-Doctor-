@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, Search } from 'lucide-react';
+import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, Search, UserCog } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 
@@ -18,7 +18,8 @@ const specializations = [
   { name: "जनरल सर्जन", icon: Stethoscope },
   { name: "तंत्रिका विज्ञानी", icon: Brain },
   { name: "ईएनटी विशेषज्ञ", icon: Ear },
-  { name: "नेत्र रोग विशेषज्ञ", icon: Eye }
+  { name: "नेत्र रोग विशेषज्ञ", icon: Eye },
+  { name: "मनोचिकित्सक", icon: UserCog },
 ];
 
 export default function SelectSpecializationPage() {
