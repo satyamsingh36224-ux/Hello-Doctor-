@@ -6,11 +6,10 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { AppointmentHistory } from "@/components/AppointmentHistory";
 import type { Doctor } from "@/types";
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Brain, Heart, Stethoscope, Bone, Baby, User } from 'lucide-react';
+import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye } from 'lucide-react';
 
 const doctorsData: Doctor[] = [
   {
@@ -82,6 +81,36 @@ const doctorsData: Doctor[] = [
     imageUrl: "https://placehold.co/128x128.png",
     location: "गोपालगंज, बिहार, भारत",
     aiHint: "indian male doctor",
+  },
+  {
+    id: "8",
+    name: "डॉ. राजेश वर्मा",
+    specialization: "तंत्रिका विज्ञानी",
+    description: "डॉ. राजेश वर्मा एक अनुभवी न्यूरोलॉजिस्ट हैं जो मस्तिष्क, रीढ़ की हड्डी और तंत्रिकाओं के विकारों का इलाज करते हैं।",
+    fee: 900,
+    imageUrl: "https://placehold.co/128x128.png",
+    location: "गोपालगंज, बिहार, भारत",
+    aiHint: "indian male doctor",
+  },
+  {
+    id: "9",
+    name: "डॉ. अंजलि मेहता",
+    specialization: "ईएनटी विशेषज्ञ",
+    description: "डॉ. अंजलि मेहता कान, नाक और गले से संबंधित विकारों के निदान और उपचार में माहिर हैं।",
+    fee: 450,
+    imageUrl: "https://placehold.co/128x128.png",
+    location: "गोपालगंज, बिहार, भारत",
+    aiHint: "indian female doctor",
+  },
+  {
+    id: "10",
+    name: "डॉ. दीपक चौहान",
+    specialization: "नेत्र रोग विशेषज्ञ",
+    description: "डॉ. दीपक चौहान एक कुशल नेत्र रोग विशेषज्ञ हैं जो आंखों की बीमारियों का इलाज करते हैं और दृष्टि देखभाल प्रदान करते हैं।",
+    fee: 500,
+    imageUrl: "https://placehold.co/128x128.png",
+    location: "गोपालगंज, बिहार, भारत",
+    aiHint: "indian male doctor",
   }
 ];
 
@@ -93,11 +122,13 @@ const specializationMap = [
   { name: "हड्डी रोग विशेषज्ञ", icon: Bone },
   { name: "सामान्य चिकित्सक", icon: Stethoscope },
   { name: "जनरल सर्जन", icon: Stethoscope },
-  { name: "तंत्रिका विज्ञानी", icon: Brain }
+  { name: "तंत्रिका विज्ञानी", icon: Brain },
+  { name: "ईएनटी विशेषज्ञ", icon: Ear },
+  { name: "नेत्र रोग विशेषज्ञ", icon: Eye }
 ];
 
 const GoogleIcon = () => (
-    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M22.56 12.25C22.56 11.45 22.49 10.68 22.36 9.92H12V14.51H18.35C18.04 16.12 17.23 17.51 15.99 18.39V21.3H19.9C21.67 19.67 22.56 17.14 22.56 14.08V12.25Z" fill="#4285F4"/>
         <path d="M12 23C15.11 23 17.73 21.94 19.9 20.21L15.99 17.32C14.93 18.01 13.59 18.42 12 18.42C9.21 18.42 6.83 16.57 5.92 14.1H1.9V17.09C3.72 20.69 7.55 23 12 23Z" fill="#34A853"/>
         <path d="M5.92 14.1C5.69 13.41 5.56 12.67 5.56 11.9C5.56 11.13 5.69 10.39 5.92 9.7H1.9V6.71C0.7 8.93 0 11.23 0 13.9C0 16.57 0.7 18.87 1.9 21.09L5.92 18.1V14.1Z" fill="#FBBC05"/>
@@ -107,7 +138,7 @@ const GoogleIcon = () => (
 )
 
 const FacebookIcon = () => (
-    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
         <path d="M22 12.062C22 6.505 17.523 2 12 2S2 6.505 2 12.062C2 17.06 5.69 21.213 10.438 22V14.969H7.898V12.062H10.438V9.847C10.438 7.324 11.93 5.938 14.223 5.938C15.308 5.938 16.274 6.023 16.5 6.052V8.562H15.197C13.99 8.562 13.562 9.333 13.562 10.124V12.062H16.336L15.896 14.969H13.562V22C18.31 21.213 22 17.06 22 12.062Z"/>
     </svg>
 )
@@ -121,6 +152,10 @@ export default function Home() {
     return specializationMatch;
   });
 
+  // Take the first 8 specializations for the grid
+  const displayedSpecializations = specializationMap.slice(0, 8);
+
+
   return (
     <div className="flex flex-col min-h-screen bg-muted/40">
       <Header />
@@ -131,8 +166,8 @@ export default function Home() {
         </div>
 
         <div className="mb-8">
-             <div className="grid grid-cols-4 gap-4 text-center">
-                 {specializationMap.slice(0, 4).map((spec) => (
+             <div className="grid grid-cols-4 md:grid-cols-5 gap-4 text-center">
+                 {displayedSpecializations.map((spec) => (
                      <div key={spec.name} onClick={() => setSelectedSpecialization(spec.name)} className="cursor-pointer group">
                         <div className={`p-4 rounded-2xl flex items-center justify-center transition-all duration-300 ${selectedSpecialization === spec.name ? 'bg-primary shadow-lg' : 'bg-card shadow-sm group-hover:bg-secondary'}`}>
                              <spec.icon className={`h-8 w-8 transition-all duration-300 ${selectedSpecialization === spec.name ? 'text-primary-foreground' : 'text-primary'}`} />
@@ -171,13 +206,13 @@ export default function Home() {
                         <CardDescription>अपने खाते से लॉगिन करके अपॉइंटमेंट प्रबंधित करें।</CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-3">
-                        <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
+                        <Button variant="outline" className="w-full justify-center py-4 rounded-full text-xs font-semibold">
                             <GoogleIcon />
-                            <span className="ml-3">Google से जारी रखें</span>
+                            <span className="ml-2">Google से जारी रखें</span>
                         </Button>
-                        <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
+                        <Button variant="outline" className="w-full justify-center py-4 rounded-full text-xs font-semibold">
                             <FacebookIcon />
-                             <span className="ml-3">Facebook से जारी रखें</span>
+                             <span className="ml-2">Facebook से जारी रखें</span>
                         </Button>
                         <div className="relative my-1">
                             <Separator />
@@ -201,3 +236,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
