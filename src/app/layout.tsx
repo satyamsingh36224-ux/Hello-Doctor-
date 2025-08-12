@@ -32,12 +32,7 @@ export default function RootLayout({
                     <SidebarMenu>
                         <SidebarMenuItem>
                             <SidebarMenuButton asChild>
-                                <Link href="/"><Home /> होम</Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                         <SidebarMenuItem>
-                            <SidebarMenuButton asChild>
-                                <Link href="/login"><LogIn /> लॉगिन</Link>
+                                <Link href="/doctors"><Home /> होम</Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
