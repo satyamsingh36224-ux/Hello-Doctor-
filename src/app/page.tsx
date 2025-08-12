@@ -7,8 +7,6 @@ import { DoctorCard } from "@/components/DoctorCard";
 import { AppointmentHistory } from "@/components/AppointmentHistory";
 import type { Doctor } from "@/types";
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye } from 'lucide-react';
 
 const doctorsData: Doctor[] = [
@@ -127,23 +125,6 @@ const specializationMap = [
   { name: "नेत्र रोग विशेषज्ञ", icon: Eye }
 ];
 
-const GoogleIcon = () => (
-    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25C22.56 11.45 22.49 10.68 22.36 9.92H12V14.51H18.35C18.04 16.12 17.23 17.51 15.99 18.39V21.3H19.9C21.67 19.67 22.56 17.14 22.56 14.08V12.25Z" fill="#4285F4"/>
-        <path d="M12 23C15.11 23 17.73 21.94 19.9 20.21L15.99 17.32C14.93 18.01 13.59 18.42 12 18.42C9.21 18.42 6.83 16.57 5.92 14.1H1.9V17.09C3.72 20.69 7.55 23 12 23Z" fill="#34A853"/>
-        <path d="M5.92 14.1C5.69 13.41 5.56 12.67 5.56 11.9C5.56 11.13 5.69 10.39 5.92 9.7H1.9V6.71C0.7 8.93 0 11.23 0 13.9C0 16.57 0.7 18.87 1.9 21.09L5.92 18.1V14.1Z" fill="#FBBC05"/>
-        <path d="M12 5.58C13.74 5.58 15.22 6.22 16.21 7.15L20.08 3.28C17.73 1.25 15.11 0 12 0C7.55 0 3.72 2.31 1.9 5.91L5.92 8.7C6.83 6.23 9.21 4.42 12 4.42V5.58Z" fill="#EA4335"/>
-        <path d="M12 5.58C13.74 5.58 15.22 6.22 16.21 7.15L20.08 3.28C17.73 1.25 15.11 0 12 0C7.55 0 3.72 2.31 1.9 5.91L5.92 8.7C6.83 6.23 9.21 4.42 12 4.42V5.58Z" fill="#EA4335"/>
-    </svg>
-)
-
-const FacebookIcon = () => (
-    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="#1877F2" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 12.062C22 6.505 17.523 2 12 2S2 6.505 2 12.062C2 17.06 5.69 21.213 10.438 22V14.969H7.898V12.062H10.438V9.847C10.438 7.324 11.93 5.938 14.223 5.938C15.308 5.938 16.274 6.023 16.5 6.052V8.562H15.197C13.99 8.562 13.562 9.333 13.562 10.124V12.062H16.336L15.896 14.969H13.562V22C18.31 21.213 22 17.06 22 12.062Z"/>
-    </svg>
-)
-
-
 export default function Home() {
   const [selectedSpecialization, setSelectedSpecialization] = useState('all');
 
@@ -160,24 +141,6 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-muted/40">
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <div className="mb-8">
-            <h1 className="text-2xl font-bold text-foreground">नमस्ते! 👋</h1>
-            <p className="text-muted-foreground">आज आप कैसा महसूस कर रहे हैं?</p>
-        </div>
-
-        <div className="mb-8">
-             <div className="grid grid-cols-4 md:grid-cols-5 gap-4 text-center">
-                 {displayedSpecializations.map((spec) => (
-                     <div key={spec.name} onClick={() => setSelectedSpecialization(spec.name)} className="cursor-pointer group">
-                        <div className={`p-4 rounded-2xl flex items-center justify-center transition-all duration-300 ${selectedSpecialization === spec.name ? 'bg-primary shadow-lg' : 'bg-card shadow-sm group-hover:bg-secondary'}`}>
-                             <spec.icon className={`h-8 w-8 transition-all duration-300 ${selectedSpecialization === spec.name ? 'text-primary-foreground' : 'text-primary'}`} />
-                         </div>
-                         <p className="mt-2 text-xs font-medium text-muted-foreground">{spec.name.split(" ")[0]}</p>
-                     </div>
-                 ))}
-             </div>
-        </div>
-
         <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">शीर्ष डॉक्टर</h2>
             <Button variant="link" className="text-primary">सभी देखें</Button>
@@ -185,7 +148,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
           {filteredDoctors.length > 0 ? (
-            filteredDoctors.slice(0, 3).map((doctor) => (
+            filteredDoctors.map((doctor) => (
               <DoctorCard key={doctor.id} doctor={doctor} />
             ))
           ) : (
@@ -199,36 +162,7 @@ export default function Home() {
             <div className="lg:col-span-3">
                 <AppointmentHistory />
             </div>
-            <div className="lg:col-span-2">
-                <Card className="shadow-lg rounded-2xl h-full border-none">
-                    <CardHeader>
-                        <CardTitle>जल्दी शुरू करें</CardTitle>
-                        <CardDescription>अपने खाते से लॉगिन करके अपॉइंटमेंट प्रबंधित करें।</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex flex-col gap-3">
-                        <Button variant="outline" className="w-full justify-center py-4 rounded-full text-xs font-semibold">
-                            <GoogleIcon />
-                            <span className="ml-2">Google से जारी रखें</span>
-                        </Button>
-                        <Button variant="outline" className="w-full justify-center py-4 rounded-full text-xs font-semibold">
-                            <FacebookIcon />
-                             <span className="ml-2">Facebook से जारी रखें</span>
-                        </Button>
-                        <div className="relative my-1">
-                            <Separator />
-                            <span className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-card px-2 text-xs text-muted-foreground">
-                                या
-                            </span>
-                        </div>
-                         <Button className="w-full py-5 rounded-full text-sm font-semibold">ईमेल से साइन अप करें</Button>
-                         <p className="text-center text-xs text-muted-foreground mt-1">
-                            पहले से ही एक खाता है? <a href="#" className="text-primary hover:underline font-semibold">लॉगिन करें</a>
-                         </p>
-                    </CardContent>
-                </Card>
-            </div>
         </div>
-
       </main>
       <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
         <p>&copy; {new Date().getFullYear()} गोपालगंज विकास हेल्थ केयर। सर्वाधिकार सुरक्षित।</p>
@@ -236,5 +170,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

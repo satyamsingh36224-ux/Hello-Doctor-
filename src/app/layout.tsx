@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarTrigger, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, Settings } from 'lucide-react';
+import { Home, Settings, LogIn } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -33,6 +33,11 @@ export default function RootLayout({
                         <SidebarMenuItem>
                             <SidebarMenuButton asChild>
                                 <Link href="/"><Home /> होम</Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                         <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="/login"><LogIn /> लॉगिन</Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>
                         <SidebarMenuItem>
