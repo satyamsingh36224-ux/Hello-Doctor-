@@ -114,6 +114,11 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                 </Button>
             </div>
 
+            <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-sm text-muted-foreground mt-2 hover:text-primary transition-colors">
+                <MapPin className="h-4 w-4" />
+                <span>{doctor.location}</span>
+            </a>
+
             <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                 <div className="flex items-center gap-1">
                     <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
