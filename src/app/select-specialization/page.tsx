@@ -26,7 +26,7 @@ export default function SelectSpecializationPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSpecializationClick = (specialization: string) => {
-    router.push(`/?specialization=${encodeURIComponent(specialization)}`);
+    router.push(`/doctors?specialization=${encodeURIComponent(specialization)}`);
   };
 
   const filteredSpecializations = specializations.filter(spec => 
