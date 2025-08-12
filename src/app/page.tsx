@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { Search, Brain, Heart, Stethoscope, Bone, Baby, User } from 'lucide-react';
+import { Brain, Heart, Stethoscope, Bone, Baby, User } from 'lucide-react';
 
 const doctorsData: Doctor[] = [
   {
@@ -114,13 +114,11 @@ const FacebookIcon = () => (
 
 
 export default function Home() {
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialization, setSelectedSpecialization] = useState('all');
 
   const filteredDoctors = doctorsData.filter(doctor => {
-    const nameMatch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase());
     const specializationMatch = selectedSpecialization === 'all' || doctor.specialization === selectedSpecialization;
-    return nameMatch && specializationMatch;
+    return specializationMatch;
   });
 
   return (
@@ -130,17 +128,6 @@ export default function Home() {
         <div className="mb-8">
             <h1 className="text-2xl font-bold text-foreground">नमस्ते! 👋</h1>
             <p className="text-muted-foreground">आज आप कैसा महसूस कर रहे हैं?</p>
-        </div>
-
-        <div className="relative mb-8">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input
-                type="text"
-                placeholder="डॉक्टर, विशेषज्ञता, बीमारी खोजें..."
-                className="pl-12 py-6 rounded-full bg-card border-none shadow-sm"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
         </div>
 
         <div className="mb-8">
@@ -214,5 +201,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
