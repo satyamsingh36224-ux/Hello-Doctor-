@@ -4,23 +4,10 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, Search, UserCog } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
-
-const specializations = [
-  { name: "हृदय रोग विशेषज्ञ", icon: Heart },
-  { name: "बच्चों का चिकित्सक", icon: Baby },
-  { name: "त्वचा विशेषज्ञ", icon: User },
-  { name: "स्त्री रोग विशेषज्ञ", icon: Stethoscope },
-  { name: "हड्डी रोग विशेषज्ञ", icon: Bone },
-  { name: "सामान्य चिकित्सक", icon: Stethoscope },
-  { name: "जनरल सर्जन", icon: Stethoscope },
-  { name: "तंत्रिका विज्ञानी", icon: Brain },
-  { name: "ईएनटी विशेषज्ञ", icon: Ear },
-  { name: "नेत्र रोग विशेषज्ञ", icon: Eye },
-  { name: "मनोचिकित्सक", icon: UserCog },
-];
+import { specializationMap } from '@/lib/doctors';
 
 export default function SelectSpecializationPage() {
   const router = useRouter();
@@ -30,7 +17,7 @@ export default function SelectSpecializationPage() {
     router.push(`/doctors?specialization=${encodeURIComponent(specialization)}`);
   };
 
-  const filteredSpecializations = specializations.filter(spec => 
+  const filteredSpecializations = specializationMap.filter(spec => 
     spec.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
