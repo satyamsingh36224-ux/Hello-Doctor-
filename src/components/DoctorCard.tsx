@@ -43,6 +43,7 @@ import { useToast } from "@/hooks/use-toast";
 import { getSpecializationSummary } from "@/app/actions";
 import type { Doctor } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -127,7 +128,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                 </div>
                  <div className="flex items-center gap-1">
                     <IndianRupee className="h-4 w-4" />
-                    <span className="font-semibold">{doctor.fee}</span>
+                    <span className="font-semibold">{doctor.fee} परामर्श शुल्क</span>
                 </div>
             </div>
 
@@ -203,8 +204,16 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                                     </Select>
                                 </div>
                             </div>
-                            <DialogFooter>
-                                <Button type="submit" className="w-full">बुकिंग की पुष्टि करें</Button>
+                             <Separator className="my-4" />
+                            <div className="flex justify-between items-center text-lg font-semibold">
+                                <span>कुल देय राशि:</span>
+                                <div className="flex items-center">
+                                    <IndianRupee className="h-5 w-5 mr-1" />
+                                    <span>{doctor.fee}</span>
+                                </div>
+                            </div>
+                            <DialogFooter className="mt-4">
+                                <Button type="submit" className="w-full">बुकिंग की पुष्टि करें और भुगतान करें</Button>
                             </DialogFooter>
                         </form>
                     </DialogContent>
