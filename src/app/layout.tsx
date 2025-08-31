@@ -8,6 +8,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'गोपालगंज विकास हेल्थ केयर',
   description: 'गोपालगंज, बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
