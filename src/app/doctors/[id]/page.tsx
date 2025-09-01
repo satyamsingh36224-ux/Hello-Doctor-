@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Heart, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles, Star, ChevronLeft } from "lucide-react";
+import { Heart, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles, Star, ChevronLeft, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
@@ -37,13 +37,30 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     notFound();
   }
 
-  const handleBooking = (event: React.FormEvent) => {
+  const handleBooking = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    const formData = new FormData(event.currentTarget);
+    const patientName = formData.get("name") as string;
+    const patientPhone = formData.get("phone") as string;
+    const selectedTime = formData.get("time") as string;
+    
+    const formattedDate = date ? date.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : 'कोई तारीख नहीं चुनी गई';
+
+    const clinicPhoneNumber = "919999999999"; // महत्वपूर्ण: इसे क्लिनिक के वास्तविक व्हाट्सएप नंबर से बदलें
+    
+    const message = `नमस्ते, मैं ${doctor.name} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nकृपया इस अपॉइंटमेंट की पुष्टि करें। धन्यवाद!`;
+    
+    const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
+
     setIsBookingOpen(false);
     toast({
       title: "अपॉइंटमेंट बुक हो गया! 🎉",
       description: `${doctor.name} के साथ आपका अपॉइंटमेंट सफलतापूर्वक अनुरोध किया गया है।`,
     });
+
+    // व्हाट्सएप पर रीडायरेक्ट करें
+    window.open(whatsappUrl, '_blank');
   };
 
   const handleGetSummary = async () => {
@@ -163,18 +180,18 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                     <DialogHeader>
                                     <DialogTitle>📝 {doctor.name} के साथ अपॉइंटमेंट बुक करें</DialogTitle>
                                     <DialogDescription>
-                                        अपॉइंटमेंट का अनुरोध करने के लिए नीचे दिए गए विवरण भरें। डॉक्टर का कार्यालय बुकिंग की पुष्टि करेगा।
+                                        अपॉइंटमेंट का अनुरोध करने के लिए नीचे दिए गए विवरण भरें। व्हाट्सएप पर पुष्टि भेजी जाएगी।
                                     </DialogDescription>
                                     </DialogHeader>
                                     <form onSubmit={handleBooking}>
                                         <div className="grid gap-4 py-4">
                                              <div className="relative">
                                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input id="name" placeholder="मरीज का नाम" className="pl-10" required />
+                                                <Input name="name" id="name" placeholder="मरीज का नाम" className="pl-10" required />
                                             </div>
                                             <div className="relative">
                                                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="pl-10" required />
+                                                <Input name="phone" id="phone" type="tel" placeholder="फ़ोन नंबर" className="pl-10" required />
                                             </div>
                                             <div className="relative">
                                                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -188,7 +205,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                             </div>
                                             <div className="relative">
                                                 <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Select required>
+                                                <Select name="time" required>
                                                     <SelectTrigger className="pl-10">
                                                         <SelectValue placeholder="एक समय स्लॉट चुनें" />
                                                     </SelectTrigger>
@@ -209,7 +226,10 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                             </div>
                                         </div>
                                         <DialogFooter className="mt-4">
-                                            <Button type="submit" className="w-full">बुकिंग की पुष्टि करें और भुगतान करें</Button>
+                                            <Button type="submit" className="w-full">
+                                                <MessageSquare className="mr-2 h-4 w-4" />
+                                                व्हाट्सएप पर पुष्टि करें
+                                            </Button>
                                         </DialogFooter>
                                     </form>
                                 </DialogContent>
@@ -222,3 +242,5 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+
+    
