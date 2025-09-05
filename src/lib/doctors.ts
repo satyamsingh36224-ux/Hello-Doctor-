@@ -131,6 +131,16 @@ export const doctorsData: Doctor[] = [
       imageUrl: "https://placehold.co/128x128/3B82F6/FFFFFF/png?text=ASS",
       location: "टाउन हॉल, गोपालगंज",
       aiHint: "indian male doctor",
+    },
+    {
+      id: "14",
+      name: "डॉ. रामप्रवेश सिंह",
+      specialization: "बच्चों का चिकित्सक",
+      description: "डॉ. रामप्रवेश सिंह एक समर्पित बाल रोग विशेषज्ञ हैं जो शिशुओं, बच्चों और किशोरों को व्यापक चिकित्सा देखभाल प्रदान करते हैं। वह बाल स्वास्थ्य और कल्याण सुनिश्चित करने के लिए जाने जाते हैं।",
+      fee: 400,
+      imageUrl: "https://placehold.co/128x128/3B82F6/FFFFFF/png?text=RS",
+      location: "सिविल लाइंस, गोपालगंज",
+      aiHint: "indian male doctor",
     }
   ];
 
