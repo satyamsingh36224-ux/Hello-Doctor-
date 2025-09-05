@@ -49,7 +49,7 @@ export default function LoginPage() {
           <div className="flex flex-col gap-2">
             <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="py-5 rounded-full" required />
             <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
-                <Link href="/verify">फ़ोन नंबर से जारी रखें</Link>
+                <Link href="/select-specialization">फ़ोन नंबर से जारी रखें</Link>
             </Button>
           </div>
           <p className="text-center text-xs text-muted-foreground mt-2">
