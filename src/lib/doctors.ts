@@ -201,6 +201,16 @@ export const doctorsData: Doctor[] = [
       imageUrl: "https://placehold.co/128x128/EF4444/FFFFFF/png?text=VVKY",
       location: "कचहरी रोड, गोपालगंज",
       aiHint: "indian male doctor",
+    },
+    {
+      id: "21",
+      name: "डॉ. सौरभ अग्रवाल",
+      specialization: "सामान्य चिकित्सक",
+      description: "डॉ. सौरभ अग्रवाल एक अनुभवी सामान्य चिकित्सक हैं जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं। वह बीमारियों के निदान और उपचार के साथ-साथ निवारक देखभाल पर भी ध्यान केंद्रित करते हैं।",
+      fee: 400,
+      imageUrl: "https://placehold.co/128x128/3B82F6/FFFFFF/png?text=SA",
+      location: "सिनेमा रोड, गोपालगंज",
+      aiHint: "indian male doctor",
     }
   ];
 
