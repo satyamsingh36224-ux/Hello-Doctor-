@@ -211,6 +211,16 @@ export const doctorsData: Doctor[] = [
       imageUrl: "https://placehold.co/128x128/3B82F6/FFFFFF/png?text=SA",
       location: "सिनेमा रोड, गोपालगंज",
       aiHint: "indian male doctor",
+    },
+    {
+      id: "22",
+      name: "डॉ. गौरव अग्रवाल",
+      specialization: "बच्चों का चिकित्सक",
+      description: "डॉ. गौरव अग्रवाल एक समर्पित बाल रोग विशेषज्ञ हैं जो शिशुओं, बच्चों और किशोरों को व्यापक चिकित्सा देखभाल प्रदान करते हैं।",
+      fee: 450,
+      imageUrl: "https://placehold.co/128x128/10B981/FFFFFF/png?text=GA",
+      location: "अस्पताल रोड, गोपालगंज",
+      aiHint: "indian male doctor",
     }
   ];
 
