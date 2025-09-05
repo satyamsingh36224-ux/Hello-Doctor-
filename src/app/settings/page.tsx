@@ -4,7 +4,8 @@
 import { Header } from "@/components/Header";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Phone, UploadCloud } from "lucide-react";
 
 export default function SettingsPage() {
     return (
@@ -25,7 +26,7 @@ export default function SettingsPage() {
                             </div>
                         </CardContent>
                     </Card>
-                     <Card>
+                     <Card className="mb-6">
                         <CardHeader>
                             <CardTitle>सहायता और समर्थन</CardTitle>
                             <CardDescription>किसी भी प्रश्न के लिए हमसे संपर्क करें।</CardDescription>
@@ -42,6 +43,23 @@ export default function SettingsPage() {
                                     <a href="tel:9007355062" className="hover:text-primary">9007355062</a>
                                 </div>
                             </div>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>ऐप प्रकाशित करें</CardTitle>
+                            <CardDescription>अपने ऐप को Google Play Store पर लॉन्च करें।</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-sm text-muted-foreground mb-4">
+                                अपने ऐप को Play Store पर प्रकाशित करने के लिए, आपको एक Google Play डेवलपर अकाउंट बनाना होगा (एक बार $25 शुल्क लगता है) और प्रकाशन प्रक्रिया का पालन करना होगा।
+                            </p>
+                            <Button asChild className="w-full">
+                                <a href="https://play.google.com/console/signup" target="_blank" rel="noopener noreferrer">
+                                    <UploadCloud className="mr-2 h-4 w-4" />
+                                    Play Console पर जाएं
+                                </a>
+                            </Button>
                         </CardContent>
                     </Card>
                 </div>
