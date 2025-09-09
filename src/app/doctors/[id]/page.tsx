@@ -190,63 +190,63 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-md w-[90%] max-h-[90svh]">
+                                <DialogContent className="sm:max-w-md w-[90%] max-h-[90vh] flex flex-col">
                                     <DialogHeader>
-                                    <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
-                                    <DialogDescription>
-                                        {t.bookingFormDesc}
-                                    </DialogDescription>
+                                        <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
+                                        <DialogDescription>
+                                            {t.bookingFormDesc}
+                                        </DialogDescription>
                                     </DialogHeader>
-                                    <ScrollArea className="pr-4 -mr-4">
-                                    <form onSubmit={handleBooking} className="space-y-4">
-                                        <div className="space-y-4 py-4">
-                                             <div className="relative">
-                                                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input name="name" id="name" placeholder={t.patientName} className="pl-10" required />
+                                    <div className="flex-grow overflow-y-auto pr-4 -mr-4">
+                                        <form onSubmit={handleBooking} className="space-y-4">
+                                            <div className="space-y-4 py-4">
+                                                <div className="relative">
+                                                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10" required />
+                                                </div>
+                                                <div className="relative">
+                                                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10" required />
+                                                </div>
+                                                <div className="flex justify-center">
+                                                    <CalendarPicker
+                                                        mode="single"
+                                                        selected={date}
+                                                        onSelect={setDate}
+                                                        className="w-full rounded-md border"
+                                                        disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+                                                    />
+                                                </div>
+                                                <div className="relative">
+                                                    <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                                    <Select name="time" required>
+                                                        <SelectTrigger className="pl-10">
+                                                            <SelectValue placeholder={t.selectTimeSlot} />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            {timeSlotKeys.map(slot => (
+                                                                <SelectItem key={slot} value={tTime[slot as keyof typeof tTime]}>{tTime[slot as keyof typeof tTime]}</SelectItem>
+                                                            ))}
+                                                        </SelectContent>
+                                                    </Select>
+                                                </div>
                                             </div>
-                                            <div className="relative">
-                                                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10" required />
+                                            <Separator />
+                                            <div className="flex justify-between items-center text-lg font-semibold">
+                                                <span>{t.totalPayable}</span>
+                                                <div className="flex items-center">
+                                                    <IndianRupee className="h-5 w-5 mr-1" />
+                                                    <span>{doctor.fee}</span>
+                                                </div>
                                             </div>
-                                            <div className="flex justify-center">
-                                                <CalendarPicker
-                                                    mode="single"
-                                                    selected={date}
-                                                    onSelect={setDate}
-                                                    className="w-full rounded-md border"
-                                                    disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() -1))}
-                                                />
-                                            </div>
-                                            <div className="relative">
-                                                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Select name="time" required>
-                                                    <SelectTrigger className="pl-10">
-                                                        <SelectValue placeholder={t.selectTimeSlot} />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        {timeSlotKeys.map(slot => (
-                                                            <SelectItem key={slot} value={tTime[slot as keyof typeof tTime]}>{tTime[slot as keyof typeof tTime]}</SelectItem>
-                                                        ))}
-                                                    </SelectContent>
-                                                </Select>
-                                            </div>
-                                        </div>
-                                        <Separator/>
-                                        <div className="flex justify-between items-center text-lg font-semibold">
-                                            <span>{t.totalPayable}</span>
-                                            <div className="flex items-center">
-                                                <IndianRupee className="h-5 w-5 mr-1" />
-                                                <span>{doctor.fee}</span>
-                                            </div>
-                                        </div>
-                                        <DialogFooter className="pt-2">
-                                            <Button type="submit" className="w-full">
-                                                <MessageSquare className="mr-2 h-4 w-4" />
-                                                {t.confirmOnWhatsApp}
-                                            </Button>
-                                        </DialogFooter>
-                                    </form>
-                                    </ScrollArea>
+                                            <DialogFooter className="pt-2 sticky bottom-0 bg-background pb-1">
+                                                <Button type="submit" className="w-full">
+                                                    <MessageSquare className="mr-2 h-4 w-4" />
+                                                    {t.confirmOnWhatsApp}
+                                                </Button>
+                                            </DialogFooter>
+                                        </form>
+                                    </div>
                                 </DialogContent>
                             </Dialog>
                         </div>
