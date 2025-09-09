@@ -6,6 +6,46 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { useState } from "react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Globe } from "lucide-react";
+
+const translations = {
+  hi: {
+    login: "लॉगिन करें",
+    signInPrompt: "जारी रखने के लिए अपने खाते में साइन इन करें।",
+    continueWithGoogle: "Google से जारी रखें",
+    continueWithFacebook: "Facebook से जारी रखें",
+    or: "या",
+    phonePlaceholder: "फ़ोन नंबर",
+    continueWithPhone: "फ़ोन नंबर से जारी रखें",
+    noAccount: "अकाउंट नहीं है?",
+    signUp: "साइन अप करें",
+  },
+  en: {
+    login: "Login",
+    signInPrompt: "Sign in to your account to continue.",
+    continueWithGoogle: "Continue with Google",
+    continueWithFacebook: "Continue with Facebook",
+    or: "OR",
+    phonePlaceholder: "Phone Number",
+    continueWithPhone: "Continue with Phone Number",
+    noAccount: "Don't have an account?",
+    signUp: "Sign Up",
+  },
+  bho: {
+    login: "लॉगिन करीं",
+    signInPrompt: "जारी रखे खातिर आपन खाता में साइन इन करीं।",
+    continueWithGoogle: "Google से जारी राखीं",
+    continueWithFacebook: "Facebook से जारी राखीं",
+    or: "या",
+    phonePlaceholder: "फोन नंबर",
+    continueWithPhone: "फोन नंबर से जारी राखीं",
+    noAccount: "खाता नइखे?",
+    signUp: "साइन अप करीं",
+  }
+};
+
 
 const GoogleIcon = () => (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,36 +64,53 @@ const FacebookIcon = () => (
 )
 
 export default function LoginPage() {
+  const [language, setLanguage] = useState<keyof typeof translations>('hi');
+  const t = translations[language];
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-muted/40">
+    <div className="flex items-center justify-center min-h-screen bg-muted/40 p-4">
+      <div className="absolute top-4 right-4">
+        <Select value={language} onValueChange={(value: keyof typeof translations) => setLanguage(value)}>
+          <SelectTrigger className="w-[180px] rounded-full">
+            <Globe className="h-4 w-4 mr-2" />
+            <SelectValue placeholder="भाषा चुनें" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="hi">हिन्दी</SelectItem>
+            <SelectItem value="en">English</SelectItem>
+            <SelectItem value="bho">भोजपुरी</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       <Card className="max-w-sm w-full shadow-lg rounded-2xl border-none">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">लॉगिन करें</CardTitle>
-          <CardDescription>जारी रखने के लिए अपने खाते में साइन इन करें।</CardDescription>
+          <CardTitle className="text-2xl">{t.login}</CardTitle>
+          <CardDescription>{t.signInPrompt}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
             <GoogleIcon />
-            <span className="ml-2">Google से जारी रखें</span>
+            <span className="ml-2">{t.continueWithGoogle}</span>
           </Button>
           <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
             <FacebookIcon />
-            <span className="ml-2">Facebook से जारी रखें</span>
+            <span className="ml-2">{t.continueWithFacebook}</span>
           </Button>
           <div className="relative my-2">
             <Separator />
             <span className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-card px-2 text-sm text-muted-foreground">
-              या
+              {t.or}
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            <Input id="phone" type="tel" placeholder="फ़ोन नंबर" className="py-5 rounded-full" required />
+            <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full" required />
             <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
-                <Link href="/select-specialization">फ़ोन नंबर से जारी रखें</Link>
+                <Link href="/select-specialization">{t.continueWithPhone}</Link>
             </Button>
           </div>
           <p className="text-center text-xs text-muted-foreground mt-2">
-            अकाउंट नहीं है? <Link href="#" className="text-primary hover:underline font-semibold">साइन अप करें</Link>
+            {t.noAccount} <Link href="#" className="text-primary hover:underline font-semibold">{t.signUp}</Link>
           </p>
         </CardContent>
       </Card>
