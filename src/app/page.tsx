@@ -6,46 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Globe } from "lucide-react";
-
-const translations = {
-  hi: {
-    login: "लॉगिन करें",
-    signInPrompt: "जारी रखने के लिए अपने खाते में साइन इन करें।",
-    continueWithGoogle: "Google से जारी रखें",
-    continueWithFacebook: "Facebook से जारी रखें",
-    or: "या",
-    phonePlaceholder: "फ़ोन नंबर",
-    continueWithPhone: "फ़ोन नंबर से जारी रखें",
-    noAccount: "अकाउंट नहीं है?",
-    signUp: "साइन अप करें",
-  },
-  en: {
-    login: "Login",
-    signInPrompt: "Sign in to your account to continue.",
-    continueWithGoogle: "Continue with Google",
-    continueWithFacebook: "Continue with Facebook",
-    or: "OR",
-    phonePlaceholder: "Phone Number",
-    continueWithPhone: "Continue with Phone Number",
-    noAccount: "Don't have an account?",
-    signUp: "Sign Up",
-  },
-  bho: {
-    login: "लॉगिन करीं",
-    signInPrompt: "जारी रखे खातिर आपन खाता में साइन इन करीं।",
-    continueWithGoogle: "Google से जारी राखीं",
-    continueWithFacebook: "Facebook से जारी राखीं",
-    or: "या",
-    phonePlaceholder: "फोन नंबर",
-    continueWithPhone: "फोन नंबर से जारी राखीं",
-    noAccount: "खाता नइखे?",
-    signUp: "साइन अप करीं",
-  }
-};
-
+import { useLanguage } from "@/context/LanguageContext";
+import type { Language } from "@/context/LanguageContext";
 
 const GoogleIcon = () => (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,16 +28,16 @@ const FacebookIcon = () => (
 )
 
 export default function LoginPage() {
-  const [language, setLanguage] = useState<keyof typeof translations>('hi');
-  const t = translations[language];
+  const { language, setLanguage, translations } = useLanguage();
+  const t = translations.loginPage;
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-muted/40 p-4">
       <div className="absolute top-4 right-4">
-        <Select value={language} onValueChange={(value: keyof typeof translations) => setLanguage(value)}>
+        <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
           <SelectTrigger className="w-[180px] rounded-full">
             <Globe className="h-4 w-4 mr-2" />
-            <SelectValue placeholder="भाषा चुनें" />
+            <SelectValue placeholder={t.selectLanguage} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="hi">हिन्दी</SelectItem>

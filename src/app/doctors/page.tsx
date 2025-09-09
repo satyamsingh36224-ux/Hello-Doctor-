@@ -10,10 +10,13 @@ import { Button } from '@/components/ui/button';
 import { doctorsData } from '@/lib/doctors';
 import { JaanchKendra } from '@/components/JaanchKendra';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/context/LanguageContext';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
+  const { translations } = useLanguage();
+  const t = translations.doctorsPage;
 
   const filteredDoctors = doctorsData.filter(doctor => {
     const specializationMatch = selectedSpecialization === 'all' || doctor.specialization === selectedSpecialization;
@@ -23,8 +26,8 @@ function DoctorsList() {
   return (
     <>
       <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">शीर्ष डॉक्टर</h2>
-          <Button variant="link" className="text-primary">सभी देखें</Button>
+          <h2 className="text-xl font-bold">{t.topDoctors}</h2>
+          <Button variant="link" className="text-primary">{t.viewAll}</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
@@ -34,7 +37,7 @@ function DoctorsList() {
           ))
         ) : (
             <div className="col-span-full text-center py-12">
-              <p className="text-muted-foreground text-lg">इस विशेषज्ञता के लिए कोई डॉक्टर नहीं मिला।</p>
+              <p className="text-muted-foreground text-lg">{t.noDoctorsFound}</p>
           </div>
         )}
       </div>
@@ -44,11 +47,13 @@ function DoctorsList() {
 
 export default function DoctorsPage() {
   const { toast } = useToast();
+  const { translations } = useLanguage();
+  const t = translations.doctorsPage;
 
   useEffect(() => {
     toast({
-      title: "नमस्ते! 👋",
-      description: "Hello Doctor में आपका स्वागत है।",
+      title: t.welcomeToast,
+      description: t.welcomeToastDesc,
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -68,7 +73,7 @@ export default function DoctorsPage() {
         </div>
       </main>
       <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
-        <p>&copy; {new Date().getFullYear()} Hello Doctor। सर्वाधिकार सुरक्षित।</p>
+        <p>&copy; {new Date().getFullYear()} Hello Doctor.{t.footerText}</p>
       </footer>
     </div>
   );

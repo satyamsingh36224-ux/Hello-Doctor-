@@ -5,13 +5,11 @@ import * as React from "react";
 import Image from "next/image";
 import { Heart, MapPin, IndianRupee, Sparkles, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import type { Doctor } from "@/types";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -20,14 +18,16 @@ interface DoctorCardProps {
 export function DoctorCard({ doctor }: DoctorCardProps) {
   const { toast } = useToast();
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const { translations } = useLanguage();
+  const t = translations.doctorCard;
 
   const handleFavoriteToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsFavorite(!isFavorite);
     toast({
-        title: isFavorite ? "💔 पसंदीदा से हटाया गया" : "❤️ पसंदीदा में जोड़ा गया",
-        description: `${doctor.name} को ${isFavorite ? "पसंदीदा से हटा दिया गया है।" : "आपके पसंदीदा में जोड़ दिया गया है।"}`,
+        title: isFavorite ? t.removedFromFavToast : t.addedToFavToast,
+        description: `${doctor.name} ${isFavorite ? t.removedFromFavToastDesc : t.addedToFavToastDesc}`,
     })
   }
 
@@ -66,17 +66,17 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     <div className="flex items-center gap-1">
                         <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
                         <span className="font-semibold">4.8</span>
-                        <span className="text-xs">(245 समीक्षाएं)</span>
+                        <span className="text-xs">(245 {t.reviews})</span>
                     </div>
                      <div className="flex items-center gap-1">
                         <IndianRupee className="h-4 w-4" />
-                        <span className="font-semibold">{doctor.fee} परामर्श शुल्क</span>
+                        <span className="font-semibold">{doctor.fee} {t.consultationFee}</span>
                     </div>
                 </div>
 
                  <div className="mt-4 flex gap-2">
                     <Button asChild size="sm" className="rounded-full flex-1">
-                        <Link href={`/doctors/${doctor.id}`}>प्रोफ़ाइल देखें</Link>
+                        <Link href={`/doctors/${doctor.id}`}>{t.viewProfile}</Link>
                     </Button>
                 </div>
             </div>

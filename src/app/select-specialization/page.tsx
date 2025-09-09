@@ -9,10 +9,13 @@ import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { specializationMap } from '@/lib/doctors';
 import { JaanchKendra } from '@/components/JaanchKendra';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function SelectSpecializationPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
+  const { translations } = useLanguage();
+  const t = translations.selectSpecializationPage;
 
   const handleSpecializationClick = (specialization: string) => {
     router.push(`/doctors?specialization=${encodeURIComponent(specialization)}`);
@@ -26,14 +29,14 @@ export default function SelectSpecializationPage() {
     <div className="flex flex-col items-center min-h-screen bg-muted/40 p-4">
       <Card className="w-full max-w-2xl shadow-lg rounded-2xl border-none mt-8">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold">एक विशेषज्ञता चुनें</CardTitle>
-          <CardDescription>आप किस तरह के डॉक्टर की तलाश में हैं?</CardDescription>
+          <CardTitle className="text-3xl font-bold">{t.title}</CardTitle>
+          <CardDescription>{t.description}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="relative mb-6">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input 
-              placeholder="विशेषज्ञता खोजें..." 
+              placeholder={t.searchPlaceholder}
               className="pl-10 py-5 rounded-full"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

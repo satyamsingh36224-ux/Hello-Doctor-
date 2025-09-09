@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarTrigger, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
 import { Home, Settings, LogIn } from 'lucide-react';
 import Link from 'next/link';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 export const metadata: Metadata = {
   title: 'Hello Doctor',
@@ -24,31 +25,33 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        <SidebarProvider>
-            <Sidebar>
-                <SidebarHeader>
-                    {/* Header content can go here */}
-                </SidebarHeader>
-                <SidebarContent>
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton asChild>
-                                <Link href="/doctors"><Home /> होम</Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                             <SidebarMenuButton asChild>
-                                <Link href="/settings"><Settings /> सेटिंग्स</Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarContent>
-            </Sidebar>
-            <SidebarInset>
-                {children}
-            </SidebarInset>
-        </SidebarProvider>
-        <Toaster />
+        <LanguageProvider>
+          <SidebarProvider>
+              <Sidebar>
+                  <SidebarHeader>
+                      {/* Header content can go here */}
+                  </SidebarHeader>
+                  <SidebarContent>
+                      <SidebarMenu>
+                          <SidebarMenuItem>
+                              <SidebarMenuButton asChild>
+                                  <Link href="/doctors"><Home /> होम</Link>
+                              </SidebarMenuButton>
+                          </SidebarMenuItem>
+                          <SidebarMenuItem>
+                              <SidebarMenuButton asChild>
+                                  <Link href="/settings"><Settings /> सेटिंग्स</Link>
+                              </SidebarMenuButton>
+                          </SidebarMenuItem>
+                      </SidebarMenu>
+                  </SidebarContent>
+              </Sidebar>
+              <SidebarInset>
+                  {children}
+              </SidebarInset>
+          </SidebarProvider>
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

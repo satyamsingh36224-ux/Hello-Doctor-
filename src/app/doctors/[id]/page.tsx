@@ -20,8 +20,9 @@ import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/Header";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
-const timeSlots = ["10:00 सुबह", "11:00 सुबह", "12:00 दोपहर", "02:00 दोपहर", "03:00 दोपहर", "04:00 दोपहर"];
+const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
 
 export default function DoctorProfilePage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
@@ -30,6 +31,10 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   const [summary, setSummary] = React.useState("");
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const { translations } = useLanguage();
+  const t = translations.doctorProfilePage;
+  const tCard = translations.doctorCard;
+  const tTime = translations.timeSlots;
 
   const doctor = doctorsData.find(d => d.id === params.id);
 
@@ -47,7 +52,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     
     const formattedDate = date ? date.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : 'कोई तारीख नहीं चुनी गई';
 
-    const clinicPhoneNumber = "9771264784"; // महत्वपूर्ण: इसे क्लिनिक के वास्तविक व्हाट्सएप नंबर से बदलें
+    const clinicPhoneNumber = "9771264784";
     
     const message = `नमस्ते, मैं ${doctor.name} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nकृपया इस अपॉइंटमेंट की पुष्टि करें। धन्यवाद!`;
     
@@ -55,11 +60,10 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
 
     setIsBookingOpen(false);
     toast({
-      title: "अपॉइंटमेंट बुक हो गया! 🎉",
-      description: `${doctor.name} के साथ आपका अपॉइंटमेंट सफलतापूर्वक अनुरोध किया गया है।`,
+      title: t.appointmentBookedToast,
+      description: `${t.appointmentBookedToastDesc} ${doctor.name}`,
     });
 
-    // व्हाट्सएप पर रीडायरेक्ट करें
     window.open(whatsappUrl, '_blank');
   };
 
@@ -70,7 +74,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
       const result = await getSpecializationSummary({ specializationText: doctor.description });
       setSummary(result.summary);
     } catch (error) {
-      setSummary("इस समय सारांश उत्पन्न नहीं किया जा सका।");
+      setSummary(t.aiSummaryError);
       console.error(error);
     } finally {
       setIsLoadingSummary(false);
@@ -80,8 +84,8 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   const handleFavoriteToggle = () => {
     setIsFavorite(!isFavorite);
     toast({
-        title: isFavorite ? "💔 पसंदीदा से हटाया गया" : "❤️ पसंदीदा में जोड़ा गया",
-        description: `${doctor.name} को ${isFavorite ? "पसंदीदा से हटा दिया गया है।" : "आपके पसंदीदा में जोड़ दिया गया है।"}`,
+        title: isFavorite ? tCard.removedFromFavToast : tCard.addedToFavToast,
+        description: `${doctor.name} ${isFavorite ? tCard.removedFromFavToastDesc : tCard.addedToFavToastDesc}`,
     })
   }
 
@@ -94,7 +98,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
             <div className="max-w-4xl mx-auto">
                 <Link href="/doctors" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4">
                     <ChevronLeft className="h-4 w-4" />
-                    सभी डॉक्टरों पर वापस जाएं
+                    {t.backToAllDoctors}
                 </Link>
                 <Card className="shadow-lg rounded-2xl overflow-hidden">
                     <div className="relative h-56 w-full">
@@ -114,7 +118,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                             </div>
                              <Button size="icon" variant="ghost" className="rounded-full h-10 w-10 bg-secondary hover:bg-primary/10" onClick={handleFavoriteToggle}>
                                 <Heart className={`h-5 w-5 transition-all ${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
-                                <span className="sr-only">पसंदीदा</span>
+                                <span className="sr-only">{t.favorite}</span>
                             </Button>
                         </div>
                     </CardHeader>
@@ -123,11 +127,11 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                              <div className="flex items-center gap-2">
                                 <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
                                 <span className="font-semibold text-base">4.8</span>
-                                <span className="text-sm">(245 समीक्षाएं)</span>
+                                <span className="text-sm">(245 {t.reviews})</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <IndianRupee className="h-5 w-5" />
-                                <span className="font-semibold text-base">{doctor.fee} परामर्श शुल्क</span>
+                                <span className="font-semibold text-base">{doctor.fee} {t.consultationFee}</span>
                             </div>
                         </div>
 
@@ -139,7 +143,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                         <Separator className="my-6" />
 
                         <div>
-                            <h4 className="font-semibold text-xl mb-2">विवरण</h4>
+                            <h4 className="font-semibold text-xl mb-2">{t.description}</h4>
                             <p className="text-muted-foreground leading-relaxed">{doctor.description}</p>
                         </div>
                         
@@ -150,12 +154,12 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <AlertDialogTrigger asChild>
                                     <Button variant="outline" className="flex-1 rounded-full py-6 text-base" onClick={handleGetSummary}>
                                         <Sparkles className="mr-2 h-5 w-5" />
-                                        एआई सारांश प्राप्त करें
+                                        {t.getAISummary}
                                     </Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
-                                    <AlertDialogTitle className="flex items-center gap-2"><Bot /> {doctor.name} के लिए एआई सारांश</AlertDialogTitle>
+                                    <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctor.name}</AlertDialogTitle>
                                     <AlertDialogDescription className="pt-4">
                                         {isLoadingSummary ? (
                                             <div className="flex items-center justify-center p-8">
@@ -167,31 +171,31 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                     </AlertDialogDescription>
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
-                                    <AlertDialogCancel>बंद करें</AlertDialogCancel>
+                                    <AlertDialogCancel>{t.close}</AlertDialogCancel>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>
 
                             <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
                                 <DialogTrigger asChild>
-                                    <Button className="flex-1 rounded-full py-6 text-base">अभी अपॉइंटमेंट बुक करें</Button>
+                                    <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
                                 <DialogContent className="sm:max-w-[425px]">
                                     <DialogHeader>
-                                    <DialogTitle>📝 {doctor.name} के साथ अपॉइंटमेंट बुक करें</DialogTitle>
+                                    <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
                                     <DialogDescription>
-                                        अपॉइंटमेंट का अनुरोध करने के लिए नीचे दिए गए विवरण भरें। व्हाट्सएप पर पुष्टि भेजी जाएगी।
+                                        {t.bookingFormDesc}
                                     </DialogDescription>
                                     </DialogHeader>
                                     <form onSubmit={handleBooking}>
                                         <div className="grid gap-4 py-4">
                                              <div className="relative">
                                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input name="name" id="name" placeholder="मरीज का नाम" className="pl-10" required />
+                                                <Input name="name" id="name" placeholder={t.patientName} className="pl-10" required />
                                             </div>
                                             <div className="relative">
                                                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                <Input name="phone" id="phone" type="tel" placeholder="फ़ोन नंबर" className="pl-10" required />
+                                                <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10" required />
                                             </div>
                                             <div className="relative">
                                                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -207,11 +211,11 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                 <Select name="time" required>
                                                     <SelectTrigger className="pl-10">
-                                                        <SelectValue placeholder="एक समय स्लॉट चुनें" />
+                                                        <SelectValue placeholder={t.selectTimeSlot} />
                                                     </SelectTrigger>
                                                     <SelectContent>
-                                                        {timeSlots.map(slot => (
-                                                            <SelectItem key={slot} value={slot}>{slot}</SelectItem>
+                                                        {timeSlotKeys.map(slot => (
+                                                            <SelectItem key={slot} value={tTime[slot as keyof typeof tTime]}>{tTime[slot as keyof typeof tTime]}</SelectItem>
                                                         ))}
                                                     </SelectContent>
                                                 </Select>
@@ -219,7 +223,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                         </div>
                                         <Separator className="my-4" />
                                         <div className="flex justify-between items-center text-lg font-semibold">
-                                            <span>कुल देय राशि:</span>
+                                            <span>{t.totalPayable}</span>
                                             <div className="flex items-center">
                                                 <IndianRupee className="h-5 w-5 mr-1" />
                                                 <span>{doctor.fee}</span>
@@ -228,7 +232,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                         <DialogFooter className="mt-4">
                                             <Button type="submit" className="w-full">
                                                 <MessageSquare className="mr-2 h-4 w-4" />
-                                                व्हाट्सएप पर पुष्टि करें
+                                                {t.confirmOnWhatsApp}
                                             </Button>
                                         </DialogFooter>
                                     </form>
