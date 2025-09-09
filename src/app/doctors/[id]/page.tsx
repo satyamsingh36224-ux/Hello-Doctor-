@@ -190,15 +190,15 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-md w-[90%] max-h-[90vh] flex flex-col">
+                                <DialogContent className="sm:max-w-md">
                                     <DialogHeader>
                                         <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
                                         <DialogDescription>
                                             {t.bookingFormDesc}
                                         </DialogDescription>
                                     </DialogHeader>
-                                    <div className="flex-grow overflow-y-auto pr-4 -mr-4">
-                                        <form onSubmit={handleBooking} className="space-y-4">
+                                    <ScrollArea className="max-h-[70vh]">
+                                        <form onSubmit={handleBooking} className="space-y-4 p-1">
                                             <div className="space-y-4 py-4">
                                                 <div className="relative">
                                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -246,7 +246,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 </Button>
                                             </DialogFooter>
                                         </form>
-                                    </div>
+                                    </ScrollArea>
                                 </DialogContent>
                             </Dialog>
                         </div>
