@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
@@ -9,6 +9,7 @@ import { AppointmentHistory } from "@/components/AppointmentHistory";
 import { Button } from '@/components/ui/button';
 import { doctorsData } from '@/lib/doctors';
 import { JaanchKendra } from '@/components/JaanchKendra';
+import { useToast } from '@/hooks/use-toast';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
@@ -42,6 +43,16 @@ function DoctorsList() {
 }
 
 export default function DoctorsPage() {
+  const { toast } = useToast();
+
+  useEffect(() => {
+    toast({
+      title: "नमस्ते! 👋",
+      description: "गोपालगंज विकास हेल्थ केयर में आपका स्वागत है।",
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-muted/40">
       <Header />
