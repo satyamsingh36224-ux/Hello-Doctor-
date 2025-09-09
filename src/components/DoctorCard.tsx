@@ -3,7 +3,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { Heart, MapPin, IndianRupee, Sparkles, Star } from "lucide-react";
+import { Heart, MapPin, IndianRupee, Sparkles, Star, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -20,6 +20,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const [isFavorite, setIsFavorite] = React.useState(false);
   const { translations } = useLanguage();
   const t = translations.doctorCard;
+  const tProfile = translations.doctorProfilePage;
 
   const handleFavoriteToggle = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -35,20 +36,24 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
 
   return (
     <Card className="overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl border-none bg-card">
-        <Link href={`/doctors/${doctor.id}`} className="flex flex-col md:flex-row items-center p-4 gap-4 w-full">
+        <div className="flex flex-col md:flex-row items-center p-4 gap-4 w-full">
             <div className="relative h-32 w-32 flex-shrink-0">
-                <Image
-                    src={doctor.imageUrl}
-                    alt={doctor.name}
-                    fill
-                    className="rounded-2xl object-cover"
-                    data-ai-hint={doctor.aiHint}
-                />
+                <Link href={`/doctors/${doctor.id}`}>
+                    <Image
+                        src={doctor.imageUrl}
+                        alt={doctor.name}
+                        fill
+                        className="rounded-2xl object-cover"
+                        data-ai-hint={doctor.aiHint}
+                    />
+                </Link>
             </div>
             <div className="flex-grow w-full text-left">
                 <div className="flex justify-between items-start">
                     <div>
-                        <h3 className="text-lg font-bold">{doctor.name}</h3>
+                        <Link href={`/doctors/${doctor.id}`}>
+                            <h3 className="text-lg font-bold hover:underline">{doctor.name}</h3>
+                        </Link>
                         <p className="text-sm text-primary font-medium">{doctor.specialization}</p>
                     </div>
                     <Button size="icon" variant="ghost" className="rounded-full h-9 w-9 bg-secondary hover:bg-primary/10 flex-shrink-0" onClick={handleFavoriteToggle}>
@@ -74,13 +79,19 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     </div>
                 </div>
 
-                 <div className="mt-4 flex gap-2">
-                    <Button asChild size="sm" className="rounded-full flex-1">
+                 <div className="mt-4 flex flex-col sm:flex-row gap-2">
+                    <Button asChild size="sm" className="rounded-full flex-1" variant="outline">
                         <Link href={`/doctors/${doctor.id}`}>{t.viewProfile}</Link>
+                    </Button>
+                    <Button asChild size="sm" className="rounded-full flex-1">
+                        <Link href={`/doctors/${doctor.id}#booking`}>
+                            <Calendar className="mr-2 h-4 w-4" />
+                            {tProfile.bookAppointmentNow}
+                        </Link>
                     </Button>
                 </div>
             </div>
-        </Link>
+        </div>
     </Card>
   );
 }

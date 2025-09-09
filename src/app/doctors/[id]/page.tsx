@@ -19,7 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/Header";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
@@ -35,6 +35,15 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   const t = translations.doctorProfilePage;
   const tCard = translations.doctorCard;
   const tTime = translations.timeSlots;
+  const router = useRouter();
+  const pathname = usePathname();
+
+
+  React.useEffect(() => {
+    if (window.location.hash === '#booking') {
+      setIsBookingOpen(true);
+    }
+  }, [pathname]);
 
   const doctor = doctorsData.find(d => d.id === params.id);
 
@@ -149,7 +158,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                         
                         <Separator className="my-6" />
 
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div id="booking" className="flex flex-col sm:flex-row gap-4">
                             <AlertDialog>
                                 <AlertDialogTrigger asChild>
                                     <Button variant="outline" className="flex-1 rounded-full py-6 text-base" onClick={handleGetSummary}>
