@@ -190,14 +190,14 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-md">
+                                <DialogContent className="sm:max-w-lg">
                                     <DialogHeader>
                                         <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
                                         <DialogDescription>
                                             {t.bookingFormDesc}
                                         </DialogDescription>
                                     </DialogHeader>
-                                    <ScrollArea className="max-h-[70vh]">
+                                    <ScrollArea className="max-h-[70vh] p-1">
                                         <form onSubmit={handleBooking} className="space-y-4 p-1">
                                             <div className="space-y-4 py-4">
                                                 <div className="relative">
@@ -257,3 +257,5 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+
+    
