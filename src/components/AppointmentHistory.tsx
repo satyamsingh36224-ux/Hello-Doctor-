@@ -59,7 +59,7 @@ export function AppointmentHistory() {
             </CardDescription>
         </CardHeader>
         <CardContent>
-            <div className="rounded-md border overflow-hidden">
+            <div className="rounded-md border overflow-x-auto">
                 <Table>
                 <TableHeader>
                     <TableRow>
@@ -72,10 +72,10 @@ export function AppointmentHistory() {
                     {appointments.map((appointment, index) => (
                     <TableRow key={index}>
                         <TableCell>
-                            <div className="font-medium">{appointment.doctor}</div>
+                            <div className="font-medium whitespace-nowrap">{appointment.doctor}</div>
                             <div className="text-sm text-muted-foreground">{appointment.time}</div>
                         </TableCell>
-                        <TableCell>{appointment.date}</TableCell>
+                        <TableCell className="whitespace-nowrap">{appointment.date}</TableCell>
                         <TableCell className="text-right">
                             <Badge variant={
                                 appointment.status === "completed" ? "default" :
