@@ -21,6 +21,7 @@ import { Header } from "@/components/Header";
 import Link from "next/link";
 import { notFound, usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
 
@@ -189,15 +190,16 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-[425px]">
+                                <DialogContent className="sm:max-w-md w-[90%] max-h-[90svh]">
                                     <DialogHeader>
                                     <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
                                     <DialogDescription>
                                         {t.bookingFormDesc}
                                     </DialogDescription>
                                     </DialogHeader>
-                                    <form onSubmit={handleBooking}>
-                                        <div className="grid gap-4 py-4">
+                                    <ScrollArea className="pr-4 -mr-4">
+                                    <form onSubmit={handleBooking} className="space-y-4">
+                                        <div className="space-y-4 py-4">
                                              <div className="relative">
                                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                 <Input name="name" id="name" placeholder={t.patientName} className="pl-10" required />
@@ -206,13 +208,12 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                 <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10" required />
                                             </div>
-                                            <div className="relative">
-                                                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                            <div className="flex justify-center">
                                                 <CalendarPicker
                                                     mode="single"
                                                     selected={date}
                                                     onSelect={setDate}
-                                                    className="w-full rounded-md border pl-10"
+                                                    className="w-full rounded-md border"
                                                     disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() -1))}
                                                 />
                                             </div>
@@ -230,7 +231,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 </Select>
                                             </div>
                                         </div>
-                                        <Separator className="my-4" />
+                                        <Separator/>
                                         <div className="flex justify-between items-center text-lg font-semibold">
                                             <span>{t.totalPayable}</span>
                                             <div className="flex items-center">
@@ -238,13 +239,14 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 <span>{doctor.fee}</span>
                                             </div>
                                         </div>
-                                        <DialogFooter className="mt-4">
+                                        <DialogFooter className="pt-2">
                                             <Button type="submit" className="w-full">
                                                 <MessageSquare className="mr-2 h-4 w-4" />
                                                 {t.confirmOnWhatsApp}
                                             </Button>
                                         </DialogFooter>
                                     </form>
+                                    </ScrollArea>
                                 </DialogContent>
                             </Dialog>
                         </div>
