@@ -48,7 +48,7 @@ export default function DoctorsPage() {
   useEffect(() => {
     toast({
       title: "नमस्ते! 👋",
-      description: "गोपालगंज विकास हेल्थ केयर में आपका स्वागत है।",
+      description: "Hello Doctor में आपका स्वागत है।",
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -68,7 +68,7 @@ export default function DoctorsPage() {
         </div>
       </main>
       <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
-        <p>&copy; {new Date().getFullYear()} गोपालगंज विकास हेल्थ केयर। सर्वाधिकार सुरक्षित।</p>
+        <p>&copy; {new Date().getFullYear()} Hello Doctor। सर्वाधिकार सुरक्षित।</p>
       </footer>
     </div>
   );

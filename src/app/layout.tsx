@@ -6,8 +6,8 @@ import { Home, Settings, LogIn } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'गोपालगंज विकास हेल्थ केयर',
-  description: 'गोपालगंज, बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।',
+  title: 'Hello Doctor',
+  description: 'Hello Doctor - बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।',
   manifest: '/manifest.json',
 };
 
