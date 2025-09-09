@@ -17,7 +17,7 @@ export function JaanchKendra() {
     const handleTestRequest = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
-        const clinicPhoneNumber = "919771264784"; // महत्वपूर्ण: इसे क्लिनिक के वास्तविक व्हाट्सएप नंबर से बदलें
+        const clinicPhoneNumber = "9771264784"; // महत्वपूर्ण: इसे क्लिनिक के वास्तविक व्हाट्सएप नंबर से बदलें
 
         const message = `नमस्ते, मुझे एक जांच करवानी है।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*जांच का नाम:* ${testName}\n\nकृपया बुकिंग के लिए संपर्क करें। धन्यवाद!`;
         
