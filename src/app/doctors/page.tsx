@@ -120,12 +120,12 @@ export default function DoctorsPage() {
           <DoctorsList />
         </Suspense>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-16">
-            <div className="lg:col-span-3">
-                <AppointmentHistory />
-            </div>
-            <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 gap-8 mt-16">
+            <div>
                 <JaanchKendra />
+            </div>
+            <div>
+                <AppointmentHistory />
             </div>
         </div>
       </main>
