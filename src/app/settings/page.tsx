@@ -5,8 +5,9 @@ import { Header } from "@/components/Header";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, UploadCloud } from "lucide-react";
+import { Phone, UploadCloud, FileText } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export default function SettingsPage() {
     const { translations } = useLanguage();
@@ -55,6 +56,12 @@ export default function SettingsPage() {
                             <CardDescription>{t.publishAppDesc}</CardDescription>
                         </CardHeader>
                         <CardContent>
+                             <Button asChild className="w-full mb-4" variant="outline">
+                                <Link href="/PUBLISHING_GUIDE.md" target="_blank">
+                                    <FileText className="mr-2 h-4 w-4" />
+                                    {t.readPublishingGuide}
+                                </Link>
+                            </Button>
                             <p className="text-sm text-muted-foreground mb-4">
                                 {t.publishAppDetails}
                             </p>
