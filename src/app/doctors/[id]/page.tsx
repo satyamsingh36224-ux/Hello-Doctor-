@@ -25,6 +25,11 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
 
+const isEmoji = (str: string) => {
+    const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
+    return emojiRegex.test(str);
+};
+
 export default function DoctorProfilePage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
   const [date, setDate] = React.useState<Date | undefined>(new Date());
@@ -112,13 +117,19 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                 </Link>
                 <Card className="shadow-lg rounded-2xl overflow-hidden">
                     <div className="relative h-56 w-full">
-                         <Image
-                            src={doctor.imageUrl}
-                            alt={doctor.name}
-                            fill
-                            className="object-cover"
-                            data-ai-hint={doctor.aiHint}
-                        />
+                         {isEmoji(doctor.imageUrl) ? (
+                            <div className="flex items-center justify-center h-full w-full bg-secondary">
+                                <span className="text-8xl">{doctor.imageUrl}</span>
+                            </div>
+                        ) : (
+                            <Image
+                                src={doctor.imageUrl}
+                                alt={doctor.name}
+                                fill
+                                className="object-cover"
+                                data-ai-hint={doctor.aiHint}
+                            />
+                        )}
                     </div>
                     <CardHeader>
                         <div className="flex justify-between items-start">
@@ -257,5 +268,3 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
-    
