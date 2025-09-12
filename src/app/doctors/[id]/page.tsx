@@ -201,9 +201,10 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-lg">
+                                <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
+
                                         <DialogDescription>
                                             {t.bookingFormDesc}
                                         </DialogDescription>
