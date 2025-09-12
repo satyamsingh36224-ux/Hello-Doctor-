@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, UploadCloud, FileText } from "lucide-react";
+import { Phone, UploadCloud, FileText, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 
@@ -56,12 +56,20 @@ export default function SettingsPage() {
                             <CardDescription>{t.publishAppDesc}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                             <Button asChild className="w-full mb-4" variant="outline">
-                                <Link href="/PUBLISHING_GUIDE.md" target="_blank">
-                                    <FileText className="mr-2 h-4 w-4" />
-                                    {t.readPublishingGuide}
-                                </Link>
-                            </Button>
+                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                <Button asChild variant="outline">
+                                    <Link href="/DEPLOYMENT_GUIDE.md" target="_blank">
+                                        <Globe className="mr-2 h-4 w-4" />
+                                        वेबसाइट गाइड
+                                    </Link>
+                                </Button>
+                                <Button asChild variant="outline">
+                                    <Link href="/PUBLISHING_GUIDE.md" target="_blank">
+                                        <FileText className="mr-2 h-4 w-4" />
+                                        एंड्रॉइड ऐप गाइड
+                                    </Link>
+                                </Button>
+                            </div>
                             <p className="text-sm text-muted-foreground mb-4">
                                 {t.publishAppDetails}
                             </p>
