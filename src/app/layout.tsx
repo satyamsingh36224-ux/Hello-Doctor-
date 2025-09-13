@@ -1,10 +1,11 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { SidebarProvider, Sidebar, SidebarInset, SidebarTrigger, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, Settings, LogIn } from 'lucide-react';
+import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
+import { Home, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { Logo } from '@/components/Logo';
 
 export const metadata: Metadata = {
   title: 'Hello Doctor',
@@ -28,8 +29,12 @@ export default function RootLayout({
         <LanguageProvider>
           <SidebarProvider>
               <Sidebar>
-                  <SidebarHeader>
-                      {/* Header content can go here */}
+                  <SidebarHeader className="p-4 flex items-center gap-2">
+                      <Logo />
+                      <div className="flex flex-col">
+                        <h2 className="text-lg font-semibold text-sidebar-foreground">Hello Doctor</h2>
+                        <p className="text-xs text-sidebar-foreground/70">आपका स्वास्थ्य, हमारी प्राथमिकता</p>
+                      </div>
                   </SidebarHeader>
                   <SidebarContent>
                       <SidebarMenu>

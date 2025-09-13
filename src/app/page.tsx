@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
+import { Logo } from "@/components/Logo";
 
 const GoogleIcon = () => (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,9 +49,12 @@ export default function LoginPage() {
       </div>
 
       <Card className="max-w-sm w-full shadow-lg rounded-2xl border-none">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">{t.login}</CardTitle>
-          <CardDescription>{t.signInPrompt}</CardDescription>
+        <CardHeader className="text-center flex flex-col items-center gap-2">
+          <Logo />
+          <div>
+            <CardTitle className="text-2xl">Hello Doctor</CardTitle>
+            <CardDescription>{t.signInPrompt}</CardDescription>
+          </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
@@ -81,5 +85,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-    
