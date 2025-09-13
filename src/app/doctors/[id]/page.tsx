@@ -115,7 +115,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                     <ChevronLeft className="h-4 w-4" />
                     {t.backToAllDoctors}
                 </Link>
-                <Card className="shadow-lg rounded-2xl overflow-hidden">
+                <Card className="shadow-lg rounded-2xl overflow-hidden border-none">
                     <div className="relative h-56 w-full">
                          {isEmoji(doctor.imageUrl) ? (
                             <div className="flex items-center justify-center h-full w-full bg-secondary">
@@ -201,7 +201,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 <DialogTrigger asChild>
                                     <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent>
+                                <DialogContent className="sm:max-w-md">
                                     <DialogHeader>
                                         <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
 
@@ -214,11 +214,11 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                             <div className="space-y-4 py-4">
                                                 <div className="relative">
                                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10" required />
+                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10 rounded-full" required />
                                                 </div>
                                                 <div className="relative">
                                                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10" required />
+                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10 rounded-full" required />
                                                 </div>
                                                 <div className="flex justify-center">
                                                     <CalendarPicker
@@ -232,7 +232,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 <div className="relative">
                                                     <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                                                     <Select name="time" required>
-                                                        <SelectTrigger className="pl-10">
+                                                        <SelectTrigger className="pl-10 rounded-full">
                                                             <SelectValue placeholder={t.selectTimeSlot} />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -252,7 +252,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                                 </div>
                                             </div>
                                             <DialogFooter className="pt-2 sticky bottom-0 bg-background pb-1">
-                                                <Button type="submit" className="w-full">
+                                                <Button type="submit" className="w-full rounded-full">
                                                     <MessageSquare className="mr-2 h-4 w-4" />
                                                     {t.confirmOnWhatsApp}
                                                 </Button>
@@ -269,3 +269,5 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+
+    

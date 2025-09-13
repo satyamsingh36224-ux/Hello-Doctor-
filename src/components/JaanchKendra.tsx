@@ -39,7 +39,7 @@ export function JaanchKendra() {
     };
 
     return (
-        <Card className="shadow-lg rounded-xl h-full">
+        <Card className="shadow-lg rounded-2xl h-full border-none">
             <CardHeader>
                 <CardTitle className="flex items-center gap-3">
                     <TestTube className="h-6 w-6 text-primary" />
@@ -54,17 +54,17 @@ export function JaanchKendra() {
                     <div className="grid gap-4">
                         <div className="relative">
                             <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input name="name" id="name" placeholder={t.patientNamePlaceholder} className="pl-10" value={patientName} onChange={(e) => setPatientName(e.target.value)} required />
+                            <Input name="name" id="name" placeholder={t.patientNamePlaceholder} className="pl-10 rounded-full" value={patientName} onChange={(e) => setPatientName(e.target.value)} required />
                         </div>
                         <div className="relative">
                             <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input name="phone" id="phone" type="tel" placeholder={t.phonePlaceholder} className="pl-10" value={patientPhone} onChange={(e) => setPatientPhone(e.target.value)} required />
+                            <Input name="phone" id="phone" type="tel" placeholder={t.phonePlaceholder} className="pl-10 rounded-full" value={patientPhone} onChange={(e) => setPatientPhone(e.target.value)} required />
                         </div>
                         <div className="relative">
                             <TestTube className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                            <Input name="test" id="test" placeholder={t.testNamePlaceholder} className="pl-10" value={testName} onChange={(e) => setTestName(e.target.value)} required />
+                            <Input name="test" id="test" placeholder={t.testNamePlaceholder} className="pl-10 rounded-full" value={testName} onChange={(e) => setTestName(e.target.value)} required />
                         </div>
-                        <Button type="submit" className="w-full">
+                        <Button type="submit" className="w-full rounded-full">
                             {t.requestButton}
                         </Button>
                     </div>
@@ -73,3 +73,5 @@ export function JaanchKendra() {
         </Card>
     );
 }
+
+    

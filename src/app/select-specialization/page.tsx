@@ -47,9 +47,9 @@ export default function SelectSpecializationPage() {
               <div 
                 key={spec.name} 
                 onClick={() => handleSpecializationClick(spec.name)} 
-                className="cursor-pointer group flex flex-col items-center p-4 rounded-2xl bg-card hover:bg-primary/10 transition-all duration-300"
+                className="cursor-pointer group flex flex-col items-center p-4 rounded-2xl bg-card hover:bg-primary/10 transition-all duration-300 transform hover:-translate-y-1"
               >
-                <div className="p-4 rounded-2xl bg-primary/20 flex items-center justify-center mb-2">
+                <div className="p-4 rounded-2xl bg-primary/20 flex items-center justify-center mb-2 transition-all duration-300 group-hover:scale-110">
                   <spec.icon className="h-8 w-8 text-primary" />
                 </div>
                 <p className="text-sm font-medium text-foreground">{spec.name}</p>
@@ -65,3 +65,5 @@ export default function SelectSpecializationPage() {
     </div>
   );
 }
+
+    
