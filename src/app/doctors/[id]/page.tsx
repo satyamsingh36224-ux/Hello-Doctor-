@@ -131,7 +131,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                             />
                         )}
                     </div>
-                    <CardHeader>
+                    <CardHeader className="p-6">
                         <div className="flex justify-between items-start">
                              <div>
                                 <CardTitle className="text-3xl">{doctor.name}</CardTitle>
@@ -143,7 +143,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                             </Button>
                         </div>
                     </CardHeader>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 pt-0">
                         <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
                              <div className="flex items-center gap-2">
                                 <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
@@ -173,7 +173,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                         <div id="booking" className="flex flex-col sm:flex-row gap-4">
                             <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                    <Button variant="outline" className="flex-1 rounded-full py-6 text-base" onClick={handleGetSummary}>
+                                    <Button variant="outline" className="flex-1 rounded-full py-8 text-xl font-bold" onClick={handleGetSummary}>
                                         <Sparkles className="mr-2 h-5 w-5" />
                                         {t.getAISummary}
                                     </Button>
@@ -199,9 +199,9 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
 
                             <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
                                 <DialogTrigger asChild>
-                                    <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
+                                    <Button className="flex-1 rounded-full py-8 text-xl font-bold">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-md">
+                                <DialogContent>
                                     <DialogHeader>
                                         <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
 
@@ -269,5 +269,3 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
-    
