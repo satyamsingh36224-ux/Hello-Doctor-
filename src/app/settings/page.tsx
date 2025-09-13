@@ -5,7 +5,7 @@ import { Header } from "@/components/Header";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, UploadCloud, FileText, Globe } from "lucide-react";
+import { Phone, UploadCloud, FileText, Globe, Wrench } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 
@@ -63,22 +63,30 @@ export default function SettingsPage() {
                                         वेबसाइट गाइड
                                     </Link>
                                 </Button>
-                                <Button asChild variant="outline">
-                                    <Link href="/PUBLISHING_GUIDE.md" target="_blank">
-                                        <FileText className="mr-2 h-4 w-4" />
-                                        एंड्रॉइड ऐप गाइड
+                                 <Button asChild variant="default">
+                                    <Link href="/BUILD_APP.md" target="_blank">
+                                        <Wrench className="mr-2 h-4 w-4" />
+                                        ऐप फ़ाइल बनाएँ (गाइड)
                                     </Link>
                                 </Button>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-4">
-                                {t.publishAppDetails}
+                             <p className="text-sm text-muted-foreground mb-4">
+                                ऐप फ़ाइल बनाने के बाद, उसे Play Store पर डालने के लिए इन निर्देशों का पालन करें।
                             </p>
-                            <Button asChild className="w-full">
-                                <a href="https://play.google.com/console/signup" target="_blank" rel="noopener noreferrer">
-                                    <UploadCloud className="mr-2 h-4 w-4" />
-                                    {t.goToPlayConsole}
-                                </a>
-                            </Button>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <Button asChild variant="outline">
+                                    <Link href="/PUBLISHING_GUIDE.md" target="_blank">
+                                        <FileText className="mr-2 h-4 w-4" />
+                                        Play Store गाइड
+                                    </Link>
+                                </Button>
+                                <Button asChild className="w-full" variant="secondary">
+                                    <a href="https://play.google.com/console/signup" target="_blank" rel="noopener noreferrer">
+                                        <UploadCloud className="mr-2 h-4 w-4" />
+                                        {t.goToPlayConsole}
+                                    </a>
+                                </Button>
+                            </div>
                         </CardContent>
                     </Card>
                 </div>
