@@ -88,10 +88,10 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     </div>
 
                     <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                        <Button asChild size="sm" className="rounded-full flex-1" variant="outline" onClick={(e) => e.stopPropagation()}>
+                        <Button asChild className="rounded-full flex-1" variant="outline" onClick={(e) => e.stopPropagation()}>
                             <Link href={`/doctors/${doctor.id}`}>{t.viewProfile}</Link>
                         </Button>
-                        <Button asChild size="sm" className="rounded-full flex-1" onClick={(e) => e.stopPropagation()}>
+                        <Button asChild className="rounded-full flex-1" onClick={(e) => e.stopPropagation()}>
                             <Link href={`/doctors/${doctor.id}#booking`}>
                                 <Calendar className="mr-2 h-4 w-4" />
                                 {tProfile.bookAppointmentNow}
