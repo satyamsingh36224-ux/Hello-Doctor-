@@ -5,12 +5,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function Header() {
   return (
-    <header className="bg-transparent sticky top-0 z-40">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-40 border-b">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <SidebarTrigger className="md:hidden" />
-          <Avatar className="h-10 w-10">
-            <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="person" />
+          <Avatar className="h-10 w-10 border-2 border-primary/50">
+            <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="User" data-ai-hint="person" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
         </div>

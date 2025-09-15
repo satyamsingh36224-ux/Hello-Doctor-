@@ -40,12 +40,12 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.location)}`;
 
   return (
-    <Card className="overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 rounded-2xl border-none bg-card">
-        <Link href={`/doctors/${doctor.id}`} className="block">
+    <Card className="overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl border-border/50 bg-card">
+        <Link href={`/doctors/${doctor.id}`} className="block group">
             <div className="flex flex-col md:flex-row items-center p-4 gap-4 w-full">
                 <div className="relative h-32 w-32 flex-shrink-0">
                     {isEmoji(doctor.imageUrl) ? (
-                        <div className="flex items-center justify-center h-full w-full bg-secondary rounded-2xl">
+                        <div className="flex items-center justify-center h-full w-full bg-secondary rounded-2xl ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300">
                             <span className="text-6xl">{doctor.imageUrl}</span>
                         </div>
                     ) : (
@@ -53,7 +53,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                             src={doctor.imageUrl}
                             alt={doctor.name}
                             fill
-                            className="rounded-2xl object-cover"
+                            className="rounded-2xl object-cover ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300"
                             data-ai-hint={doctor.aiHint}
                         />
                     )}
@@ -61,7 +61,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                 <div className="flex-grow w-full text-left">
                     <div className="flex justify-between items-start">
                         <div>
-                            <h3 className="text-lg font-bold hover:underline">{doctor.name}</h3>
+                            <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{doctor.name}</h3>
                             <p className="text-sm text-primary font-medium">{doctor.specialization}</p>
                         </div>
                         <Button size="icon" variant="ghost" className="rounded-full h-9 w-9 bg-secondary hover:bg-primary/10 flex-shrink-0" onClick={handleFavoriteToggle}>

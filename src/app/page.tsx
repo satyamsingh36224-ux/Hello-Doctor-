@@ -33,10 +33,10 @@ export default function LoginPage() {
   const t = translations.loginPage;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-muted/40 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
       <div className="absolute top-4 right-4">
         <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-          <SelectTrigger className="w-[180px] rounded-full">
+          <SelectTrigger className="w-[180px] rounded-full bg-background/80 backdrop-blur-sm">
             <Globe className="h-4 w-4 mr-2" />
             <SelectValue placeholder={t.selectLanguage} />
           </SelectTrigger>
@@ -48,7 +48,7 @@ export default function LoginPage() {
         </Select>
       </div>
 
-      <Card className="max-w-sm w-full shadow-lg rounded-2xl border-none">
+      <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm">
         <CardHeader className="text-center flex flex-col items-center gap-2">
           <Logo />
           <div>
@@ -57,11 +57,11 @@ export default function LoginPage() {
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
+          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <GoogleIcon />
             <span className="ml-2">{t.continueWithGoogle}</span>
           </Button>
-          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold">
+          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <FacebookIcon />
             <span className="ml-2">{t.continueWithFacebook}</span>
           </Button>
@@ -72,7 +72,7 @@ export default function LoginPage() {
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full" required />
+            <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
             <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
                 <Link href="/select-specialization">{t.continueWithPhone}</Link>
             </Button>

@@ -26,7 +26,7 @@ function DoctorsList() {
   return (
     <>
       <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">{t.topDoctors}</h2>
+          <h2 className="text-2xl font-bold">{t.topDoctors}</h2>
           <Button variant="link" className="text-primary">{t.viewAll}</Button>
       </div>
 
@@ -36,7 +36,7 @@ function DoctorsList() {
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))
         ) : (
-            <div className="col-span-full text-center py-12">
+            <div className="col-span-full text-center py-12 bg-card rounded-2xl border">
               <p className="text-muted-foreground text-lg">{t.noDoctorsFound}</p>
           </div>
         )}

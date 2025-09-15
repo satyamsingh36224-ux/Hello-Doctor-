@@ -48,7 +48,7 @@ export function AppointmentHistory() {
   const tStatus = translations.statuses;
 
   return (
-    <Card className="shadow-lg rounded-2xl h-full border-none">
+    <Card className="shadow-lg rounded-2xl h-full border-border/50 bg-card">
         <CardHeader>
              <CardTitle className="flex items-center gap-3">
                 <History className="h-6 w-6" />
@@ -59,7 +59,7 @@ export function AppointmentHistory() {
             </CardDescription>
         </CardHeader>
         <CardContent>
-            <div className="rounded-md border overflow-x-auto">
+            <div className="rounded-lg border overflow-x-auto">
                 <Table>
                 <TableHeader>
                     <TableRow>
