@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { User, MapPin, NotebookText, MessageSquare } from "lucide-react";
+import { User, MapPin, NotebookText, MessageSquare, Phone, BriefcaseMedical } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -17,6 +17,7 @@ export default function HomeVisitPage() {
     const { toast } = useToast();
     const [patientName, setPatientName] = useState('');
     const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
     const [problem, setProblem] = useState('');
 
     const handleRequestVisit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +25,7 @@ export default function HomeVisitPage() {
         
         const clinicPhoneNumber = "9771264784";
 
-        const message = `नमस्ते, मुझे डॉक्टर को घर पर दिखाने के लिए अनुरोध करना है।\n\n*मरीज का नाम:* ${patientName}\n*पता:* ${address}\n*समस्या का संक्षिप्त विवरण:*\n${problem}\n\nकृपया जल्द से जल्द संपर्क करें। धन्यवाद!`;
+        const message = `नमस्ते, मुझे डॉक्टर को घर पर दिखाने के लिए अनुरोध करना है।\n\n*मरीज का नाम:* ${patientName}\n*पता:* ${address}\n*फ़ोन नंबर:* ${phone}\n*समस्या का संक्षिप्त विवरण:*\n${problem}\n\nकृपया जल्द से जल्द संपर्क करें। धन्यवाद!`;
         
         const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -37,6 +38,7 @@ export default function HomeVisitPage() {
 
         setPatientName('');
         setAddress('');
+        setPhone('');
         setProblem('');
     };
 
@@ -77,6 +79,19 @@ export default function HomeVisitPage() {
                                             className="pl-10 rounded-full py-6"
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="relative">
+                                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Input
+                                            name="phone"
+                                            id="phone"
+                                            type="tel"
+                                            placeholder={t.phonePlaceholder}
+                                            className="pl-10 rounded-full py-6"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
                                             required
                                         />
                                     </div>
