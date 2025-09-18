@@ -8,7 +8,6 @@ import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { specializationMap } from '@/lib/doctors';
-import { JaanchKendra } from '@/components/JaanchKendra';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function SelectSpecializationPage() {
@@ -58,11 +57,6 @@ export default function SelectSpecializationPage() {
           </div>
         </CardContent>
       </Card>
-
-      <div className="w-full max-w-2xl mt-8">
-        <JaanchKendra />
-      </div>
     </div>
   );
 }
-
