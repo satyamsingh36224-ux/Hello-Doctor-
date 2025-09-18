@@ -20,7 +20,8 @@ export default function HospitalsPage() {
         { name: "मंगलम अस्पताल", location: "Mangalam Hospital, Gopalganj, Bihar" },
         { name: "शांति अस्पताल", location: "Shanti Hospital, Gopalganj, Bihar" },
         { name: "ग्लोबल अस्पताल", location: "Global Hospital, Gopalganj, Bihar" },
-        { name: "डॉ. एच.पी. सिंह अस्पताल", location: "Dr. H.P. Singh Hospital, Gopalganj, Bihar" }
+        { name: "डॉ. एच.पी. सिंह अस्पताल", location: "Dr. H.P. Singh Hospital, Gopalganj, Bihar" },
+        { name: "सुमन अस्पताल", location: "Suman Hospital, Gopalganj, Bihar" }
     ];
 
     const createGoogleMapsUrl = (query: string) => {
