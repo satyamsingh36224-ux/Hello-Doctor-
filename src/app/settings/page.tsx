@@ -52,6 +52,9 @@ export default function SettingsPage() {
                     </Card>
                 </div>
             </main>
+            <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
+                <p>Produced by Satyam Vikash Singh</p>
+            </footer>
         </div>
     )
 }
