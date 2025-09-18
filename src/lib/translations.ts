@@ -6,6 +6,7 @@ const translations = {
         homeVisit: "डॉक्टर होम विज़िट",
         settings: "सेटिंग्स",
         medicine: "दवा",
+        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
     },
     loginPage: {
@@ -111,6 +112,16 @@ const translations = {
         orderSentToast: "ऑर्डर भेज दिया गया! 💊",
         orderSentToastDesc: "हम जल्द ही आपसे संपर्क करेंगे।",
     },
+    labTestPage: {
+        title: "लैब टेस्ट अनुरोध",
+        description: "लैब टेस्ट बुक करने के लिए नीचे दिया गया फॉर्म भरें।",
+        patientNamePlaceholder: "मरीज का नाम",
+        phonePlaceholder: "फ़ोन नंबर",
+        testNamePlaceholder: "जांच का नाम (जैसे: ब्लड टेस्ट, एक्स-रे)",
+        requestButton: "व्हाट्सएप पर अनुरोध भेजें",
+        requestSentToast: "अनुरोध भेज दिया गया! 🧪",
+        requestSentToastDesc: "हम जल्द ही आपसे संपर्क करेंगे।",
+    },
     statuses: {
         completed: "पूर्ण",
         confirmed: "पुष्टि",
@@ -131,6 +142,7 @@ const translations = {
         homeVisit: "Doctor Home Visit",
         settings: "Settings",
         medicine: "Medicine",
+        labTest: "Lab Test",
         appointmentHistory: "Appointment History",
     },
     loginPage: {
@@ -236,6 +248,16 @@ const translations = {
         orderSentToast: "Order Sent! 💊",
         orderSentToastDesc: "We will get in touch with you shortly.",
     },
+    labTestPage: {
+        title: "Lab Test Request",
+        description: "Fill the form below to book a lab test.",
+        patientNamePlaceholder: "Patient Name",
+        phonePlaceholder: "Phone Number",
+        testNamePlaceholder: "Test Name (e.g. Blood Test, X-Ray)",
+        requestButton: "Send Request on WhatsApp",
+        requestSentToast: "Request Sent! 🧪",
+        requestSentToastDesc: "We will get back to you shortly.",
+    },
     statuses: {
         completed: "Completed",
         confirmed: "Confirmed",
@@ -256,6 +278,7 @@ const translations = {
         homeVisit: "डॉक्टर होम विजिट",
         settings: "सेटिंग्स",
         medicine: "दवाई",
+        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
     },
     loginPage: {
@@ -360,6 +383,16 @@ const translations = {
         orderButton: "व्हाट्सएप पर ऑर्डर भेजीं",
         orderSentToast: "ऑर्डर भेज दिहल गइल! 💊",
         orderSentToastDesc: "हमनी जल्दिए रउआ से संपर्क करब।",
+    },
+    labTestPage: {
+        title: "लैब टेस्ट अनुरोध",
+        description: "लैब टेस्ट बुक करे खातिर नीचे दिहल फॉर्म भरीं।",
+        patientNamePlaceholder: "मरीज के नाम",
+        phonePlaceholder: "फोन नंबर",
+        testNamePlaceholder: "जांच के नाम (जइसे: खून जांच, एक्स-रे)",
+        requestButton: "व्हाट्सएप पर अनुरोध भेजीं",
+        requestSentToast: "अनुरोध भेज दिहल गइल! 🧪",
+        requestSentToastDesc: "हमनी जल्दिए रउआ से संपर्क करब।",
     },
     statuses: {
         completed: "पूरा भइल",
