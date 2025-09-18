@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -58,7 +59,7 @@ export default function RootLayout({
                                   <Link href="/settings"><Settings /> सेटिंग्स</Link>
                               </SidebarMenuButton>
                           </SidebarMenuItem>
-                           <SidebarMenuItem>
+                          <SidebarMenuItem>
                               <SidebarMenuButton asChild>
                                 <Link href="/lab-test"><TestTube /> लैब टेस्ट</Link>
                               </SidebarMenuButton>
