@@ -4,7 +4,7 @@
 import { Header } from "@/components/Header";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Palette, LifeBuoy, Hospital } from "lucide-react";
+import { Phone, Palette, LifeBuoy } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function SettingsPage() {
