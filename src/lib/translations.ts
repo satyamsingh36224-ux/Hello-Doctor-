@@ -88,6 +88,8 @@ const translations = {
         helpAndSupport: "सहायता और समर्थन",
         helpAndSupportDesc: "किसी भी प्रश्न के लिए हमसे संपर्क करें।",
         customerService: "ग्राहक सेवा नंबर",
+        hospitalsTitle: "प्रमुख अस्पताल",
+        hospitalsDesc: "गोपालगंज के कुछ प्रमुख अस्पतालों की सूची।",
     },
     homeVisitPage: {
         title: "डॉक्टर होम विज़िट अनुरोध",
@@ -224,6 +226,8 @@ const translations = {
         helpAndSupport: "Help & Support",
         helpAndSupportDesc: "Contact us for any questions.",
         customerService: "Customer Service Number",
+        hospitalsTitle: "Major Hospitals",
+        hospitalsDesc: "A list of some of the major hospitals in Gopalganj.",
     },
     homeVisitPage: {
         title: "Doctor Home Visit Request",
@@ -360,6 +364,8 @@ const translations = {
         helpAndSupport: "मदद आ समर्थन",
         helpAndSupportDesc: "कवनो सवाल खातिर हमनी से संपर्क करीं।",
         customerService: "ग्राहक सेवा नंबर",
+        hospitalsTitle: "प्रमुख अस्पताल",
+        hospitalsDesc: "गोपालगंज के कुछ प्रमुख अस्पताल के सूची।",
     },
     homeVisitPage: {
         title: "डॉक्टर होम विजिट अनुरोध",
