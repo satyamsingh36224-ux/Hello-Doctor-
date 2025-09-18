@@ -14,15 +14,15 @@ import { useLanguage } from '@/context/LanguageContext';
 export default function SelectSpecializationPage() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
-  const { translations } = useLanguage();
+  const { translations, language } = useLanguage();
   const t = translations.selectSpecializationPage;
 
-  const handleSpecializationClick = (specialization: string) => {
-    router.push(`/doctors?specialization=${encodeURIComponent(specialization)}`);
+  const handleSpecializationClick = (specializationKey: string) => {
+    router.push(`/doctors?specialization=${encodeURIComponent(specializationKey)}`);
   };
 
   const filteredSpecializations = specializationMap.filter(spec => 
-    spec.name.toLowerCase().includes(searchTerm.toLowerCase())
+    spec.name[language].toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -45,14 +45,14 @@ export default function SelectSpecializationPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
             {filteredSpecializations.map((spec) => (
               <div 
-                key={spec.name} 
-                onClick={() => handleSpecializationClick(spec.name)} 
+                key={spec.key} 
+                onClick={() => handleSpecializationClick(spec.key)} 
                 className="cursor-pointer group flex flex-col items-center p-4 rounded-2xl bg-card hover:bg-primary/5 dark:hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="p-4 rounded-2xl bg-primary/10 flex items-center justify-center mb-2 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
                   <spec.icon className="h-8 w-8 text-primary" />
                 </div>
-                <p className="text-sm font-medium text-foreground">{spec.name}</p>
+                <p className="text-sm font-medium text-foreground">{spec.name[language]}</p>
               </div>
             ))}
           </div>
@@ -66,4 +66,3 @@ export default function SelectSpecializationPage() {
   );
 }
 
-    

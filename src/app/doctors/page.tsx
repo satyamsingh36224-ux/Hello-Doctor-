@@ -19,7 +19,7 @@ function DoctorsList() {
   const t = translations.doctorsPage;
 
   const filteredDoctors = doctorsData.filter(doctor => {
-    const specializationMatch = selectedSpecialization === 'all' || doctor.specialization === selectedSpecialization;
+    const specializationMatch = selectedSpecialization === 'all' || doctor.specialization.key === selectedSpecialization;
     return specializationMatch;
   });
 
@@ -78,3 +78,4 @@ export default function DoctorsPage() {
     </div>
   );
 }
+

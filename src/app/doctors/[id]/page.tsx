@@ -37,7 +37,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   const [summary, setSummary] = React.useState("");
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
-  const { translations } = useLanguage();
+  const { language, translations } = useLanguage();
   const t = translations.doctorProfilePage;
   const tCard = translations.doctorCard;
   const tTime = translations.timeSlots;
@@ -56,6 +56,11 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   if (!doctor) {
     notFound();
   }
+  
+  const doctorName = doctor.name[language];
+  const doctorSpecialization = doctor.specialization.name[language];
+  const doctorDescription = doctor.description[language];
+
 
   const handleBooking = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -69,14 +74,14 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
 
     const clinicPhoneNumber = "9771264784";
     
-    const message = `नमस्ते, मैं ${doctor.name} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nकृपया इस अपॉइंटमेंट की पुष्टि करें। धन्यवाद!`;
+    const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nकृपया इस अपॉइंटमेंट की पुष्टि करें। धन्यवाद!`;
     
     const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
 
     setIsBookingOpen(false);
     toast({
       title: t.appointmentBookedToast,
-      description: `${t.appointmentBookedToastDesc} ${doctor.name}`,
+      description: `${t.appointmentBookedToastDesc} ${doctorName}`,
     });
 
     window.open(whatsappUrl, '_blank');
@@ -86,7 +91,8 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     setIsLoadingSummary(true);
     setSummary("");
     try {
-      const result = await getSpecializationSummary({ specializationText: doctor.description });
+      // Use Hindi description for summary as the model is prompted in Hindi
+      const result = await getSpecializationSummary({ specializationText: doctor.description.hi });
       setSummary(result.summary);
     } catch (error) {
       setSummary(t.aiSummaryError);
@@ -100,7 +106,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     setIsFavorite(!isFavorite);
     toast({
         title: isFavorite ? tCard.removedFromFavToast : tCard.addedToFavToast,
-        description: `${doctor.name} ${isFavorite ? tCard.removedFromFavToastDesc : tCard.addedToFavToastDesc}`,
+        description: `${doctorName} ${isFavorite ? tCard.removedFromFavToastDesc : tCard.addedToFavToastDesc}`,
     })
   }
 
@@ -124,7 +130,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                         ) : (
                             <Image
                                 src={doctor.imageUrl}
-                                alt={doctor.name}
+                                alt={doctorName}
                                 fill
                                 className="object-cover"
                                 data-ai-hint={doctor.aiHint}
@@ -134,8 +140,8 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                     <CardHeader className="p-6">
                         <div className="flex justify-between items-start">
                              <div>
-                                <CardTitle className="text-3xl">{doctor.name}</CardTitle>
-                                <CardDescription className="text-primary text-lg font-medium">{doctor.specialization}</CardDescription>
+                                <CardTitle className="text-3xl">{doctorName}</CardTitle>
+                                <CardDescription className="text-primary text-lg font-medium">{doctorSpecialization}</CardDescription>
                             </div>
                              <Button size="icon" variant="ghost" className="rounded-full h-10 w-10 bg-secondary hover:bg-primary/10" onClick={handleFavoriteToggle}>
                                 <Heart className={`h-5 w-5 transition-all ${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
@@ -165,7 +171,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
 
                         <div>
                             <h4 className="font-semibold text-xl mb-2">{t.description}</h4>
-                            <p className="text-muted-foreground leading-relaxed">{doctor.description}</p>
+                            <p className="text-muted-foreground leading-relaxed">{doctorDescription}</p>
                         </div>
                         
                         <Separator className="my-6" />
@@ -180,7 +186,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
-                                    <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctor.name}</AlertDialogTitle>
+                                    <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctorName}</AlertDialogTitle>
                                     <AlertDialogDescription className="pt-4">
                                         {isLoadingSummary ? (
                                             <div className="flex items-center justify-center p-8">
@@ -203,7 +209,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
                                 </DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
-                                        <DialogTitle>📝 {t.bookAppointmentWith} {doctor.name}</DialogTitle>
+                                        <DialogTitle>📝 {t.bookAppointmentWith} {doctorName}</DialogTitle>
 
                                         <DialogDescription>
                                             {t.bookingFormDesc}
@@ -269,3 +275,4 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
+

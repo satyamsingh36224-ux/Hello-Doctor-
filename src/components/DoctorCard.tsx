@@ -23,7 +23,7 @@ const isEmoji = (str: string) => {
 export function DoctorCard({ doctor }: DoctorCardProps) {
   const { toast } = useToast();
   const [isFavorite, setIsFavorite] = React.useState(false);
-  const { translations } = useLanguage();
+  const { language, translations } = useLanguage();
   const t = translations.doctorCard;
   const tProfile = translations.doctorProfilePage;
 
@@ -33,7 +33,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
     setIsFavorite(!isFavorite);
     toast({
         title: isFavorite ? t.removedFromFavToast : t.addedToFavToast,
-        description: `${doctor.name} ${isFavorite ? t.removedFromFavToastDesc : t.addedToFavToastDesc}`,
+        description: `${doctor.name[language]} ${isFavorite ? t.removedFromFavToastDesc : t.addedToFavToastDesc}`,
     })
   }
 
@@ -51,7 +51,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                     ) : (
                         <Image
                             src={doctor.imageUrl}
-                            alt={doctor.name}
+                            alt={doctor.name[language]}
                             fill
                             className="rounded-2xl object-cover ring-4 ring-background group-hover:ring-primary/20 transition-all duration-300"
                             data-ai-hint={doctor.aiHint}
@@ -61,8 +61,8 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
                 <div className="flex-grow w-full text-left">
                     <div className="flex justify-between items-start">
                         <div>
-                            <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{doctor.name}</h3>
-                            <p className="text-sm text-primary font-medium">{doctor.specialization}</p>
+                            <h3 className="text-lg font-bold group-hover:text-primary transition-colors">{doctor.name[language]}</h3>
+                            <p className="text-sm text-primary font-medium">{doctor.specialization.name[language]}</p>
                         </div>
                         <Button size="icon" variant="ghost" className="rounded-full h-9 w-9 bg-secondary hover:bg-primary/10 flex-shrink-0" onClick={handleFavoriteToggle}>
                             <Heart className={`h-5 w-5 transition-all ${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
@@ -104,3 +104,4 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
     </Card>
   );
 }
+
