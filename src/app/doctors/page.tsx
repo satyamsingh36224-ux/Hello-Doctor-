@@ -5,7 +5,6 @@ import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
-import { AppointmentHistory } from "@/components/AppointmentHistory";
 import { Button } from '@/components/ui/button';
 import { doctorsData } from '@/lib/doctors';
 import { JaanchKendra } from '@/components/JaanchKendra';
@@ -66,11 +65,6 @@ export default function DoctorsPage() {
           <DoctorsList />
         </Suspense>
 
-        <div className="grid grid-cols-1 gap-8 mt-16">
-            <div>
-                <AppointmentHistory />
-            </div>
-        </div>
       </main>
       <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
         <p>&copy; {new Date().getFullYear()} Hello Doctor.{t.footerText}</p>
@@ -78,4 +72,3 @@ export default function DoctorsPage() {
     </div>
   );
 }
-

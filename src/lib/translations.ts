@@ -1,6 +1,12 @@
 
 const translations = {
   hi: {
+    sidebar: {
+        home: "होम",
+        homeVisit: "डॉक्टर होम विज़िट",
+        settings: "सेटिंग्स",
+        appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
+    },
     loginPage: {
         login: "लॉगिन करें",
         signInPrompt: "जारी रखने के लिए अपने खाते में साइन इन करें।",
@@ -112,6 +118,12 @@ const translations = {
     }
   },
   en: {
+    sidebar: {
+        home: "Home",
+        homeVisit: "Doctor Home Visit",
+        settings: "Settings",
+        appointmentHistory: "Appointment History",
+    },
     loginPage: {
         login: "Login",
         signInPrompt: "Sign in to your account to continue.",
@@ -223,6 +235,12 @@ const translations = {
     }
   },
   bho: {
+    sidebar: {
+        home: "होम",
+        homeVisit: "डॉक्टर होम विजिट",
+        settings: "सेटिंग्स",
+        appointmentHistory: "अपॉइंटमेंट इतिहास",
+    },
     loginPage: {
         login: "लॉगिन करीं",
         signInPrompt: "जारी रखे खातिर आपन खाता में साइन इन करीं।",
