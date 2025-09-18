@@ -11,19 +11,6 @@ export default function SettingsPage() {
     const { translations } = useLanguage();
     const t = translations.settingsPage;
 
-    const hospitals = [
-        "सदर अस्पताल, गोपालगंज",
-        "माँ शीतला इमरजेंसी अस्पताल",
-        "प्रसाद अस्पताल",
-        "आशीर्वाद अस्पताल",
-        "गोपालगंज ऑर्थोपेडिक अस्पताल",
-        "डॉ. नाज़िया एप्पल अस्पताल",
-        "मंगलम अस्पताल",
-        "शांति अस्पताल",
-        "ग्लोबल अस्पताल",
-        "डॉ. एच.पी. सिंह अस्पताल"
-    ];
-
     return (
         <div className="flex flex-col min-h-screen bg-muted/40">
             <Header />
@@ -45,26 +32,6 @@ export default function SettingsPage() {
                                     <p className="font-semibold text-base">{t.theme}</p>
                                     <ThemeSwitcher />
                                 </div>
-                            </CardContent>
-                        </Card>
-
-                        <Card className="shadow-lg rounded-2xl border-none">
-                            <CardHeader>
-                                <CardTitle className="flex items-center gap-3 text-xl">
-                                    <Hospital className="h-6 w-6 text-primary" />
-                                    {t.hospitalsTitle}
-                                </CardTitle>
-                                <CardDescription>{t.hospitalsDesc}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <ul className="space-y-3">
-                                    {hospitals.map((hospital, index) => (
-                                        <li key={index} className="flex items-center gap-3 p-4 bg-muted rounded-xl text-base font-medium text-muted-foreground">
-                                            <Hospital className="h-5 w-5 text-primary/80 flex-shrink-0" />
-                                            <span>{hospital}</span>
-                                        </li>
-                                    ))}
-                                </ul>
                             </CardContent>
                         </Card>
 

@@ -8,6 +8,7 @@ const translations = {
         medicine: "दवा",
         labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
+        hospitals: "अस्पताल",
     },
     loginPage: {
         login: "लॉगिन करें",
@@ -88,6 +89,8 @@ const translations = {
         helpAndSupport: "सहायता और समर्थन",
         helpAndSupportDesc: "किसी भी प्रश्न के लिए हमसे संपर्क करें।",
         customerService: "ग्राहक सेवा नंबर",
+    },
+    hospitalsPage: {
         hospitalsTitle: "प्रमुख अस्पताल",
         hospitalsDesc: "गोपालगंज के कुछ प्रमुख अस्पतालों की सूची।",
     },
@@ -146,6 +149,7 @@ const translations = {
         medicine: "Medicine",
         labTest: "Lab Test",
         appointmentHistory: "Appointment History",
+        hospitals: "Hospitals",
     },
     loginPage: {
         login: "Login",
@@ -226,6 +230,8 @@ const translations = {
         helpAndSupport: "Help & Support",
         helpAndSupportDesc: "Contact us for any questions.",
         customerService: "Customer Service Number",
+    },
+    hospitalsPage: {
         hospitalsTitle: "Major Hospitals",
         hospitalsDesc: "A list of some of the major hospitals in Gopalganj.",
     },
@@ -284,6 +290,7 @@ const translations = {
         medicine: "दवाई",
         labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
+        hospitals: "अस्पताल",
     },
     loginPage: {
         login: "लॉगिन करीं",
@@ -364,6 +371,8 @@ const translations = {
         helpAndSupport: "मदद आ समर्थन",
         helpAndSupportDesc: "कवनो सवाल खातिर हमनी से संपर्क करीं।",
         customerService: "ग्राहक सेवा नंबर",
+    },
+    hospitalsPage: {
         hospitalsTitle: "प्रमुख अस्पताल",
         hospitalsDesc: "गोपालगंज के कुछ प्रमुख अस्पताल के सूची।",
     },
