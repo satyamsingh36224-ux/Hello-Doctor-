@@ -59,8 +59,9 @@ export default function SettingsPage() {
                             <CardContent>
                                 <ul className="space-y-3">
                                     {hospitals.map((hospital, index) => (
-                                        <li key={index} className="p-4 bg-muted rounded-xl text-base font-medium text-muted-foreground">
-                                            {hospital}
+                                        <li key={index} className="flex items-center gap-3 p-4 bg-muted rounded-xl text-base font-medium text-muted-foreground">
+                                            <Hospital className="h-5 w-5 text-primary/80 flex-shrink-0" />
+                                            <span>{hospital}</span>
                                         </li>
                                     ))}
                                 </ul>
