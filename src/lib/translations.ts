@@ -4,11 +4,11 @@ const translations = {
     sidebar: {
         home: "होम",
         homeVisit: "डॉक्टर होम विज़िट",
-        settings: "सेटिंग्स",
         medicine: "दवा",
         labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
         hospitals: "अस्पताल",
+        support: "सहायता और समर्थन",
     },
     loginPage: {
         login: "लॉगिन करें",
@@ -81,13 +81,9 @@ const translations = {
         appointmentBookedToastDesc: "के साथ आपका अपॉइंटमेंट सफलतापूर्वक अनुरोध किया गया है।",
         close: "बंद करें",
     },
-    settingsPage: {
-        settings: "सेटिंग्स",
-        appearance: "दिखावट",
-        appearanceDesc: "एप्लिकेशन की दिखावट को अनुकूलित करें।",
-        theme: "थीम",
-        helpAndSupport: "सहायता और समर्थन",
-        helpAndSupportDesc: "किसी भी प्रश्न के लिए हमसे संपर्क करें।",
+    supportPage: {
+        title: "सहायता और समर्थन",
+        description: "किसी भी प्रश्न के लिए हमसे संपर्क करें।",
         customerService: "ग्राहक सेवा नंबर",
     },
     hospitalsPage: {
@@ -145,11 +141,11 @@ const translations = {
     sidebar: {
         home: "Home",
         homeVisit: "Doctor Home Visit",
-        settings: "Settings",
         medicine: "Medicine",
         labTest: "Lab Test",
         appointmentHistory: "Appointment History",
         hospitals: "Hospitals",
+        support: "Help & Support",
     },
     loginPage: {
         login: "Login",
@@ -222,13 +218,9 @@ const translations = {
         appointmentBookedToastDesc: "Your appointment with has been successfully requested.",
         close: "Close",
     },
-    settingsPage: {
-        settings: "Settings",
-        appearance: "Appearance",
-        appearanceDesc: "Customize the look and feel of the application.",
-        theme: "Theme",
-        helpAndSupport: "Help & Support",
-        helpAndSupportDesc: "Contact us for any questions.",
+    supportPage: {
+        title: "Help & Support",
+        description: "Contact us for any questions.",
         customerService: "Customer Service Number",
     },
     hospitalsPage: {
@@ -286,11 +278,11 @@ const translations = {
     sidebar: {
         home: "होम",
         homeVisit: "डॉक्टर होम विजिट",
-        settings: "सेटिंग्स",
         medicine: "दवाई",
         labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
         hospitals: "अस्पताल",
+        support: "मदद आ समर्थन",
     },
     loginPage: {
         login: "लॉगिन करीं",
@@ -363,13 +355,9 @@ const translations = {
         appointmentBookedToastDesc: "के साथ राउर अपॉइंटमेंट सफलतापूर्वक अनुरोध कइल गइल बा।",
         close: "बंद करीं",
     },
-    settingsPage: {
-        settings: "सेटिंग्स",
-        appearance: "दिखावट",
-        appearanceDesc: "एप्लिकेशन के दिखावट के अनुकूलित करीं।",
-        theme: "थीम",
-        helpAndSupport: "मदद आ समर्थन",
-        helpAndSupportDesc: "कवनो सवाल खातिर हमनी से संपर्क करीं।",
+    supportPage: {
+        title: "मदद आ समर्थन",
+        description: "कवनो सवाल खातिर हमनी से संपर्क करीं।",
         customerService: "ग्राहक सेवा नंबर",
     },
     hospitalsPage: {

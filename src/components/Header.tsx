@@ -2,6 +2,7 @@ import { Bell, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export function Header() {
   return (
@@ -15,6 +16,7 @@ export function Header() {
           </Avatar>
         </div>
         <div className="flex items-center gap-2">
+            <ThemeSwitcher />
             <Button asChild variant="ghost" size="icon" className="rounded-full">
                 <a href="#" className="flex items-center justify-center">
                     <Bell className="h-5 w-5" />

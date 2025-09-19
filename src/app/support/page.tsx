@@ -2,14 +2,13 @@
 "use client"
 
 import { Header } from "@/components/Header";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Phone, Palette, LifeBuoy } from "lucide-react";
+import { Phone, LifeBuoy } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function SettingsPage() {
+export default function SupportPage() {
     const { translations } = useLanguage();
-    const t = translations.settingsPage;
+    const t = translations.supportPage;
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -18,33 +17,18 @@ export default function SettingsPage() {
                 <div className="max-w-2xl mx-auto">
                     <div className="flex flex-col items-center text-center mb-8">
                         <div className="p-4 bg-primary/10 rounded-full mb-4">
-                            <Palette className="h-12 w-12 text-primary" />
+                            <LifeBuoy className="h-12 w-12 text-primary" />
                         </div>
-                        <h1 className="text-4xl font-bold">{t.settings}</h1>
-                        <p className="text-muted-foreground mt-2">ऐप की दिखावट और अन्य सेटिंग्स को प्रबंधित करें।</p>
+                        <h1 className="text-4xl font-bold">{t.title}</h1>
+                        <p className="text-muted-foreground mt-2">{t.description}</p>
                     </div>
                     
                     <div className="space-y-8">
-                        <Card className="shadow-lg rounded-2xl border-none overflow-hidden">
-                            <CardHeader className="bg-muted/50 p-6">
-                                <CardTitle className="flex items-center gap-4 text-xl">
-                                    <Palette className="h-6 w-6 text-primary" />
-                                    <span>{t.appearance}</span>
-                                </CardTitle>
-                            </CardHeader>
-                            <CardContent className="p-6 space-y-4">
-                               <div className="flex items-center justify-between p-4 bg-background rounded-xl border">
-                                    <p className="font-semibold text-base">{t.theme}</p>
-                                    <ThemeSwitcher />
-                                </div>
-                            </CardContent>
-                        </Card>
-
                          <Card className="shadow-lg rounded-2xl border-none overflow-hidden">
                             <CardHeader className="bg-muted/50 p-6">
                                 <CardTitle className="flex items-center gap-4 text-xl">
                                     <LifeBuoy className="h-6 w-6 text-primary" />
-                                    <span>{t.helpAndSupport}</span>
+                                    <span>{t.title}</span>
                                 </CardTitle>
                             </CardHeader>
                             <CardContent className="p-6">
