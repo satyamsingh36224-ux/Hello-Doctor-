@@ -113,7 +113,7 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.location)}`;
 
   return (
-    <div className="flex flex-col min-h-screen bg-muted/40">
+    <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 container mx-auto px-4 py-8">
             <div className="max-w-4xl mx-auto">
@@ -275,4 +275,3 @@ export default function DoctorProfilePage({ params }: { params: { id: string } }
     </div>
   );
 }
-
