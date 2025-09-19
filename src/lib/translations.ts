@@ -4,10 +4,7 @@ const translations = {
     sidebar: {
         home: "होम",
         homeVisit: "डॉक्टर होम विज़िट",
-        medicine: "दवा",
-        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
-        hospitals: "अस्पताल",
         support: "सहायता और समर्थन",
     },
     loginPage: {
@@ -21,6 +18,7 @@ const translations = {
         noAccount: "अकाउंट नहीं है?",
         signUp: "साइन अप करें",
         selectLanguage: "भाषा चुनें",
+        otherServices: "अन्य सेवाएं",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनें",
@@ -123,6 +121,14 @@ const translations = {
         requestSentToast: "अनुरोध भेज दिया गया! 🧪",
         requestSentToastDesc: "हम जल्द ही आपसे संपर्क करेंगे।",
     },
+    otherServicesPage: {
+        title: "अन्य सेवाएं",
+        description: "हमारी अन्य स्वास्थ्य सेवाओं का लाभ उठाएं।",
+        homeVisit: "डॉक्टर होम विज़िट",
+        medicineDelivery: "दवा होम डिलीवरी",
+        findHospital: "अस्पताल खोजें",
+        bookLabTest: "लैब टेस्ट बुक करें",
+    },
     statuses: {
         completed: "पूर्ण",
         confirmed: "पुष्टि",
@@ -141,10 +147,7 @@ const translations = {
     sidebar: {
         home: "Home",
         homeVisit: "Doctor Home Visit",
-        medicine: "Medicine",
-        labTest: "Lab Test",
         appointmentHistory: "Appointment History",
-        hospitals: "Hospitals",
         support: "Help & Support",
     },
     loginPage: {
@@ -158,6 +161,7 @@ const translations = {
         noAccount: "Don't have an account?",
         signUp: "Sign Up",
         selectLanguage: "Select Language",
+        otherServices: "Other Services",
     },
     selectSpecializationPage: {
         title: "Select a Specialization",
@@ -260,6 +264,14 @@ const translations = {
         requestSentToast: "Request Sent! 🧪",
         requestSentToastDesc: "We will get back to you shortly.",
     },
+    otherServicesPage: {
+        title: "Other Services",
+        description: "Explore our other healthcare services.",
+        homeVisit: "Doctor Home Visit",
+        medicineDelivery: "Medicine Home Delivery",
+        findHospital: "Find a Hospital",
+        bookLabTest: "Book a Lab Test",
+    },
     statuses: {
         completed: "Completed",
         confirmed: "Confirmed",
@@ -278,10 +290,7 @@ const translations = {
     sidebar: {
         home: "होम",
         homeVisit: "डॉक्टर होम विजिट",
-        medicine: "दवाई",
-        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
-        hospitals: "अस्पताल",
         support: "मदद आ समर्थन",
     },
     loginPage: {
@@ -295,6 +304,7 @@ const translations = {
         noAccount: "खाता नइखे?",
         signUp: "साइन अप करीं",
         selectLanguage: "भाषा चुनीं",
+        otherServices: "दोसर सेवा",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनीं",
@@ -396,6 +406,14 @@ const translations = {
         requestButton: "व्हाट्सएप पर अनुरोध भेजीं",
         requestSentToast: "अनुरोध भेज दिहल गइल! 🧪",
         requestSentToastDesc: "हमनी जल्दिए रउआ से संपर्क करब।",
+    },
+    otherServicesPage: {
+        title: "दोसर सेवा",
+        description: "हमनी के दोसर स्वास्थ्य सेवा के लाभ उठाईं।",
+        homeVisit: "डॉक्टर होम विजिट",
+        medicineDelivery: "दवाई होम डिलीवरी",
+        findHospital: "अस्पताल खोजीं",
+        bookLabTest: "लैब टेस्ट बुक करीं",
     },
     statuses: {
         completed: "पूरा भइल",

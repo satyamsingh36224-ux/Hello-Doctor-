@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Globe } from "lucide-react";
+import { Globe, HeartPulse } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
@@ -75,6 +75,12 @@ export default function LoginPage() {
             <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
             <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
                 <Link href="/select-specialization">{t.continueWithPhone}</Link>
+            </Button>
+            <Button asChild variant="secondary" className="w-full py-5 rounded-full text-sm font-semibold">
+                <Link href="/other-services">
+                    <HeartPulse className="mr-2 h-4 w-4" />
+                    {t.otherServices}
+                </Link>
             </Button>
           </div>
           <p className="text-center text-xs text-muted-foreground mt-2">

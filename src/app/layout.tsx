@@ -49,21 +49,6 @@ export default function RootLayout({
                                   <Link href="/home-visit"><div className="p-2 bg-primary/10 rounded-lg text-primary"><BriefcaseMedical className="h-5 w-5" /></div> डॉक्टर होम विज़िट</Link>
                               </SidebarMenuButton>
                           </SidebarMenuItem>
-                           <SidebarMenuItem>
-                              <SidebarMenuButton asChild>
-                                <Link href="/medicine"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Pill className="h-5 w-5" /></div> दवा</Link>
-                              </SidebarMenuButton>
-                          </SidebarMenuItem>
-                           <SidebarMenuItem>
-                              <SidebarMenuButton asChild>
-                                <Link href="/hospitals"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Hospital className="h-5 w-5" /></div> अस्पताल</Link>
-                              </SidebarMenuButton>
-                          </SidebarMenuItem>
-                          <SidebarMenuItem>
-                              <SidebarMenuButton asChild>
-                                <Link href="/lab-test"><div className="p-2 bg-primary/10 rounded-lg text-primary"><TestTube className="h-5 w-5" /></div> लैब टेस्ट</Link>
-                              </SidebarMenuButton>
-                          </SidebarMenuItem>
                           <SidebarMenuItem>
                               <SidebarMenuButton asChild>
                                   <Link href="/history"><div className="p-2 bg-primary/10 rounded-lg text-primary"><History className="h-5 w-5" /></div> अपॉइंटमेंट हिस्ट्री</Link>
