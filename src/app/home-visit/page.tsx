@@ -43,16 +43,16 @@ export default function HomeVisitPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-muted/40">
+        <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-1 container mx-auto px-4 py-8">
                 <div className="max-w-2xl mx-auto">
                     <Card className="shadow-lg rounded-2xl border-none">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-3 text-2xl">
-                                <BriefcaseMedical className="h-7 w-7 text-primary" />
-                                {t.title}
-                            </CardTitle>
+                        <CardHeader className="text-center items-center">
+                            <div className="p-4 bg-primary/10 rounded-full inline-block">
+                                <BriefcaseMedical className="h-10 w-10 text-primary" />
+                            </div>
+                            <CardTitle className="text-2xl pt-2">{t.title}</CardTitle>
                             <CardDescription>{t.description}</CardDescription>
                         </CardHeader>
                         <CardContent>
