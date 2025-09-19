@@ -35,8 +35,8 @@ export default function OtherServicesPage() {
     ];
 
     return (
-        <div className="flex flex-col items-center min-h-screen p-4 pt-16">
-            <Card className="w-full max-w-2xl shadow-xl rounded-2xl border-border/50 bg-card">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
+            <Card className="w-full max-w-2xl shadow-xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm">
                 <CardHeader className="text-center">
                     <CardTitle className="text-3xl font-bold">{t.title}</CardTitle>
                     <CardDescription>{t.description}</CardDescription>
