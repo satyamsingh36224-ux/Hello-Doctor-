@@ -33,8 +33,8 @@ export default function LoginPage() {
   const t = translations.loginPage;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
-      <div className="absolute top-4 right-4">
+    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
+      <div className="absolute top-4 right-4 z-10">
         <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
           <SelectTrigger className="w-[180px] rounded-full bg-background/80 backdrop-blur-sm">
             <Globe className="h-4 w-4 mr-2" />
@@ -48,7 +48,7 @@ export default function LoginPage() {
         </Select>
       </div>
 
-      <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm">
+      <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
         <CardHeader className="text-center flex flex-col items-center gap-2">
           <Logo />
           <div>
@@ -88,6 +88,10 @@ export default function LoginPage() {
           </p>
         </CardContent>
       </Card>
+
+      <footer className="absolute bottom-4 text-center text-xs text-muted-foreground">
+        <p>Produced by Satyam Vikash Singh</p>
+      </footer>
     </div>
   );
 }
