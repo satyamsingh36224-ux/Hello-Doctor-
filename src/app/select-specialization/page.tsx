@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { specializationMap } from '@/lib/doctors';
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 export default function SelectSpecializationPage() {
   const router = useRouter();
@@ -54,6 +55,11 @@ export default function SelectSpecializationPage() {
                 <p className="text-sm font-medium text-foreground">{spec.name[language]}</p>
               </div>
             ))}
+          </div>
+           <div className="mt-8 text-center">
+              <Button asChild variant="outline" className="rounded-full">
+                  <Link href="/">{`लॉगिन पेज पर वापस जाएं`}</Link>
+              </Button>
           </div>
         </CardContent>
       </Card>
