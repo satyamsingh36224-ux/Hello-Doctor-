@@ -26,7 +26,7 @@ export default function SelectSpecializationPage() {
   );
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-4 pt-16">
+    <div className="flex flex-col items-center min-h-screen p-4 pt-16 bg-muted/40">
       <Card className="w-full max-w-2xl shadow-xl rounded-2xl border-border/50 bg-card">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold">{t.title}</CardTitle>
@@ -58,7 +58,7 @@ export default function SelectSpecializationPage() {
           </div>
            <div className="mt-8 text-center">
               <Button asChild variant="outline" className="rounded-full">
-                  <Link href="/">{`लॉगिन पेज पर वापस जाएं`}</Link>
+                  <Link href="/">{t.backToLogin}</Link>
               </Button>
           </div>
         </CardContent>

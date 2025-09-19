@@ -24,6 +24,7 @@ const translations = {
         title: "एक विशेषज्ञता चुनें",
         description: "आप किस तरह के डॉक्टर की तलाश में हैं?",
         searchPlaceholder: "विशेषज्ञता खोजें...",
+        backToLogin: "लॉगिन पेज पर वापस जाएं"
     },
     jaanchKendra: {
         title: "जांच केंद्र बुकिंग",
@@ -128,6 +129,8 @@ const translations = {
         medicineDelivery: "दवा होम डिलीवरी",
         findHospital: "अस्पताल खोजें",
         bookLabTest: "लैब टेस्ट बुक करें",
+        findDoctor: "डॉक्टर खोजें और अपॉइंटमेंट बुक करें",
+        backToLogin: "लॉगिन पेज पर वापस जाएं"
     },
     statuses: {
         completed: "पूर्ण",
@@ -167,6 +170,7 @@ const translations = {
         title: "Select a Specialization",
         description: "What kind of doctor are you looking for?",
         searchPlaceholder: "Search specialization...",
+        backToLogin: "Back to Login Page"
     },
     jaanchKendra: {
         title: "Diagnostic Center Booking",
@@ -271,6 +275,8 @@ const translations = {
         medicineDelivery: "Medicine Home Delivery",
         findHospital: "Find a Hospital",
         bookLabTest: "Book a Lab Test",
+        findDoctor: "Find Doctor & Book Appointment",
+        backToLogin: "Back to Login Page"
     },
     statuses: {
         completed: "Completed",
@@ -310,6 +316,7 @@ const translations = {
         title: "एक विशेषज्ञता चुनीं",
         description: "रउआ कइसन डॉक्टर खोजत बानी?",
         searchPlaceholder: "विशेषज्ञता खोजीं...",
+        backToLogin: "लॉगिन पेज पर वापस जाईं"
     },
     jaanchKendra: {
         title: "जांच केंद्र बुकिंग",
@@ -414,6 +421,8 @@ const translations = {
         medicineDelivery: "दवाई होम डिलीवरी",
         findHospital: "अस्पताल खोजीं",
         bookLabTest: "लैब टेस्ट बुक करीं",
+        findDoctor: "डॉक्टर खोजीं आ अपॉइंटमेंट बुक करीं",
+        backToLogin: "लॉगिन पेज पर वापस जाईं"
     },
     statuses: {
         completed: "पूरा भइल",

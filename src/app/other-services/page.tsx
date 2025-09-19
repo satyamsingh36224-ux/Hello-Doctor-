@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useLanguage } from "@/context/LanguageContext";
-import { BriefcaseMedical, Pill, Hospital, TestTube, ChevronRight } from "lucide-react";
+import { BriefcaseMedical, Pill, Hospital, TestTube, ChevronRight, Stethoscope } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -42,6 +42,14 @@ export default function OtherServicesPage() {
                     <CardDescription>{t.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
+                     <div className="mb-6">
+                        <Button asChild size="lg" className="w-full rounded-full py-7 text-base font-bold">
+                           <Link href="/select-specialization">
+                                <Stethoscope className="mr-2 h-5 w-5" />
+                                {t.findDoctor}
+                           </Link>
+                        </Button>
+                    </div>
                     <div className="space-y-4">
                         {services.map((service) => (
                             <Link href={service.href} key={service.href} className="block group">
@@ -59,7 +67,7 @@ export default function OtherServicesPage() {
                     </div>
                      <div className="mt-8 text-center">
                         <Button asChild variant="outline" className="rounded-full">
-                           <Link href="/">{`लॉगिन पेज पर वापस जाएं`}</Link>
+                           <Link href="/">{t.backToLogin}</Link>
                         </Button>
                     </div>
                 </CardContent>
