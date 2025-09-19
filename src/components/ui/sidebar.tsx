@@ -216,43 +216,27 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="group peer hidden md:block text-sidebar-foreground"
+        className={cn(
+            "group hidden md:flex md:flex-col text-sidebar-foreground transition-all duration-200 ease-linear",
+            "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+            state === 'expanded' ? "w-[--sidebar-width]" : "w-[--sidebar-width-icon]",
+            variant === "floating" && "p-2",
+            className
+        )}
         data-state={state}
-        data-collapsible={state === "collapsed" ? collapsible : ""}
+        data-collapsible={collapsible}
         data-variant={variant}
         data-side={side}
+        {...props}
       >
-        {/* This is what handles the sidebar gap on desktop */}
         <div
-          className={cn(
-            "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
-            "group-data-[collapsible=offcanvas]:w-0",
-            "group-data-[side=right]:rotate-180",
-            variant === "floating" || variant === "inset"
-              ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
-          )}
-        />
-        <div
-          className={cn(
-            "duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex",
-            side === "left"
-              ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
-              : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
-            // Adjust the padding for floating and inset variants.
-            variant === "floating" || variant === "inset"
-              ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
-            className
-          )}
-          {...props}
-        >
-          <div
             data-sidebar="sidebar"
-            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
-          >
+            className={cn(
+              "flex h-full w-full flex-col bg-sidebar",
+               variant === "floating" ? "rounded-lg border border-sidebar-border shadow" : "group-data-[side=left]:border-r group-data-[side=right]:border-l"
+            )}
+        >
             {children}
-          </div>
         </div>
       </div>
     )
@@ -319,6 +303,21 @@ const SidebarInset = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"main">
 >(({ className, ...props }, ref) => {
+  const { isMobile } = useSidebar();
+  
+  if (isMobile) {
+    return (
+       <main
+          ref={ref}
+          className={cn(
+            "relative flex min-h-svh flex-1 flex-col bg-background",
+            className
+          )}
+          {...props}
+        />
+    )
+  }
+  
   return (
     <main
       ref={ref}
@@ -326,6 +325,11 @@ const SidebarInset = React.forwardRef<
         "relative flex min-h-svh flex-1 flex-col bg-background",
         "peer-data-[variant=inset]:min-h-[calc(100svh_-_theme(spacing.4))]",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow",
+        "group-data-[variant=inset]/sidebar-wrapper:min-h-[calc(100svh_-_theme(spacing.4))]",
+        "group-data-[variant=inset]/sidebar-wrapper:my-2",
+        "group-data-[side=left]/sidebar-wrapper:group-data-[variant=inset]/sidebar-wrapper:mr-2",
+        "group-data-[side=right]/sidebar-wrapper:group-data-[variant=inset]/sidebar-wrapper:ml-2",
+        "group-data-[variant=inset]/sidebar-wrapper:rounded-xl group-data-[variant=inset]/sidebar-wrapper:shadow",
         className
       )}
       {...props}
@@ -796,3 +800,5 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+
+    
