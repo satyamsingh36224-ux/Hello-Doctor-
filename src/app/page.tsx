@@ -74,7 +74,7 @@ export default function LoginPage() {
           <div className="flex flex-col gap-2">
             <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
             <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
-                <Link href="/other-services">{t.continueWithPhone}</Link>
+                <Link href="/select-specialization">{t.continueWithPhone}</Link>
             </Button>
             <Button asChild variant="secondary" className="w-full py-5 rounded-full text-sm font-semibold">
                 <Link href="/other-services">
