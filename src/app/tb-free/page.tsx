@@ -114,7 +114,6 @@ export default function TbFreePage() {
                                     {t.requestButton}
                                 </Button>
                             </form>
-                             <p className="text-sm text-center text-muted-foreground mt-4">{t.footerNote}</p>
                         </CardContent>
                     </Card>
                 </div>

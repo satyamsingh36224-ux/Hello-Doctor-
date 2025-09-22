@@ -151,7 +151,6 @@ const translations = {
         requestButton: "व्हाट्सएप पर अनुरोध भेजें",
         requestSentToast: "अनुरोध भेज दिया गया! ✅",
         requestSentToastDesc: "हमारी टीम जल्द ही आपसे संपर्क करेगी।",
-        footerNote: "भारत सरकार के तहत टीबी की जांच और इलाज पूरी तरह से मुफ़्त है। अधिक जानकारी के लिए, अपने नज़दीकी सरकारी स्वास्थ्य केंद्र से संपर्क करें।",
     },
     statuses: {
         completed: "पूर्ण",
@@ -318,7 +317,6 @@ const translations = {
         requestButton: "Send Request on WhatsApp",
         requestSentToast: "Request Sent! ✅",
         requestSentToastDesc: "Our team will contact you shortly.",
-        footerNote: "TB testing and treatment are completely free under the Government of India. For more info, contact your nearest government health center.",
     },
     statuses: {
         completed: "Completed",
@@ -485,7 +483,6 @@ const translations = {
         requestButton: "व्हाट्सएप पर अनुरोध भेजीं",
         requestSentToast: "अनुरोध भेज दिहल गइल! ✅",
         requestSentToastDesc: "हमनी के टीम जल्दिए रउआ से संपर्क करी।",
-        footerNote: "भारत सरकार के तहत टीबी के जांच आ इलाज पूरा तरह से मुफ्त बा। अउरी जानकारी खातिर, अपना नजदीकी सरकारी स्वास्थ्य केंद्र से संपर्क करीं।",
     },
     statuses: {
         completed: "पूरा भइल",
