@@ -71,6 +71,13 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     phone: "9876543218",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "सैलेंड्रो मेडिको", en: "Salendro Medico", bho: "सैलेंड्रो मेडिको" },
+    location: "लखपतिया मोड़, गोपालगंज",
+    phone: "9876543219",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
   }
 ];
 
