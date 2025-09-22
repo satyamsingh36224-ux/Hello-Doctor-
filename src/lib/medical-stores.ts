@@ -46,7 +46,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
   },
   {
     name: { hi: "रजत मेडिको एजेंसी", en: "Rajat Medico Agency", bho: "रजत मेडिको एजेंसी" },
-    location: "घोष मोड़, सिनेमा रोड, गोपालगंज",
+    location: "डॉ. ग्रेस नंदी स्कूल के पास, घोष मोड़, गोपालगंज",
     phone: "6206355877",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
