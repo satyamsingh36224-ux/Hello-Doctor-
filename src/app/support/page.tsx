@@ -51,7 +51,9 @@ export default function SupportPage() {
                 </div>
             </main>
             <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
-                <p>Produced by Satyam Vikash Singh</p>
+                <p className="font-medium text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+                    Produced by Satyam Vikash Singh
+                </p>
             </footer>
         </div>
     )
