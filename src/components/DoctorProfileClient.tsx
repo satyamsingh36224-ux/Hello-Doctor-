@@ -178,19 +178,19 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
-                                    <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctorName}</AlertDialogTitle>
-                                    <AlertDialogDescription className="pt-4">
+                                        <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctorName}</AlertDialogTitle>
                                         {isLoadingSummary ? (
                                             <div className="flex items-center justify-center p-8">
                                                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
                                             </div>
                                         ) : (
-                                            summary || "एआई-संचालित सारांश उत्पन्न करने के लिए बटन पर क्लिक करें।"
+                                            <AlertDialogDescription className="pt-4">
+                                                {summary || "एआई-संचालित सारांश उत्पन्न करने के लिए बटन पर क्लिक करें।"}
+                                            </AlertDialogDescription>
                                         )}
-                                    </AlertDialogDescription>
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
-                                    <AlertDialogCancel>{t.close}</AlertDialogCancel>
+                                        <AlertDialogCancel>{t.close}</AlertDialogCancel>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>
