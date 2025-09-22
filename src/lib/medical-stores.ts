@@ -24,7 +24,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     aiHint: "pharmacy storefront"
   },
   {
-    name: { hi: "जन औषधि केंद्र", en: "Jan Aushadhi Kendra", bho: "जन औषधि केंद्र" },
+    name: { hi: "प्रधान मंत्री भारतीय जन औषधि केंद्र", en: "Pradhan Mantri Bhartiya Jan Aushadhi Kendra", bho: "प्रधान मंत्री भारतीय जन औषधि केंद्र" },
     location: "सदर अस्पताल के पास, गोपालगंज",
     phone: "9876543213",
     imageUrl: "🏪",
@@ -48,6 +48,20 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     name: { hi: "रजत मेडिको एजेंसी", en: "Rajat Medico Agency", bho: "रजत मेडिको एजेंसी" },
     location: "घोष मोड़, गोपालगंज",
     phone: "6206355877",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "शंकर मेडिकल हॉल", en: "Shankar Medical Hall", bho: "शंकर मेडिकल हॉल" },
+    location: "पुरानी चौक, गोपालगंज",
+    phone: "9876543216",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "बिहार मेडिकल हॉल", en: "Bihar Medical Hall", bho: "बिहार मेडिकल हॉल" },
+    location: "अस्पताल रोड, गोपालगंज",
+    phone: "9876543217",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
   }
