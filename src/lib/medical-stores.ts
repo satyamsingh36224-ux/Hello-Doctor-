@@ -3,7 +3,7 @@ import type { MedicalStore } from "@/types";
 
 const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
   {
-    name: { hi: "अपोलो फार्मेसी", en: "Apollo Pharmacy", bho: "अपोलो फार्मेसी" },
+    name: { hi: "राज मेडिकल हॉल", en: "Raj Medical Hall", bho: "राज मेडिकल हॉल" },
     location: "अस्पताल रोड, गोपालगंज",
     phone: "9876543210",
     imageUrl: "🏪",
@@ -17,7 +17,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     aiHint: "pharmacy storefront"
   },
   {
-    name: { hi: "श्री राम मेडिकल", en: "Shree Ram Medical", bho: "श्री राम मेडिकल" },
+    name: { hi: "जीवन रेखा मेडिको", en: "Jeevan Rekha Medico", bho: "जीवन रेखा मेडिको" },
     location: "बस स्टैंड के पास, गोपालगंज",
     phone: "9876543212",
     imageUrl: "🏪",
@@ -31,7 +31,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     aiHint: "pharmacy storefront"
   },
   {
-    name: { hi: "गुप्ता ड्रग हाउस", en: "Gupta Drug House", bho: "गुप्ता ड्रग हाउस" },
+    name: { hi: "तिवारी मेडिकल स्टोर", en: "Tiwari Medical Store", bho: "तिवारी मेडिकल स्टोर" },
     location: "मौनिया चौक, गोपालगंज",
     phone: "9876543214",
     imageUrl: "🏪",
