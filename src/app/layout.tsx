@@ -67,7 +67,7 @@ export default function RootLayout({
                       </SidebarMenu>
                   </SidebarContent>
               </Sidebar>
-              <SidebarInset>
+              <SidebarInset className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950">
                   {children}
               </SidebarInset>
           </SidebarProvider>
