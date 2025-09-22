@@ -1,19 +1,43 @@
 
 "use client"
 
+import { useState } from 'react';
 import { Header } from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { HeartPulse, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { User, MessageSquare, Phone, HeartPulse, NotebookText } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 
 export default function TbFreePage() {
     const { translations } = useLanguage();
     const t = translations.tbFreePage;
+    const { toast } = useToast();
+    const [patientName, setPatientName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [problem, setProblem] = useState('');
 
-    const tbCenter = { name: "जिला यक्ष्मा केंद्र, गोपालगंज", location: "सदर अस्पताल परिसर, गोपालगंज, बिहार" };
+    const handleRequest = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        const clinicPhoneNumber = "9771264784";
 
-    const createGoogleMapsUrl = (query: string) => {
-        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+        const message = `नमस्ते, मुझे टीबी के इलाज के संबंध में जानकारी चाहिए।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${phone}\n*समस्या का संक्षिप्त विवरण:*\n${problem}\n\nकृपया जल्द से जल्द संपर्क करें। धन्यवाद!`;
+        
+        const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
+
+        toast({
+            title: t.requestSentToast,
+            description: t.requestSentToastDesc,
+        });
+
+        window.open(whatsappUrl, '_blank');
+
+        setPatientName('');
+        setPhone('');
+        setProblem('');
     };
 
     return (
@@ -30,24 +54,53 @@ export default function TbFreePage() {
                             <CardDescription className="px-4">{t.description}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                             <div className="text-center bg-muted p-6 rounded-2xl">
-                                <h3 className="text-lg font-semibold text-foreground mb-2">{t.centerTitle}</h3>
-                                <a 
-                                    href={createGoogleMapsUrl(tbCenter.location)} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="block p-4 bg-background rounded-xl hover:bg-primary/10 transition-colors group"
-                                >
-                                    <div className="flex items-center justify-center gap-3 text-base font-medium text-foreground group-hover:text-primary">
-                                        <span>{tbCenter.name}</span>
+                            <form onSubmit={handleRequest} className="space-y-6">
+                                <div className="space-y-4">
+                                    <div className="relative">
+                                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Input
+                                            name="name"
+                                            id="name"
+                                            placeholder={t.patientNamePlaceholder}
+                                            className="pl-10 rounded-full py-6"
+                                            value={patientName}
+                                            onChange={(e) => setPatientName(e.target.value)}
+                                            required
+                                        />
                                     </div>
-                                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mt-1">
-                                            <MapPin className="h-4 w-4" />
-                                            <span>{tbCenter.location}</span>
+                                     <div className="relative">
+                                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Input
+                                            name="phone"
+                                            id="phone"
+                                            type="tel"
+                                            placeholder={t.phonePlaceholder}
+                                            className="pl-10 rounded-full py-6"
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                            required
+                                        />
                                     </div>
-                                </a>
-                                <p className="text-sm text-muted-foreground mt-4">{t.footerNote}</p>
-                            </div>
+                                    <div className="relative">
+                                        <NotebookText className="absolute left-3 top-5 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Textarea
+                                            name="problem"
+                                            id="problem"
+                                            placeholder={t.problemPlaceholder}
+                                            className="pl-10 rounded-2xl"
+                                            rows={4}
+                                            value={problem}
+                                            onChange={(e) => setProblem(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                <Button type="submit" className="w-full rounded-full py-6 text-lg font-bold">
+                                    <MessageSquare className="mr-2 h-5 w-5" />
+                                    {t.requestButton}
+                                </Button>
+                            </form>
+                             <p className="text-sm text-center text-muted-foreground mt-4">{t.footerNote}</p>
                         </CardContent>
                     </Card>
                 </div>
