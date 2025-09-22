@@ -1,24 +1,95 @@
 
 "use client"
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Header } from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { User, MessageSquare, Phone, HeartPulse, NotebookText, MapPin } from "lucide-react";
+import { User, MessageSquare, Phone, HeartPulse, NotebookText, MapPin, Mic, MicOff } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
+// SpeechRecognition type might not be in standard lib
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
+
 export default function TbFreePage() {
-    const { translations } = useLanguage();
+    const { translations, language } = useLanguage();
     const t = translations.tbFreePage;
     const { toast } = useToast();
     const [patientName, setPatientName] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [problem, setProblem] = useState('');
+    const [isListening, setIsListening] = useState(false);
+    const recognitionRef = useRef<any>(null);
+
+    useEffect(() => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            console.log("Speech Recognition not supported.");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = language === 'en' ? 'en-US' : 'hi-IN';
+
+        recognition.onresult = (event: any) => {
+            let interimTranscript = '';
+            let finalTranscript = '';
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript;
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+            }
+             setProblem(prev => prev + finalTranscript);
+        };
+
+        recognition.onend = () => {
+            setIsListening(false);
+        };
+        
+        recognition.onerror = (event: any) => {
+            console.error("Speech recognition error", event.error);
+            setIsListening(false);
+        };
+
+        recognitionRef.current = recognition;
+
+        return () => {
+            if (recognitionRef.current) {
+                recognitionRef.current.stop();
+            }
+        };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [language]);
+    
+    const toggleListening = () => {
+        if (!recognitionRef.current) {
+             toast({
+                title: "माफ़ कीजिए",
+                description: "आपका ब्राउज़र वॉयस इनपुट को सपोर्ट नहीं करता है।",
+                variant: "destructive"
+            });
+            return;
+        }
+        if (isListening) {
+            recognitionRef.current.stop();
+        } else {
+            recognitionRef.current.start();
+        }
+        setIsListening(!isListening);
+    };
 
     const handleRequest = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -101,12 +172,22 @@ export default function TbFreePage() {
                                             name="problem"
                                             id="problem"
                                             placeholder={t.problemPlaceholder}
-                                            className="pl-10 rounded-2xl"
+                                            className="pl-10 rounded-2xl pr-12"
                                             rows={4}
                                             value={problem}
                                             onChange={(e) => setProblem(e.target.value)}
                                             required
                                         />
+                                        <Button 
+                                            type="button" 
+                                            variant="ghost" 
+                                            size="icon" 
+                                            onClick={toggleListening}
+                                            className={`absolute right-2 top-3 h-8 w-8 rounded-full ${isListening ? 'bg-red-500/20 text-red-500' : 'text-muted-foreground'}`}
+                                            aria-label="बोलकर बताएं"
+                                        >
+                                            {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                                        </Button>
                                     </div>
                                 </div>
                                 <Button type="submit" className="w-full rounded-full py-6 text-lg font-bold">
