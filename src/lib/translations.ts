@@ -140,6 +140,12 @@ const translations = {
         callNow: "अभी कॉल करें",
         getDirections: "दिशा-निर्देश प्राप्त करें",
     },
+    tbFreePage: {
+        title: "टीबी मुक्त इलाज",
+        description: "भारत सरकार के राष्ट्रीय यक्ष्मा उन्मूलन कार्यक्रम के तहत, टीबी की जांच और इलाज पूरी तरह से मुफ़्त है।",
+        centerTitle: "सरकारी जांच और इलाज केंद्र",
+        footerNote: "अधिक जानकारी के लिए, अपने नज़दीकी सरकारी स्वास्थ्य केंद्र से संपर्क करें।",
+    },
     statuses: {
         completed: "पूर्ण",
         confirmed: "पुष्टि",
@@ -294,6 +300,12 @@ const translations = {
         callNow: "Call Now",
         getDirections: "Get Directions",
     },
+    tbFreePage: {
+        title: "TB Free Treatment",
+        description: "Under the National Tuberculosis Elimination Program by the Government of India, TB testing and treatment are completely free.",
+        centerTitle: "Government Testing and Treatment Center",
+        footerNote: "For more information, please contact your nearest government health center.",
+    },
     statuses: {
         completed: "Completed",
         confirmed: "Confirmed",
@@ -447,6 +459,12 @@ const translations = {
         description: "गोपालगंज के कुछ प्रमुख मेडिकल स्टोर के सूची।",
         callNow: "अभी कॉल करीं",
         getDirections: "रास्ता देखीं",
+    },
+    tbFreePage: {
+        title: "टीबी मुक्त इलाज",
+        description: "भारत सरकार के राष्ट्रीय यक्ष्मा उन्मूलन कार्यक्रम के तहत, टीबी के जांच आ इलाज पूरा तरह से मुफ्त बा।",
+        centerTitle: "सरकारी जांच आ इलाज केंद्र",
+        footerNote: "अउरी जानकारी खातिर, अपना नजदीकी सरकारी स्वास्थ्य केंद्र से संपर्क करीं।",
     },
     statuses: {
         completed: "पूरा भइल",
