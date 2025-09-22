@@ -131,6 +131,7 @@ const translations = {
         findHospital: "अस्पताल खोजें",
         bookLabTest: "लैब टेस्ट बुक करें",
         findMedicalStore: "मेडिकल स्टोर खोजें",
+        tbTreatment: "टीबी का इलाज",
         findDoctor: "डॉक्टर खोजें और अपॉइंटमेंट बुक करें",
         backToLogin: "लॉगिन पेज पर वापस जाएं"
     },
@@ -141,7 +142,7 @@ const translations = {
         getDirections: "दिशा-निर्देश प्राप्त करें",
     },
     tbFreePage: {
-        title: "टीबी मुक्त इलाज",
+        title: "टीबी का इलाज",
         description: "भारत सरकार के राष्ट्रीय यक्ष्मा उन्मूलन कार्यक्रम के तहत, टीबी की जांच और इलाज पूरी तरह से मुफ़्त है।",
         centerTitle: "सरकारी जांच और इलाज केंद्र",
         footerNote: "अधिक जानकारी के लिए, अपने नज़दीकी सरकारी स्वास्थ्य केंद्र से संपर्क करें।",
@@ -291,6 +292,7 @@ const translations = {
         findHospital: "Find a Hospital",
         bookLabTest: "Book a Lab Test",
         findMedicalStore: "Find Medical Store",
+        tbTreatment: "TB Treatment",
         findDoctor: "Find Doctor & Book Appointment",
         backToLogin: "Back to Login Page"
     },
@@ -301,7 +303,7 @@ const translations = {
         getDirections: "Get Directions",
     },
     tbFreePage: {
-        title: "TB Free Treatment",
+        title: "TB Treatment",
         description: "Under the National Tuberculosis Elimination Program by the Government of India, TB testing and treatment are completely free.",
         centerTitle: "Government Testing and Treatment Center",
         footerNote: "For more information, please contact your nearest government health center.",
@@ -451,6 +453,7 @@ const translations = {
         findHospital: "अस्पताल खोजीं",
         bookLabTest: "लैब टेस्ट बुक करीं",
         findMedicalStore: "मेडिकल स्टोर खोजीं",
+        tbTreatment: "टीबी के इलाज",
         findDoctor: "डॉक्टर खोजीं आ अपॉइंटमेंट बुक करीं",
         backToLogin: "लॉगिन पेज पर वापस जाईं"
     },
@@ -461,7 +464,7 @@ const translations = {
         getDirections: "रास्ता देखीं",
     },
     tbFreePage: {
-        title: "टीबी मुक्त इलाज",
+        title: "टीबी के इलाज",
         description: "भारत सरकार के राष्ट्रीय यक्ष्मा उन्मूलन कार्यक्रम के तहत, टीबी के जांच आ इलाज पूरा तरह से मुफ्त बा।",
         centerTitle: "सरकारी जांच आ इलाज केंद्र",
         footerNote: "अउरी जानकारी खातिर, अपना नजदीकी सरकारी स्वास्थ्य केंद्र से संपर्क करीं।",

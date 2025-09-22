@@ -3,7 +3,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useLanguage } from "@/context/LanguageContext";
-import { BriefcaseMedical, Pill, Hospital, TestTube, ChevronRight, Stethoscope, Store } from "lucide-react";
+import { BriefcaseMedical, Pill, Hospital, TestTube, ChevronRight, Stethoscope, Store, HeartPulse } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -36,6 +36,11 @@ export default function OtherServicesPage() {
             title: t.findMedicalStore,
             href: "/medical-stores",
             icon: Store,
+        },
+        {
+            title: t.tbTreatment,
+            href: "/tb-free",
+            icon: HeartPulse,
         },
     ];
 

@@ -51,11 +51,6 @@ export default function RootLayout({
                           </SidebarMenuItem>
                           <SidebarMenuItem>
                               <SidebarMenuButton asChild>
-                                  <Link href="/tb-free"><div className="p-2 bg-primary/10 rounded-lg text-primary"><HeartPulse className="h-5 w-5" /></div> टीबी मुक्त इलाज</Link>
-                              </SidebarMenuButton>
-                          </SidebarMenuItem>
-                          <SidebarMenuItem>
-                              <SidebarMenuButton asChild>
                                   <Link href="/home-visit"><div className="p-2 bg-primary/10 rounded-lg text-primary"><BriefcaseMedical className="h-5 w-5" /></div> डॉक्टर होम विज़िट</Link>
                               </SidebarMenuButton>
                           </SidebarMenuItem>
