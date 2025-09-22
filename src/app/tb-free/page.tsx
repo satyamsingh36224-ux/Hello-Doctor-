@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { User, MessageSquare, Phone, HeartPulse, NotebookText } from "lucide-react";
+import { User, MessageSquare, Phone, HeartPulse, NotebookText, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 
@@ -17,6 +17,7 @@ export default function TbFreePage() {
     const { toast } = useToast();
     const [patientName, setPatientName] = useState('');
     const [phone, setPhone] = useState('');
+    const [address, setAddress] = useState('');
     const [problem, setProblem] = useState('');
 
     const handleRequest = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +25,7 @@ export default function TbFreePage() {
         
         const clinicPhoneNumber = "9771264784";
 
-        const message = `नमस्ते, मुझे टीबी के इलाज के संबंध में जानकारी चाहिए।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${phone}\n*समस्या का संक्षिप्त विवरण:*\n${problem}\n\nकृपया जल्द से जल्द संपर्क करें। धन्यवाद!`;
+        const message = `नमस्ते, मुझे टीबी के इलाज के संबंध में घर पर सहायता चाहिए।\n\n*मरीज का नाम:* ${patientName}\n*पता:* ${address}\n*फ़ोन नंबर:* ${phone}\n*समस्या का संक्षिप्त विवरण:*\n${problem}\n\nकृपया जल्द से जल्द संपर्क करें। धन्यवाद!`;
         
         const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -37,6 +38,7 @@ export default function TbFreePage() {
 
         setPatientName('');
         setPhone('');
+        setAddress('');
         setProblem('');
     };
 
@@ -65,6 +67,18 @@ export default function TbFreePage() {
                                             className="pl-10 rounded-full py-6"
                                             value={patientName}
                                             onChange={(e) => setPatientName(e.target.value)}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="relative">
+                                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Input
+                                            name="address"
+                                            id="address"
+                                            placeholder={t.addressPlaceholder}
+                                            className="pl-10 rounded-full py-6"
+                                            value={address}
+                                            onChange={(e) => setAddress(e.target.value)}
                                             required
                                         />
                                     </div>

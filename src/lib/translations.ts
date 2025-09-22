@@ -143,8 +143,9 @@ const translations = {
     },
     tbFreePage: {
         title: "टीबी उपचार सहायता",
-        description: "टीबी के इलाज के बारे में जानकारी या सहायता पाने के लिए अनुरोध करें।",
+        description: "टीबी के इलाज के लिए घर पर सहायता पाने के लिए अनुरोध करें।",
         patientNamePlaceholder: "मरीज का नाम",
+        addressPlaceholder: "पूरा पता (घर का नंबर, मोहल्ला, शहर)",
         phonePlaceholder: "फ़ोन नंबर",
         problemPlaceholder: "अपनी स्थिति के बारे में संक्षेप में बताएं (ज़रूरी नहीं)",
         requestButton: "व्हाट्सएप पर अनुरोध भेजें",
@@ -309,8 +310,9 @@ const translations = {
     },
     tbFreePage: {
         title: "TB Treatment Support",
-        description: "Request information or support regarding TB treatment.",
+        description: "Request support for TB treatment at home.",
         patientNamePlaceholder: "Patient Name",
+        addressPlaceholder: "Full Address (House No, Locality, City)",
         phonePlaceholder: "Phone Number",
         problemPlaceholder: "Briefly describe your situation (optional)",
         requestButton: "Send Request on WhatsApp",
@@ -475,8 +477,9 @@ const translations = {
     },
     tbFreePage: {
         title: "टीबी उपचार सहायता",
-        description: "टीबी के इलाज के बारे में जानकारी भा सहायता पावे खातिर अनुरोध करीं।",
+        description: "टीबी के इलाज खातिर घर पर सहायता पावे खातिर अनुरोध करीं।",
         patientNamePlaceholder: "मरीज के नाम",
+        addressPlaceholder: "पूरा पता (घर नंबर, मोहल्ला, शहर)",
         phonePlaceholder: "फोन नंबर",
         problemPlaceholder: "आपन स्थिति के बारे में संक्षेप में बताईं (जरूरी नइखे)",
         requestButton: "व्हाट्सएप पर अनुरोध भेजीं",
