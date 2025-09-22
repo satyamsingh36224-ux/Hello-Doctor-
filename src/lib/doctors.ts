@@ -63,6 +63,87 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
   },
+  { 
+    name: { hi: "डॉ. कुणाल कुमार सिंह", en: "Dr. Kunal Kumar Singh", bho: "डॉ. कुणाल कुमार सिंह" },
+    description: { hi: "एक समर्पित हृदय रोग विशेषज्ञ जो हृदय की देखभाल के लिए जाने जाते हैं।", en: "A dedicated cardiologist known for his cardiac care.", bho: "एक समर्पित हृदय रोग विशेषज्ञ जे हृदय के देखभाल खातिर जानल जालें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "सिंह हार्ट क्लिनिक, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. प्रकाश चंद्र शाही", en: "Dr. Prakash Chandra Sahi", bho: "डॉ. प्रकाश चंद्र शाही" },
+    description: { hi: "हृदय संबंधी जटिल मामलों के विशेषज्ञ।", en: "Specialist in complex cardiac cases.", bho: "हृदय संबंधी जटिल मामला के विशेषज्ञ।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "शाही हार्ट केयर, मौनिया चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. रवि कुमार सिंह", en: "Dr. Ravi Kumar Singh", bho: "डॉ. रवि कुमार सिंह" },
+    description: { hi: "हृदय की समस्याओं के लिए निवारक देखभाल और उपचार प्रदान करते हैं।", en: "Provides preventive care and treatment for heart conditions.", bho: "हृदय के समस्या खातिर निवारक देखभाल अवुरी उपचार प्रदान करेलें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "रवि कार्डियोलॉजी सेंटर, बस स्टैंड के पास, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. रहमत अली", en: "Dr. Rahmat Ali", bho: "डॉ. रहमत अली" },
+    description: { hi: "सभी उम्र के रोगियों के लिए व्यापक हृदय देखभाल।", en: "Comprehensive cardiac care for patients of all ages.", bho: "सभे उम्र के रोगी खातिर व्यापक हृदय देखभाल।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "अली हार्ट क्लिनिक, जंगलिया मोड़, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. प्रमोद अखौरी", en: "Dr. Pramod Akhouri", bho: "डॉ. प्रमोद अखौरी" },
+    description: { hi: "हृदय रोगों के निदान और प्रबंधन में विशेषज्ञता।", en: "Specializes in the diagnosis and management of heart diseases.", bho: "हृदय रोग के निदान अवुरी प्रबंधन में विशेषज्ञता।" },
+    fee: 600,
+    imageUrl: "👨‍⚕️",
+    location: "अखौरी हार्ट हॉस्पिटल, थावे रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. रूपम अखौरी", en: "Dr. Rupam Akhouri", bho: "डॉ. रूपम अखौरी" },
+    description: { hi: "एक कुशल हृदय रोग विशेषज्ञ जो रोगी-केंद्रित देखभाल प्रदान करती हैं।", en: "A skilled cardiologist providing patient-centric care.", bho: "एक कुशल हृदय रोग विशेषज्ञ जे रोगी-केंद्रित देखभाल प्रदान करेली।" },
+    fee: 600,
+    imageUrl: "👩‍⚕️",
+    location: "अखौरी हार्ट हॉस्पिटल, थावे रोड, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. आशिव परजेव", en: "Dr. Ashiv Parjew", bho: "डॉ. आशिव परजेव" },
+    description: { hi: "आधुनिक हृदय उपचार और प्रक्रियाओं में विशेषज्ञ।", en: "Expert in modern cardiac treatments and procedures.", bho: "आधुनिक हृदय उपचार अवुरी प्रक्रिया में विशेषज्ञ।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "परजेव कार्डियक क्लिनिक, पुरानी चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. रवि राय", en: "Dr. Ravi Ray", bho: "डॉ. रवि राय" },
+    description: { hi: "एक अनुभवी हृदय रोग विशेषज्ञ जो विश्वसनीय देखभाल प्रदान करते हैं।", en: "An experienced cardiologist providing reliable care.", bho: "एक अनुभवी हृदय रोग विशेषज्ञ जे विश्वसनीय देखभाल प्रदान करेलें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "राय हार्ट केयर, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
+  {
+    name: { hi: "डॉ. आर.के. ठाकुर", en: "Dr. R.K. Thakur", bho: "डॉ. आर.के. ठाकुर" },
+    description: { hi: "हृदय स्वास्थ्य और कल्याण पर ध्यान केंद्रित करते हैं।", en: "Focuses on cardiac health and wellness.", bho: "हृदय स्वास्थ्य अवुरी कल्याण पर ध्यान केंद्रित करेलें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "ठाकुर हार्ट क्लिनिक, अंबेडकर चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
   // Pediatrician
   { 
     name: { hi: "डॉ. गौरव अग्रवाल", en: "Dr. Gaurav Agrawal", bho: "डॉ. गौरव अग्रवाल" }, 
