@@ -195,6 +195,15 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   },
   // General Physician
   { 
+    name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, 
+    description: { hi: "एक अनुभवी सामान्य चिकित्सक जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं।", en: "An experienced general physician providing comprehensive healthcare to patients of all ages.", bho: "एक अनुभवी सामान्य चिकित्सक जे सभे उम्र के रोगी के व्यापक स्वास्थ्य सेवा प्रदान करेलें।" }, 
+    fee: 400, 
+    imageUrl: "👨‍⚕️", 
+    location: "सिंह क्लिनिक, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }
+  },
+  { 
     name: { hi: "डॉ. देवता सिंह", en: "Dr. Devta Singh", bho: "डॉ. देवता सिंह" }, 
     description: { hi: "एक अनुभवी सामान्य चिकित्सक जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं।", en: "An experienced general physician providing comprehensive healthcare to patients of all ages.", bho: "एक अनुभवी सामान्य चिकित्सक जे सभे उम्र के रोगी के व्यापक स्वास्थ्य सेवा प्रदान करेलें।" }, 
     fee: 350, 
@@ -394,4 +403,3 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
     id: `${index + 1}`,
 }));
-
