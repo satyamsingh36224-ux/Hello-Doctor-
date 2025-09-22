@@ -43,6 +43,13 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     phone: "9876543215",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "रजत मेडिको एजेंसी", en: "Rajat Medico Agency", bho: "रजत मेडिको एजेंसी" },
+    location: "घोष मोड़, गोपालगंज",
+    phone: "9876543216",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
   }
 ];
 
