@@ -34,9 +34,22 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
+       <div className="absolute top-4 right-4 z-20">
+            <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
+                <SelectTrigger className="w-auto rounded-full border-border/50 bg-background/80 backdrop-blur-sm text-sm h-10 px-4">
+                    <Globe className="h-4 w-4 mr-2" />
+                    <SelectValue placeholder={t.selectLanguage} />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="hi">हिन्दी</SelectItem>
+                    <SelectItem value="en">English</SelectItem>
+                    <SelectItem value="bho">भोजपुरी</SelectItem>
+                </SelectContent>
+            </Select>
+       </div>
       <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
-        <CardHeader className="text-center flex flex-col items-center gap-4">
-          <div className="flex w-full justify-between items-start">
+        <CardHeader className="text-center flex flex-col items-center gap-4 pt-8">
+          <div className="flex w-full justify-center items-start">
               <div className="flex items-center gap-2">
                   <Logo />
                   <div className="text-left">
@@ -44,17 +57,6 @@ export default function LoginPage() {
                     <CardDescription className="text-xs">{t.signInPrompt}</CardDescription>
                   </div>
               </div>
-              <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-                <SelectTrigger className="w-auto rounded-full border-border/50 bg-transparent text-xs h-8 px-2">
-                  <Globe className="h-3 w-3 mr-1" />
-                  <SelectValue placeholder={t.selectLanguage} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="hi">हिन्दी</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
-                  <SelectItem value="bho">भोजपुरी</SelectItem>
-                </SelectContent>
-              </Select>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
