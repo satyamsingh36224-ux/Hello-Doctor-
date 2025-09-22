@@ -33,27 +33,28 @@ export default function LoginPage() {
   const t = translations.loginPage;
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
-      <div className="absolute top-6 right-6 z-10">
-        <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-          <SelectTrigger className="w-auto rounded-full border-border/50 bg-transparent">
-            <Globe className="h-4 w-4 mr-2" />
-            <SelectValue placeholder={t.selectLanguage} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="hi">हिन्दी</SelectItem>
-            <SelectItem value="en">English</SelectItem>
-            <SelectItem value="bho">भोजपुरी</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
       <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
-        <CardHeader className="text-center flex flex-col items-center gap-2">
-          <Logo />
-          <div>
-            <CardTitle className="text-2xl">Hello Doctor</CardTitle>
-            <CardDescription>{t.signInPrompt}</CardDescription>
+        <CardHeader className="text-center flex flex-col items-center gap-4">
+          <div className="flex w-full justify-between items-start">
+              <div className="flex items-center gap-2">
+                  <Logo />
+                  <div className="text-left">
+                    <CardTitle className="text-2xl">Hello Doctor</CardTitle>
+                    <CardDescription className="text-xs">{t.signInPrompt}</CardDescription>
+                  </div>
+              </div>
+              <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
+                <SelectTrigger className="w-auto rounded-full border-border/50 bg-transparent text-xs h-8 px-2">
+                  <Globe className="h-3 w-3 mr-1" />
+                  <SelectValue placeholder={t.selectLanguage} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="hi">हिन्दी</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
+                  <SelectItem value="bho">भोजपुरी</SelectItem>
+                </SelectContent>
+              </Select>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
