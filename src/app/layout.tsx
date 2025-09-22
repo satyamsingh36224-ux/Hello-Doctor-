@@ -3,7 +3,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, LifeBuoy, BriefcaseMedical, History } from 'lucide-react';
+import { Home, LifeBuoy, BriefcaseMedical, History, Store } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Logo } from '@/components/Logo';
@@ -42,6 +42,11 @@ export default function RootLayout({
                           <SidebarMenuItem>
                               <SidebarMenuButton asChild>
                                   <Link href="/doctors"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Home className="h-5 w-5" /></div> होम</Link>
+                              </SidebarMenuButton>
+                          </SidebarMenuItem>
+                           <SidebarMenuItem>
+                              <SidebarMenuButton asChild>
+                                  <Link href="/medical-stores"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Store className="h-5 w-5" /></div> मेडिकल स्टोर्स</Link>
                               </SidebarMenuButton>
                           </SidebarMenuItem>
                           <SidebarMenuItem>

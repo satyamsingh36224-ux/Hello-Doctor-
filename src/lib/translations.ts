@@ -6,6 +6,7 @@ const translations = {
         homeVisit: "डॉक्टर होम विज़िट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
         support: "सहायता और समर्थन",
+        medicalStores: "मेडिकल स्टोर्स",
     },
     loginPage: {
         login: "लॉगिन करें",
@@ -129,8 +130,15 @@ const translations = {
         medicineDelivery: "दवा होम डिलीवरी",
         findHospital: "अस्पताल खोजें",
         bookLabTest: "लैब टेस्ट बुक करें",
+        findMedicalStore: "मेडिकल स्टोर खोजें",
         findDoctor: "डॉक्टर खोजें और अपॉइंटमेंट बुक करें",
         backToLogin: "लॉगिन पेज पर वापस जाएं"
+    },
+    medicalStoresPage: {
+        title: "आस-पास के मेडिकल स्टोर्स",
+        description: "गोपालगंज के कुछ प्रमुख मेडिकल स्टोर्स की सूची।",
+        callNow: "अभी कॉल करें",
+        getDirections: "दिशा-निर्देश प्राप्त करें",
     },
     statuses: {
         completed: "पूर्ण",
@@ -152,6 +160,7 @@ const translations = {
         homeVisit: "Doctor Home Visit",
         appointmentHistory: "Appointment History",
         support: "Help & Support",
+        medicalStores: "Medical Stores",
     },
     loginPage: {
         login: "Login",
@@ -275,8 +284,15 @@ const translations = {
         medicineDelivery: "Medicine Home Delivery",
         findHospital: "Find a Hospital",
         bookLabTest: "Book a Lab Test",
+        findMedicalStore: "Find Medical Store",
         findDoctor: "Find Doctor & Book Appointment",
         backToLogin: "Back to Login Page"
+    },
+    medicalStoresPage: {
+        title: "Nearby Medical Stores",
+        description: "A list of some of the major medical stores in Gopalganj.",
+        callNow: "Call Now",
+        getDirections: "Get Directions",
     },
     statuses: {
         completed: "Completed",
@@ -298,6 +314,7 @@ const translations = {
         homeVisit: "डॉक्टर होम विजिट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
         support: "मदद आ समर्थन",
+        medicalStores: "मेडिकल स्टोर",
     },
     loginPage: {
         login: "लॉगिन करीं",
@@ -421,8 +438,15 @@ const translations = {
         medicineDelivery: "दवाई होम डिलीवरी",
         findHospital: "अस्पताल खोजीं",
         bookLabTest: "लैब टेस्ट बुक करीं",
+        findMedicalStore: "मेडिकल स्टोर खोजीं",
         findDoctor: "डॉक्टर खोजीं आ अपॉइंटमेंट बुक करीं",
         backToLogin: "लॉगिन पेज पर वापस जाईं"
+    },
+    medicalStoresPage: {
+        title: "आस-पास के मेडिकल स्टोर",
+        description: "गोपालगंज के कुछ प्रमुख मेडिकल स्टोर के सूची।",
+        callNow: "अभी कॉल करीं",
+        getDirections: "रास्ता देखीं",
     },
     statuses: {
         completed: "पूरा भइल",
