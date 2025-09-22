@@ -218,6 +218,51 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
   },
+  {
+    name: { hi: "डॉ. रवि सिंह आर्य", en: "Dr. Ravi Singh Arya", bho: "डॉ. रवि सिंह आर्य" },
+    description: { hi: "त्वचा और लेजर उपचार के विशेषज्ञ।", en: "Specialist in skin and laser treatments.", bho: "चमड़ी आ लेजर इलाज के विशेषज्ञ।" },
+    fee: 600,
+    imageUrl: "👨‍⚕️",
+    location: "आर्य स्किन लेजर क्लिनिक, घोष मोड़, आदित्य विजन के पास, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. पवन कुमार", en: "Dr. Pawan Kumar", bho: "डॉ. पवन कुमार" },
+    description: { hi: "सभी प्रकार की त्वचा संबंधी समस्याओं के लिए अनुभवी डॉक्टर।", en: "Experienced doctor for all types of skin problems.", bho: "सब तरह के चमड़ी के समस्या खातिर अनुभवी डॉक्टर।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "हॉस्पिटल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. अनुप कुमार", en: "Dr. Anup Kumar", bho: "डॉ. अनुप कुमार" },
+    description: { hi: "त्वचा रोगों के लिए विश्वसनीय देखभाल और उपचार।", en: "Reliable care and treatment for skin diseases.", bho: "चमड़ी के बेमारी खातिर विश्वसनीय देखभाल आ इलाज।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "समिता क्लिनिक, बंजारी रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. प्रवीण कुमार प्रसाद", en: "Dr. Praveen Kumar Prasad", bho: "डॉ. प्रवीण कुमार प्रसाद" },
+    description: { hi: "त्वचाविज्ञान में एमडी, जटिल त्वचा स्थितियों के विशेषज्ञ।", en: "MD in Dermatology, specialist in complex skin conditions.", bho: "चमड़ी विज्ञान में एमडी, जटिल चमड़ी के स्थिति के विशेषज्ञ।" },
+    fee: 650,
+    imageUrl: "👨‍⚕️",
+    location: "सिविल लाइंस, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "गोपालगंज डेंटल, स्किन एंड हेयर क्लिनिक", en: "Gopalganj Dental, Skin & Hair Clinic", bho: "गोपालगंज डेंटल, स्किन एंड हेयर क्लिनिक" },
+    description: { hi: "दांत, त्वचा और बालों के लिए एक ही स्थान पर सभी समाधान।", en: "All solutions for dental, skin, and hair at one place.", bho: "दांत, चमड़ी आ बाल खातिर एकही जगह पर सब समाधान।" },
+    fee: 500,
+    imageUrl: "🏥",
+    location: "सिविल लाइंस, गोपालगंज",
+    aiHint: "clinic building",
+    specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
+  },
   // Gynecologist
   { 
     name: { hi: "डॉ. मीना गुप्ता", en: "Dr. Meena Gupta", bho: "डॉ. मीना गुप्ता" }, 
@@ -313,7 +358,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   // General Physician
   { 
     name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, 
-    description: { hi: "एक अनुभवी सामान्य चिकित्सक जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं।", en: "An experienced general physician providing comprehensive healthcare to patients of all ages.", bho: "एक अनुभवी सामान्य चिकित्सक जे सभे उम्र के रोगी के व्यापक स्वास्थ्य सेवा प्रदान करेलें।" }, 
+    description: { hi: "एक अनुभवी सामान्य चिकित्सक (MD Medicine) जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं।", en: "An experienced general physician (MD Medicine) providing comprehensive healthcare to patients of all ages.", bho: "एक अनुभवी सामान्य चिकित्सक (MD Medicine) जे सभे उम्र के रोगी के व्यापक स्वास्थ्य सेवा प्रदान करेलें।" }, 
     fee: 400, 
     imageUrl: "👨‍⚕️", 
     location: "सिंह क्लिनिक, अस्पताल रोड, गोपालगंज", 
@@ -520,4 +565,5 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
     id: `${index + 1}`,
 }));
+
 
