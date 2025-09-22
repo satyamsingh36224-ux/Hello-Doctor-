@@ -355,6 +355,42 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. यशवर्धन जायसवाल", en: "Dr. Yashvardhan Jayaswal", bho: "डॉ. यशवर्धन जायसवाल" }, 
+    description: { hi: "हड्डी और जोड़ों की समस्याओं के विशेषज्ञ।", en: "Specialist in bone and joint problems.", bho: "हड्डी अवुरी जोड़ के समस्या के विशेषज्ञ।" }, 
+    fee: 700, 
+    imageUrl: "👨‍⚕️", 
+    location: "जायसवाल ऑर्थो क्लिनिक, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. रामेश्वर कुमार", en: "Dr. Rameshwar Kumar", bho: "डॉ. रामेश्वर कुमार" }, 
+    description: { hi: "आर्थोपेडिक सर्जरी और देखभाल में व्यापक अनुभव।", en: "Extensive experience in orthopedic surgery and care.", bho: "आर्थोपेडिक सर्जरी अवुरी देखभाल में व्यापक अनुभव।" }, 
+    fee: 720, 
+    imageUrl: "👨‍⚕️", 
+    location: "कुमार ऑर्थोपेडिक्स, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. संजू गुप्ता", en: "Dr. Sanju Gupta", bho: "डॉ. संजू गुप्ता" }, 
+    description: { hi: "जोड़ों की चोटों और अपक्षयी रोगों के इलाज में विशेषज्ञता।", en: "Specializes in treating joint injuries and degenerative diseases.", bho: "जोड़ के चोट अवुरी अपक्षयी रोग के इलाज में विशेषज्ञता।" }, 
+    fee: 700, 
+    imageUrl: "👩‍⚕️", 
+    location: "गुप्ता जॉइंट केयर, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. वत्सल खेतान", en: "Dr. Vatsal Khetan", bho: "डॉ. वत्सल खेतान" }, 
+    description: { hi: "आधुनिक आर्थोपेडिक तकनीकों का उपयोग करने वाले एक कुशल सर्जन।", en: "A skilled surgeon using modern orthopedic techniques.", bho: "आधुनिक आर्थोपेडिक तकनीक के उपयोग करे वाला एक कुशल सर्जन।" }, 
+    fee: 750, 
+    imageUrl: "👨‍⚕️", 
+    location: "खेतान ऑर्थो हॉस्पिटल, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
   // General Physician
   { 
     name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, 
@@ -565,5 +601,6 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
     id: `${index + 1}`,
 }));
+
 
 
