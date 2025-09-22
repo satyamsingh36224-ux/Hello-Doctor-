@@ -54,6 +54,15 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian female doctor",
     specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
   },
+  { 
+    name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" }, 
+    description: { hi: "एक अनुभवी हृदय रोग विशेषज्ञ, जो हृदय रोगों के निदान और उपचार में विशेषज्ञता रखते हैं।", en: "An experienced cardiologist specializing in the diagnosis and treatment of heart diseases.", bho: "एक अनुभवी हृदय रोग विशेषज्ञ, जे हृदय रोग के निदान अवुरी उपचार में विशेषज्ञता राखेलें।" }, 
+    fee: 500, 
+    imageUrl: "👨‍⚕️", 
+    location: "रंजन हार्ट क्लिनिक, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }
+  },
   // Pediatrician
   { 
     name: { hi: "डॉ. गौरव अग्रवाल", en: "Dr. Gaurav Agrawal", bho: "डॉ. गौरव अग्रवाल" }, 
