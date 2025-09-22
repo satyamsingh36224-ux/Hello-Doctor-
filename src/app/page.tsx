@@ -34,9 +34,9 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 p-4">
-      <div className="absolute top-4 right-4 z-10">
+      <div className="absolute top-6 right-4 z-10">
         <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-          <SelectTrigger className="w-[180px] rounded-full bg-background/80 backdrop-blur-sm">
+          <SelectTrigger className="w-auto rounded-full bg-background/80 backdrop-blur-sm">
             <Globe className="h-4 w-4 mr-2" />
             <SelectValue placeholder={t.selectLanguage} />
           </SelectTrigger>
