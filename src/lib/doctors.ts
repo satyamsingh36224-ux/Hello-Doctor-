@@ -255,6 +255,33 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian female doctor",
     specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. सुमन", en: "Dr. Suman", bho: "डॉ. सुमन" }, 
+    description: { hi: "महिलाओं के स्वास्थ्य के लिए समर्पित एक अनुभवी स्त्री रोग विशेषज्ञ।", en: "An experienced gynecologist dedicated to women's health.", bho: "महिला के स्वास्थ्य खातिर समर्पित एक अनुभवी स्त्री रोग विशेषज्ञ।" }, 
+    fee: 500, 
+    imageUrl: "👩‍⚕️", 
+    location: "सुमन महिला क्लिनिक, सिनेमा रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. रंगनी सिंह", en: "Dr. Rangani Singh", bho: "डॉ. रंगनी सिंह" }, 
+    description: { hi: "प्रसूति और स्त्री रोग संबंधी देखभाल में विशेषज्ञता, मातृत्व स्वास्थ्य पर ध्यान केंद्रित करती हैं।", en: "Specializing in obstetrics and gynecological care, with a focus on maternal health.", bho: "प्रसूति अवुरी स्त्री रोग संबंधी देखभाल में विशेषज्ञता, मातृत्व स्वास्थ्य पर ध्यान केंद्रित करेली।" }, 
+    fee: 550, 
+    imageUrl: "👩‍⚕️", 
+    location: "रंगनी मैटरनिटी सेंटर, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. सोनम सिंह", en: "Dr. Sonam Singh", bho: "डॉ. सोनम सिंह" }, 
+    description: { hi: "एक देखभाल करने वाली स्त्री रोग विशेषज्ञ जो सभी उम्र की महिलाओं के लिए व्यापक देखभाल प्रदान करती हैं।", en: "A caring gynecologist providing comprehensive care for women of all ages.", bho: "एक देखभाल करे वाली स्त्री रोग विशेषज्ञ जे सभे उम्र के महिला खातिर व्यापक देखभाल प्रदान करेली।" }, 
+    fee: 500, 
+    imageUrl: "👩‍⚕️", 
+    location: "सोनम वीमेन'स केयर, ब्लॉक रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
   // Orthopedic Surgeon
   { 
     name: { hi: "डॉ. विक्रम पटेल", en: "Dr. Vikram Patel", bho: "डॉ. विक्रम पटेल" }, 
@@ -493,3 +520,4 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
     id: `${index + 1}`,
 }));
+
