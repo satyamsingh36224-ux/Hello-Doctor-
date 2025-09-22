@@ -90,11 +90,6 @@ export default function LoginPage() {
         </CardContent>
       </Card>
 
-      <footer className="absolute bottom-4 text-center text-xs text-muted-foreground">
-        <p className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-          Produced by Satyam Vikash Singh
-        </p>
-      </footer>
     </div>
   );
 }
