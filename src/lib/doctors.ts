@@ -190,6 +190,15 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. रामेश्वर सिंह", en: "Dr. Rameshwar Singh", bho: "डॉ. रामेश्वर सिंह" }, 
+    description: { hi: "बच्चों की बीमारियों के निदान और उपचार में व्यापक अनुभव।", en: "Extensive experience in diagnosing and treating childhood illnesses.", bho: "लइकन के बेमारी के निदान अवुरी उपचार में व्यापक अनुभव।" }, 
+    fee: 400, 
+    imageUrl: "👨‍⚕️", 
+    location: "सिंह चाइल्ड केयर, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
   // Dermatologist
   { 
     name: { hi: "डॉ. अनिल सिंह", en: "Dr. Anil Singh", bho: "डॉ. अनिल सिंह" }, 
@@ -601,6 +610,7 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
     id: `${index + 1}`,
 }));
+
 
 
 
