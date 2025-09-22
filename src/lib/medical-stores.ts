@@ -64,6 +64,13 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     phone: "9876543217",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "सिंह मेडिकल स्टोर", en: "Singh Medical Store", bho: "सिंह मेडिकल स्टोर" },
+    location: "कैलाश होटल के पास, गोपालगंज",
+    phone: "9876543218",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
   }
 ];
 
