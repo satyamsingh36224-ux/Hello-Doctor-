@@ -644,6 +644,15 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. पवन कुमार", en: "Dr. Pawan Kumar", bho: "डॉ. पवन कुमार" }, 
+    description: { hi: "एक अनुभवी सामान्य चिकित्सक जो सभी उम्र के रोगियों को व्यापक स्वास्थ्य सेवा प्रदान करते हैं।", en: "An experienced general physician providing comprehensive healthcare to patients of all ages.", bho: "एक अनुभवी सामान्य चिकित्सक जे सभे उम्र के रोगी के व्यापक स्वास्थ्य सेवा प्रदान करेलें।" }, 
+    fee: 300, 
+    imageUrl: "👨‍⚕️", 
+    location: "मानस मेडिको, कैलाश होटल के पास, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }
+  },
   // General Surgeon
   { 
     name: { hi: "डॉ. शंभू नाथ सिंह", en: "Dr. Shambhu Nath Singh", bho: "डॉ. शंभू नाथ सिंह" }, 
