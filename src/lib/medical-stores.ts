@@ -78,6 +78,13 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     phone: "9876543219",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
+  },
+  {
+    name: { hi: "मानस मेडिको", en: "Manas Medico", bho: "मानस मेडिको" },
+    location: "कैलाश होटल के पास, गोपालगंज",
+    phone: "9876543220",
+    imageUrl: "🏪",
+    aiHint: "pharmacy storefront"
   }
 ];
 
