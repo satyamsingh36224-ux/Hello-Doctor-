@@ -171,7 +171,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                         <div id="booking" className="flex flex-col sm:flex-row gap-4">
                             <AlertDialog>
                                 <AlertDialogTrigger asChild>
-                                    <Button variant="outline" className="flex-1 rounded-full" size="lg" onClick={handleGetSummary}>
+                                    <Button variant="outline" className="flex-1 rounded-full py-6 text-base" onClick={handleGetSummary}>
                                         <Sparkles className="mr-2 h-5 w-5" />
                                         {t.getAISummary}
                                     </Button>
@@ -197,7 +197,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
 
                             <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
                                 <DialogTrigger asChild>
-                                    <Button className="flex-1 rounded-full" size="lg">{t.bookAppointmentNow}</Button>
+                                    <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
                                 </DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
