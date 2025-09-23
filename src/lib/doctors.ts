@@ -199,6 +199,51 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. एस. बी. प्रसाद", en: "Dr. S. B. Prasad", bho: "डॉ. एस. बी. प्रसाद" },
+    description: { hi: "बच्चों के स्वास्थ्य की देखभाल में वर्षों का अनुभव।", en: "Years of experience in pediatric healthcare.", bho: "लइकन के स्वास्थ्य के देखभाल में बरिसन के अनुभव।" },
+    fee: 450,
+    imageUrl: "👨‍⚕️",
+    location: "प्रसाद बाल चिकित्सालय, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. आर. के. सिंह", en: "Dr. R. K. Singh", bho: "डॉ. आर. के. सिंह" },
+    description: { hi: "बच्चों की सामान्य बीमारियों और टीकाकरण के विशेषज्ञ।", en: "Specialist in common childhood diseases and vaccinations.", bho: "लइकन के सामान्य बेमारी अवुरी टीकाकरण के विशेषज्ञ।" },
+    fee: 400,
+    imageUrl: "👨‍⚕️",
+    location: "आर. के. सिंह चाइल्ड क्लिनिक, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. नेहा परवीन", en: "Dr. Neha Parveen", bho: "डॉ. नेहा परवीन" },
+    description: { hi: "एक दयालु बाल रोग विशेषज्ञ जो बाल स्वास्थ्य पर ध्यान केंद्रित करती हैं।", en: "A compassionate pediatrician focusing on child wellness.", bho: "एक दयालु बाल रोग विशेषज्ञ जे बाल स्वास्थ्य पर ध्यान केंद्रित करेली।" },
+    fee: 420,
+    imageUrl: "👩‍⚕️",
+    location: "परवीन चाइल्ड केयर, पुरानी चौक, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. ए. आर. सुनील कुमार", en: "Dr. A. R. Sunil Kumar", bho: "डॉ. ए. आर. सुनील कुमार" },
+    description: { hi: "शिशुओं और बच्चों के लिए विशेषज्ञ देखभाल प्रदान करते हैं।", en: "Provides expert care for infants and children.", bho: "शिशु अवुरी लइकन खातिर विशेषज्ञ देखभाल प्रदान करेलें।" },
+    fee: 450,
+    imageUrl: "👨‍⚕️",
+    location: "सुनील बाल स्वास्थ्य केंद्र, थावे रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. मिंकू कुमार मिश्रा", en: "Dr. Minku Kumar Mishra", bho: "डॉ. मिंकू कुमार मिश्रा" },
+    description: { hi: "बच्चों के विकास और स्वास्थ्य संबंधी समस्याओं के लिए जाने जाते हैं।", en: "Known for handling child development and health issues.", bho: "लइकन के विकास अवुरी स्वास्थ्य संबंधी समस्या खातिर जानल जालें।" },
+    fee: 400,
+    imageUrl: "👨‍⚕️",
+    location: "मिश्रा चिल्ड्रेन्स क्लिनिक, जंगलिया मोड़, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }
+  },
   // Dermatologist
   { 
     name: { hi: "डॉ. अनिल सिंह", en: "Dr. Anil Singh", bho: "डॉ. अनिल सिंह" }, 
@@ -617,3 +662,5 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
 
 
     
+
+  
