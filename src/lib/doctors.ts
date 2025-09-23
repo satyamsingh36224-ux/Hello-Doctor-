@@ -381,6 +381,51 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian female doctor",
     specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
   },
+  {
+    name: { hi: "डॉ. के. मंजू", en: "Dr. K. Manju", bho: "डॉ. के. मंजू" },
+    description: { hi: "महिलाओं के स्वास्थ्य के लिए समर्पित एक अनुभवी स्त्री रोग विशेषज्ञ।", en: "An experienced gynecologist dedicated to women's health.", bho: "महिला के स्वास्थ्य खातिर समर्पित एक अनुभवी स्त्री रोग विशेषज्ञ।" },
+    fee: 550,
+    imageUrl: "👩‍⚕️",
+    location: "मंजू वीमेन'स केयर, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. सारिका गुप्ता", en: "Dr. Sarika Gupta", bho: "डॉ. सारिका गुप्ता" },
+    description: { hi: "प्रसूति और स्त्री रोग में विशेषज्ञता।", en: "Specializing in obstetrics and gynecology.", bho: "प्रसूति अवुरी स्त्री रोग में विशेषज्ञता।" },
+    fee: 600,
+    imageUrl: "👩‍⚕️",
+    location: "गुप्ता मैटरनिटी होम, पुरानी चौक, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. अलका राय", en: "Dr. Alka Rai", bho: "डॉ. अलका राय" },
+    description: { hi: "सभी उम्र की महिलाओं के लिए व्यापक स्त्री रोग संबंधी देखभाल।", en: "Comprehensive gynecological care for women of all ages.", bho: "सभे उम्र के महिला खातिर व्यापक स्त्री रोग संबंधी देखभाल।" },
+    fee: 500,
+    imageUrl: "👩‍⚕️",
+    location: "राय वीमेन'स क्लिनिक, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. प्रिया राय", en: "Dr. Priya Ray", bho: "डॉ. प्रिया राय" },
+    description: { hi: "मातृत्व देखभाल और स्त्री रोग संबंधी सर्जरी में विशेषज्ञता।", en: "Specializes in maternity care and gynecological surgeries.", bho: "मातृत्व देखभाल अवुरी स्त्री रोग संबंधी सर्जरी में विशेषज्ञता।" },
+    fee: 580,
+    imageUrl: "👩‍⚕️",
+    location: "प्रिया मैटरनिटी सेंटर, थावे रोड, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. अभिजीत बसाक", en: "Dr. Abhijeet Basak", bho: "डॉ. अभिजीत बसाक" },
+    description: { hi: "एक कुशल स्त्री रोग विशेषज्ञ जो महिलाओं के स्वास्थ्य के मुद्दों के लिए व्यापक देखभाल प्रदान करते हैं।", en: "A skilled gynecologist providing comprehensive care for women's health issues.", bho: "एक कुशल स्त्री रोग विशेषज्ञ जे महिला के स्वास्थ्य के मुद्दा खातिर व्यापक देखभाल प्रदान करेलें।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "बसाक वीमेन'स हॉस्पिटल, ब्लॉक रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }
+  },
   // Orthopedic Surgeon
   { 
     name: { hi: "डॉ. विक्रम पटेल", en: "Dr. Vikram Patel", bho: "डॉ. विक्रम पटेल" }, 
