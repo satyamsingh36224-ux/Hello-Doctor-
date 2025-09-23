@@ -490,6 +490,60 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
   },
+  {
+    name: { hi: "डॉ. सुरेंद्र कुमार तिवारी", en: "Dr. Surendra Kumar Tiwari", bho: "डॉ. सुरेंद्र कुमार तिवारी" },
+    description: { hi: "अनुभवी हड्डी रोग विशेषज्ञ, जो जटिल फ्रैक्चर और आर्थ्रोस्कोपी में माहिर हैं।", en: "Experienced orthopedic specialist, expert in complex fractures and arthroscopy.", bho: "अनुभवी हड्डी रोग विशेषज्ञ, जे जटिल फ्रैक्चर आ आर्थ्रोस्कोपी में माहिर बाड़ें।" },
+    fee: 700,
+    imageUrl: "👨‍⚕️",
+    location: "तिवारी ऑर्थो केयर, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. संजीव कुमार", en: "Dr. Sanjiv Kumar", bho: "डॉ. संजीव कुमार" },
+    description: { hi: "जोड़ों के दर्द और खेल की चोटों के इलाज के लिए जाने जाते हैं।", en: "Known for treating joint pain and sports injuries.", bho: "जोड़ के दरद आ खेल के चोट के इलाज खातिर जानल जालें।" },
+    fee: 680,
+    imageUrl: "👨‍⚕️",
+    location: "संजीव ऑर्थोपेडिक क्लिनिक, पुरानी चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. इमरान हुसैन खान", en: "Dr. Imran Hussain Khan", bho: "डॉ. इमरान हुसैन खान" },
+    description: { hi: "रीढ़ की हड्डी और बाल चिकित्सा आर्थोपेडिक्स में विशेषज्ञता।", en: "Specializes in spine and pediatric orthopedics.", bho: "रीढ़ के हड्डी आ बाल चिकित्सा आर्थोपेडिक्स में विशेषज्ञता।" },
+    fee: 750,
+    imageUrl: "👨‍⚕️",
+    location: "खान ऑर्थो एंड स्पाइन सेंटर, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. अमर कुमार", en: "Dr. Amar Kumar", bho: "डॉ. अमर कुमार" },
+    description: { hi: "हड्डी रोग सर्जरी में व्यापक अनुभव और रोगी की देखभाल के लिए प्रतिबद्ध।", en: "Extensive experience in orthopedic surgery and committed to patient care.", bho: "हड्डी रोग सर्जरी में व्यापक अनुभव आ रोगी के देखभाल खातिर प्रतिबद्ध।" },
+    fee: 700,
+    imageUrl: "👨‍⚕️",
+    location: "अमर ऑर्थो हॉस्पिटल, थावे रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. महावीर गुप्ता", en: "Dr. Mahaveer Gupta", bho: "डॉ. महावीर गुप्ता" },
+    description: { hi: "सभी प्रकार की हड्डी और जोड़ों की समस्याओं के लिए व्यापक देखभाल।", en: "Comprehensive care for all types of bone and joint problems.", bho: "सब प्रकार के हड्डी आ जोड़ के समस्या खातिर व्यापक देखभाल।" },
+    fee: 650,
+    imageUrl: "👨‍⚕️",
+    location: "महावीर हड्डी क्लिनिक, जंगलिया मोड़, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. शानू गुप्ता", en: "Dr. Shanu Gupta", bho: "डॉ. शानू गुप्ता" },
+    description: { hi: "एक युवा और गतिशील हड्डी रोग विशेषज्ञ जो नवीनतम सर्जिकल तकनीकों का उपयोग करती हैं।", en: "A young and dynamic orthopedic surgeon using the latest surgical techniques.", bho: "एक युवा आ गतिशील हड्डी रोग विशेषज्ञ जे नवीनतम सर्जिकल तकनीक के उपयोग करेली।" },
+    fee: 720,
+    imageUrl: "👩‍⚕️",
+    location: "गुप्ता ऑर्थो एंड जॉइंट केयर, ब्लॉक रोड, गोपालगंज",
+    aiHint: "indian female doctor",
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
+  },
   // General Physician
   { 
     name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, 
