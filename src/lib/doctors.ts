@@ -700,6 +700,78 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. असलम परवेज", en: "Dr. Aslam Parvej", bho: "डॉ. असलम परवेज" },
+    description: { hi: "तंत्रिका तंत्र से संबंधित जटिल मामलों के विशेषज्ञ।", en: "Specialist in complex cases related to the nervous system.", bho: "तंत्रिका तंत्र से जुड़ल जटिल मामला के विशेषज्ञ।" },
+    fee: 1000, 
+    imageUrl: "👨‍⚕️",
+    location: "न्यूरो केयर क्लिनिक, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. अनिंद्य गुप्ता", en: "Dr. Anindyay Gupta", bho: "डॉ. अनिंद्य गुप्ता" },
+    description: { hi: "मस्तिष्क और रीढ़ की हड्डी की बीमारियों के इलाज में विशेषज्ञता।", en: "Specializes in the treatment of brain and spinal cord diseases.", bho: "मस्तिष्क अवुरी रीढ़ के हड्डी के बेमारी के इलाज में विशेषज्ञता।" },
+    fee: 950, 
+    imageUrl: "👨‍⚕️",
+    location: "गुप्ता न्यूरोलॉजी सेंटर, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. प्रमोद अघोरी", en: "Dr. Pramod Aghari", bho: "डॉ. प्रमोद अघोरी" },
+    description: { hi: "एक अनुभवी न्यूरोलॉजिस्ट जो सभी प्रकार की तंत्रिका संबंधी समस्याओं का इलाज करते हैं।", en: "An experienced neurologist who treats all types of neurological problems.", bho: "एक अनुभवी न्यूरोलॉजिस्ट जे सभे प्रकार के तंत्रिका संबंधी समस्या के इलाज करेलें।" },
+    fee: 900, 
+    imageUrl: "👨‍⚕️",
+    location: "अघोरी न्यूरो क्लिनिक, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. रूपम अघोरी", en: "Dr. Rupam Aghari", bho: "डॉ. रूपम अघोरी" },
+    description: { hi: "तंत्रिका संबंधी विकारों के लिए व्यापक देखभाल प्रदान करने वाली एक समर्पित न्यूरोलॉजिस्ट।", en: "A dedicated neurologist providing comprehensive care for neurological disorders.", bho: "तंत्रिका संबंधी विकार खातिर व्यापक देखभाल प्रदान करे वाली एक समर्पित न्यूरोलॉजिस्ट।" },
+    fee: 900, 
+    imageUrl: "👩‍⚕️",
+    location: "अघोरी न्यूरो क्लिनिक, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. भूपेंद्र भाटिया", en: "Dr. Bhupendra Bhatia", bho: "डॉ. भूपेंद्र भाटिया" },
+    description: { hi: "सिरदर्द और माइग्रेन के इलाज में विशेषज्ञ।", en: "Specialist in the treatment of headaches and migraines.", bho: "माथा के दरद अवुरी माइग्रेन के इलाज में विशेषज्ञ।" },
+    fee: 850, 
+    imageUrl: "👨‍⚕️",
+    location: "भाटिया न्यूरोलॉजी, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. अभिषेक कुमार सिंह", en: "Dr. Abhishek Kumar Singh", bho: "डॉ. अभिषेक कुमार सिंह" },
+    description: { hi: "एक कुशल न्यूरोलॉजिस्ट जो रोगी-केंद्रित देखभाल प्रदान करते हैं।", en: "A skilled neurologist providing patient-centric care.", bho: "एक कुशल न्यूरोलॉजिस्ट जे रोगी-केंद्रित देखभाल प्रदान करेलें।" },
+    fee: 950, 
+    imageUrl: "👨‍⚕️",
+    location: "सिंह न्यूरो हॉस्पिटल, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. अभिजीत गुवंडी", en: "Dr. Abhijeet Guvandi", bho: "डॉ. अभिजीत गुवंडी" },
+    description: { hi: "आधुनिक न्यूरोलॉजिकल उपचार और प्रक्रियाओं में विशेषज्ञ।", en: "Expert in modern neurological treatments and procedures.", bho: "आधुनिक न्यूरोलॉजिकल उपचार अवुरी प्रक्रिया में विशेषज्ञ।" },
+    fee: 1000, 
+    imageUrl: "👨‍⚕️",
+    location: "गुवंडी न्यूरो केयर, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. छवि गुवंडी", en: "Dr. Chhavi Guvandi", bho: "डॉ. छवि गुवंडी" },
+    description: { hi: "एक समर्पित न्यूरोलॉजिस्ट जो तंत्रिका संबंधी समस्याओं के लिए व्यापक देखभाल प्रदान करती हैं।", en: "A dedicated neurologist providing comprehensive care for neurological problems.", bho: "एक समर्पित न्यूरोलॉजिस्ट जे तंत्रिका संबंधी समस्या खातिर व्यापक देखभाल प्रदान करेली।" },
+    fee: 1000, 
+    imageUrl: "👩‍⚕️",
+    location: "गुवंडी न्यूरो केयर, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }
+  },
   // ENT Specialist
   { 
     name: { hi: "डॉ. अंजलि मेहता", en: "Dr. Anjali Mehta", bho: "डॉ. अंजलि मेहता" }, 
