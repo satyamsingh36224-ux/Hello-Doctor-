@@ -67,7 +67,7 @@ export default function DoctorsPage() {
 
       </main>
       <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
-        <p>&copy; {new Date().getFullYear()} Hello Doctor.{t.footerText}</p>
+        <p>&copy; 2025 Hello Doctor. All rights reserved.</p>
       </footer>
     </div>
   );
