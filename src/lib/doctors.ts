@@ -791,6 +791,33 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. सुशील कुमार सिंह", en: "Dr. Sushil Kumar Singh", bho: "डॉ. सुशील कुमार सिंह" }, 
+    description: { hi: "एक अनुभवी ईएनटी विशेषज्ञ जो कान, नाक और गले की सभी समस्याओं का इलाज करते हैं।", en: "An experienced ENT specialist who treats all problems of the ear, nose, and throat.", bho: "एक अनुभवी ईएनटी विशेषज्ञ जे कान, नाक अवुरी गला के सब समस्या के इलाज करेलें।" }, 
+    fee: 500, 
+    imageUrl: "👨‍⚕️", 
+    location: "सिंह ईएनटी हॉस्पिटल, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. जावेद सुलेमानी", en: "Dr. Javed Sulemani", bho: "डॉ. जावेद सुलेमानी" }, 
+    description: { hi: "कान, नाक और गले के रोगों के निदान और प्रबंधन में विशेषज्ञता।", en: "Specializes in the diagnosis and management of ear, nose, and throat diseases.", bho: "कान, नाक अवुरी गला के रोग के निदान अवुरी प्रबंधन में विशेषज्ञता।" }, 
+    fee: 450, 
+    imageUrl: "👨‍⚕️", 
+    location: "सुलेमानी ईएनटी क्लिनिक, पुरानी चौक, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. अभिषेक कुमार", en: "Dr. Abhishek Kumar", bho: "डॉ. अभिषेक कुमार" }, 
+    description: { hi: "ईएनटी से संबंधित सभी समस्याओं के लिए व्यापक देखभाल प्रदान करते हैं।", en: "Provides comprehensive care for all ENT-related issues.", bho: "ईएनटी से जुड़ल सब समस्या खातिर व्यापक देखभाल प्रदान करेलें।" }, 
+    fee: 480, 
+    imageUrl: "👨‍⚕️", 
+    location: "ताराचंद ईएनटी, बरौली, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
   // Ophthalmologist
   { 
     name: { hi: "डॉ. दीपक चौहान", en: "Dr. Deepak Chauhan", bho: "डॉ. दीपक चौहान" }, 
@@ -844,3 +871,5 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     
 
   
+
+    
