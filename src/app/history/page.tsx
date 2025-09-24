@@ -16,9 +16,6 @@ export default function HistoryPage() {
                     <AppointmentHistory />
                 </div>
             </main>
-             <footer className="bg-transparent p-6 text-center text-muted-foreground text-sm">
-                <p>&copy; 2025 Hello Doctor. All rights reserved.</p>
-            </footer>
         </div>
     )
 }
