@@ -837,6 +837,69 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian female doctor",
     specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
   },
+  { 
+    name: { hi: "डॉ. सुनील कुमार", en: "Dr. Sunil Kumar", bho: "डॉ. सुनील कुमार" },
+    description: { hi: "आँखों की सामान्य समस्याओं और सर्जरी के लिए विशेषज्ञ देखभाल।", en: "Specialist care for common eye problems and surgeries.", bho: "आँख के सामान्य समस्या आ सर्जरी खातिर विशेषज्ञ देखभाल।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "सुनील आई क्लिनिक, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. जे. के. सिंह", en: "Dr. J. K. Singh", bho: "डॉ. जे. के. सिंह" },
+    description: { hi: "एक अनुभवी नेत्र रोग विशेषज्ञ जो सभी प्रकार की दृष्टि समस्याओं का इलाज करते हैं।", en: "An experienced ophthalmologist treating all types of vision problems.", bho: "एक अनुभवी नेत्र रोग विशेषज्ञ जे सब प्रकार के दृष्टि समस्या के इलाज करेलें।" },
+    fee: 520,
+    imageUrl: "👨‍⚕️",
+    location: "सिंह आई केयर, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. शशि भूषण", en: "Dr. Shashi Bhushan", bho: "डॉ. शशि भूषण" },
+    description: { hi: "रेटिना और ग्लूकोमा के इलाज में विशेषज्ञता।", en: "Specializes in retina and glaucoma treatment.", bho: "रेटिना आ ग्लूकोमा के इलाज में विशेषज्ञता।" },
+    fee: 600,
+    imageUrl: "👨‍⚕️",
+    location: "भूषण आई हॉस्पिटल, थावे रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. विशाल कुमार", en: "Dr. Vishal Kumar", bho: "डॉ. विशाल कुमार" },
+    description: { hi: "बच्चों की आंखों की समस्याओं और भेंगापन के विशेषज्ञ।", en: "Specialist in pediatric eye problems and squint.", bho: "लइकन के आँख के समस्या आ भेंगापन के विशेषज्ञ।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "विशाल नेत्रालय, पुरानी चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. राकेश कुमार", en: "Dr. Rakesh Kumar", bho: "डॉ. राकेश कुमार" },
+    description: { hi: "आँखों की जाँच और चश्मे के नंबर के लिए एक विश्वसनीय डॉक्टर।", en: "A reliable doctor for eye examinations and prescription glasses.", bho: "आँख के जांच आ चश्मा के नंबर खातिर एक विश्वसनीय डॉक्टर।" },
+    fee: 450,
+    imageUrl: "👨‍⚕️",
+    location: "राकेश विजन सेंटर, जंगलिया मोड़, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. जावेद आलम खान", en: "Dr. Javed Alam Khan", bho: "डॉ. जावेद आलम खान" },
+    description: { hi: "सभी प्रकार की आंखों की बीमारियों के लिए व्यापक देखभाल प्रदान करते हैं।", en: "Provides comprehensive care for all types of eye diseases.", bho: "सब प्रकार के आँख के बेमारी खातिर व्यापक देखभाल प्रदान करेलें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "खान आई क्लिनिक, बस स्टैंड के पास, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
+  { 
+    name: { hi: "अखंड ज्योति आई हॉस्पिटल", en: "Akhand Jyoti Eye Hospital", bho: "अखंड ज्योति आई हॉस्पिटल" },
+    description: { hi: "उन्नत नेत्र देखभाल और सर्जरी के लिए एक प्रसिद्ध अस्पताल।", en: "A renowned hospital for advanced eye care and surgery.", bho: "उन्नत नेत्र देखभाल आ सर्जरी खातिर एक प्रसिद्ध अस्पताल।" },
+    fee: 300,
+    imageUrl: "🏥",
+    location: "थावे रोड, गोपालगंज",
+    aiHint: "hospital building",
+    specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }
+  },
   // Psychiatrist
   { 
     name: { hi: "डॉ. पवन कुमार", en: "Dr. Pawan Kumar", bho: "डॉ. पवन कुमार" }, 
