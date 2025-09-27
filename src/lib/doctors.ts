@@ -918,6 +918,69 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     location: "माइंडफुल लिविंग सेंटर, सिविल लाइंस, गोपालगंज", 
     aiHint: "indian female doctor",
     specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" }, 
+    description: { hi: "मानसिक स्वास्थ्य के सभी पहलुओं में विशेषज्ञता रखने वाले एक समर्पित मनोचिकित्सक।", en: "A dedicated psychiatrist specializing in all aspects of mental health.", bho: "मानसिक स्वास्थ्य के सभे पहलू में विशेषज्ञता रखे वाला एक समर्पित मनोचिकित्सक।" }, 
+    fee: 750, 
+    imageUrl: "👨‍⚕️", 
+    location: "रंजन माइंड केयर, अस्पताल रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. आशीष सोय", en: "Dr. Ashish Soy", bho: "डॉ. आशीष सोय" }, 
+    description: { hi: "बच्चों और किशोरों के मानसिक स्वास्थ्य के विशेषज्ञ।", en: "Specialist in child and adolescent mental health.", bho: "लइका अवुरी किशोर के मानसिक स्वास्थ्य के विशेषज्ञ।" }, 
+    fee: 800, 
+    imageUrl: "👨‍⚕️", 
+    location: "सोय साइकियाट्री क्लिनिक, पुरानी चौक, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. समिधा पांडे", en: "Dr. Samidha Pandey", bho: "डॉ. समिधा पांडे" }, 
+    description: { hi: "एक देखभाल करने वाली मनोचिकित्सक जो महिलाओं के मानसिक स्वास्थ्य पर ध्यान केंद्रित करती हैं।", en: "A caring psychiatrist focusing on women's mental health.", bho: "एक देखभाल करे वाली मनोचिकित्सक जे महिला के मानसिक स्वास्थ्य पर ध्यान केंद्रित करेली।" }, 
+    fee: 700, 
+    imageUrl: "👩‍⚕️", 
+    location: "पांडे मेंटल वेलनेस, थावे रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. संगीता गुप्ता", en: "Dr. Sangeeta Gupta", bho: "डॉ. संगीता गुप्ता" }, 
+    description: { hi: "नशे की लत और पुनर्वास में विशेषज्ञता।", en: "Specializes in addiction and rehabilitation.", bho: "नशा के लत अवुरी पुनर्वास में विशेषज्ञता।" }, 
+    fee: 750, 
+    imageUrl: "👩‍⚕️", 
+    location: "गुप्ता डी-एडिक्शन सेंटर, जंगलिया मोड़, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. नौशाद अली", en: "Dr. Naushad Ali", bho: "डॉ. नौशाद अली" }, 
+    description: { hi: "वृद्धावस्था मनोचिकित्सा और स्मृति विकारों के विशेषज्ञ।", en: "Expert in geriatric psychiatry and memory disorders.", bho: "वृद्धावस्था मनोचिकित्सा अवुरी स्मृति विकार के विशेषज्ञ।" }, 
+    fee: 650, 
+    imageUrl: "👨‍⚕️", 
+    location: "अली माइंड क्लिनिक, ब्लॉक रोड, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. तान्या दीक्षित", en: "Dr. Tanya Dixit", bho: "डॉ. तान्या दीक्षित" }, 
+    description: { hi: "एक दयालु मनोचिकित्सक जो टॉक थेरेपी और परामर्श प्रदान करती हैं।", en: "A compassionate psychiatrist providing talk therapy and counseling.", bho: "एक दयालु मनोचिकित्सक जे टॉक थेरेपी अवुरी परामर्श प्रदान करेली।" }, 
+    fee: 700, 
+    imageUrl: "👩‍⚕️", 
+    location: "दीक्षित काउंसलिंग सर्विसेज, सिनेमा रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
+  },
+  { 
+    name: { hi: "डॉ. जूली सेंगर", en: "Dr. Juli Sengar", bho: "डॉ. जूली सेंगर" }, 
+    description: { hi: "युवा वयस्कों और छात्रों के लिए मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।", en: "Specializes in mental healthcare for young adults and students.", bho: "युवा वयस्क अवुरी छात्र खातिर मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।" }, 
+    fee: 720, 
+    imageUrl: "👩‍⚕️", 
+    location: "सेंगर माइंडफुलनेस सेंटर, कचहरी रोड, गोपालगंज", 
+    aiHint: "indian female doctor",
+    specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
   }
 ];
 
@@ -937,5 +1000,7 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
 
     
 
+
+    
 
     
