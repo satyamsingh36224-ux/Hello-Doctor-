@@ -127,6 +127,21 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                         </div>
                     </CardHeader>
                     <CardContent className="p-6 pt-0">
+                        <div className="relative h-60 w-full mb-6">
+                            {isEmoji(doctor.imageUrl) ? (
+                                <div className="flex items-center justify-center h-full w-full bg-secondary rounded-2xl">
+                                    <span className="text-8xl">{doctor.imageUrl}</span>
+                                </div>
+                            ) : (
+                                <Image
+                                    src={doctor.imageUrl}
+                                    alt={doctorName}
+                                    fill
+                                    className="rounded-2xl object-cover"
+                                    data-ai-hint={doctor.aiHint}
+                                />
+                            )}
+                        </div>
                         <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
                              <div className="flex items-center gap-2">
                                 <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
