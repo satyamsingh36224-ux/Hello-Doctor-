@@ -10,10 +10,6 @@ export function Header() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <SidebarTrigger className="md:hidden" />
-          <Avatar className="h-10 w-10 border-2 border-primary/50">
-            <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="User" data-ai-hint="person" />
-            <AvatarFallback>U</AvatarFallback>
-          </Avatar>
         </div>
         <div className="flex items-center gap-2">
             <ThemeSwitcher />
