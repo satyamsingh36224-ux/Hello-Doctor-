@@ -5,9 +5,7 @@ import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
-import { Button } from '@/components/ui/button';
 import { doctorsData } from '@/lib/doctors';
-import { JaanchKendra } from '@/components/JaanchKendra';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -24,9 +22,8 @@ function DoctorsList() {
 
   return (
     <>
-      <div className="flex justify-between items-center mb-4">
+      <div className="mb-4">
           <h2 className="text-2xl font-bold">{t.topDoctors}</h2>
-          <Button variant="link" className="text-primary">{t.viewAll}</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
