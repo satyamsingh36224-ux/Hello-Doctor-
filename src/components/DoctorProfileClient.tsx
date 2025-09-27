@@ -114,21 +114,6 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                     {t.backToAllDoctors}
                 </Link>
                 <Card className="shadow-lg rounded-2xl overflow-hidden border-none">
-                    <div className="relative h-56 w-full">
-                         {isEmoji(doctor.imageUrl) ? (
-                            <div className="flex items-center justify-center h-full w-full bg-secondary">
-                                <span className="text-8xl">{doctor.imageUrl}</span>
-                            </div>
-                        ) : (
-                            <Image
-                                src={doctor.imageUrl}
-                                alt={doctorName}
-                                fill
-                                className="object-cover"
-                                data-ai-hint={doctor.aiHint}
-                            />
-                        )}
-                    </div>
                     <CardHeader className="p-6">
                         <div className="flex justify-between items-start">
                              <div>
