@@ -286,7 +286,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     description: { hi: "सभी प्रकार की त्वचा संबंधी समस्याओं के लिए अनुभवी डॉक्टर।", en: "Experienced doctor for all types of skin problems.", bho: "सब तरह के चमड़ी के समस्या खातिर अनुभवी डॉक्टर।" },
     fee: 550,
     imageUrl: "👨‍⚕️",
-    location: "हॉस्पिटल रोड, गोपालगंज",
+    location: "अस्पताल रोड, गोपालगंज",
     aiHint: "indian male doctor",
     specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }
   },
@@ -681,6 +681,69 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
   },
+  {
+    name: { hi: "डॉ. मनोज कुमार गुप्ता", en: "Dr. Manoj Kumar Gupta", bho: "डॉ. मनोज कुमार गुप्ता" },
+    description: { hi: "विभिन्न प्रकार की सर्जरी में विशेषज्ञता रखने वाले एक अनुभवी जनरल सर्जन।", en: "An experienced general surgeon specializing in various types of surgeries.", bho: "विभिन्न प्रकार के सर्जरी में विशेषज्ञता रखे वाला एक अनुभवी जनरल सर्जन।" },
+    fee: 800,
+    imageUrl: "👨‍⚕️",
+    location: "गुप्ता सर्जिकल क्लिनिक, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. अमित कुमार", en: "Dr. Amit Kumar", bho: "डॉ. अमित कुमार" },
+    description: { hi: "लैप्रोस्कोपिक और सामान्य सर्जरी में माहिर।", en: "Specialist in laparoscopic and general surgery.", bho: "लैप्रोस्कोपिक आ सामान्य सर्जरी में माहिर।" },
+    fee: 820,
+    imageUrl: "👨‍⚕️",
+    location: "अमित सर्जिकल केयर, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. मुकेश कुमार", en: "Dr. Mukesh Kumar", bho: "डॉ. मुकेश कुमार" },
+    description: { hi: "सभी प्रकार की सामान्य सर्जरी करने में कुशल।", en: "Skilled in performing all types of general surgeries.", bho: "सब प्रकार के सामान्य सर्जरी करे में कुशल।" },
+    fee: 780,
+    imageUrl: "👨‍⚕️",
+    location: "मुकेश सर्जिकल होम, थावे रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. संजय सिंह", en: "Dr. Sanjay Singh", bho: "डॉ. संजय सिंह" },
+    description: { hi: "एक विश्वसनीय जनरल सर्जन जो रोगी की सुरक्षा को प्राथमिकता देते हैं।", en: "A reliable general surgeon who prioritizes patient safety.", bho: "एक विश्वसनीय जनरल सर्जन जे रोगी के सुरक्षा के प्राथमिकता देलें।" },
+    fee: 800,
+    imageUrl: "👨‍⚕️",
+    location: "संजय सर्जिकल सेंटर, ब्लॉक रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. संदीप कुमार गुप्ता", en: "Dr. Sandip Kumar Gupta", bho: "डॉ. संदीप कुमार गुप्ता" },
+    description: { hi: "आधुनिक सर्जिकल तकनीकों का उपयोग करने वाले एक प्रगतिशील सर्जन।", en: "A progressive surgeon using modern surgical techniques.", bho: "आधुनिक सर्जिकल तकनीक के उपयोग करे वाला एक प्रगतिशील सर्जन।" },
+    fee: 850,
+    imageUrl: "👨‍⚕️",
+    location: "संदीप सर्जिकल क्लिनिक, जंगलिया मोड़, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. सुनील रंजन", en: "Dr. Sunil Ranjan", bho: "डॉ. सुनील रंजन" },
+    description: { hi: "सर्जिकल देखभाल में व्यापक अनुभव।", en: "Extensive experience in surgical care.", bho: "सर्जिकल देखभाल में व्यापक अनुभव।" },
+    fee: 750,
+    imageUrl: "👨‍⚕️",
+    location: "रंजन सर्जिकल हॉस्पिटल, पोस्ट ऑफिस चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
+  {
+    name: { hi: "डॉ. आशीष कुमार", en: "Dr. Ashish Kumar", bho: "डॉ. आशीष कुमार" },
+    description: { hi: "एक समर्पित जनरल सर्जन जो उत्कृष्ट सर्जिकल परिणाम प्रदान करते हैं।", en: "A dedicated general surgeon providing excellent surgical outcomes.", bho: "एक समर्पित जनरल सर्जन जे उत्कृष्ट सर्जिकल परिणाम प्रदान करेलें।" },
+    fee: 830,
+    imageUrl: "👨‍⚕️",
+    location: "आशीष सर्जिकल केयर, अंबेडकर चौक, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+  },
   // Neurologist
   { 
     name: { hi: "डॉ. राजेश वर्मा", en: "Dr. Rajesh Verma", bho: "डॉ. राजेश वर्मा" }, 
@@ -815,6 +878,33 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     fee: 480, 
     imageUrl: "👨‍⚕️", 
     location: "ताराचंद ईएनटी, बरौली, गोपालगंज", 
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. एस. के. गुप्ता", en: "Dr. S. K. Gupta", bho: "डॉ. एस. के. गुप्ता" },
+    description: { hi: "कान, नाक और गले की समस्याओं के लिए विशेषज्ञ देखभाल प्रदान करते हैं।", en: "Provides expert care for ear, nose, and throat problems.", bho: "कान, नाक अवुरी गला के समस्या खातिर विशेषज्ञ देखभाल प्रदान करेलें।" },
+    fee: 500,
+    imageUrl: "👨‍⚕️",
+    location: "गुप्ता ईएनटी केयर, अस्पताल रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. अर्पित श्रीवास्तव", en: "Dr. Arpit Srivastava", bho: "डॉ. अर्पित श्रीवास्तव" },
+    description: { hi: "आधुनिक ईएनटी उपचार और सर्जरी में विशेषज्ञ।", en: "Specialist in modern ENT treatments and surgeries.", bho: "आधुनिक ईएनटी उपचार अवुरी सर्जरी में विशेषज्ञ।" },
+    fee: 520,
+    imageUrl: "👨‍⚕️",
+    location: "श्रीवास्तव ईएनटी क्लिनिक, सिनेमा रोड, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+  },
+  {
+    name: { hi: "डॉ. रमेश कुमार कुशवाहा", en: "Dr. Ramesh Kumar Kushwaha", bho: "डॉ. रमेश कुमार कुशवाहा" },
+    description: { hi: "एक अनुभवी ईएनटी सर्जन जो जटिल मामलों को संभालते हैं।", en: "An experienced ENT surgeon who handles complex cases.", bho: "एक अनुभवी ईएनटी सर्जन जे जटिल मामला के संभालेंलें।" },
+    fee: 550,
+    imageUrl: "👨‍⚕️",
+    location: "कुशवाहा ईएनटी सेंटर, थावे रोड, गोपालगंज",
     aiHint: "indian male doctor",
     specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
   },
@@ -1000,6 +1090,8 @@ export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
 
     
 
+
+    
 
     
 
