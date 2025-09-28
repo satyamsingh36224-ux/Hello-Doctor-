@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
@@ -45,14 +45,21 @@ export default function DoctorsPage() {
   const { toast } = useToast();
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    toast({
-      title: t.welcomeToast,
-      description: t.welcomeToastDesc,
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (isMounted) {
+      toast({
+        title: t.welcomeToast,
+        description: t.welcomeToastDesc,
+      });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMounted]);
 
   return (
     <div className="flex flex-col min-h-screen">
