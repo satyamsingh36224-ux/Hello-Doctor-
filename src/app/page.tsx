@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -33,10 +34,12 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/AuthContext";
 
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
+  const { signInWithGoogle, signInWithFacebook } = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
@@ -97,7 +100,31 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Input
+             <Button
+              suppressHydrationWarning
+              variant="outline"
+              onClick={signInWithGoogle}
+              className="w-full py-5 rounded-full text-sm font-semibold"
+            >
+              {t.continueWithGoogle}
+            </Button>
+            <Button
+              suppressHydrationWarning
+              variant="outline"
+              onClick={signInWithFacebook}
+              className="w-full py-5 rounded-full text-sm font-semibold"
+            >
+              {t.continueWithFacebook}
+            </Button>
+            <div className="relative my-2">
+              <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
+              </div>
+            </div>
+             <Input
               suppressHydrationWarning
               id="phone"
               type="tel"
@@ -113,28 +140,6 @@ export default function LoginPage() {
               <Link href="/select-specialization">
                 {t.continueWithPhone}
               </Link>
-            </Button>
-            <div className="relative my-2">
-              <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
-              </div>
-            </div>
-            <Button
-              suppressHydrationWarning
-              variant="outline"
-              className="w-full py-5 rounded-full text-sm font-semibold"
-            >
-              {t.continueWithGoogle}
-            </Button>
-            <Button
-              suppressHydrationWarning
-              variant="outline"
-              className="w-full py-5 rounded-full text-sm font-semibold"
-            >
-              {t.continueWithFacebook}
             </Button>
              <Button
               suppressHydrationWarning
