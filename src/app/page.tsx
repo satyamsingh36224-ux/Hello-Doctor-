@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,8 @@ import { Globe, HeartPulse } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 const GoogleIcon = () => (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +32,15 @@ const FacebookIcon = () => (
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
+  const { user, signInWithGoogle, signInWithFacebook } = useAuth();
+  const router = useRouter();
   const t = translations.loginPage;
+
+  useEffect(() => {
+    if (user) {
+      router.push('/select-specialization');
+    }
+  }, [user, router]);
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
@@ -59,11 +70,11 @@ export default function LoginPage() {
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button suppressHydrationWarning variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
+          <Button suppressHydrationWarning onClick={signInWithGoogle} variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <GoogleIcon />
             <span className="ml-2">{t.continueWithGoogle}</span>
           </Button>
-          <Button suppressHydrationWarning variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
+          <Button suppressHydrationWarning onClick={signInWithFacebook} variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <FacebookIcon />
             <span className="ml-2">{t.continueWithFacebook}</span>
           </Button>
