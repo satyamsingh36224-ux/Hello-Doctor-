@@ -9,10 +9,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Trash2, PlusCircle, Users } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogTrigger } from '@/components/ui/dialog';
+import { Trash2, PlusCircle, Users, Edit } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
-import { Separator } from './ui/separator';
+import { Label } from './ui/label';
 
 export function AdminDashboard() {
     const [doctors, setDoctors] = useState<Doctor[]>(initialDoctorsData);
@@ -21,6 +22,9 @@ export function AdminDashboard() {
     const [newDoctorFee, setNewDoctorFee] = useState('');
     const [newDoctorLocation, setNewDoctorLocation] = useState('');
     
+    const [editingDoctor, setEditingDoctor] = useState<Doctor | null>(null);
+    const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+
     const { language } = useLanguage();
     const { toast } = useToast();
 
@@ -53,7 +57,6 @@ export function AdminDashboard() {
 
         setDoctors(prevDoctors => [newDoctor, ...prevDoctors]);
         
-        // Reset form
         setNewDoctorName('');
         setNewDoctorSpec('');
         setNewDoctorFee('');
@@ -73,6 +76,33 @@ export function AdminDashboard() {
             variant: "destructive"
         });
     };
+    
+    const handleEditDoctor = (doctor: Doctor) => {
+        setEditingDoctor(doctor);
+        setIsEditDialogOpen(true);
+    };
+
+    const handleUpdateDoctor = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!editingDoctor) return;
+
+        const updatedDoctor = { ...editingDoctor };
+        const selectedSpec = specializationMap.find(s => s.key === updatedDoctor.specialization.key);
+
+        if (selectedSpec) {
+            updatedDoctor.specialization.name = selectedSpec.name;
+        }
+
+        setDoctors(doctors.map(doc => doc.id === updatedDoctor.id ? updatedDoctor : doc));
+        
+        toast({
+            title: "जानकारी अपडेट हुई",
+            description: `${updatedDoctor.name[language]} की जानकारी सफलतापूर्वक अपडेट हो गई है।`,
+        });
+
+        setIsEditDialogOpen(false);
+        setEditingDoctor(null);
+    };
 
     return (
         <main className="flex-1 container mx-auto px-4 py-8">
@@ -84,7 +114,7 @@ export function AdminDashboard() {
                             डॉक्टर प्रबंधन
                         </CardTitle>
                         <CardDescription>
-                            यहां आप डॉक्टरों की सूची देख सकते हैं, नए डॉक्टर जोड़ सकते हैं या हटा सकते हैं।
+                            यहां आप डॉक्टरों की सूची देख सकते हैं, नए डॉक्टर जोड़ सकते हैं, संपादित कर सकते हैं या हटा सकते हैं।
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -106,7 +136,15 @@ export function AdminDashboard() {
                                             <TableCell>{doctor.specialization.name[language]}</TableCell>
                                             <TableCell>₹{doctor.fee}</TableCell>
                                             <TableCell className="max-w-xs truncate">{doctor.location}</TableCell>
-                                            <TableCell className="text-right">
+                                            <TableCell className="text-right space-x-1">
+                                                <Button
+                                                    variant="ghost"
+                                                    size="icon"
+                                                    className="text-primary hover:text-primary/80"
+                                                    onClick={() => handleEditDoctor(doctor)}
+                                                >
+                                                    <Edit className="h-5 w-5" />
+                                                </Button>
                                                 <Button
                                                     variant="ghost"
                                                     size="icon"
@@ -173,6 +211,49 @@ export function AdminDashboard() {
                         </form>
                     </CardContent>
                 </Card>
+
+                {editingDoctor && (
+                    <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
+                        <DialogContent>
+                            <DialogHeader>
+                                <DialogTitle>डॉक्टर की जानकारी संपादित करें</DialogTitle>
+                            </DialogHeader>
+                            <form onSubmit={handleUpdateDoctor} className="space-y-4 pt-4">
+                                <div>
+                                    <Label htmlFor="edit-name">नाम</Label>
+                                    <Input id="edit-name" value={editingDoctor.name.hi} onChange={e => setEditingDoctor({...editingDoctor, name: {hi: e.target.value, en: e.target.value, bho: e.target.value}})} />
+                                </div>
+                                <div>
+                                    <Label htmlFor="edit-spec">विशेषज्ञता</Label>
+                                     <Select value={editingDoctor.specialization.key} onValueChange={value => setEditingDoctor({...editingDoctor, specialization: {...editingDoctor.specialization, key: value}})}>
+                                        <SelectTrigger id="edit-spec">
+                                            <SelectValue />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {specializationMap.map(spec => (
+                                                <SelectItem key={spec.key} value={spec.key}>
+                                                    {spec.name[language]}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                                <div>
+                                    <Label htmlFor="edit-fee">शुल्क</Label>
+                                    <Input id="edit-fee" type="number" value={editingDoctor.fee} onChange={e => setEditingDoctor({...editingDoctor, fee: parseInt(e.target.value, 10) || 0})} />
+                                </div>
+                                <div>
+                                    <Label htmlFor="edit-location">पता</Label>
+                                    <Input id="edit-location" value={editingDoctor.location} onChange={e => setEditingDoctor({...editingDoctor, location: e.target.value})} />
+                                </div>
+                                <DialogFooter>
+                                    <Button type="button" variant="outline" onClick={() => setIsEditDialogOpen(false)}>रद्द करें</Button>
+                                    <Button type="submit">बदलाव सहेजें</Button>
+                                </DialogFooter>
+                            </form>
+                        </DialogContent>
+                    </Dialog>
+                )}
             </div>
         </main>
     );
