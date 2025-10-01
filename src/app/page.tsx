@@ -34,12 +34,10 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/context/AuthContext";
 
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
-  const { signInWithGoogle, signInWithFacebook } = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
@@ -103,7 +101,7 @@ export default function LoginPage() {
              <Button
               suppressHydrationWarning
               variant="outline"
-              onClick={signInWithGoogle}
+              onClick={() => toast({ title: 'कार्यक्षमता अक्षम', description: 'Google साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' })}
               className="w-full py-5 rounded-full text-sm font-semibold"
             >
               {t.continueWithGoogle}
@@ -111,7 +109,7 @@ export default function LoginPage() {
             <Button
               suppressHydrationWarning
               variant="outline"
-              onClick={signInWithFacebook}
+              onClick={() => toast({ title: 'कार्यक्षमता अक्षम', description: 'Facebook साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' })}
               className="w-full py-5 rounded-full text-sm font-semibold"
             >
               {t.continueWithFacebook}
