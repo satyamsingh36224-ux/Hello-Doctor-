@@ -45,7 +45,7 @@ export default function LoginPage() {
         <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
             <Logo />
             <CardTitle className="text-3xl font-bold tracking-tight">Hello Doctor</CardTitle>
-            <CardDescription className="text-sm text-muted-foreground">बिहार का सबसे भरोसेमंद हेल्थकेयर ऐप</CardDescription>
+            <CardDescription className="text-base text-muted-foreground px-4">आपके स्वास्थ्य का भरोसेमंद साथी</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
