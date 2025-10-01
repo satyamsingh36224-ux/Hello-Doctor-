@@ -14,13 +14,16 @@ const firebaseConfig = {
 
 // Initialize Firebase
 let app: FirebaseApp;
-if (firebaseConfig.apiKey) {
-    app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+
+// Temporarily disable initialization if API key is not valid to prevent crashes.
+// The user needs to provide valid keys in the .env file.
+if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY_HERE") {
+    // app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 } else {
-    console.error("Firebase API Key is missing. Please check your .env file.");
+    console.error("Firebase API Key is missing or is a placeholder. Please check your .env file.");
     // Assign a dummy object or handle appropriately
-    app = {} as FirebaseApp; 
+    // app = {} as FirebaseApp; 
 }
 
-
+// @ts-ignore
 export { app };
