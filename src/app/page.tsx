@@ -35,7 +35,7 @@ export default function LoginPage() {
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
        <div className="absolute top-4 right-4 z-20">
             <Select value={language} onValueChange={(value: Language) => setLanguage(value)}>
-                <SelectTrigger className="w-auto rounded-full border-border/50 bg-background/80 backdrop-blur-sm text-sm h-10 px-4">
+                <SelectTrigger suppressHydrationWarning className="w-auto rounded-full border-border/50 bg-background/80 backdrop-blur-sm text-sm h-10 px-4">
                     <Globe className="h-4 w-4 mr-2" />
                     <SelectValue placeholder={t.selectLanguage} />
                 </SelectTrigger>
@@ -59,11 +59,11 @@ export default function LoginPage() {
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
+          <Button suppressHydrationWarning variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <GoogleIcon />
             <span className="ml-2">{t.continueWithGoogle}</span>
           </Button>
-          <Button variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
+          <Button suppressHydrationWarning variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
             <FacebookIcon />
             <span className="ml-2">{t.continueWithFacebook}</span>
           </Button>
@@ -74,11 +74,11 @@ export default function LoginPage() {
             </span>
           </div>
           <div className="flex flex-col gap-2">
-            <Input id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
-            <Button asChild className="w-full py-5 rounded-full text-sm font-semibold">
+            <Input suppressHydrationWarning id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
+            <Button suppressHydrationWarning asChild className="w-full py-5 rounded-full text-sm font-semibold">
                 <Link href="/select-specialization">{t.continueWithPhone}</Link>
             </Button>
-            <Button asChild variant="secondary" className="w-full py-5 rounded-full text-sm font-semibold">
+            <Button suppressHydrationWarning asChild variant="secondary" className="w-full py-5 rounded-full text-sm font-semibold">
                 <Link href="/other-services">
                     <HeartPulse className="mr-2 h-4 w-4" />
                     {t.otherServices}
