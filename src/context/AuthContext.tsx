@@ -2,9 +2,16 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User, Auth } from 'firebase/auth';
-import { app } from '@/lib/firebase';
+// import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User, Auth } from 'firebase/auth';
+// import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
+
+// Define User type to avoid breaking other parts of the app
+export type User = {
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+};
 
 interface AuthContextType {
   user: User | null;
@@ -16,17 +23,17 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-let auth: Auth | null = null;
-try {
-    if (app) {
-      auth = getAuth(app);
-    }
-} catch (error) {
-    console.error("Could not initialize Firebase Auth", error);
-}
+// let auth: Auth | null = null;
+// try {
+//     if (app) {
+//       auth = getAuth(app);
+//     }
+// } catch (error) {
+//     console.error("Could not initialize Firebase Auth", error);
+// }
 
-const googleProvider = new GoogleAuthProvider();
-const facebookProvider = new FacebookAuthProvider();
+// const googleProvider = new GoogleAuthProvider();
+// const facebookProvider = new FacebookAuthProvider();
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -34,58 +41,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!auth) {
-        setLoading(false);
-        return;
-    }
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
+    // Since Firebase is disabled, we just set loading to false.
+    setLoading(false);
   }, []);
 
   const signInWithGoogle = async () => {
-    if (!auth) {
-      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है। .env फ़ाइल की जाँच करें।', variant: 'destructive' });
-      return;
-    }
-    try {
-      await signInWithPopup(auth, googleProvider);
-      toast({ title: 'साइन-इन सफल', description: 'आप सफलतापूर्वक लॉग इन हो गए हैं।' });
-    } catch (error) {
-      console.error("Google sign-in error", error);
-      toast({ title: 'साइन-इन विफल', description: 'Google से साइन इन करने में एक त्रुटि हुई।', variant: 'destructive' });
-    }
+    toast({ title: 'कार्यक्षमता अक्षम', description: 'Google साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' });
   };
 
   const signInWithFacebook = async () => {
-    if (!auth) {
-      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है। .env फ़ाइल की जाँच करें।', variant: 'destructive' });
-      return;
-    }
-    try {
-      await signInWithPopup(auth, facebookProvider);
-       toast({ title: 'साइन-इन सफल', description: 'आप सफलतापूर्वक लॉग इन हो गए हैं।' });
-    } catch (error) {
-      console.error("Facebook sign-in error", error);
-      toast({ title: 'साइन-इन विफल', description: 'Facebook से साइन इन करने में एक त्रुटि हुई।', variant: 'destructive' });
-    }
+    toast({ title: 'कार्यक्षमता अक्षम', description: 'Facebook साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' });
   };
 
   const handleSignOut = async () => {
-    if (!auth) {
-      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
-      return;
-    }
-    try {
-      await signOut(auth);
-      toast({ title: 'लॉग आउट सफल', description: 'आप सफलतापूर्वक लॉग आउट हो गए हैं।' });
-    } catch (error) {
-      console.error("Sign-out error", error);
-      toast({ title: 'लॉग आउट विफल', description: 'लॉग आउट करने में एक त्रुटि हुई।', variant: 'destructive' });
-    }
+     toast({ title: 'लॉग आउट सफल', description: 'आप सफलतापूर्वक लॉग आउट हो गए हैं।' });
+     setUser(null);
   };
 
   const value = {

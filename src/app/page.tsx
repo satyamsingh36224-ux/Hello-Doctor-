@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,7 +22,6 @@ import { Globe, HeartPulse, Shield, Lock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
-import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import {
   Dialog,
@@ -38,19 +37,12 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
-  const { user, signInWithGoogle, signInWithFacebook } = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
 
   const [password, setPassword] = useState('');
   const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
-
-  useEffect(() => {
-    if (user) {
-      router.push('/select-specialization');
-    }
-  }, [user, router]);
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,7 +126,6 @@ export default function LoginPage() {
               suppressHydrationWarning
               variant="outline"
               className="w-full py-5 rounded-full text-sm font-semibold"
-              onClick={signInWithGoogle}
             >
               {t.continueWithGoogle}
             </Button>
@@ -142,7 +133,6 @@ export default function LoginPage() {
               suppressHydrationWarning
               variant="outline"
               className="w-full py-5 rounded-full text-sm font-semibold"
-              onClick={signInWithFacebook}
             >
               {t.continueWithFacebook}
             </Button>
