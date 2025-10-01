@@ -47,7 +47,7 @@ export default function LoginPage() {
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === '1616') {
+    if (password === '9007355062') {
         toast({
             title: "लॉगिन सफल",
             description: "एडमिन डैशबोर्ड में आपका स्वागत है।",
