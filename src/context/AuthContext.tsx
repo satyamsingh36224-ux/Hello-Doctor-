@@ -2,7 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User, Auth } from 'firebase/auth';
 import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
 
@@ -16,7 +16,13 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const auth = getAuth(app);
+let auth: Auth;
+try {
+    auth = getAuth(app);
+} catch (error) {
+    console.error("Could not initialize Firebase Auth", error);
+}
+
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
@@ -26,6 +32,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   useEffect(() => {
+    if (!auth) {
+        setLoading(false);
+        return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -35,6 +45,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signInWithGoogle = async () => {
+    if (!auth) {
+      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
+      return;
+    }
     try {
       await signInWithPopup(auth, googleProvider);
       toast({ title: 'साइन-इन सफल', description: 'आप सफलतापूर्वक लॉग इन हो गए हैं।' });
@@ -45,6 +59,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const signInWithFacebook = async () => {
+    if (!auth) {
+      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
+      return;
+    }
     try {
       await signInWithPopup(auth, facebookProvider);
        toast({ title: 'साइन-इन सफल', description: 'आप सफलतापूर्वक लॉग इन हो गए हैं।' });
@@ -55,6 +73,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleSignOut = async () => {
+    if (!auth) {
+      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
+      return;
+    }
     try {
       await signOut(auth);
       toast({ title: 'लॉग आउट सफल', description: 'आप सफलतापूर्वक लॉग आउट हो गए हैं।' });

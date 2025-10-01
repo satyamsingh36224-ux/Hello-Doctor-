@@ -1,5 +1,5 @@
 
-import { initializeApp, getApps, getApp } from "firebase/app";
+import { initializeApp, getApps, getApp, type FirebaseApp } from "firebase/app";
 
 // .env फ़ाइल में अपने Firebase प्रोजेक्ट की जानकारी डालें।
 // इन मानों को अपने Firebase कंसोल -> प्रोजेक्ट सेटिंग्स से कॉपी करें।
@@ -13,6 +13,14 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+let app: FirebaseApp;
+if (firebaseConfig.apiKey) {
+    app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+} else {
+    console.error("Firebase API Key is missing. Please check your .env file.");
+    // Assign a dummy object or handle appropriately
+    app = {} as FirebaseApp; 
+}
+
 
 export { app };
