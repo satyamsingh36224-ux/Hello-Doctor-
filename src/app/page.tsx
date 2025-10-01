@@ -144,8 +144,8 @@ export default function LoginPage() {
              <Button
               suppressHydrationWarning
               asChild
-              variant="secondary"
-              className="w-full py-5 rounded-full text-sm font-semibold mt-2"
+              variant="outline"
+              className="w-full py-5 rounded-full text-sm font-semibold mt-2 text-primary border-primary/50 hover:bg-primary/5 hover:text-primary"
             >
               <Link href="/other-services">
                 <HeartPulse className="mr-2 h-4 w-4" />
