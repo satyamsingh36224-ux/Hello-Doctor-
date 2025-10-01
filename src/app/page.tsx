@@ -70,20 +70,6 @@ export default function LoginPage() {
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <Button suppressHydrationWarning onClick={signInWithGoogle} variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
-            <GoogleIcon />
-            <span className="ml-2">{t.continueWithGoogle}</span>
-          </Button>
-          <Button suppressHydrationWarning onClick={signInWithFacebook} variant="outline" className="w-full justify-center py-5 rounded-full text-sm font-semibold bg-background hover:bg-muted">
-            <FacebookIcon />
-            <span className="ml-2">{t.continueWithFacebook}</span>
-          </Button>
-          <div className="relative my-2">
-            <Separator />
-            <span className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 bg-card px-2 text-sm text-muted-foreground">
-              {t.or}
-            </span>
-          </div>
           <div className="flex flex-col gap-2">
             <Input suppressHydrationWarning id="phone" type="tel" placeholder={t.phonePlaceholder} className="py-5 rounded-full bg-background" required />
             <Button suppressHydrationWarning asChild className="w-full py-5 rounded-full text-sm font-semibold">
