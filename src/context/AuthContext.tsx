@@ -2,16 +2,9 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-// import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User, Auth } from 'firebase/auth';
-// import { app } from '@/lib/firebase';
+import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, signOut, User, Auth } from 'firebase/auth';
+import { app } from '@/lib/firebase';
 import { useToast } from '@/hooks/use-toast';
-
-// Mock User type to avoid breaking other parts of the app
-export type User = {
-  displayName: string | null;
-  email: string | null;
-  photoURL: string | null;
-};
 
 interface AuthContextType {
   user: User | null;
@@ -23,10 +16,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-/*
-let auth: Auth;
+let auth: Auth | null = null;
 try {
-    // @ts-ignore
     if (app) {
       auth = getAuth(app);
     }
@@ -36,7 +27,6 @@ try {
 
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
-*/
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -44,7 +34,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    /*
     if (!auth) {
         setLoading(false);
         return;
@@ -55,15 +44,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
 
     return () => unsubscribe();
-    */
-    setLoading(false);
   }, []);
 
   const signInWithGoogle = async () => {
-    toast({ title: 'कॉन्फ़िगरेशन आवश्यक', description: 'Firebase API कुंजियाँ अभी तक कॉन्फ़िगर नहीं की गई हैं।', variant: 'destructive' });
-    /*
     if (!auth) {
-      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
+      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है। .env फ़ाइल की जाँच करें।', variant: 'destructive' });
       return;
     }
     try {
@@ -73,14 +58,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       console.error("Google sign-in error", error);
       toast({ title: 'साइन-इन विफल', description: 'Google से साइन इन करने में एक त्रुटि हुई।', variant: 'destructive' });
     }
-    */
   };
 
   const signInWithFacebook = async () => {
-    toast({ title: 'कॉन्फ़िगरेशन आवश्यक', description: 'Firebase API कुंजियाँ अभी तक कॉन्फ़िगर नहीं की गई हैं।', variant: 'destructive' });
-    /*
     if (!auth) {
-      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
+      toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है। .env फ़ाइल की जाँच करें।', variant: 'destructive' });
       return;
     }
     try {
@@ -90,13 +72,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       console.error("Facebook sign-in error", error);
       toast({ title: 'साइन-इन विफल', description: 'Facebook से साइन इन करने में एक त्रुटि हुई।', variant: 'destructive' });
     }
-    */
   };
 
   const handleSignOut = async () => {
-    toast({ title: 'लॉग आउट सफल', description: 'आप सफलतापूर्वक लॉग आउट हो गए हैं।' });
-    setUser(null);
-    /*
     if (!auth) {
       toast({ title: 'कॉन्फ़िगरेशन त्रुटि', description: 'Firebase ठीक से कॉन्फ़िगर नहीं है।', variant: 'destructive' });
       return;
@@ -108,7 +86,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       console.error("Sign-out error", error);
       toast({ title: 'लॉग आउट विफल', description: 'लॉग आउट करने में एक त्रुटि हुई।', variant: 'destructive' });
     }
-    */
   };
 
   const value = {

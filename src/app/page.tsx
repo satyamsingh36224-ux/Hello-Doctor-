@@ -38,7 +38,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
-  const { user } = useAuth();
+  const { user, signInWithGoogle, signInWithFacebook } = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
@@ -122,11 +122,35 @@ export default function LoginPage() {
                 {t.continueWithPhone}
               </Link>
             </Button>
+            <div className="relative my-2">
+              <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
+              </div>
+            </div>
+            <Button
+              suppressHydrationWarning
+              variant="outline"
+              className="w-full py-5 rounded-full text-sm font-semibold"
+              onClick={signInWithGoogle}
+            >
+              {t.continueWithGoogle}
+            </Button>
+            <Button
+              suppressHydrationWarning
+              variant="outline"
+              className="w-full py-5 rounded-full text-sm font-semibold"
+              onClick={signInWithFacebook}
+            >
+              {t.continueWithFacebook}
+            </Button>
              <Button
               suppressHydrationWarning
               asChild
               variant="secondary"
-              className="w-full py-5 rounded-full text-sm font-semibold"
+              className="w-full py-5 rounded-full text-sm font-semibold mt-2"
             >
               <Link href="/other-services">
                 <HeartPulse className="mr-2 h-4 w-4" />
