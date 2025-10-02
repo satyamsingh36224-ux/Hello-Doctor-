@@ -90,6 +90,15 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }
   },
+  {
+    name: { hi: "डॉ. पवन कुमार", en: "Dr. Pawan Kumar", bho: "डॉ. पवन कुमार" },
+    description: { hi: "अनुभवी सामान्य चिकित्सक जो सभी प्रकार की सामान्य बीमारियों का इलाज करते हैं।", en: "Experienced general physician who treats all kinds of common ailments.", bho: "अनुभवी सामान्य चिकित्सक जे सभे किसिम के साधारण बेमारी के इलाज करेलें।" },
+    fee: 350,
+    imageUrl: "👨‍⚕️",
+    location: "मानस मेडिको, कैलाश होटल के पास, गोपालगंज",
+    aiHint: "indian male doctor",
+    specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }
+  },
   // Cardiologist
   {
     name: { hi: "डॉ. रमेश कुमार", en: "Dr. Ramesh Kumar", bho: "डॉ. रमेश कुमार" },
@@ -319,7 +328,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   },
   // Dermatologist
   {
-    name: { hi: "डॉ. अनिल सिंह", en: "Dr. Anil Singh", bho: "डॉ. अनिल सिंह" },
+    name: { hi: "डॉ. अनिल सिंह", en: "Dr. Anil Singh", bho: "डॉ. Anil Singh" },
     description: { hi: "एक अनुभवी त्वचा विशेषज्ञ जो त्वचा, बाल और नाखूनों की कई स्थितियों का इलाज करते हैं।", en: "An experienced dermatologist who treats a variety of skin, hair, and nail conditions.", bho: "एक अनुभवी त्वचा विशेषज्ञ जे त्वचा, बाल अवुरी नाखून के कई स्थिति के इलाज करेलें।" },
     fee: 600,
     imageUrl: "👨‍⚕️",
@@ -617,16 +626,16 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian female doctor",
     specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
   },
-  // General Surgeon
   {
-    name: { hi: "डॉ. शंभू नाथ सिंह", en: "Dr. Shambhu Nath Singh", bho: "डॉ. शंभू नाथ सिंह" },
-    description: { hi: "एक कुशल जनरल सर्जन हैं, जो विभिन्न प्रकार की सर्जिकल प्रक्रियाओं में विशेषज्ञता रखते हैं।", en: "A skilled general surgeon specializing in various surgical procedures.", bho: "एक कुशल जनरल सर्जन हवें, जे विभिन्न प्रकार के सर्जिकल प्रक्रिया में विशेषज्ञता राखेलें।" },
-    fee: 800,
+    name: { hi: "डॉ. देवता सिंह", en: "Dr. Devta Singh", bho: "डॉ. देवता सिंह" },
+    description: { hi: "अनुभवी हड्डी रोग विशेषज्ञ जो सभी प्रकार की हड्डी और जोड़ों की समस्याओं का इलाज करते हैं।", en: "Experienced orthopedic specialist treating all types of bone and joint problems.", bho: "अनुभवी हड्डी रोग विशेषज्ञ जे सभे प्रकार के हड्डी आ जोड़ के समस्या के इलाज करेलें।" },
+    fee: 700,
     imageUrl: "👨‍⚕️",
-    location: "सिंह सर्जिकल सेंटर, मौनिया चौक, गोपालगंज",
+    location: "सिंह हड्डी क्लिनिक, अस्पताल रोड, गोपालगंज",
     aiHint: "indian male doctor",
-    specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } }
+    specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
   },
+  // General Surgeon
   {
     name: { hi: "डॉ. संदीप कुमार", en: "Dr. Sandeep Kumar", bho: "डॉ. संदीप कुमार" },
     description: { hi: "लैप्रोस्कोपिक (दूरबीन) सर्जरी में माहिर एक आधुनिक सर्जन।", en: "A modern surgeon specializing in laparoscopic (minimally invasive) surgery.", bho: "लैप्रोस्कोपिक (दूरबीन) सर्जरी में माहिर एक आधुनिक सर्जन।" },
@@ -859,7 +868,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     description: { hi: "आधुनिक ईएनटी उपचार और सर्जरी में विशेषज्ञ।", en: "Specialist in modern ENT treatments and surgeries.", bho: "आधुनिक ईएनटी उपचार अवुरी सर्जरी में विशेषज्ञ।" },
     fee: 520,
     imageUrl: "👨‍⚕️",
-    location: "श्रीवास्तव ईएनटी क्लिनिक, सिनेमा रोड, गोपालगंज",
+    location: "श्रीवास्तव ईएनटी क्लिनिक, सिनेमा रोड, Gopalganj",
     aiHint: "indian male doctor",
     specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
   },
@@ -874,7 +883,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   },
   // Ophthalmologist
   {
-    name: { hi: "डॉ. दीपक चौहान", en: "Dr. Deepak Chauhan", bho: "डॉ. दीपक चौहान" },
+    name: { hi: "डॉ. दीपक चौहान", en: "Dr. Deepak Chauhan", bho: "डॉ. Deepak Chauhan" },
     description: { hi: "एक कुशल नेत्र रोग विशेषज्ञ हैं जो आंखों की बीमारियों का इलाज करते हैं और दृष्टि देखभाल प्रदान करते हैं।", en: "A skilled ophthalmologist who treats eye diseases and provides vision care.", bho: "एक कुशल नेत्र रोग विशेषज्ञ हवें जे आँख के बेमारी के इलाज करेलें अवुरी दृष्टि देखभाल प्रदान करेलें।" },
     fee: 500,
     imageUrl: "👨‍⚕️",
