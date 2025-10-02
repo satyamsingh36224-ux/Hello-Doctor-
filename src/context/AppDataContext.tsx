@@ -24,10 +24,11 @@ interface AppDataContextType {
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
 
 export const AppDataProvider = ({ children }: { children: ReactNode }) => {
-  const { data: rawDoctorsData, loading: doctorsLoading } = useCollection<Omit<Doctor, 'imageUrl' | 'aiHint'>>('doctors');
-  const { data: rawMedicalStoresData, loading: medicalStoresLoading } = useCollection<Omit<MedicalStore, 'imageUrl' | 'aiHint'>>('medical-stores');
+  const { data: rawDoctorsData, loading: doctorsLoading } = useCollection<Omit<Doctor, 'id'|'imageUrl'|'aiHint'>>('doctors');
+  const { data: rawMedicalStoresData, loading: medicalStoresLoading } = useCollection<Omit<MedicalStore, 'id'|'imageUrl'|'aiHint'>>('medical-stores');
   
   const doctorsData = useMemo(() => {
+    if (!rawDoctorsData) return [];
     return rawDoctorsData.map((doctor, index) => {
       const placeholder = placeholderImages.doctors[index % placeholderImages.doctors.length];
       return {
@@ -39,6 +40,7 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   }, [rawDoctorsData]);
 
   const medicalStoresData = useMemo(() => {
+    if (!rawMedicalStoresData) return [];
     return rawMedicalStoresData.map((store, index) => {
       const placeholder = placeholderImages.medical_stores[index % placeholderImages.medical_stores.length];
       return {
@@ -51,11 +53,14 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
 
 
   const firebase = useFirebase();
-  const firestore = getFirestore(firebase?.app);
+  const firestore = firebase ? getFirestore(firebase.app) : undefined;
   const { toast } = useToast();
 
   const addDoctor = async (doctor: Omit<Doctor, 'id' | 'imageUrl' | 'aiHint'>) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       await addDoc(collection(firestore, 'doctors'), doctor);
       toast({ title: "डॉक्टर जोड़ा गया", description: "नया डॉक्टर सफलतापूर्वक जोड़ा गया।" });
@@ -66,7 +71,10 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateDoctor = async (doctor: Doctor) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       const { id, imageUrl, aiHint, ...data } = doctor;
       await setDoc(doc(firestore, 'doctors', id), data);
@@ -78,7 +86,10 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeDoctor = async (id: string) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       await deleteDoc(doc(firestore, 'doctors', id));
       toast({ title: "डॉक्टर हटाया गया", description: "डॉक्टर को सफलतापूर्वक हटा दिया गया है।" });
@@ -89,7 +100,10 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   };
   
   const addMedicalStore = async (store: Omit<MedicalStore, 'id' | 'imageUrl' | 'aiHint'>) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       await addDoc(collection(firestore, 'medical-stores'), store);
       toast({ title: "मेडिकल स्टोर जोड़ा गया", description: "नया मेडिकल स्टोर सफलतापूर्वक जोड़ा गया।" });
@@ -100,7 +114,10 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const updateMedicalStore = async (store: MedicalStore) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       const { id, imageUrl, aiHint, ...data } = store;
       await setDoc(doc(firestore, 'medical-stores', id), data);
@@ -112,7 +129,10 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeMedicalStore = async (id: string) => {
-    if (!firestore) return;
+    if (!firestore) {
+        toast({ title: "त्रुटि", description: "डेटाबेस कनेक्ट नहीं है।", variant: "destructive" });
+        return;
+    };
     try {
       await deleteDoc(doc(firestore, 'medical-stores', id));
       toast({ title: "मेडिकल स्टोर हटाया गया", description: "स्टोर को सफलतापूर्वक हटा दिया गया है।" });
