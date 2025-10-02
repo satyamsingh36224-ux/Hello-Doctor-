@@ -8,24 +8,24 @@ import type { Doctor } from "@/types";
 import { useEffect, useState } from "react";
 
 export default function DoctorProfilePage() {
-  const { doctorsData } = useAppData();
+  const { doctorsData, loading } = useAppData();
   const params = useParams();
   const id = params.id as string;
-  const [doctor, setDoctor] = useState<Doctor | undefined | null>(null);
+  const [doctor, setDoctor] = useState<Doctor | undefined | null>(undefined);
 
   useEffect(() => {
-    if (doctorsData.length > 0) {
+    if (!loading && doctorsData.length > 0) {
       const foundDoctor = doctorsData.find(d => d.id === id);
-      setDoctor(foundDoctor);
+      setDoctor(foundDoctor || null);
     }
-  }, [id, doctorsData]);
+  }, [id, doctorsData, loading]);
 
-  if (doctor === null) {
+  if (doctor === undefined || loading) {
       // Loading state or initial state
-      return <div>Loading...</div>;
+      return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
 
-  if (!doctor) {
+  if (doctor === null) {
     notFound();
   }
 

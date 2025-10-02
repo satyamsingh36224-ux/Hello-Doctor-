@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -27,8 +28,11 @@ export const useCollection = <T>(path: string, _query?: any[]) => {
 
   useEffect(() => {
     if (!memoizedQuery) {
+      if(firestore) setLoading(false);
       return;
     }
+    
+    setLoading(true);
 
     // Subscribe to the query
     const unsubscribe = onSnapshot(memoizedQuery, (querySnapshot) => {
@@ -45,7 +49,7 @@ export const useCollection = <T>(path: string, _query?: any[]) => {
 
     // Unsubscribe from the query on unmount
     return () => unsubscribe();
-  }, [memoizedQuery, path]);
+  }, [memoizedQuery, path, firestore]);
 
   return { data, loading };
 };
