@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "Doctor": {
+      "title": "Doctor",
+      "description": "Represents a doctor's profile.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "hi": { "type": "string" },
+            "en": { "type": "string" },
+            "bho": { "type": "string" }
+          }
+        },
+        "specialization": {
+          "type": "object",
+          "properties": {
+            "key": { "type": "string" },
+            "name": {
+              "type": "object",
+              "properties": {
+                "hi": { "type": "string" },
+                "en": { "type": "string" },
+                "bho": { "type": "string" }
+              }
+            }
+          }
+        },
+        "description": {
+          "type": "object",
+          "properties": {
+            "hi": { "type": "string" },
+            "en": { "type": "string" },
+            "bho": { "type": "string" }
+          }
+        },
+        "fee": { "type": "number" },
+        "imageUrl": { "type": "string" },
+        "location": { "type": "string" },
+        "aiHint": { "type": "string" }
+      },
+      "required": ["name", "specialization", "fee", "location"]
+    },
+    "MedicalStore": {
+      "title": "Medical Store",
+      "description": "Represents a medical store's profile.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "properties": {
+            "hi": { "type": "string" },
+            "en": { "type": "string" },
+            "bho": { "type": "string" }
+          }
+        },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "aiHint": { "type": "string" }
+      },
+      "required": ["name", "location", "phone"]
+    }
+  },
+  "auth": {
+    "providers": ["anonymous"]
+  },
+  "firestore": {
+    "/doctors": {
+      "schema": { "$ref": "#/entities/Doctor" },
+      "description": "Collection of doctors"
+    },
+    "/medical-stores": {
+      "schema": { "$ref": "#/entities/MedicalStore" },
+      "description": "Collection of medical stores"
+    }
+  }
+}
