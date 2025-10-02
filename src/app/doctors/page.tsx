@@ -5,12 +5,13 @@ import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
-import { doctorsData } from '@/lib/doctors';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAppData } from '@/context/AppDataContext';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
+  const { doctorsData } = useAppData();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;

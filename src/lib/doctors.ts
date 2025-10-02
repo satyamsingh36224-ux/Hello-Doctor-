@@ -3,12 +3,12 @@ import type { Doctor } from "@/types";
 import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, UserCog } from 'lucide-react';
 
 export const specializationMap = [
+  { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" }, icon: Stethoscope },
   { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" }, icon: Heart },
   { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" }, icon: Baby },
   { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" }, icon: User },
   { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" }, icon: Stethoscope },
   { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" }, icon: Bone },
-  { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" }, icon: Stethoscope },
   { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" }, icon: Stethoscope },
   { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" }, icon: Brain },
   { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" }, icon: Ear },
@@ -437,8 +437,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }
   },
   { 
-    name: { hi: "डॉ. आलोक कुमार", en: "Dr. Alok Kumar", bho: "डॉ. आलोक कुमार" }, 
-    description: { hi: "रीढ़ की हड्डी की सर्जरी और आर्थोस्कोपिक प्रक्रियाओं में विशेषज्ञ।", en: "Specializes in spinal surgery and arthroscopic procedures.", bho: "रीढ़ के हड्डी के सर्जरी अवुरी आर्थोस्कोपिक प्रक्रिया में विशेषज्ञ।" }, 
+    name: { hi: "डॉ. आलोक कुमार", en: "Dr. Alok Kumar", bho: "डॉ. आलोक कुमार" }, _description: { hi: "रीढ़ की हड्डी की सर्जरी और आर्थोस्कोपिक प्रक्रियाओं में विशेषज्ञ।", en: "Specializes in spinal surgery and arthroscopic procedures.", bho: "रीढ़ के हड्डी के सर्जरी अवुरी आर्थोस्कोपिक प्रक्रिया में विशेषज्ञ।" }, 
     fee: 750, 
     imageUrl: "👨‍⚕️", 
     location: "गोपालगंज ऑर्थोपेडिक हॉस्पिटल, अस्पताल रोड, गोपालगंज", 
@@ -868,8 +867,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     description: { hi: "कान, नाक और गले के रोगों के निदान और प्रबंधन में विशेषज्ञता।", en: "Specializes in the diagnosis and management of ear, nose, and throat diseases.", bho: "कान, नाक अवुरी गला के रोग के निदान अवुरी प्रबंधन में विशेषज्ञता।" }, 
     fee: 450, 
     imageUrl: "👨‍⚕️", 
-    location: "सुलेमानी ईएनटी क्लिनिक, पुरानी चौक, गोपालगंज", 
-    aiHint: "indian male doctor",
+    location: "सुलेमानी ईएनटी क्लिनिक, पुरानी चौक, गोपालगंज", _aiHint: "indian male doctor",
     specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
   },
   { 
@@ -888,7 +886,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     imageUrl: "👨‍⚕️",
     location: "गुप्ता ईएनटी केयर, अस्पताल रोड, गोपालगंज",
     aiHint: "indian male doctor",
-    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }
+    specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गla के डॉक्टर" } }
   },
   {
     name: { hi: "डॉ. अर्पित श्रीवास्तव", en: "Dr. Arpit Srivastava", bho: "डॉ. अर्पित श्रीवास्तव" },
@@ -1027,8 +1025,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
     aiHint: "indian male doctor",
     specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } }
   },
-  { 
-    name: { hi: "डॉ. समिधा पांडे", en: "Dr. Samidha Pandey", bho: "डॉ. समिधा पांडे" }, 
+  { _name: { hi: "डॉ. समिधा पांडे", en: "Dr. Samidha Pandey", bho: "डॉ. समिधा पांडे" }, 
     description: { hi: "एक देखभाल करने वाली मनोचिकित्सक जो महिलाओं के मानसिक स्वास्थ्य पर ध्यान केंद्रित करती हैं।", en: "A caring psychiatrist focusing on women's mental health.", bho: "एक देखभाल करे वाली मनोचिकित्सक जे महिला के मानसिक स्वास्थ्य पर ध्यान केंद्रित करेली।" }, 
     fee: 700, 
     imageUrl: "👩‍⚕️", 
@@ -1065,8 +1062,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   },
   { 
     name: { hi: "डॉ. जूली सेंगर", en: "Dr. Juli Sengar", bho: "डॉ. जूली सेंगर" }, 
-    description: { hi: "युवा वयस्कों और छात्रों के लिए मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।", en: "Specializes in mental healthcare for young adults and students.", bho: "युवा वयस्क अवुरी छात्र खातिर मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।" }, 
-    fee: 720, 
+    description: { hi: "युवा वयस्कों और छात्रों के लिए मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।", en: "Specializes in mental healthcare for young adults and students.", bho: "युवा वयस्क अवुरी छात्र खातिर मानसिक स्वास्थ्य देखभाल में विशेषज्ञता।" }, _fee: 720, 
     imageUrl: "👩‍⚕️", 
     location: "सेंगर माइंडफुलनेस सेंटर, कचहरी रोड, गोपालगंज", 
     aiHint: "indian female doctor",
@@ -1074,25 +1070,7 @@ const doctorsList: Omit<Doctor, 'id'>[] = [
   }
 ];
 
-export const doctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
+export const initialDoctorsData: Doctor[] = doctorsList.map((doctor, index) => ({
     ...doctor,
-    id: `${index + 1}`,
+    id: `${doctor.specialization.key.toLowerCase()}-${index + 1}`,
 }));
-
-
-
-
-
-
-    
-
-  
-
-    
-
-
-    
-
-    
-
-    

@@ -56,7 +56,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
     location: "पुरानी चौक, पोस्ट ऑफिस के बगल में, गोपालगंज",
     phone: "9570123456",
     imageUrl: "🏪",
-    aiHint: "pharmacy storefront"
+aiHint: "pharmacy storefront"
   },
   {
     name: { hi: "बिहार मेडिकल हॉल", en: "Bihar Medical Hall", bho: "बिहार मेडिकल हॉल" },
@@ -88,7 +88,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
   }
 ];
 
-export const medicalStoresData: MedicalStore[] = medicalStoresList.map((store, index) => ({
+export const initialMedicalStoresData: MedicalStore[] = medicalStoresList.map((store, index) => ({
     ...store,
     id: `ms-${index + 1}`,
 }));

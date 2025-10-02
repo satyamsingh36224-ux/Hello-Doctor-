@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from 'react';
-import { medicalStoresData as initialMedicalStoresData } from '@/lib/medical-stores';
 import type { MedicalStore } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -13,9 +12,10 @@ import { Trash2, PlusCircle, Edit } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
 import { Label } from './ui/label';
+import { useAppData } from '@/context/AppDataContext';
 
 export function MedicalStoreAdmin() {
-    const [stores, setStores] = useState<MedicalStore[]>(initialMedicalStoresData);
+    const { medicalStoresData, setMedicalStoresData } = useAppData();
     const [newStoreName, setNewStoreName] = useState('');
     const [newStoreLocation, setNewStoreLocation] = useState('');
     const [newStorePhone, setNewStorePhone] = useState('');
@@ -47,7 +47,7 @@ export function MedicalStoreAdmin() {
             aiHint: "pharmacy storefront",
         };
 
-        setStores(prevStores => [newStore, ...prevStores]);
+        setMedicalStoresData(prevStores => [newStore, ...prevStores]);
         
         setNewStoreName('');
         setNewStoreLocation('');
@@ -60,7 +60,7 @@ export function MedicalStoreAdmin() {
     };
 
     const handleRemoveStore = (id: string) => {
-        setStores(prevStores => prevStores.filter(store => store.id !== id));
+        setMedicalStoresData(prevStores => prevStores.filter(store => store.id !== id));
         toast({
             title: "मेडिकल स्टोर हटाया गया",
             description: "स्टोर को सूची से सफलतापूर्वक हटा दिया गया है।",
@@ -77,7 +77,7 @@ export function MedicalStoreAdmin() {
         e.preventDefault();
         if (!editingStore) return;
 
-        setStores(stores.map(store => store.id === editingStore.id ? editingStore : store));
+        setMedicalStoresData(medicalStoresData.map(store => store.id === editingStore.id ? editingStore : store));
         
         toast({
             title: "जानकारी अपडेट हुई",
@@ -111,7 +111,7 @@ export function MedicalStoreAdmin() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {stores.map(store => (
+                                {medicalStoresData.map(store => (
                                     <TableRow key={store.id}>
                                         <TableCell className="font-medium">{store.name[language]}</TableCell>
                                         <TableCell className="max-w-xs truncate">{store.location}</TableCell>

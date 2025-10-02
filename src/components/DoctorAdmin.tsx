@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from 'react';
-import { doctorsData as initialDoctorsData, specializationMap } from '@/lib/doctors';
+import { specializationMap } from '@/lib/doctors';
 import type { Doctor } from '@/types';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -14,9 +14,10 @@ import { Trash2, PlusCircle, Edit } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
 import { Label } from './ui/label';
+import { useAppData } from '@/context/AppDataContext';
 
 export function DoctorAdmin() {
-    const [doctors, setDoctors] = useState<Doctor[]>(initialDoctorsData);
+    const { doctorsData, setDoctorsData } = useAppData();
     const [newDoctorName, setNewDoctorName] = useState('');
     const [newDoctorSpec, setNewDoctorSpec] = useState('');
     const [newDoctorFee, setNewDoctorFee] = useState('');
@@ -55,7 +56,7 @@ export function DoctorAdmin() {
             aiHint: "indian male doctor",
         };
 
-        setDoctors(prevDoctors => [newDoctor, ...prevDoctors]);
+        setDoctorsData(prevDoctors => [newDoctor, ...prevDoctors]);
         
         setNewDoctorName('');
         setNewDoctorSpec('');
@@ -69,7 +70,7 @@ export function DoctorAdmin() {
     };
 
     const handleRemoveDoctor = (id: string) => {
-        setDoctors(prevDoctors => prevDoctors.filter(doc => doc.id !== id));
+        setDoctorsData(prevDoctors => prevDoctors.filter(doc => doc.id !== id));
         toast({
             title: "डॉक्टर हटाया गया",
             description: "डॉक्टर को सूची से सफलतापूर्वक हटा दिया गया है।",
@@ -93,7 +94,7 @@ export function DoctorAdmin() {
             updatedDoctor.specialization.name = selectedSpec.name;
         }
 
-        setDoctors(doctors.map(doc => doc.id === updatedDoctor.id ? updatedDoctor : doc));
+        setDoctorsData(doctorsData.map(doc => doc.id === updatedDoctor.id ? updatedDoctor : doc));
         
         toast({
             title: "जानकारी अपडेट हुई",
@@ -128,7 +129,7 @@ export function DoctorAdmin() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {doctors.map(doctor => (
+                                {doctorsData.map(doctor => (
                                     <TableRow key={doctor.id}>
                                         <TableCell className="font-medium">{doctor.name[language]}</TableCell>
                                         <TableCell>{doctor.specialization.name[language]}</TableCell>

@@ -1,21 +1,29 @@
 
-import { doctorsData } from "@/lib/doctors";
-import { notFound } from "next/navigation";
+"use client";
+
+import { useAppData } from "@/context/AppDataContext";
+import { notFound, useParams } from "next/navigation";
 import { DoctorProfileClient } from "@/components/DoctorProfileClient";
 import type { Doctor } from "@/types";
+import { useEffect, useState } from "react";
 
-export function generateStaticParams() {
-  return doctorsData.map((doctor) => ({
-    id: doctor.id,
-  }));
-}
+export default function DoctorProfilePage() {
+  const { doctorsData } = useAppData();
+  const params = useParams();
+  const id = params.id as string;
+  const [doctor, setDoctor] = useState<Doctor | undefined | null>(null);
 
-function getDoctorById(id: string): Doctor | undefined {
-    return doctorsData.find(d => d.id === id);
-}
+  useEffect(() => {
+    if (doctorsData.length > 0) {
+      const foundDoctor = doctorsData.find(d => d.id === id);
+      setDoctor(foundDoctor);
+    }
+  }, [id, doctorsData]);
 
-export default function DoctorProfilePage({ params }: { params: { id: string } }) {
-  const doctor = getDoctorById(params.id);
+  if (doctor === null) {
+      // Loading state or initial state
+      return <div>Loading...</div>;
+  }
 
   if (!doctor) {
     notFound();

@@ -2,14 +2,15 @@
 "use client";
 
 import { Header } from "@/components/Header";
-import { medicalStoresData } from "@/lib/medical-stores";
 import { MedicalStoreCard } from "@/components/MedicalStoreCard";
 import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Store } from "lucide-react";
+import { useAppData } from "@/context/AppDataContext";
 
 export default function MedicalStoresPage() {
     const { translations } = useLanguage();
+    const { medicalStoresData } = useAppData();
     const t = translations.medicalStoresPage;
 
     return (
