@@ -36,7 +36,7 @@ export function DoctorAdmin() {
             return;
         }
 
-        const newDoctor: Omit<Doctor, 'id'> = {
+        const newDoctor: Omit<Doctor, 'id' | 'imageUrl' | 'aiHint'> = {
             name: { hi: newDoctorName, en: newDoctorName, bho: newDoctorName },
             specialization: {
                 key: selectedSpec.key,
@@ -44,9 +44,7 @@ export function DoctorAdmin() {
             },
             description: { hi: "नया डॉक्टर विवरण यहाँ आएगा।", en: "New doctor description goes here.", bho: "नया डॉक्टर विवरण इहाँ आई।" },
             fee: parseInt(newDoctorFee, 10),
-            imageUrl: "👨‍⚕️",
             location: newDoctorLocation,
-            aiHint: "indian male doctor",
         };
 
         addDoctor(newDoctor);

@@ -7,6 +7,7 @@ import { useCollection } from '@/firebase';
 import { collection, doc, addDoc, setDoc, deleteDoc, getFirestore } from 'firebase/firestore';
 import { useFirebase } from '@/firebase/provider';
 import { useToast } from '@/hooks/use-toast';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 interface AppDataContextType {
   doctorsData: Doctor[];
@@ -23,13 +24,37 @@ interface AppDataContextType {
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
 
 export const AppDataProvider = ({ children }: { children: ReactNode }) => {
-  const { data: doctorsData, loading: doctorsLoading } = useCollection<Doctor>('doctors');
-  const { data: medicalStoresData, loading: medicalStoresLoading } = useCollection<MedicalStore>('medical-stores');
+  const { data: rawDoctorsData, loading: doctorsLoading } = useCollection<Omit<Doctor, 'imageUrl' | 'aiHint'>>('doctors');
+  const { data: rawMedicalStoresData, loading: medicalStoresLoading } = useCollection<Omit<MedicalStore, 'imageUrl' | 'aiHint'>>('medical-stores');
+  
+  const doctorsData = useMemo(() => {
+    return rawDoctorsData.map((doctor, index) => {
+      const placeholder = placeholderImages.doctors[index % placeholderImages.doctors.length];
+      return {
+        ...doctor,
+        imageUrl: placeholder.imageUrl,
+        aiHint: placeholder.aiHint,
+      };
+    });
+  }, [rawDoctorsData]);
+
+  const medicalStoresData = useMemo(() => {
+    return rawMedicalStoresData.map((store, index) => {
+      const placeholder = placeholderImages.medical_stores[index % placeholderImages.medical_stores.length];
+      return {
+        ...store,
+        imageUrl: placeholder.imageUrl,
+        aiHint: placeholder.aiHint,
+      };
+    });
+  }, [rawMedicalStoresData]);
+
+
   const firebase = useFirebase();
   const firestore = getFirestore(firebase?.app);
   const { toast } = useToast();
 
-  const addDoctor = async (doctor: Omit<Doctor, 'id'>) => {
+  const addDoctor = async (doctor: Omit<Doctor, 'id' | 'imageUrl' | 'aiHint'>) => {
     if (!firestore) return;
     try {
       await addDoc(collection(firestore, 'doctors'), doctor);
@@ -43,7 +68,7 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   const updateDoctor = async (doctor: Doctor) => {
     if (!firestore) return;
     try {
-      const { id, ...data } = doctor;
+      const { id, imageUrl, aiHint, ...data } = doctor;
       await setDoc(doc(firestore, 'doctors', id), data);
       toast({ title: "डॉक्टर अपडेट किया गया", description: "डॉक्टर की जानकारी सफलतापूर्वक अपडेट की गई।" });
     } catch (e) {
@@ -63,7 +88,7 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   
-  const addMedicalStore = async (store: Omit<MedicalStore, 'id'>) => {
+  const addMedicalStore = async (store: Omit<MedicalStore, 'id' | 'imageUrl' | 'aiHint'>) => {
     if (!firestore) return;
     try {
       await addDoc(collection(firestore, 'medical-stores'), store);
@@ -77,7 +102,7 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
   const updateMedicalStore = async (store: MedicalStore) => {
     if (!firestore) return;
     try {
-      const { id, ...data } = store;
+      const { id, imageUrl, aiHint, ...data } = store;
       await setDoc(doc(firestore, 'medical-stores', id), data);
       toast({ title: "मेडिकल स्टोर अपडेट किया गया", description: "स्टोर की जानकारी सफलतापूर्वक अपडेट की गई।" });
     } catch (e) {

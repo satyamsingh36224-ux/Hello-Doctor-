@@ -31,12 +31,10 @@ export function MedicalStoreAdmin() {
             return;
         }
 
-        const newStore: Omit<MedicalStore, 'id'> = {
+        const newStore: Omit<MedicalStore, 'id' | 'imageUrl' | 'aiHint'> = {
             name: { hi: newStoreName, en: newStoreName, bho: newStoreName },
             location: newStoreLocation,
             phone: newStorePhone,
-            imageUrl: "🏪",
-            aiHint: "pharmacy storefront",
         };
 
         addMedicalStore(newStore);

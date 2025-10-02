@@ -1,0 +1,82 @@
+{
+  "doctors": [
+    {
+      "imageUrl": "https://picsum.photos/seed/doc1/400/400",
+      "aiHint": "indian male doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc2/400/400",
+      "aiHint": "indian female doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc3/400/400",
+      "aiHint": "male doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc4/400/400",
+      "aiHint": "female doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc5/400/400",
+      "aiHint": "indian doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc6/400/400",
+      "aiHint": "doctor smiling"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc7/400/400",
+      "aiHint": "doctor portrait"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc8/400/400",
+      "aiHint": "woman doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc9/400/400",
+      "aiHint": "man doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc10/400/400",
+      "aiHint": "professional doctor"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc11/400/400",
+      "aiHint": "doctor face"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc12/400/400",
+      "aiHint": "doctor uniform"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/doc13/400/400",
+      "aiHint": "doctor stethoscope"
+    }
+  ],
+  "medical_stores": [
+    {
+      "imageUrl": "https://picsum.photos/seed/store1/600/400",
+      "aiHint": "pharmacy storefront"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/store2/600/400",
+      "aiHint": "pharmacy shop"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/store3/600/400",
+      "aiHint": "medical store"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/store4/600/400",
+      "aiHint": "drugstore outside"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/store5/600/400",
+      "aiHint": "indian pharmacy"
+    },
+    {
+      "imageUrl": "https://picsum.photos/seed/store6/600/400",
+      "aiHint": "pharmacy building"
+    }
+  ]
+}
