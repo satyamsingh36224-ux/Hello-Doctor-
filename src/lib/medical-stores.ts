@@ -12,7 +12,7 @@ const medicalStoresList: Omit<MedicalStore, 'id'>[] = [
   {
     name: { hi: "महावीर मेडिकल हॉल", en: "Mahavir Medical Hall", bho: "महावीर मेडिकल हॉल" },
     location: "पुरानी चौक, मेन मार्केट, गोपालगंज",
-    phone: "9934567890",
+    phone: "893591034",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
   },
@@ -68,14 +68,14 @@ aiHint: "pharmacy storefront"
   {
     name: { hi: "सिंह मेडिकल स्टोर", en: "Singh Medical Store", bho: "सिंह मेडिकल स्टोर" },
     location: "कैलाश होटल के पास, स्टेशन रोड, गोपालगंज",
-    phone: "9472123456",
+    phone: "77070680390",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
   },
   {
     name: { hi: "सैलेंड्रो मेडिको", en: "Salendro Medico", bho: "सैलेंड्रो मेडिको" },
     location: "लखपतिया मोड़, गोपालगंज",
-    phone: "9835123456",
+    phone: "9939540981",
     imageUrl: "🏪",
     aiHint: "pharmacy storefront"
   },
