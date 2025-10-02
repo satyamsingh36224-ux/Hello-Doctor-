@@ -10,12 +10,11 @@ import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Trash2, PlusCircle, Edit } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { useToast } from '@/hooks/use-toast';
 import { Label } from './ui/label';
 import { useAppData } from '@/context/AppDataContext';
 
 export function MedicalStoreAdmin() {
-    const { medicalStoresData, setMedicalStoresData } = useAppData();
+    const { medicalStoresData, addMedicalStore, updateMedicalStore, removeMedicalStore } = useAppData();
     const [newStoreName, setNewStoreName] = useState('');
     const [newStoreLocation, setNewStoreLocation] = useState('');
     const [newStorePhone, setNewStorePhone] = useState('');
@@ -24,22 +23,15 @@ export function MedicalStoreAdmin() {
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
     const { language } = useLanguage();
-    const { toast } = useToast();
 
     const handleAddStore = (e: React.FormEvent) => {
         e.preventDefault();
         
         if (!newStoreName || !newStoreLocation || !newStorePhone) {
-            toast({
-                title: "अधूरी जानकारी",
-                description: "कृपया सभी फ़ील्ड भरें।",
-                variant: "destructive"
-            });
             return;
         }
 
-        const newStore: MedicalStore = {
-            id: `ms-${Date.now()}`,
+        const newStore: Omit<MedicalStore, 'id'> = {
             name: { hi: newStoreName, en: newStoreName, bho: newStoreName },
             location: newStoreLocation,
             phone: newStorePhone,
@@ -47,25 +39,11 @@ export function MedicalStoreAdmin() {
             aiHint: "pharmacy storefront",
         };
 
-        setMedicalStoresData(prevStores => [newStore, ...prevStores]);
+        addMedicalStore(newStore);
         
         setNewStoreName('');
         setNewStoreLocation('');
         setNewStorePhone('');
-
-        toast({
-            title: "मेडिकल स्टोर जोड़ा गया",
-            description: `${newStoreName} को सूची में जोड़ दिया गया है।`,
-        });
-    };
-
-    const handleRemoveStore = (id: string) => {
-        setMedicalStoresData(prevStores => prevStores.filter(store => store.id !== id));
-        toast({
-            title: "मेडिकल स्टोर हटाया गया",
-            description: "स्टोर को सूची से सफलतापूर्वक हटा दिया गया है।",
-            variant: "destructive"
-        });
     };
     
     const handleEditStore = (store: MedicalStore) => {
@@ -77,13 +55,8 @@ export function MedicalStoreAdmin() {
         e.preventDefault();
         if (!editingStore) return;
 
-        setMedicalStoresData(medicalStoresData.map(store => store.id === editingStore.id ? editingStore : store));
+        updateMedicalStore(editingStore);
         
-        toast({
-            title: "जानकारी अपडेट हुई",
-            description: `${editingStore.name[language]} की जानकारी सफलतापूर्वक अपडेट हो गई है।`,
-        });
-
         setIsEditDialogOpen(false);
         setEditingStore(null);
     };
@@ -129,7 +102,7 @@ export function MedicalStoreAdmin() {
                                                 variant="ghost"
                                                 size="icon"
                                                 className="text-red-500 hover:text-red-700"
-                                                onClick={() => handleRemoveStore(store.id)}
+                                                onClick={() => removeMedicalStore(store.id)}
                                             >
                                                 <Trash2 className="h-5 w-5" />
                                             </Button>
@@ -157,12 +130,14 @@ export function MedicalStoreAdmin() {
                                 value={newStoreName}
                                 onChange={e => setNewStoreName(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
                             <Input 
                                 placeholder="स्टोर का पता"
                                 value={newStoreLocation}
                                 onChange={e => setNewStoreLocation(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
                             <Input 
                                 type="tel"
@@ -170,6 +145,7 @@ export function MedicalStoreAdmin() {
                                 value={newStorePhone}
                                 onChange={e => setNewStorePhone(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
                         </div>
                         <Button type="submit" className="w-full md:w-auto rounded-full py-6 text-lg font-bold">

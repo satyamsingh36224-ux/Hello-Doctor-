@@ -1,29 +1,115 @@
 
 "use client";
 
-import React, { createContext, useState, useContext, ReactNode, Dispatch, SetStateAction } from 'react';
+import React, { createContext, useContext, ReactNode, useMemo } from 'react';
 import type { Doctor, MedicalStore } from '@/types';
-import { initialDoctorsData } from '@/lib/doctors';
-import { initialMedicalStoresData } from '@/lib/medical-stores';
+import { useCollection } from '@/firebase';
+import { collection, doc, addDoc, setDoc, deleteDoc, getFirestore } from 'firebase/firestore';
+import { useFirebase } from '@/firebase/provider';
+import { useToast } from '@/hooks/use-toast';
 
 interface AppDataContextType {
   doctorsData: Doctor[];
-  setDoctorsData: Dispatch<SetStateAction<Doctor[]>>;
+  addDoctor: (doctor: Omit<Doctor, 'id'>) => Promise<void>;
+  updateDoctor: (doctor: Doctor) => Promise<void>;
+  removeDoctor: (id: string) => Promise<void>;
   medicalStoresData: MedicalStore[];
-  setMedicalStoresData: Dispatch<SetStateAction<MedicalStore[]>>;
+  addMedicalStore: (store: Omit<MedicalStore, 'id'>) => Promise<void>;
+  updateMedicalStore: (store: MedicalStore) => Promise<void>;
+  removeMedicalStore: (id: string) => Promise<void>;
+  loading: boolean;
 }
 
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
 
 export const AppDataProvider = ({ children }: { children: ReactNode }) => {
-  const [doctors, setDoctors] = useState<Doctor[]>(initialDoctorsData);
-  const [medicalStores, setMedicalStores] = useState<MedicalStore[]>(initialMedicalStoresData);
+  const { data: doctorsData, loading: doctorsLoading } = useCollection<Doctor>('doctors');
+  const { data: medicalStoresData, loading: medicalStoresLoading } = useCollection<MedicalStore>('medical-stores');
+  const firebase = useFirebase();
+  const firestore = getFirestore(firebase?.app);
+  const { toast } = useToast();
+
+  const addDoctor = async (doctor: Omit<Doctor, 'id'>) => {
+    if (!firestore) return;
+    try {
+      await addDoc(collection(firestore, 'doctors'), doctor);
+      toast({ title: "डॉक्टर जोड़ा गया", description: "नया डॉक्टर सफलतापूर्वक जोड़ा गया।" });
+    } catch (e) {
+      console.error("Error adding doctor: ", e);
+      toast({ title: "त्रुटि", description: "डॉक्टर को जोड़ने में विफल।", variant: "destructive" });
+    }
+  };
+
+  const updateDoctor = async (doctor: Doctor) => {
+    if (!firestore) return;
+    try {
+      const { id, ...data } = doctor;
+      await setDoc(doc(firestore, 'doctors', id), data);
+      toast({ title: "डॉक्टर अपडेट किया गया", description: "डॉक्टर की जानकारी सफलतापूर्वक अपडेट की गई।" });
+    } catch (e) {
+      console.error("Error updating doctor: ", e);
+      toast({ title: "त्रुटि", description: "डॉक्टर को अपडेट करने में विफल।", variant: "destructive" });
+    }
+  };
+
+  const removeDoctor = async (id: string) => {
+    if (!firestore) return;
+    try {
+      await deleteDoc(doc(firestore, 'doctors', id));
+      toast({ title: "डॉक्टर हटाया गया", description: "डॉक्टर को सफलतापूर्वक हटा दिया गया है।" });
+    } catch (e) {
+      console.error("Error removing doctor: ", e);
+      toast({ title: "त्रुटि", description: "डॉक्टर को हटाने में विफल।", variant: "destructive" });
+    }
+  };
+  
+  const addMedicalStore = async (store: Omit<MedicalStore, 'id'>) => {
+    if (!firestore) return;
+    try {
+      await addDoc(collection(firestore, 'medical-stores'), store);
+      toast({ title: "मेडिकल स्टोर जोड़ा गया", description: "नया मेडिकल स्टोर सफलतापूर्वक जोड़ा गया।" });
+    } catch (e) {
+      console.error("Error adding medical store: ", e);
+      toast({ title: "त्रुटि", description: "मेडिकल स्टोर को जोड़ने में विफल।", variant: "destructive" });
+    }
+  };
+
+  const updateMedicalStore = async (store: MedicalStore) => {
+    if (!firestore) return;
+    try {
+      const { id, ...data } = store;
+      await setDoc(doc(firestore, 'medical-stores', id), data);
+      toast({ title: "मेडिकल स्टोर अपडेट किया गया", description: "स्टोर की जानकारी सफलतापूर्वक अपडेट की गई।" });
+    } catch (e) {
+      console.error("Error updating medical store: ", e);
+      toast({ title: "त्रुटि", description: "मेडिकल स्टोर को अपडेट करने में विफल।", variant: "destructive" });
+    }
+  };
+
+  const removeMedicalStore = async (id: string) => {
+    if (!firestore) return;
+    try {
+      await deleteDoc(doc(firestore, 'medical-stores', id));
+      toast({ title: "मेडिकल स्टोर हटाया गया", description: "स्टोर को सफलतापूर्वक हटा दिया गया है।" });
+    } catch (e) {
+      console.error("Error removing medical store: ", e);
+      toast({ title: "त्रुटि", description: "मेडिकल स्टोर को हटाने में विफल।", variant: "destructive" });
+    }
+  };
+
+
+  const loading = useMemo(() => doctorsLoading || medicalStoresLoading, [doctorsLoading, medicalStoresLoading]);
 
   const value = {
-    doctorsData: doctors,
-    setDoctorsData: setDoctors,
-    medicalStoresData: medicalStores,
-    setMedicalStoresData: setMedicalStores,
+    doctorsData,
+    addDoctor,
+    updateDoctor,
+    removeDoctor,
+    medicalStoresData,
+    addMedicalStore,
+    updateMedicalStore,
+    removeMedicalStore,
+    loading,
   };
 
   return (

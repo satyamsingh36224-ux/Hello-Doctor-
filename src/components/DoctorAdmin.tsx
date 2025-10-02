@@ -12,12 +12,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Trash2, PlusCircle, Edit } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { useToast } from '@/hooks/use-toast';
 import { Label } from './ui/label';
 import { useAppData } from '@/context/AppDataContext';
 
 export function DoctorAdmin() {
-    const { doctorsData, setDoctorsData } = useAppData();
+    const { doctorsData, addDoctor, updateDoctor, removeDoctor } = useAppData();
     const [newDoctorName, setNewDoctorName] = useState('');
     const [newDoctorSpec, setNewDoctorSpec] = useState('');
     const [newDoctorFee, setNewDoctorFee] = useState('');
@@ -27,23 +26,17 @@ export function DoctorAdmin() {
     const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
 
     const { language } = useLanguage();
-    const { toast } = useToast();
 
     const handleAddDoctor = (e: React.FormEvent) => {
         e.preventDefault();
         const selectedSpec = specializationMap.find(s => s.key === newDoctorSpec);
 
         if (!newDoctorName || !selectedSpec || !newDoctorFee || !newDoctorLocation) {
-            toast({
-                title: "अधूरी जानकारी",
-                description: "कृपया सभी फ़ील्ड भरें।",
-                variant: "destructive"
-            });
+            // Toast will be handled by context
             return;
         }
 
-        const newDoctor: Doctor = {
-            id: `doc-${Date.now()}`,
+        const newDoctor: Omit<Doctor, 'id'> = {
             name: { hi: newDoctorName, en: newDoctorName, bho: newDoctorName },
             specialization: {
                 key: selectedSpec.key,
@@ -56,28 +49,14 @@ export function DoctorAdmin() {
             aiHint: "indian male doctor",
         };
 
-        setDoctorsData(prevDoctors => [newDoctor, ...prevDoctors]);
+        addDoctor(newDoctor);
         
         setNewDoctorName('');
         setNewDoctorSpec('');
         setNewDoctorFee('');
         setNewDoctorLocation('');
-
-        toast({
-            title: "डॉक्टर जोड़ा गया",
-            description: `${newDoctorName} को सूची में जोड़ दिया गया है।`,
-        });
     };
 
-    const handleRemoveDoctor = (id: string) => {
-        setDoctorsData(prevDoctors => prevDoctors.filter(doc => doc.id !== id));
-        toast({
-            title: "डॉक्टर हटाया गया",
-            description: "डॉक्टर को सूची से सफलतापूर्वक हटा दिया गया है।",
-            variant: "destructive"
-        });
-    };
-    
     const handleEditDoctor = (doctor: Doctor) => {
         setEditingDoctor(doctor);
         setIsEditDialogOpen(true);
@@ -87,20 +66,15 @@ export function DoctorAdmin() {
         e.preventDefault();
         if (!editingDoctor) return;
 
-        const updatedDoctor = { ...editingDoctor };
-        const selectedSpec = specializationMap.find(s => s.key === updatedDoctor.specialization.key);
+        const selectedSpec = specializationMap.find(s => s.key === editingDoctor.specialization.key);
 
-        if (selectedSpec) {
-            updatedDoctor.specialization.name = selectedSpec.name;
-        }
+        const updatedDoctor = { ...editingDoctor, specialization: {
+            ...editingDoctor.specialization,
+            name: selectedSpec?.name ?? editingDoctor.specialization.name
+        } };
 
-        setDoctorsData(doctorsData.map(doc => doc.id === updatedDoctor.id ? updatedDoctor : doc));
+        updateDoctor(updatedDoctor);
         
-        toast({
-            title: "जानकारी अपडेट हुई",
-            description: `${updatedDoctor.name[language]} की जानकारी सफलतापूर्वक अपडेट हो गई है।`,
-        });
-
         setIsEditDialogOpen(false);
         setEditingDoctor(null);
     };
@@ -148,7 +122,7 @@ export function DoctorAdmin() {
                                                 variant="ghost"
                                                 size="icon"
                                                 className="text-red-500 hover:text-red-700"
-                                                onClick={() => handleRemoveDoctor(doctor.id)}
+                                                onClick={() => removeDoctor(doctor.id)}
                                             >
                                                 <Trash2 className="h-5 w-5" />
                                             </Button>
@@ -176,8 +150,9 @@ export function DoctorAdmin() {
                                 value={newDoctorName}
                                 onChange={e => setNewDoctorName(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
-                            <Select value={newDoctorSpec} onValueChange={setNewDoctorSpec}>
+                            <Select value={newDoctorSpec} onValueChange={setNewDoctorSpec} required>
                                 <SelectTrigger className="py-6 rounded-full">
                                     <SelectValue placeholder="विशेषज्ञता चुनें" />
                                 </SelectTrigger>
@@ -195,12 +170,14 @@ export function DoctorAdmin() {
                                 value={newDoctorFee}
                                 onChange={e => setNewDoctorFee(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
                             <Input 
                                 placeholder="क्लिनिक का पता"
                                 value={newDoctorLocation}
                                 onChange={e => setNewDoctorLocation(e.target.value)}
                                 className="py-6 rounded-full"
+                                required
                             />
                         </div>
                         <Button type="submit" className="w-full md:w-auto rounded-full py-6 text-lg font-bold">
