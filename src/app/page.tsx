@@ -24,15 +24,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogTrigger,
-  DialogFooter,
-} from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 
 
@@ -41,29 +32,6 @@ export default function LoginPage() {
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
-
-  const [password, setPassword] = useState('');
-  const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
-
-  const handleAdminLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === '9007355062') {
-        toast({
-            title: "लॉगिन सफल",
-            description: "एडमिन डैशबोर्ड में आपका स्वागत है।",
-        });
-        router.push('/admin');
-        setIsAdminDialogOpen(false);
-    } else {
-        toast({
-            title: "गलत पासवर्ड",
-            description: "कृपया सही पासवर्ड डालें।",
-            variant: "destructive",
-        });
-    }
-    setPassword('');
-  };
-
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
@@ -87,9 +55,7 @@ export default function LoginPage() {
         </Select>
       </div>
 
-       <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
-            <DialogTrigger asChild>
                 <CardHeader className="text-center flex flex-col items-center gap-2 pt-8 cursor-pointer">
                     <Logo />
                     <CardTitle className="text-3xl font-bold tracking-tight">
@@ -99,7 +65,6 @@ export default function LoginPage() {
                         आपके स्वास्थ्य का भरोसेमंद साथी
                     </CardDescription>
                 </CardHeader>
-            </DialogTrigger>
           <CardContent className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
                <Button
@@ -162,34 +127,6 @@ export default function LoginPage() {
             </p>
           </CardContent>
         </Card>
-      
-        <DialogContent>
-            <DialogHeader>
-                <DialogTitle>एडमिन पैनल</DialogTitle>
-                <DialogDescription>
-                    जारी रखने के लिए कृपया एडमिन पासवर्ड डालें।
-                </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleAdminLogin} className="space-y-4 pt-4">
-                <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                    <Input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="पासवर्ड"
-                        className="pl-10 rounded-full py-6"
-                        required
-                    />
-                </div>
-                <DialogFooter>
-                    <Button type="submit" className="w-full rounded-full">
-                        लॉगिन करें
-                    </Button>
-                </DialogFooter>
-            </form>
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

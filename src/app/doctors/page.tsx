@@ -7,11 +7,11 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
-import { useAppData } from '@/context/AppDataContext';
+import { doctors } from '@/lib/doctors';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
-  const { doctorsData } = useAppData();
+  const doctorsData = doctors;
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;

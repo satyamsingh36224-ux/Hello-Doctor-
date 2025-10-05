@@ -7,8 +7,6 @@ import { Home, LifeBuoy, BriefcaseMedical, History, Store, Shield } from 'lucide
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Logo } from '@/components/Logo';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
-import { AppDataProvider } from '@/context/AppDataContext';
 import { AuthProvider } from '@/context/AuthContext';
 
 export const metadata: Metadata = {
@@ -41,9 +39,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <LanguageProvider>
-          <FirebaseClientProvider>
             <AuthProvider>
-              <AppDataProvider>
                 <SidebarProvider>
                     <Sidebar>
                         <SidebarHeader className="p-4 flex items-center gap-2">
@@ -88,9 +84,7 @@ export default function RootLayout({
                     </SidebarInset>
                 </SidebarProvider>
                 <Toaster />
-              </AppDataProvider>
             </AuthProvider>
-          </FirebaseClientProvider>
         </LanguageProvider>
       </body>
     </html>

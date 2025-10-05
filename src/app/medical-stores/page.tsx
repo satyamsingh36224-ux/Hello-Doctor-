@@ -6,11 +6,11 @@ import { MedicalStoreCard } from "@/components/MedicalStoreCard";
 import { useLanguage } from "@/context/LanguageContext";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Store } from "lucide-react";
-import { useAppData } from "@/context/AppDataContext";
+import { medicalStores } from "@/lib/medical-stores";
 
 export default function MedicalStoresPage() {
     const { translations } = useLanguage();
-    const { medicalStoresData } = useAppData();
+    const medicalStoresData = medicalStores;
     const t = translations.medicalStoresPage;
 
     return (
