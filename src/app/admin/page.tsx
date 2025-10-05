@@ -121,12 +121,15 @@ function AdminDashboard() {
           setNewDoctor(initialNewDoctorState);
       })
       .catch((error) => {
-          console.error("Error adding doctor: ", error);
-          toast({
-              title: "Error",
-              description: "Failed to add doctor. Please try again.",
-              variant: "destructive",
-          });
+          // The permission error will be caught by the global error handler
+          // so we don't need to show a toast here for that specific case.
+          if (!error.message.includes('permission-error')) {
+            toast({
+                title: "Error",
+                description: "Failed to add doctor. Please try again.",
+                variant: "destructive",
+            });
+          }
       })
       .finally(() => {
           setIsAdding(false);
