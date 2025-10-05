@@ -87,7 +87,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "आस-पास के अस्पताल",
-        hospitalsDesc: "यहाँ गोपालगंज के कुछ जाने-माने अस्पतालों की सूची दी गई है।",
+        hospitalsDesc: "यहाँ सीवान के कुछ जाने-माने अस्पतालों की सूची दी गई है।",
     },
     homeVisitPage: {
         title: "डॉक्टर को घर पर बुलाएँ",
@@ -141,7 +141,7 @@ const translations = {
     },
     medicalStoresPage: {
         title: "आस-पास के मेडिकल स्टोर्स",
-        description: "यहाँ गोपालगंज के कुछ प्रमुख मेडिकल स्टोर्स की सूची दी गई है।",
+        description: "यहाँ सीवान के कुछ प्रमुख मेडिकल स्टोर्स की सूची दी गई है।",
         callNow: "अभी कॉल करें",
         getDirections: "दिशा-निर्देश देखें",
     },
@@ -257,7 +257,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "Nearby Hospitals",
-        hospitalsDesc: "Here is a list of some well-known hospitals in Gopalganj.",
+        hospitalsDesc: "Here is a list of some well-known hospitals in Siwan.",
     },
     homeVisitPage: {
         title: "Request a Home Visit",
@@ -311,7 +311,7 @@ const translations = {
     },
     medicalStoresPage: {
         title: "Nearby Medical Stores",
-        description: "Here is a list of some of the major medical stores in Gopalganj.",
+        description: "Here is a list of some of the major medical stores in Siwan.",
         callNow: "Call Now",
         getDirections: "Get Directions",
     },
@@ -427,7 +427,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "आस-पास के अस्पताल",
-        hospitalsDesc: "इहाँ गोपालगंज के कुछ जानल-मानल अस्पताल के सूची दिहल गइल बा।",
+        hospitalsDesc: "इहाँ सीवान के कुछ जानल-मानल अस्पताल के सूची दिहल गइल बा।",
     },
     homeVisitPage: {
         title: "डॉक्टर के घर पर बुलाईं",
@@ -481,7 +481,7 @@ const translations = {
     },
     medicalStoresPage: {
         title: "आस-पास के मेडिकल स्टोर",
-        description: "इहाँ गोपालगंज के कुछ प्रमुख मेडिकल स्टोर के सूची दिहल गइल बा।",
+        description: "इहाँ सीवान के कुछ प्रमुख मेडिकल स्टोर के सूची दिहल गइल बा।",
         callNow: "अभी कॉल करीं",
         getDirections: "रास्ता देखीं",
     },

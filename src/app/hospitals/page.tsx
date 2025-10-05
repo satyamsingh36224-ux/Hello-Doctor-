@@ -11,17 +11,15 @@ export default function HospitalsPage() {
     const t = translations.hospitalsPage;
 
     const hospitals = [
-        { name: "सदर अस्पताल, गोपालगंज", location: "Sadar Hospital, Gopalganj, Bihar" },
-        { name: "माँ शीतला इमरजेंसी अस्पताल", location: "Maa Shitala Emergency Hospital, Gopalganj, Bihar" },
-        { name: "प्रसाद अस्पताल", location: "Prasad Hospital, Gopalganj, Bihar" },
-        { name: "आशीर्वाद अस्पताल", location: "Ashirwad Hospital, Gopalganj, Bihar" },
-        { name: "गोपालगंज ऑर्थोपेडिक अस्पताल", location: "Gopalganj Orthopedic Hospital, Gopalganj, Bihar" },
-        { name: "डॉ. नाज़िया एप्पल अस्पताल", location: "Dr. Nazia Apple Hospital, Gopalganj, Bihar" },
-        { name: "मंगलम अस्पताल", location: "Mangalam Hospital, Gopalganj, Bihar" },
-        { name: "शांति अस्पताल", location: "Shanti Hospital, Gopalganj, Bihar" },
-        { name: "ग्लोबल अस्पताल", location: "Global Hospital, Gopalganj, Bihar" },
-        { name: "डॉ. एच.पी. सिंह अस्पताल", location: "Dr. H.P. Singh Hospital, Gopalganj, Bihar" },
-        { name: "सुमन अस्पताल", location: "Suman Hospital, Gopalganj, Bihar" }
+        { name: "सदर अस्पताल, सीवान", location: "Sadar Hospital, Siwan, Bihar" },
+        { name: "आर्यन मल्टीस्पेशलिटी अस्पताल", location: "Aryan Multispeciality Hospital, Siwan, Bihar" },
+        { name: "इम्पैक्ट हॉस्पिटल एंड रिसर्च सेंटर", location: "Impact Hospital & Research Centre, Siwan, Bihar" },
+        // These are examples. The user can change them from the admin panel if hospitals are moved to Firestore.
+        // For now, it's a static list.
+        { name: "डॉ. पी.के. सिंह आरोग्य अस्पताल", location: "Dr. P.K. Singh Arogya Hospital, Siwan, Bihar" },
+        { name: "माँ कलावती अस्पताल", location: "Maa Kalawati Hospital, Siwan, Bihar" },
+        { name: "जीवन रक्षक अस्पताल", location: "Jeevan Rakshak Hospital, Siwan, Bihar" },
+        { name: "आशीर्वाद नर्सिंग होम", location: "Aashirwad Nursing Home, Siwan, Bihar" },
     ];
 
     const createGoogleMapsUrl = (query: string) => {
