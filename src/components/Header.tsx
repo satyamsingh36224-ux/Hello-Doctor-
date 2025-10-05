@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { useAuth } from "@/firebase";
+import { useAuth, useUser } from "@/firebase";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,10 +15,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { getAuth, signOut as firebaseSignOut } from 'firebase/auth';
 
 export function Header() {
-  const { user, signOut } = useAuth();
+  const { user } = useUser();
   const { language } = useLanguage();
+  const auth = useAuth();
+
 
   const getInitials = (name: string | null | undefined) => {
     if (!name) return 'U';
@@ -27,6 +30,12 @@ export function Header() {
       return `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`.toUpperCase();
     }
     return name.charAt(0).toUpperCase();
+  }
+
+  const handleSignOut = () => {
+    if (auth) {
+      firebaseSignOut(auth);
+    }
   }
 
   return (
@@ -69,7 +78,7 @@ export function Header() {
                         <span>Admin</span>
                       </DropdownMenuItem>
                    </Link>
-                  <DropdownMenuItem onClick={signOut}>
+                  <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>लॉग आउट</span>
                   </DropdownMenuItem>

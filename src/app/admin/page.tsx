@@ -32,7 +32,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking } from "@/firebase";
+import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking, useUser } from "@/firebase";
 import { collection, doc } from "firebase/firestore";
 
 const initialNewDoctorState = {
@@ -45,7 +45,6 @@ const initialNewDoctorState = {
   aiHint: "doctor",
 };
 
-// This is the new password as requested by the user.
 const ADMIN_PASSWORD = "9007355062";
 
 function AdminDashboard() {
@@ -306,6 +305,7 @@ export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { toast } = useToast();
+  const { user, isUserLoading } = useUser();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -320,6 +320,14 @@ export default function AdminPage() {
       setError("गलत पासवर्ड। कृपया पुनः प्रयास करें।");
     }
   };
+
+  if (isUserLoading) {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+    )
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -357,5 +365,3 @@ export default function AdminPage() {
     </div>
   );
 }
-
-    

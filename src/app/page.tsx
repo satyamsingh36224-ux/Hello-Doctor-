@@ -24,29 +24,28 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/firebase";
-import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, getAuth } from 'firebase/auth';
+import { useUser, useAuth } from "@/firebase";
+import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 import { useToast } from "@/hooks/use-toast";
 
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
   const { user, isUserLoading } = useUser();
+  const auth = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
 
   useEffect(() => {
-    if (user) { // No longer checking for isUserLoading, to allow navigation to /admin
-        // This logic might be too aggressive, if it interferes with admin panel, we can refine it.
-        if (window.location.pathname !== '/admin') {
-             router.push('/select-specialization');
-        }
+    // Only redirect if the user is loaded and exists, and we are not on the admin page
+    if (!isUserLoading && user && window.location.pathname !== '/admin') {
+      router.push('/select-specialization');
     }
-  }, [user, router]);
+  }, [user, isUserLoading, router]);
 
   const handleSignInWithGoogle = async () => {
-    const auth = getAuth();
+    if (!auth) return;
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
@@ -59,7 +58,7 @@ export default function LoginPage() {
   };
   
   const handleSignInWithFacebook = async () => {
-    const auth = getAuth();
+    if (!auth) return;
     const provider = new FacebookAuthProvider();
     try {
       await signInWithPopup(auth, provider);
@@ -72,22 +71,12 @@ export default function LoginPage() {
     }
   };
 
-  if (isUserLoading) {
+  if (isUserLoading || user) { // Keep showing loader if user is present (before redirect)
     return (
         <div className="flex h-screen items-center justify-center">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
         </div>
     )
-  }
-
-  // If user is loaded and present, but we are on the login page, it means the redirection is about to happen.
-  // We can show a loader or nothing to prevent flashing the login page.
-  if (user) {
-    return (
-        <div className="flex h-screen items-center justify-center">
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        </div>
-    );
   }
 
   return (
@@ -187,5 +176,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-    
