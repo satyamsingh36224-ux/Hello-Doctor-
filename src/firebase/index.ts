@@ -1,10 +1,7 @@
+
 import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
 import { Auth, getAuth } from 'firebase/auth';
 import { Firestore, getFirestore } from 'firebase/firestore';
-
-// HACK: These are not available on the server
-// so we mock them
-let app: FirebaseApp, auth: Auth, firestore: Firestore;
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,17 +12,38 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-export const initializeFirebase = () => {
-  if (getApps().length === 0) {
-    app = initializeApp(firebaseConfig);
-  } else {
-    app = getApp();
-  }
+let app: FirebaseApp;
+let auth: Auth;
+let firestore: Firestore;
+
+if (typeof window !== 'undefined' && getApps().length === 0) {
+  app = initializeApp(firebaseConfig);
   auth = getAuth(app);
   firestore = getFirestore(app);
+} else if (typeof window !== 'undefined') {
+  app = getApp();
+  auth = getAuth(app);
+  firestore = getFirestore(app);
+}
 
-  return { app, auth, firestore };
+export const initializeFirebase = () => {
+  if (getApps().length === 0) {
+    const app = initializeApp(firebaseConfig);
+    return { 
+        app, 
+        auth: getAuth(app), 
+        firestore: getFirestore(app) 
+    };
+  } else {
+    const app = getApp();
+    return { 
+        app, 
+        auth: getAuth(app), 
+        firestore: getFirestore(app) 
+    };
+  }
 };
+
 
 export { FirebaseProvider, useFirebase, useFirebaseApp, useAuth, useFirestore } from './provider';
 export { FirebaseClientProvider } from './client-provider';
@@ -33,3 +51,4 @@ export { useCollection } from './firestore/use-collection';
 export { useDoc } from './firestore/use-doc';
 export { useUser } from './auth/use-user';
 export type { User } from './auth/use-user';
+export { app, auth, firestore };

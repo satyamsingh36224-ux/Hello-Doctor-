@@ -4,8 +4,8 @@
 import React, { createContext, useContext, ReactNode, useMemo } from 'react';
 import type { Doctor, MedicalStore } from '@/types';
 import { useCollection } from '@/firebase';
-import { collection, doc, addDoc, setDoc, deleteDoc, getFirestore } from 'firebase/firestore';
-import { useFirebase } from '@/firebase/provider';
+import { collection, doc, addDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { useFirestore } from '@/firebase';
 import { useToast } from '@/hooks/use-toast';
 import placeholderImages from '@/lib/placeholder-images.json';
 
@@ -24,8 +24,9 @@ interface AppDataContextType {
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
 
 export const AppDataProvider = ({ children }: { children: ReactNode }) => {
-  const { data: rawDoctorsData, loading: doctorsLoading } = useCollection<Omit<Doctor, 'id'|'imageUrl'|'aiHint'>>('doctors');
-  const { data: rawMedicalStoresData, loading: medicalStoresLoading } = useCollection<Omit<MedicalStore, 'id'|'imageUrl'|'aiHint'>>('medical-stores');
+  const firestore = useFirestore();
+  const { data: rawDoctorsData, loading: doctorsLoading, error: doctorsError } = useCollection<Omit<Doctor, 'id'|'imageUrl'|'aiHint'>>(firestore ? 'doctors' : null);
+  const { data: rawMedicalStoresData, loading: medicalStoresLoading, error: medicalStoresError } = useCollection<Omit<MedicalStore, 'id'|'imageUrl'|'aiHint'>>(firestore ? 'medical-stores' : null);
   
   const doctorsData = useMemo(() => {
     if (!rawDoctorsData) return [];
@@ -51,9 +52,6 @@ export const AppDataProvider = ({ children }: { children: ReactNode }) => {
     });
   }, [rawMedicalStoresData]);
 
-
-  const firebase = useFirebase();
-  const firestore = firebase ? getFirestore(firebase.app) : undefined;
   const { toast } = useToast();
 
   const addDoctor = async (doctor: Omit<Doctor, 'id' | 'imageUrl' | 'aiHint'>) => {
