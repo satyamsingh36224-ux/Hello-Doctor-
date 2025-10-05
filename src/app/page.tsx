@@ -39,10 +39,18 @@ export default function LoginPage() {
 
   useEffect(() => {
     // Only redirect if the user is loaded and exists, and we are not on the admin page
-    if (!isUserLoading && user && window.location.pathname !== '/admin') {
+    if (!isUserLoading && user && window.location.pathname.startsWith('/admin')) {
+      // Do nothing if on admin page
+      return;
+    }
+    if (!isUserLoading && user) {
       router.push('/select-specialization');
     }
   }, [user, isUserLoading, router]);
+
+  const handleAdminClick = () => {
+    router.push('/admin');
+  };
 
   const handleSignInWithGoogle = async () => {
     if (!auth) return;
@@ -103,10 +111,12 @@ export default function LoginPage() {
 
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
                 <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
-                    <Logo />
-                    <CardTitle className="text-3xl font-bold tracking-tight">
-                        Hello Doctor
-                    </CardTitle>
+                    <div onClick={handleAdminClick} className="cursor-pointer flex flex-col items-center gap-2">
+                      <Logo />
+                      <CardTitle className="text-3xl font-bold tracking-tight">
+                          Hello Doctor
+                      </CardTitle>
+                    </div>
                     <CardDescription className="text-base text-muted-foreground px-4">
                         आपके स्वास्थ्य का भरोसेमंद साथी
                     </CardDescription>
