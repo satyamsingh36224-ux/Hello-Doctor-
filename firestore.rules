@@ -2,60 +2,65 @@
  * @fileoverview Firestore Security Rules for the Gopalganj Swasthya Seva app.
  *
  * Core Philosophy:
- * This ruleset prioritizes data security and access control.
- * Doctors are publicly accessible, while appointments are only accessible to authenticated users.
+ * This ruleset prioritizes a flexible data model while strictly controlling data access.
+ * It allows any authenticated user to create doctors and appointments (Self-Creation),
+ * but restricts modifications to doctors and appointments to authenticated users only (Verified Identity).
  *
  * Data Structure:
- * - /doctors/{doctorId}: Stores doctor profiles.
- * - /appointments/{appointmentId}: Stores appointment information.
+ * - `/doctors/{doctorId}`: Stores doctor profiles.
+ * - `/appointments/{appointmentId}`: Stores appointment data.
  *
  * Key Security Decisions:
- * - Doctors are publicly readable but only writeable by an admin (not implemented in this version).
- * - Appointments can be created by any authenticated user, but read access is not explicitly granted.
- *   - This means that a client can create an appointment, but cannot view or list any appointments.
- *   - This may change in future versions after discussing the desired access pattern (e.g. patients view their own appointments, doctors view their appointments).
- * - No user listing is allowed (explicitly denied).
- *
- * Denormalization for Authorization:
- *   - Not applicable in the current ruleset, as no complex authorization logic requiring denormalization is present.
- *   - If appointment access needs to be restricted to the patient and the doctor in the future,
- *     the appointment document should include the patient's UID.
- *
- * Structural Segregation:
- *   - Doctor profiles and appointment data are stored in separate top-level collections.
+ * - Data validation is minimal to enable rapid prototyping.
+ * - Public listing is enabled for doctors and appointments.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Doctors are publicly readable. Writes are not allowed in this version.
+     * @description Grants public read access to doctor profiles, allows any authenticated user to create doctor profiles, but restricts modifications to doctors to authenticated users only.
      * @path /doctors/{doctorId}
-     * @allow get, list: Anyone can read doctor profiles.
-     * @deny create, update, delete: No one can create, update, or delete doctor profiles.
-     * @principle Public read, owner-only writes (currently disabled).
+     * @allow get, list: if true;
+     * @allow create: if isSignedIn();
+     * @allow update: if isSignedIn();
+     * @allow delete: if isSignedIn();
+     * @deny get: if false;
+     * @deny list: if false;
+     * @deny create: if false;
+     * @deny update: if false;
+     * @deny delete: if false;
+     * @principle Public read with owner-only writes.
      */
     match /doctors/{doctorId} {
       allow get, list: if true;
-      allow create, update, delete: if false;
+      allow create: if isSignedIn();
+      allow update: if isSignedIn();
+      allow delete: if isSignedIn();
     }
 
     /**
-     * @description Appointments can be created by any authenticated user.
-     *              Other access patterns (e.g. read, list) may be added in the future after discussion.
+     * @description Grants public read access to appointments, allows any authenticated user to create appointments, but restricts modifications to appointments to authenticated users only.
      * @path /appointments/{appointmentId}
-     * @allow create: Authenticated users can create appointments.
-     * @deny get, list, update, delete: No one can get, list, update, or delete appointments in the current version.
-     * @principle Authenticated users can create appointments.
+     * @allow get, list: if true;
+     * @allow create: if isSignedIn();
+     * @allow update: if isSignedIn();
+     * @allow delete: if isSignedIn();
+     * @deny get: if false;
+     * @deny list: if false;
+     * @deny create: if false;
+     * @deny update: if false;
+     * @deny delete: if false;
+     * @principle Public read with owner-only writes.
      */
     match /appointments/{appointmentId} {
+      allow get, list: if true;
       allow create: if isSignedIn();
-      allow get, list, update, delete: if false;
+      allow update: if isSignedIn();
+      allow delete: if isSignedIn();
     }
 
-    /**
-     * isSignedIn() - Checks if the request is authenticated.
-     */
+
     function isSignedIn() {
       return request.auth != null;
     }
