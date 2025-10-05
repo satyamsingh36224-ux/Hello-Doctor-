@@ -1,67 +1,63 @@
 /**
- * @fileOverview Firestore Security Rules for Gopalganj Swasthya Seva app.
+ * @fileoverview Firestore Security Rules for the Gopalganj Swasthya Seva app.
  *
  * Core Philosophy:
- * This ruleset prioritizes secure access to doctor profiles and appointment data, with simple and clear authorization logic.
- * It adopts a role-based access control, primarily focusing on authenticated users. Data validation is minimized for rapid prototyping.
+ * This ruleset prioritizes data security and access control.
+ * Doctors are publicly accessible, while appointments are only accessible to authenticated users.
  *
  * Data Structure:
- * - /doctors/{doctorId}: Stores public doctor profile information.
- * - /appointments/{appointmentId}: Stores appointment data.
+ * - /doctors/{doctorId}: Stores doctor profiles.
+ * - /appointments/{appointmentId}: Stores appointment information.
  *
  * Key Security Decisions:
- * - Doctors collection is publicly readable, but only authorized users can create, update, or delete doctor profiles (TODO: Define authorized users and roles).
- * - Appointments collection requires user authentication for all operations.
+ * - Doctors are publicly readable but only writeable by an admin (not implemented in this version).
+ * - Appointments can be created by any authenticated user, but read access is not explicitly granted.
+ *   - This means that a client can create an appointment, but cannot view or list any appointments.
+ *   - This may change in future versions after discussing the desired access pattern (e.g. patients view their own appointments, doctors view their appointments).
+ * - No user listing is allowed (explicitly denied).
  *
- * Denormalization for Authorization: N/A
+ * Denormalization for Authorization:
+ *   - Not applicable in the current ruleset, as no complex authorization logic requiring denormalization is present.
+ *   - If appointment access needs to be restricted to the patient and the doctor in the future,
+ *     the appointment document should include the patient's UID.
  *
- * Structural Segregation: Doctor profiles and appointment data are kept in separate top-level collections.
+ * Structural Segregation:
+ *   - Doctor profiles and appointment data are stored in separate top-level collections.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows read access to all doctor profiles, but restricts write access.
-     * @path /databases/{database}/documents/doctors/{doctorId}
-     * @allow get, list: All users can read doctor profiles.
-     * @allow create: if false; // TODO: Only allow authorized users to create.
-     * @allow update: if false; // TODO: Only allow authorized users to update.
-     * @allow delete: if false; // TODO: Only allow authorized users to delete.
-     * @principle Public read, restricted write.
+     * @description Doctors are publicly readable. Writes are not allowed in this version.
+     * @path /doctors/{doctorId}
+     * @allow get, list: Anyone can read doctor profiles.
+     * @deny create, update, delete: No one can create, update, or delete doctor profiles.
+     * @principle Public read, owner-only writes (currently disabled).
      */
     match /doctors/{doctorId} {
       allow get, list: if true;
-      allow create: if false; // TODO: Add role-based authorization for doctor creation.
-      allow update: if false; // TODO: Add role-based authorization for doctor updates.
-      allow delete: if false; // TODO: Add role-based authorization for doctor deletion.
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Controls access to appointment data. Only authenticated users can create, read, update, or delete appointments.
-     * @path /databases/{database}/documents/appointments/{appointmentId}
+     * @description Appointments can be created by any authenticated user.
+     *              Other access patterns (e.g. read, list) may be added in the future after discussion.
+     * @path /appointments/{appointmentId}
      * @allow create: Authenticated users can create appointments.
-     * @allow get: Authenticated users can read their own appointments.
-     * @allow list: Authenticated users can list their own appointments.
-     * @allow update: Authenticated users can update their own appointments.
-     * @allow delete: Authenticated users can delete their own appointments.
-     * @deny create: Non-authenticated users cannot create appointments.
-     * @deny get: Non-authenticated users cannot read appointment data.
-     * @deny list: Non-authenticated users cannot list appointment data.
-     * @deny update: Non-authenticated users cannot update appointment data.
-     * @deny delete: Non-authenticated users cannot delete appointment data.
-     * @principle Authenticated user access only.
+     * @deny get, list, update, delete: No one can get, list, update, or delete appointments in the current version.
+     * @principle Authenticated users can create appointments.
      */
     match /appointments/{appointmentId} {
       allow create: if isSignedIn();
-      allow get, list: if isSignedIn(); // TODO: Refine to only allow access to relevant appointments (e.g., owned by the user or related to the user).
-      allow update: if isSignedIn() && resource != null; // TODO: Refine to only allow access to relevant appointments (e.g., owned by the user or related to the user).
-      allow delete: if isSignedIn() && resource != null; // TODO: Refine to only allow access to relevant appointments (e.g., owned by the user or related to the user).
+      allow get, list, update, delete: if false;
     }
-  }
 
-  // Helper function to check if the user is signed in.
-  function isSignedIn() {
-    return request.auth != null;
+    /**
+     * isSignedIn() - Checks if the request is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
   }
 }

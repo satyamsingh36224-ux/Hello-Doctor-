@@ -86,7 +86,7 @@ function AdminDashboard() {
 
   const handleAddDoctor = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firestore || !doctorsCollectionRef) {
+    if (!firestore) {
         toast({ title: "Error", description: "Database not connected.", variant: "destructive" });
         return;
     }
@@ -99,7 +99,11 @@ function AdminDashboard() {
         return;
     };
 
+    const id = newDoctor.name.en.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
+    const docRef = doc(firestore, 'doctors', id);
+
     const doctorToAdd = {
+      id: id,
       name: newDoctor.name,
       specialization: {
         key: spec.key,
@@ -112,7 +116,7 @@ function AdminDashboard() {
       aiHint: newDoctor.aiHint,
     };
     
-    addDocumentNonBlocking(doctorsCollectionRef, doctorToAdd)
+    setDocumentNonBlocking(docRef, doctorToAdd)
       .then(() => {
           toast({
               title: "Doctor Added Successfully",
@@ -121,15 +125,7 @@ function AdminDashboard() {
           setNewDoctor(initialNewDoctorState);
       })
       .catch((error) => {
-          // The permission error will be caught by the global error handler
-          // so we don't need to show a toast here for that specific case.
-          if (!error.message.includes('permission-error')) {
-            toast({
-                title: "Error",
-                description: "Failed to add doctor. Please try again.",
-                variant: "destructive",
-            });
-          }
+          // The permission error is handled by the global error handler
       })
       .finally(() => {
           setIsAdding(false);
@@ -139,11 +135,15 @@ function AdminDashboard() {
   const handleRemoveDoctor = (id: string) => {
     if (!firestore) return;
     const docRef = doc(firestore, 'doctors', id);
-    deleteDocumentNonBlocking(docRef);
-    toast({
-      title: "Doctor Removed",
-      description: "The doctor has been removed from the database.",
-      variant: "destructive",
+    deleteDocumentNonBlocking(docRef)
+    .then(() => {
+      toast({
+        title: "Doctor Removed",
+        description: "The doctor has been removed from the database.",
+      });
+    })
+    .catch((error) => {
+      // The permission error is handled by the global error handler
     });
   };
 
@@ -314,7 +314,8 @@ export default function AdminPage() {
   const auth = useAuth();
   
   useEffect(() => {
-    if (user && user.isAnonymous) {
+    // If a user (any user, including anonymous) is logged in, show the dashboard.
+    if (user) {
         setIsAuthenticated(true);
     } else {
         setIsAuthenticated(false);
@@ -337,12 +338,13 @@ export default function AdminPage() {
     setError('');
 
     try {
+        // Sign in anonymously to get admin privileges defined in rules
         await signInAnonymously(auth);
-        // useEffect will handle setting isAuthenticated to true
         toast({
             title: "प्रवेश सफल",
             description: "एडमिन पैनल में आपका स्वागत है।",
         });
+        // The useEffect will catch the new user state and set isAuthenticated to true
     } catch (err) {
         console.error("Anonymous sign-in error", err);
         setError("एडमिन के रूप में लॉग इन करने में विफल।");

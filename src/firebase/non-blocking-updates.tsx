@@ -27,8 +27,7 @@ export function setDocumentNonBlocking(docRef: DocumentReference, data: any, opt
       requestResourceData: data,
     });
     errorEmitter.emit('permission-error', permissionError);
-    // We still throw the original error for local handling if needed
-    throw permissionError; 
+    throw permissionError;
   });
   return promise;
 }
@@ -40,24 +39,18 @@ export function setDocumentNonBlocking(docRef: DocumentReference, data: any, opt
  * Returns the Promise for the new doc ref, but typically not awaited by caller.
  */
 export function addDocumentNonBlocking(colRef: CollectionReference, data: any) {
-  // Not awaiting addDoc here to make it non-blocking for the UI
   const promise = addDoc(colRef, data);
   
   promise.catch(error => {
-    // On failure, create a contextual error and emit it.
     const permissionError = new FirestorePermissionError({
-      path: colRef.path, // Use the collection path for a create operation.
+      path: colRef.path, 
       operation: 'create',
       requestResourceData: data,
     });
     errorEmitter.emit('permission-error', permissionError);
-    
-    // We must re-throw the error so the calling component's .catch() block is executed.
-    // Throw the rich error, not the original one.
     throw permissionError; 
   });
 
-  // Return the original promise so the caller can still use .then() for success cases.
   return promise;
 }
 
