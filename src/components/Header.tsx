@@ -16,11 +16,13 @@ import {
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { getAuth, signOut as firebaseSignOut } from 'firebase/auth';
+import { useRouter } from "next/navigation";
 
 export function Header() {
   const { user } = useUser();
   const { language } = useLanguage();
   const auth = useAuth();
+  const router = useRouter();
 
 
   const getInitials = (name: string | null | undefined) => {
@@ -34,7 +36,12 @@ export function Header() {
 
   const handleSignOut = () => {
     if (auth) {
-      firebaseSignOut(auth);
+      firebaseSignOut(auth).then(() => {
+        // Redirect to login page after sign out to clear state
+        if (window.location.pathname.startsWith('/admin')) {
+          window.location.href = '/';
+        }
+      });
     }
   }
 
@@ -53,6 +60,12 @@ export function Header() {
                 </a>
             </Button>
             {user ? (
+              user.isAnonymous ? (
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>एडमिन लॉग आउट</span>
+                </Button>
+              ) : (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -84,6 +97,7 @@ export function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+              )
             ) : (
                 <Button asChild variant="outline" size="sm" className="rounded-full">
                    <Link href="/">{language === 'hi' ? 'लॉग इन करें' : 'Login'}</Link>

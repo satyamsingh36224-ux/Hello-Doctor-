@@ -32,8 +32,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking, useUser } from "@/firebase";
+import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking, useUser, useAuth } from "@/firebase";
 import { collection, doc } from "firebase/firestore";
+import { signInAnonymously } from "firebase/auth";
 
 const initialNewDoctorState = {
   name: { hi: "", en: "", bho: "" },
@@ -304,20 +305,49 @@ export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const { toast } = useToast();
   const { user, isUserLoading } = useUser();
+  const auth = useAuth();
+  
+  useEffect(() => {
+    if (user && user.isAnonymous) {
+        setIsAuthenticated(true);
+    }
+  }, [user]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      setError('');
-      toast({
-        title: "प्रवेश सफल",
-        description: "एडमिन पैनल में आपका स्वागत है।",
-      });
-    } else {
-      setError("गलत पासवर्ड। कृपया पुनः प्रयास करें।");
+    if (password !== ADMIN_PASSWORD) {
+        setError("गलत पासवर्ड। कृपया पुनः प्रयास करें।");
+        return;
+    }
+    
+    if (!auth) {
+        setError("Authentication service is not available.");
+        return;
+    }
+
+    setIsLoggingIn(true);
+    setError('');
+
+    try {
+        await signInAnonymously(auth);
+        setIsAuthenticated(true);
+        toast({
+            title: "प्रवेश सफल",
+            description: "एडमिन पैनल में आपका स्वागत है।",
+        });
+    } catch (err) {
+        console.error("Anonymous sign-in error", err);
+        setError("एडमिन के रूप में लॉग इन करने में विफल।");
+        toast({
+            title: "लॉगिन विफल",
+            description: "एक त्रुटि हुई। कृपया फिर से प्रयास करें।",
+            variant: "destructive"
+        });
+    } finally {
+        setIsLoggingIn(false);
     }
   };
 
@@ -351,7 +381,8 @@ export default function AdminPage() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   {error && <p className="text-sm text-destructive">{error}</p>}
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full" disabled={isLoggingIn}>
+                    {isLoggingIn && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     लॉगिन करें
                   </Button>
                 </form>
