@@ -1,9 +1,10 @@
+
 import { Bell, LogOut, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/firebase";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,9 +14,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Header() {
   const { user, signOut } = useAuth();
+  const { language } = useLanguage();
+
+  const getInitials = (name: string | null | undefined) => {
+    if (!name) return 'U';
+    const nameParts = name.split(' ');
+    if (nameParts.length > 1) {
+      return `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`.toUpperCase();
+    }
+    return name.charAt(0).toUpperCase();
+  }
 
   return (
     <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-40 border-b">
@@ -31,13 +43,13 @@ export function Header() {
                     <span className="sr-only">सूचनाएं</span>
                 </a>
             </Button>
-            {user && (
+            {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-9 w-9">
                       <AvatarImage src={user.photoURL ?? ''} alt={user.displayName ?? 'User'} />
-                      <AvatarFallback>{user.displayName?.charAt(0)}</AvatarFallback>
+                      <AvatarFallback>{getInitials(user.displayName)}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
@@ -51,12 +63,22 @@ export function Header() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                   <Link href="/admin">
+                     <DropdownMenuItem>
+                        <Shield className="mr-2 h-4 w-4" />
+                        <span>Admin</span>
+                      </DropdownMenuItem>
+                   </Link>
                   <DropdownMenuItem onClick={signOut}>
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>लॉग आउट</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
+            ) : (
+                <Button asChild variant="outline" size="sm" className="rounded-full">
+                   <Link href="/">{language === 'hi' ? 'लॉग इन करें' : 'Login'}</Link>
+                </Button>
             )}
         </div>
       </div>

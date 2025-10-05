@@ -7,19 +7,50 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
-import { doctors } from '@/lib/doctors';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
+import type { Doctor } from '@/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
-  const doctorsData = doctors;
+  const firestore = useFirestore();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
 
-  const filteredDoctors = doctorsData.filter(doctor => {
-    const specializationMatch = selectedSpecialization === 'all' || doctor.specialization.key === selectedSpecialization;
-    return specializationMatch;
-  });
+  const doctorsCollectionRef = useMemoFirebase(() => collection(firestore, 'doctors'), [firestore]);
+
+  const doctorsQuery = useMemoFirebase(() => {
+    if (!doctorsCollectionRef) return null;
+    if (selectedSpecialization === 'all') {
+      return doctorsCollectionRef;
+    }
+    return query(doctorsCollectionRef, where('specialization.key', '==', selectedSpecialization));
+  }, [doctorsCollectionRef, selectedSpecialization]);
+
+  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsQuery);
+
+  if (isLoading) {
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+            {[...Array(3)].map((_, i) => (
+                <div key={i} className="flex items-center space-x-4 p-4 bg-card rounded-2xl border">
+                    <Skeleton className="h-32 w-32 rounded-2xl" />
+                    <div className="space-y-2 w-full">
+                        <Skeleton className="h-6 w-3/4" />
+                        <Skeleton className="h-4 w-1/2" />
+                        <Skeleton className="h-4 w-full" />
+                        <div className="flex gap-2 pt-2">
+                           <Skeleton className="h-10 w-1/2 rounded-full" />
+                           <Skeleton className="h-10 w-1/2 rounded-full" />
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    )
+  }
 
   return (
     <>
@@ -28,8 +59,8 @@ function DoctorsList() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-        {filteredDoctors.length > 0 ? (
-          filteredDoctors.map((doctor) => (
+        {doctors && doctors.length > 0 ? (
+          doctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))
         ) : (

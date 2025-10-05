@@ -19,19 +19,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Globe, HeartPulse, Shield, Lock } from "lucide-react";
+import { Globe, HeartPulse, Shield, Lock, Loader2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/firebase";
 
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
+  const { signInWithGoogle, signInWithFacebook, loading } = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
-  const { toast } = useToast();
+  
+  if (loading) {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+    )
+  }
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
@@ -56,7 +64,7 @@ export default function LoginPage() {
       </div>
 
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
-                <CardHeader className="text-center flex flex-col items-center gap-2 pt-8 cursor-pointer">
+                <CardHeader className="text-center flex flex-col items-center gap-2 pt-8 cursor-pointer" onClick={() => router.push('/select-specialization')}>
                     <Logo />
                     <CardTitle className="text-3xl font-bold tracking-tight">
                         Hello Doctor
@@ -70,7 +78,7 @@ export default function LoginPage() {
                <Button
                 suppressHydrationWarning
                 variant="outline"
-                onClick={() => toast({ title: 'कार्यक्षमता अक्षम', description: 'Google साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' })}
+                onClick={signInWithGoogle}
                 className="w-full py-5 rounded-full text-sm font-semibold"
               >
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 172.9 56.7L368.7 128C330.5 94.5 292.2 78.2 248 78.2c-101.7 0-184.4 82.7-184.4 184.4S146.3 437 248 437c58.4 0 106.3-24.2 138.6-56.6 27.8-27.5 41.6-67.7 44-114.8H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.8z"></path></svg>
@@ -79,7 +87,7 @@ export default function LoginPage() {
               <Button
                 suppressHydrationWarning
                 variant="outline"
-                onClick={() => toast({ title: 'कार्यक्षमता अक्षम', description: 'Facebook साइन-इन अभी उपलब्ध नहीं है।', variant: 'destructive' })}
+                onClick={signInWithFacebook}
                 className="w-full py-5 rounded-full text-sm font-semibold"
               >
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>

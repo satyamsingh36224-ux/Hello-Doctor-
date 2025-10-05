@@ -1,11 +1,8 @@
-// IMPORTANT: This is a demo admin panel. Changes made here will NOT be saved.
-// The data is managed in the src/lib/doctors.ts file directly.
 
 "use client";
 
 import { useState } from "react";
 import { Header } from "@/components/Header";
-import { useLanguage } from "@/context/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,9 +21,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { doctors as initialDoctors, specializationMap } from "@/lib/doctors";
-import type { Doctor } from "@/types";
-import { PlusCircle, Trash2 } from "lucide-react";
+import { specializationMap } from "@/lib/doctors";
+import type { Doctor, LocalizedString } from "@/types";
+import { PlusCircle, Trash2, Loader2 } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -35,21 +32,28 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking } from "@/firebase";
+import { collection, doc } from "firebase/firestore";
+
+const initialNewDoctorState = {
+  name: { hi: "", en: "", bho: "" },
+  specializationKey: "General Physician",
+  description: { hi: "", en: "", bho: "" },
+  fee: 0,
+  imageUrl: "👨‍⚕️",
+  location: "",
+  aiHint: "doctor",
+};
 
 export default function AdminPage() {
-  const { translations, language } = useLanguage();
   const { toast } = useToast();
-  const [doctors, setDoctors] = useState<Doctor[]>(initialDoctors);
-  const [newDoctor, setNewDoctor] = useState({
-    id: "",
-    name: { hi: "", en: "", bho: "" },
-    specializationKey: "General Physician",
-    description: { hi: "", en: "", bho: "" },
-    fee: 0,
-    imageUrl: "👨‍⚕️",
-    location: "",
-    aiHint: "doctor",
-  });
+  const firestore = useFirestore();
+  const [newDoctor, setNewDoctor] = useState(initialNewDoctorState);
+  const [isAdding, setIsAdding] = useState(false);
+
+  const doctorsCollectionRef = useMemoFirebase(() => collection(firestore, 'doctors'), [firestore]);
+  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsCollectionRef);
+
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -60,7 +64,7 @@ export default function AdminPage() {
     if (lang) {
       setNewDoctor((prev) => ({
         ...prev,
-        [field]: { ...prev[field as keyof typeof prev], [lang]: value },
+        [field]: { ...prev[field as keyof typeof prev], [lang]: value as any },
       }));
     } else {
       setNewDoctor((prev) => ({
@@ -74,35 +78,56 @@ export default function AdminPage() {
     setNewDoctor((prev) => ({ ...prev, specializationKey: value }));
   };
 
-  const handleAddDoctor = (e: React.FormEvent) => {
+  const handleAddDoctor = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsAdding(true);
     const spec = specializationMap.find(
       (s) => s.key === newDoctor.specializationKey
     );
-    if (!spec) return;
+    if (!spec || !doctorsCollectionRef) {
+        setIsAdding(false);
+        return;
+    };
 
-    const doctorToAdd: Doctor = {
-      ...newDoctor,
-      id: `doc-${doctors.length + 1}`,
+    const doctorToAdd = {
+      name: newDoctor.name,
       specialization: {
         key: spec.key,
         name: spec.name,
       },
-      fee: Number(newDoctor.fee)
+      description: newDoctor.description,
+      fee: Number(newDoctor.fee),
+      imageUrl: newDoctor.imageUrl,
+      location: newDoctor.location,
+      aiHint: newDoctor.aiHint,
     };
 
-    setDoctors((prev) => [...prev, doctorToAdd]);
-    toast({
-      title: "Doctor Added (Demo)",
-      description: "This change is temporary and will be lost on refresh.",
-    });
+    try {
+        await addDocumentNonBlocking(doctorsCollectionRef, doctorToAdd);
+        toast({
+            title: "Doctor Added Successfully",
+            description: `${doctorToAdd.name.en} has been added to the database.`,
+        });
+        setNewDoctor(initialNewDoctorState);
+    } catch (error) {
+        console.error("Error adding doctor: ", error);
+        toast({
+            title: "Error",
+            description: "Failed to add doctor. Please try again.",
+            variant: "destructive",
+        });
+    } finally {
+        setIsAdding(false);
+    }
   };
 
   const handleRemoveDoctor = (id: string) => {
-    setDoctors((prev) => prev.filter((doc) => doc.id !== id));
+    if (!firestore) return;
+    const docRef = doc(firestore, 'doctors', id);
+    deleteDocumentNonBlocking(docRef);
     toast({
-      title: "Doctor Removed (Demo)",
-      description: "This change is temporary and will be lost on refresh.",
+      title: "Doctor Removed",
+      description: "The doctor has been removed from the database.",
       variant: "destructive",
     });
   };
@@ -112,9 +137,9 @@ export default function AdminPage() {
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">Admin Panel (Demo)</h1>
+          <h1 className="text-3xl font-bold">Admin Panel</h1>
           <p className="text-muted-foreground">
-            Changes made here are not saved. Data is managed in `src/lib/doctors.ts`.
+            Manage the list of doctors in the application.
           </p>
         </div>
 
@@ -129,18 +154,25 @@ export default function AdminPage() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Name</TableHead>
+                        <TableHead>Name (English)</TableHead>
                         <TableHead>Specialization</TableHead>
                         <TableHead>Fee</TableHead>
                         <TableHead>Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {doctors.map((doctor) => (
+                      {isLoading ? (
+                        <TableRow>
+                            <TableCell colSpan={4} className="text-center">
+                                <Loader2 className="mx-auto h-8 w-8 animate-spin text-primary" />
+                            </TableCell>
+                        </TableRow>
+                      ) : (
+                        doctors?.map((doctor) => (
                         <TableRow key={doctor.id}>
-                          <TableCell>{doctor.name[language]}</TableCell>
+                          <TableCell>{doctor.name.en}</TableCell>
                           <TableCell>
-                            {doctor.specialization.name[language]}
+                            {doctor.specialization.name.en}
                           </TableCell>
                           <TableCell>{doctor.fee}</TableCell>
                           <TableCell>
@@ -153,7 +185,7 @@ export default function AdminPage() {
                             </Button>
                           </TableCell>
                         </TableRow>
-                      ))}
+                      )))}
                     </TableBody>
                   </Table>
                 </div>
@@ -165,26 +197,35 @@ export default function AdminPage() {
               <CardHeader>
                 <CardTitle>Add New Doctor</CardTitle>
                 <CardDescription>
-                  This will be added to the list temporarily.
+                  Data will be saved to the database.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleAddDoctor} className="space-y-4">
                   <Input
-                    name="name.hi"
-                    placeholder="नाम (हिन्दी)"
+                    name="name.en"
+                    placeholder="Name (English)"
+                    value={newDoctor.name.en}
                     onChange={handleInputChange}
                     required
                   />
                   <Input
-                    name="name.en"
-                    placeholder="Name (English)"
+                    name="name.hi"
+                    placeholder="नाम (हिन्दी)"
+                    value={newDoctor.name.hi}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <Input
+                    name="name.bho"
+                    placeholder="नांव (भोजपुरी)"
+                    value={newDoctor.name.bho}
                     onChange={handleInputChange}
                     required
                   />
                   <Select
                     onValueChange={handleSpecializationChange}
-                    defaultValue={newDoctor.specializationKey}
+                    value={newDoctor.specializationKey}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select specialization" />
@@ -198,31 +239,48 @@ export default function AdminPage() {
                     </SelectContent>
                   </Select>
                   <Textarea
+                    name="description.en"
+                    placeholder="Description (English)"
+                    value={newDoctor.description.en}
+                    onChange={handleInputChange}
+                  />
+                  <Textarea
                     name="description.hi"
                     placeholder="विवरण (हिन्दी)"
+                    value={newDoctor.description.hi}
+                    onChange={handleInputChange}
+                  />
+                  <Textarea
+                    name="description.bho"
+                    placeholder="विवरण (भोजपुरी)"
+                    value={newDoctor.description.bho}
                     onChange={handleInputChange}
                   />
                   <Input
                     name="fee"
                     type="number"
                     placeholder="Fee"
+                    value={newDoctor.fee}
                     onChange={handleInputChange}
                     required
                   />
                   <Input
                     name="location"
                     placeholder="Location"
+                    value={newDoctor.location}
                     onChange={handleInputChange}
                     required
                   />
                   <Input
                     name="imageUrl"
                     placeholder="Image Emoji (e.g. 👨‍⚕️)"
+                     value={newDoctor.imageUrl}
                     onChange={handleInputChange}
                     required
                   />
-                  <Button type="submit" className="w-full">
-                    <PlusCircle className="mr-2 h-4 w-4" /> Add Doctor (Demo)
+                  <Button type="submit" className="w-full" disabled={isAdding}>
+                    {isAdding ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <PlusCircle className="mr-2 h-4 w-4" />}
+                    Add Doctor
                   </Button>
                 </form>
               </CardContent>
