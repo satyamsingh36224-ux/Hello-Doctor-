@@ -4,21 +4,37 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Search } from 'lucide-react';
+import { Search, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { specializationMap } from '@/lib/doctors';
 import { useLanguage } from '@/context/LanguageContext';
-import Link from 'next/link';
+import { useAuth } from '@/firebase';
+import { signOut as firebaseSignOut } from 'firebase/auth';
 
 export default function SelectSpecializationPage() {
   const router = useRouter();
+  const auth = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const { translations, language } = useLanguage();
   const t = translations.selectSpecializationPage;
 
   const handleSpecializationClick = (specializationKey: string) => {
     router.push(`/doctors?specialization=${encodeURIComponent(specializationKey)}`);
+  };
+
+  const handleLogoutAndGoToLogin = () => {
+    if (auth) {
+      firebaseSignOut(auth).then(() => {
+        router.push('/');
+      }).catch((error) => {
+        console.error("Sign out error", error);
+        // Even if sign out fails, try to go to login page
+        router.push('/');
+      });
+    } else {
+        router.push('/');
+    }
   };
 
   const filteredSpecializations = specializationMap.filter(spec => 
@@ -57,8 +73,9 @@ export default function SelectSpecializationPage() {
             ))}
           </div>
            <div className="mt-8 text-center">
-              <Button asChild variant="outline" className="rounded-full">
-                  <Link href="/">{t.backToLogin}</Link>
+              <Button onClick={handleLogoutAndGoToLogin} variant="outline" className="rounded-full">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  {t.backToLogin}
               </Button>
           </div>
         </CardContent>
