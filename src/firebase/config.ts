@@ -1,16 +1,8 @@
-
-// This file is kept for configuration that might be used across firebase services, 
-// but initialization is now handled in src/firebase/index.ts to ensure it runs correctly.
-// You can define and export firebase related configurations here.
-
-import { FirebaseOptions } from 'firebase/app';
-
-// Your web app's Firebase configuration
-export const firebaseConfig: FirebaseOptions = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+export const firebaseConfig = {
+  "projectId": "gopalganj-swasthya-seva",
+  "appId": "1:863991346214:web:07d1753b52c5c2348a22e7",
+  "apiKey": "AIzaSyCdiyAH6_sMVaD_kDXjA29JLlcdTB8YbGE",
+  "authDomain": "gopalganj-swasthya-seva.firebaseapp.com",
+  "measurementId": "",
+  "messagingSenderId": "863991346214"
 };

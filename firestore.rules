@@ -1,0 +1,62 @@
+/**
+ * @fileoverview Firestore Security Rules for the Gopalganj Swasthya Seva app.
+ *
+ * Core Philosophy:
+ * This ruleset prioritizes secure access to doctor profiles and appointment data, with an emphasis on authenticated access.
+ *
+ * Data Structure:
+ * - /doctors/{doctorId}: Stores publicly readable doctor profiles.
+ * - /appointments/{appointmentId}: Stores appointment details.
+ *
+ * Key Security Decisions:
+ * - Doctors are publicly readable.
+ * - Appointments are accessible only to authenticated users.
+ * - Data validation is limited to authorization-critical fields for rapid prototyping.
+ *
+ * Denormalization for Authorization:
+ *  - Doctor documents do not require denormalization.
+ *  - Appointment documents do not require denormalization in this version.
+ *
+ * Structural Segregation:
+ *  - Doctors and Appointments are stored in separate top-level collections.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Grants public read access to doctor profiles and restricts write access.
+     * @path /doctors/{doctorId}
+     * @allow (get, list): if true
+     * @allow (create): if false
+     * @allow (update, delete): if false
+     * @deny (create, update, delete): Always deny writes to doctors, they should be managed through other secure processes (e.g., backend functions).
+     * @principle Public read, restricted write
+     */
+    match /doctors/{doctorId} {
+      allow get, list: if true;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    /**
+     * @description Restricts access to appointments to authenticated users.
+     * @path /appointments/{appointmentId}
+     * @allow (get, list, create, update, delete): if isSignedIn()
+     * @deny (get, list, create, update, delete): if request.auth == null
+     * @principle Authenticated access
+     */
+    match /appointments/{appointmentId} {
+      allow get, list, create, update, delete: if isSignedIn();
+    }
+
+    /**
+     * @description Helper function to check if the user is signed in.
+     * @return {bool} True if the user is signed in, false otherwise.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}
