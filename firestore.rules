@@ -1,54 +1,56 @@
 /**
- * @fileoverview Firestore Security Rules for Gopalganj Swasthya Seva App
+ * @fileoverview Firestore Security Rules for the Gopalganj Swasthya Seva app.
  *
  * Core Philosophy:
- * This ruleset provides basic authorization for doctors and appointments.
- * All `write` operations are open, as the app is in prototyping mode to allow fast data iteration.
+ * This ruleset prioritizes a straightforward, flat data structure and aims for simplicity and security in access control.
+ * Doctors profiles are publicly readable, while appointments are accessible to all signed in users.
  *
  * Data Structure:
- * - /doctors/{doctorId}: Stores doctor profiles.
- * - /appointments/{appointmentId}: Stores appointment information.
+ * - /doctors/{doctorId}: Stores public doctor profile information.
+ * - /appointments/{appointmentId}: Stores appointment details, accessible to any signed in user.
  *
  * Key Security Decisions:
- * - In this prototype, both `doctors` and `appointments` are publicly readable.
- * - Write operations are currently open.
- * - No user listing is allowed in this prototype.
- *
- * Denormalization for Authorization:
- * Not applicable in this prototype, since all write operations are open.
+ * - Doctor profiles are publicly readable to facilitate easy discovery.
+ * - Appointments are readable and writeable by all signed-in users, as authorization will be handled by the application.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Allows read access to the `doctors` collection for all users. All write operations are open.
+     * @description Doctor profiles are publicly readable. Anyone can view doctor information.
      * @path /doctors/{doctorId}
-     * @allow (get, list): Any user can read doctor profiles.
-     * @allow (create, update, delete): Any authenticated user can create, update, or delete doctor profiles.
-     * @deny (create, update, delete): Not applicable, as write operations are open in prototype.
-     * @principle Allows any user to read doctors information.
+     * @allow get: Anyone can read a doctor's profile.
+     * @allow list: Anyone can list doctors.
+     * @deny create: Nobody can create doctor profiles directly through Firestore. Use backend functions.
+     * @deny update: Nobody can update doctor profiles directly through Firestore. Use backend functions.
+     * @deny delete: Nobody can delete doctor profiles directly through Firestore. Use backend functions.
+     * @principle Doctor profiles are public; writes are restricted.
      */
     match /doctors/{doctorId} {
       allow get, list: if true;
-      allow create: if true;
-      allow update: if true;
-      allow delete: if true;
+      allow create, update, delete: if false;
     }
 
     /**
-     * @description Allows read access to the `appointments` collection for all users. All write operations are open.
+     * @description Appointments are readable and writeable by all signed-in users, as authorization will be handled by the application.
      * @path /appointments/{appointmentId}
-     * @allow (get, list): Any user can read appointment information.
-     * @allow (create, update, delete): Any authenticated user can create, update, or delete appointments.
-     * @deny (create, update, delete): Not applicable, as write operations are open in prototype.
-     * @principle Allows any user to read appointments information.
+     * @allow get: Any signed-in user can get an appointment.
+     * @allow list: Any signed-in user can list appointments.
+     * @allow create: Any signed-in user can create an appointment.
+     * @allow update: Any signed-in user can update an appointment.
+     * @allow delete: Any signed-in user can delete an appointment.
+     * @principle Any signed-in user can read and write appointment data.
      */
     match /appointments/{appointmentId} {
-      allow get, list: if true;
-      allow create: if true;
-      allow update: if true;
-      allow delete: if true;
+        allow get, list, create, update, delete: if isSignedIn();
+    }
+
+    /**
+     * @description Checks if the user is signed in.
+     */
+    function isSignedIn() {
+      return request.auth != null;
     }
   }
 }

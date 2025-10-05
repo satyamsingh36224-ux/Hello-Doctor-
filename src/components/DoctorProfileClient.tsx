@@ -21,6 +21,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useAuth, useFirestore, useUser, addDocumentNonBlocking } from "@/firebase";
+import { collection, serverTimestamp } from "firebase/firestore";
 
 const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
 
@@ -33,6 +35,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
   const { toast } = useToast();
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [isBookingOpen, setIsBookingOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [summary, setSummary] = React.useState("");
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -41,6 +44,8 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
   const tCard = translations.doctorCard;
   const tTime = translations.timeSlots;
   const pathname = usePathname();
+  const firestore = useFirestore();
+  const { user } = useUser();
 
 
   React.useEffect(() => {
@@ -54,8 +59,19 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
   const doctorDescription = doctor.description[language];
 
 
-  const handleBooking = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+
+    if (!firestore || !user) {
+        toast({
+            title: "त्रुटि",
+            description: "अपॉइंटमेंट बुक करने के लिए आपको लॉग इन होना चाहिए।",
+            variant: "destructive"
+        });
+        setIsSubmitting(false);
+        return;
+    }
     
     const formData = new FormData(event.currentTarget);
     const patientName = formData.get("name") as string;
@@ -64,19 +80,46 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
     
     const formattedDate = date ? date.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' }) : 'कोई तारीख नहीं चुनी गई';
 
-    const clinicPhoneNumber = "9771264784";
-    
-    const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nकृपया इस अपॉइंटमेंट की पुष्टि करें। धन्यवाद!`;
-    
-    const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
+    // 1. Save to Firestore
+    const appointmentData = {
+        doctorId: doctor.id,
+        doctorName: doctor.name.en, // Storing English name for consistency
+        patientId: user.uid,
+        patientName: patientName,
+        patientPhone: patientPhone,
+        appointmentDate: date,
+        appointmentTime: selectedTime,
+        status: 'confirmed', // Or 'pending'
+        bookedAt: serverTimestamp()
+    };
 
-    setIsBookingOpen(false);
-    toast({
-      title: t.appointmentBookedToast,
-      description: `${t.appointmentBookedToastDesc} ${doctorName}`,
-    });
+    try {
+        const appointmentsCollectionRef = collection(firestore, 'appointments');
+        await addDocumentNonBlocking(appointmentsCollectionRef, appointmentData);
 
-    window.open(whatsappUrl, '_blank');
+        // 2. Open WhatsApp
+        const clinicPhoneNumber = "9771264784";
+        const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nयह अपॉइंटमेंट ऐप के माध्यम से बुक किया गया है। कृपया पुष्टि करें। धन्यवाद!`;
+        const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
+
+        setIsBookingOpen(false);
+        toast({
+          title: t.appointmentBookedToast,
+          description: `${t.appointmentBookedToastDesc} ${doctorName}`,
+        });
+
+        window.open(whatsappUrl, '_blank');
+
+    } catch (error) {
+        console.error("Error booking appointment: ", error);
+        toast({
+          title: "बुकिंग विफल",
+          description: "अपॉइंटमेंट बुक करने में कोई त्रुटि हुई। कृपया पुन: प्रयास करें।",
+          variant: "destructive"
+        });
+    } finally {
+        setIsSubmitting(false);
+    }
   };
 
   const handleGetSummary = async () => {
@@ -212,11 +255,11 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                                             <div className="space-y-4 py-4">
                                                 <div className="relative">
                                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10 rounded-full" required />
+                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10 rounded-full" required defaultValue={user?.displayName || ''} />
                                                 </div>
                                                 <div className="relative">
                                                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10 rounded-full" required />
+                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10 rounded-full" required defaultValue={user?.phoneNumber || ''}/>
                                                 </div>
                                                 <div className="flex justify-center">
                                                     <CalendarPicker
@@ -250,8 +293,8 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                                                 </div>
                                             </div>
                                             <DialogFooter className="pt-2 sticky bottom-0 bg-background pb-1">
-                                                <Button type="submit" className="w-full rounded-full">
-                                                    <MessageSquare className="mr-2 h-4 w-4" />
+                                                <Button type="submit" className="w-full rounded-full" disabled={isSubmitting}>
+                                                     {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />}
                                                     {t.confirmOnWhatsApp}
                                                 </Button>
                                             </DialogFooter>

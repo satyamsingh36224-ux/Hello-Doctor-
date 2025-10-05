@@ -32,7 +32,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking, useUser, useAuth } from "@/firebase";
+import { useCollection, useFirestore, useMemoFirebase, addDocumentNonBlocking, deleteDocumentNonBlocking, useUser, useAuth, setDocumentNonBlocking } from "@/firebase";
 import { collection, doc } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
 
@@ -307,12 +307,14 @@ export default function AdminPage() {
   const [error, setError] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const { toast } = useToast();
-  const { user, isUserLoading } = useUser();
+  const { user, loading: isUserLoading } = useUser();
   const auth = useAuth();
   
   useEffect(() => {
     if (user && user.isAnonymous) {
         setIsAuthenticated(true);
+    } else {
+        setIsAuthenticated(false);
     }
   }, [user]);
 
@@ -333,7 +335,7 @@ export default function AdminPage() {
 
     try {
         await signInAnonymously(auth);
-        setIsAuthenticated(true);
+        // useEffect will handle setting isAuthenticated to true
         toast({
             title: "प्रवेश सफल",
             description: "एडमिन पैनल में आपका स्वागत है।",
