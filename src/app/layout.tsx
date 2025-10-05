@@ -76,6 +76,11 @@ export default function RootLayout({
                                         <Link href="/support"><div className="p-2 bg-primary/10 rounded-lg text-primary"><LifeBuoy className="h-5 w-5" /></div> सहायता और समर्थन</Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <Link href="/admin"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Shield className="h-5 w-5" /></div> एडमिन पैनल</Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
                             </SidebarMenu>
                         </SidebarContent>
                     </Sidebar>
