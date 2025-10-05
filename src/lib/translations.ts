@@ -20,6 +20,7 @@ const translations = {
         signUp: "साइन अप करें",
         selectLanguage: "भाषा चुनें",
         otherServices: "अन्य सेवाएं",
+        createdBy: "द्वारा निर्मित: सत्यम सिंह राउत"
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनें",
@@ -190,6 +191,7 @@ const translations = {
         signUp: "Sign Up",
         selectLanguage: "Select Language",
         otherServices: "Other Services",
+        createdBy: "Created by: Satyam Singh Raut"
     },
     selectSpecializationPage: {
         title: "Select a Specialization",
@@ -360,6 +362,7 @@ const translations = {
         signUp: "साइन अप करीं",
         selectLanguage: "भाषा चुनीं",
         otherServices: "दोसर सेवा",
+        createdBy: "बनावल: सत्यम सिंह राउत"
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनीं",

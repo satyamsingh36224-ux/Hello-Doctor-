@@ -31,16 +31,15 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
-  const { user, isUserLoading } = useUser();
+  const { user, loading: isUserLoading } = useUser();
   const auth = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
 
   useEffect(() => {
-    // Only redirect if the user is loaded and exists, and we are not on the admin page
+    // Only redirect if the user is loaded and exists, and we are not on an admin page
     if (!isUserLoading && user && window.location.pathname.startsWith('/admin')) {
-      // Do nothing if on admin page
       return;
     }
     if (!isUserLoading && user) {
@@ -79,7 +78,7 @@ export default function LoginPage() {
     }
   };
 
-  if (isUserLoading || user) { // Keep showing loader if user is present (before redirect)
+  if (isUserLoading || (user && !window.location.pathname.startsWith('/admin'))) {
     return (
         <div className="flex h-screen items-center justify-center">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -178,9 +177,10 @@ export default function LoginPage() {
                 </Link>
               </Button>
             </div>
-            <p className="text-center text-xs text-muted-foreground mt-2">
-              {t.signInPrompt}
-            </p>
+            <div className="text-center text-xs text-muted-foreground mt-2">
+                <p>{t.signInPrompt}</p>
+                <p className="mt-2 font-medium">{t.createdBy}</p>
+            </div>
           </CardContent>
         </Card>
     </div>
