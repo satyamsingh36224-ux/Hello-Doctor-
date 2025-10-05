@@ -2,35 +2,33 @@
  * @fileoverview Firestore Security Rules for the Gopalganj Swasthya Seva app.
  *
  * Core Philosophy:
- * This ruleset prioritizes a flexible data model while strictly controlling data access.
- * It allows any authenticated user to create doctors and appointments (Self-Creation),
- * but restricts modifications to doctors and appointments to authenticated users only (Verified Identity).
+ * This ruleset provides basic read and write access control for doctors and appointments.
+ * All data access requires authentication. Read access to doctor profiles is public.
+ * Write access for all data is restricted and requires authentication.
  *
  * Data Structure:
- * - `/doctors/{doctorId}`: Stores doctor profiles.
- * - `/appointments/{appointmentId}`: Stores appointment data.
+ * - /doctors/{doctorId}: Stores doctor profiles.
+ * - /appointments/{appointmentId}: Stores appointment information.
  *
  * Key Security Decisions:
- * - Data validation is minimal to enable rapid prototyping.
- * - Public listing is enabled for doctors and appointments.
+ * - Public read access to the `doctors` collection to display doctor information.
+ * - Authenticated write access to the `appointments` collection to enable booking.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     /**
-     * @description Grants public read access to doctor profiles, allows any authenticated user to create doctor profiles, but restricts modifications to doctors to authenticated users only.
+     * @description Allows public read access to doctor profiles and restricts write access to authenticated users.
      * @path /doctors/{doctorId}
      * @allow get, list: if true;
      * @allow create: if isSignedIn();
      * @allow update: if isSignedIn();
      * @allow delete: if isSignedIn();
-     * @deny get: if false;
-     * @deny list: if false;
      * @deny create: if false;
      * @deny update: if false;
      * @deny delete: if false;
-     * @principle Public read with owner-only writes.
+     * @principle Allows anyone to view doctor profiles, but only authenticated users can create, update, or delete them.
      */
     match /doctors/{doctorId} {
       allow get, list: if true;
@@ -40,27 +38,25 @@ service cloud.firestore {
     }
 
     /**
-     * @description Grants public read access to appointments, allows any authenticated user to create appointments, but restricts modifications to appointments to authenticated users only.
+     * @description Allows authenticated users to manage appointments.
      * @path /appointments/{appointmentId}
-     * @allow get, list: if true;
+     * @allow get, list: if isSignedIn();
      * @allow create: if isSignedIn();
      * @allow update: if isSignedIn();
      * @allow delete: if isSignedIn();
-     * @deny get: if false;
-     * @deny list: if false;
      * @deny create: if false;
      * @deny update: if false;
      * @deny delete: if false;
-     * @principle Public read with owner-only writes.
+     * @principle Restricts access to appointments to authenticated users only.
      */
     match /appointments/{appointmentId} {
-      allow get, list: if true;
+      allow get, list: if isSignedIn();
       allow create: if isSignedIn();
       allow update: if isSignedIn();
       allow delete: if isSignedIn();
     }
 
-
+    // Helper function to check if a user is signed in.
     function isSignedIn() {
       return request.auth != null;
     }

@@ -58,9 +58,10 @@ export default function DoctorProfilePage() {
     )
   }
 
-  if (!doctor) {
+  if (!doctor && !isLoading) {
     notFound();
   }
 
-  return <DoctorProfileClient doctor={doctor} />;
+  // Render DoctorProfileClient only if doctor data is available
+  return doctor ? <DoctorProfileClient doctor={doctor} /> : null;
 }
