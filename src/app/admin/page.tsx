@@ -45,9 +45,8 @@ const initialNewDoctorState = {
   aiHint: "doctor",
 };
 
-// This is a simple, hardcoded password. For a real-world application, 
-// this should be managed securely, for example, via environment variables or a proper auth system.
-const ADMIN_PASSWORD = "admin123";
+// This is the new password as requested by the user.
+const ADMIN_PASSWORD = "9007355062";
 
 function AdminDashboard() {
   const { toast } = useToast();

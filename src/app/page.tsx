@@ -37,10 +37,13 @@ export default function LoginPage() {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (!isUserLoading && user) {
-        router.push('/select-specialization');
+    if (user) { // No longer checking for isUserLoading, to allow navigation to /admin
+        // This logic might be too aggressive, if it interferes with admin panel, we can refine it.
+        if (window.location.pathname !== '/admin') {
+             router.push('/select-specialization');
+        }
     }
-  }, [user, isUserLoading, router]);
+  }, [user, router]);
 
   const handleSignInWithGoogle = async () => {
     const auth = getAuth();
@@ -48,7 +51,7 @@ export default function LoginPage() {
     try {
       await signInWithPopup(auth, provider);
       toast({ title: 'साइन-इन सफल', description: 'Google से सफलतापूर्वक लॉग इन किया गया।' });
-      router.push('/select-specialization');
+      // The useEffect will handle the redirection
     } catch (error) {
       console.error("Google sign-in error", error);
       toast({ title: 'साइन-इन में त्रुटि', description: 'Google से साइन इन करने में विफल।', variant: 'destructive' });
@@ -61,19 +64,30 @@ export default function LoginPage() {
     try {
       await signInWithPopup(auth, provider);
       toast({ title: 'साइन-इन सफल', description: 'Facebook से सफलतापूर्वक लॉग इन किया गया।' });
-      router.push('/select-specialization');
-    } catch (error) {
+      // The useEffect will handle the redirection
+    } catch (error)
+     {
       console.error("Facebook sign-in error", error);
       toast({ title: 'साइन-इन में त्रुटि', description: 'Facebook से साइन इन करने में विफल।', variant: 'destructive' });
     }
   };
 
-  if (isUserLoading || user) {
+  if (isUserLoading) {
     return (
         <div className="flex h-screen items-center justify-center">
             <Loader2 className="h-12 w-12 animate-spin text-primary" />
         </div>
     )
+  }
+
+  // If user is loaded and present, but we are on the login page, it means the redirection is about to happen.
+  // We can show a loader or nothing to prevent flashing the login page.
+  if (user) {
+    return (
+        <div className="flex h-screen items-center justify-center">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        </div>
+    );
   }
 
   return (
@@ -99,7 +113,7 @@ export default function LoginPage() {
       </div>
 
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
-                <CardHeader className="text-center flex flex-col items-center gap-2 pt-8 cursor-pointer" onClick={() => router.push('/select-specialization')}>
+                <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
                     <Logo />
                     <CardTitle className="text-3xl font-bold tracking-tight">
                         Hello Doctor
