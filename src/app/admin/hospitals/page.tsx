@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Card,
   CardContent,
@@ -21,110 +20,81 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { specializationMap } from "@/lib/doctors";
-import type { Doctor } from "@/types";
-import { PlusCircle, Trash2, Loader2, ShieldCheck, KeyRound } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import type { Hospital } from "@/types";
+import { PlusCircle, Trash2, Loader2, ShieldCheck, KeyRound, Hospital as HospitalIcon } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useCollection, useFirestore, useMemoFirebase, setDocumentNonBlocking, deleteDocumentNonBlocking, useUser, useAuth } from "@/firebase";
 import { collection, doc } from "firebase/firestore";
 import { signInAnonymously } from "firebase/auth";
 
-const initialNewDoctorState = {
+const initialNewHospitalState = {
   name: { hi: "", en: "", bho: "" },
-  specializationKey: "General Physician",
-  description: { hi: "", en: "", bho: "" },
-  fee: 0,
-  imageUrl: "👨‍⚕️",
   location: "",
-  aiHint: "doctor",
+  phone: "",
+  imageUrl: "🏥",
+  aiHint: "hospital building",
 };
 
 const ADMIN_PASSWORD = "9007355062";
 
-function AdminDashboard() {
+function AdminHospitalsDashboard() {
   const { toast } = useToast();
   const firestore = useFirestore();
-  const [newDoctor, setNewDoctor] = useState(initialNewDoctorState);
+  const [newHospital, setNewHospital] = useState(initialNewHospitalState);
   const [isAdding, setIsAdding] = useState(false);
 
-  const doctorsCollectionRef = useMemoFirebase(() => {
+  const hospitalsCollectionRef = useMemoFirebase(() => {
     if (!firestore) return null;
-    return collection(firestore, 'doctors');
+    return collection(firestore, 'hospitals');
   }, [firestore]);
   
-  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsCollectionRef);
+  const { data: hospitals, isLoading } = useCollection<Hospital>(hospitalsCollectionRef);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value } = e.target;
     const [field, lang] = name.split(".");
 
     if (lang) {
-      setNewDoctor((prev) => ({
+      setNewHospital((prev) => ({
         ...prev,
         [field]: { ...prev[field as keyof typeof prev], [lang]: value as any },
       }));
     } else {
-      setNewDoctor((prev) => ({
-        ...prev,
-        [name]: name === "fee" ? Number(value) : value,
-      }));
+      setNewHospital((prev) => ({ ...prev, [name]: value }));
     }
   };
 
-  const handleSpecializationChange = (value: string) => {
-    setNewDoctor((prev) => ({ ...prev, specializationKey: value }));
-  };
-
-  const handleAddDoctor = async (e: React.FormEvent) => {
+  const handleAddHospital = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!firestore) {
         toast({ title: "Error", description: "Database not connected.", variant: "destructive" });
         return;
     }
     setIsAdding(true);
-    const spec = specializationMap.find(
-      (s) => s.key === newDoctor.specializationKey
-    );
-    if (!spec) {
-        setIsAdding(false);
-        return;
-    };
+    
+    const id = newHospital.name.en.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
+    const docRef = doc(firestore, 'hospitals', id);
 
-    const id = newDoctor.name.en.toLowerCase().replace(/\s+/g, '-') + '-' + Date.now();
-    const docRef = doc(firestore, 'doctors', id);
-
-    const doctorToAdd = {
+    const hospitalToAdd = {
       id: id,
-      name: newDoctor.name,
-      specialization: {
-        key: spec.key,
-        name: spec.name,
-      },
-      description: newDoctor.description,
-      fee: Number(newDoctor.fee),
-      imageUrl: newDoctor.imageUrl,
-      location: newDoctor.location,
-      aiHint: newDoctor.aiHint,
+      name: newHospital.name,
+      location: newHospital.location,
+      phone: newHospital.phone,
+      imageUrl: newHospital.imageUrl,
+      aiHint: newHospital.aiHint,
     };
     
-    setDocumentNonBlocking(docRef, doctorToAdd)
+    setDocumentNonBlocking(docRef, hospitalToAdd)
       .then(() => {
           toast({
-              title: "Doctor Added Successfully",
-              description: `${doctorToAdd.name.en} has been added to the database.`,
+              title: "Hospital Added Successfully",
+              description: `${hospitalToAdd.name.en} has been added to the database.`,
           });
-          setNewDoctor(initialNewDoctorState);
+          setNewHospital(initialNewHospitalState);
       })
-      .catch((error) => {
+      .catch(() => {
           // The permission error is handled by the global error handler
       })
       .finally(() => {
@@ -132,17 +102,17 @@ function AdminDashboard() {
       });
   };
 
-  const handleRemoveDoctor = (id: string) => {
+  const handleRemoveHospital = (id: string) => {
     if (!firestore) return;
-    const docRef = doc(firestore, 'doctors', id);
+    const docRef = doc(firestore, 'hospitals', id);
     deleteDocumentNonBlocking(docRef)
     .then(() => {
       toast({
-        title: "Doctor Removed",
-        description: "The doctor has been removed from the database.",
+        title: "Hospital Removed",
+        description: "The hospital has been removed from the database.",
       });
     })
-    .catch((error) => {
+    .catch(() => {
       // The permission error is handled by the global error handler
     });
   };
@@ -150,9 +120,9 @@ function AdminDashboard() {
   return (
     <>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold flex items-center gap-2"><ShieldCheck className="h-8 w-8 text-primary"/> डॉक्टर प्रबंधित करें</h1>
+        <h1 className="text-3xl font-bold flex items-center gap-2"><HospitalIcon className="h-8 w-8 text-primary"/> अस्पताल प्रबंधित करें</h1>
         <p className="text-muted-foreground">
-          एप्लिकेशन में डॉक्टरों की सूची प्रबंधित करें।
+          एप्लिकेशन में अस्पतालों की सूची प्रबंधित करें।
         </p>
       </div>
 
@@ -160,7 +130,7 @@ function AdminDashboard() {
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <CardTitle>डॉक्टरों की सूची</CardTitle>
+              <CardTitle>अस्पतालों की सूची</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="rounded-md border">
@@ -168,8 +138,8 @@ function AdminDashboard() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Name (English)</TableHead>
-                      <TableHead>Specialization</TableHead>
-                      <TableHead>Fee</TableHead>
+                      <TableHead>Location</TableHead>
+                      <TableHead>Phone</TableHead>
                       <TableHead>Actions</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -181,18 +151,16 @@ function AdminDashboard() {
                           </TableCell>
                       </TableRow>
                     ) : (
-                      doctors?.map((doctor) => (
-                      <TableRow key={doctor.id}>
-                        <TableCell>{doctor.name.en}</TableCell>
-                        <TableCell>
-                          {doctor.specialization.name.en}
-                        </TableCell>
-                        <TableCell>{doctor.fee}</TableCell>
+                      hospitals?.map((hospital) => (
+                      <TableRow key={hospital.id}>
+                        <TableCell>{hospital.name.en}</TableCell>
+                        <TableCell>{hospital.location}</TableCell>
+                        <TableCell>{hospital.phone}</TableCell>
                         <TableCell>
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => handleRemoveDoctor(doctor.id)}
+                            onClick={() => handleRemoveHospital(hospital.id)}
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -208,92 +176,57 @@ function AdminDashboard() {
         <div>
           <Card>
             <CardHeader>
-              <CardTitle>नया डॉक्टर जोड़ें</CardTitle>
+              <CardTitle>नया अस्पताल जोड़ें</CardTitle>
               <CardDescription>
                 यह डेटा Firebase डेटाबेस में सहेजा जाएगा।
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleAddDoctor} className="space-y-4">
+              <form onSubmit={handleAddHospital} className="space-y-4">
                 <Input
                   name="name.en"
                   placeholder="Name (English)"
-                  value={newDoctor.name.en}
+                  value={newHospital.name.en}
                   onChange={handleInputChange}
                   required
                 />
                 <Input
                   name="name.hi"
                   placeholder="नाम (हिन्दी)"
-                  value={newDoctor.name.hi}
+                  value={newHospital.name.hi}
                   onChange={handleInputChange}
                   required
                 />
                 <Input
                   name="name.bho"
                   placeholder="नांव (भोजपुरी)"
-                  value={newDoctor.name.bho}
-                  onChange={handleInputChange}
-                  required
-                />
-                <Select
-                  onValueChange={handleSpecializationChange}
-                  value={newDoctor.specializationKey}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select specialization" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {specializationMap.map((spec) => (
-                      <SelectItem key={spec.key} value={spec.key}>
-                        {spec.name.en}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <Textarea
-                  name="description.en"
-                  placeholder="Description (English)"
-                  value={newDoctor.description.en}
-                  onChange={handleInputChange}
-                />
-                <Textarea
-                  name="description.hi"
-                  placeholder="विवरण (हिन्दी)"
-                  value={newDoctor.description.hi}
-                  onChange={handleInputChange}
-                />
-                <Textarea
-                  name="description.bho"
-                  placeholder="विवरण (भोजपुरी)"
-                  value={newDoctor.description.bho}
-                  onChange={handleInputChange}
-                />
-                <Input
-                  name="fee"
-                  type="number"
-                  placeholder="Fee"
-                  value={newDoctor.fee}
+                  value={newHospital.name.bho}
                   onChange={handleInputChange}
                   required
                 />
                 <Input
                   name="location"
                   placeholder="Location"
-                  value={newDoctor.location}
+                  value={newHospital.location}
                   onChange={handleInputChange}
                   required
                 />
                 <Input
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={newHospital.phone}
+                  onChange={handleInputChange}
+                />
+                <Input
                   name="imageUrl"
-                  placeholder="Image Emoji (e.g. 👨‍⚕️)"
-                   value={newDoctor.imageUrl}
+                  placeholder="Image Emoji (e.g. 🏥)"
+                   value={newHospital.imageUrl}
                   onChange={handleInputChange}
                   required
                 />
                 <Button type="submit" className="w-full" disabled={isAdding}>
                   {isAdding ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <PlusCircle className="mr-2 h-4 w-4" />}
-                  Add Doctor
+                  Add Hospital
                 </Button>
               </form>
             </CardContent>
@@ -304,7 +237,7 @@ function AdminDashboard() {
   );
 }
 
-export default function AdminPage() {
+export default function AdminHospitalsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -314,7 +247,6 @@ export default function AdminPage() {
   const auth = useAuth();
   
   useEffect(() => {
-    // If a user (any user, including anonymous) is logged in, show the dashboard.
     if (user) {
         setIsAuthenticated(true);
     } else {
@@ -338,13 +270,11 @@ export default function AdminPage() {
     setError('');
 
     try {
-        // Sign in anonymously to get admin privileges defined in rules
         await signInAnonymously(auth);
         toast({
             title: "प्रवेश सफल",
             description: "एडमिन पैनल में आपका स्वागत है।",
         });
-        // The useEffect will catch the new user state and set isAuthenticated to true
     } catch (err) {
         console.error("Anonymous sign-in error", err);
         setError("एडमिन के रूप में लॉग इन करने में विफल।");
@@ -397,7 +327,7 @@ export default function AdminPage() {
             </Card>
           </div>
         ) : (
-          <AdminDashboard />
+          <AdminHospitalsDashboard />
         )}
       </main>
     </div>

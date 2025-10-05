@@ -18,6 +18,15 @@ export interface Doctor {
     aiHint: string;
 }
 
+export interface Hospital {
+    id: string;
+    name: LocalizedString;
+    location: string;
+    phone: string;
+    imageUrl: string;
+    aiHint: string;
+}
+
 export interface MedicalStore {
     id: string;
     name: LocalizedString;

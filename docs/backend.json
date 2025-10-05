@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "Doctor": {
@@ -83,6 +84,44 @@
         "appointmentDateTime",
         "status"
       ]
+    },
+    "Hospital": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Hospital",
+      "type": "object",
+      "description": "Represents a hospital in the app.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Hospital entity."
+        },
+        "name": {
+          "type": "object",
+          "description": "The hospital's name, localized.",
+          "properties": {
+            "hi": { "type": "string" },
+            "en": { "type": "string" },
+            "bho": { "type": "string" }
+          }
+        },
+        "location": {
+          "type": "string",
+          "description": "The address of the hospital."
+        },
+        "phone": {
+          "type": "string",
+          "description": "The contact phone number for the hospital."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "A URL for an image of the hospital."
+        },
+        "aiHint": {
+          "type": "string",
+          "description": "A hint for AI image generation."
+        }
+      },
+      "required": ["id", "name", "location"]
     }
   },
   "auth": {
@@ -124,8 +163,22 @@
             }
           ]
         }
+      },
+      {
+        "path": "/hospitals/{hospitalId}",
+        "definition": {
+          "entityName": "Hospital",
+          "schema": { "$ref": "#/backend/entities/Hospital" },
+          "description": "Stores hospital information.",
+          "params": [
+            {
+              "name": "hospitalId",
+              "description": "The unique identifier for the hospital."
+            }
+          ]
+        }
       }
     ],
-    "reasoning": "The Firestore structure is designed to optimize for the requirements of the Gopalganj Swasthya Seva app, focusing on displaying doctors and booking appointments. To ensure clarity and manageability of security rules, the data is structured as follows:\n\n1.  **Doctors Collection:** The `doctors` collection stores doctor profiles. Since the app focuses on doctors in a specific location (Gopalganj, Bihar, India), there's no need for complex location-based querying within Firestore itself. The `doctors` collection contains all necessary doctor information, including location details and Google Maps links. This supports the Doctor Directory feature and allows for easy listing and display of doctors. The `aiSpecializationSummary` is also stored here.\n\n2.  **Appointments Collection:** The `appointments` collection stores appointment data. Each document contains patient details, the associated doctor's ID (`doctorId`), and appointment specifics. Security rules will ensure that only authenticated users (patients or compounders) can access appointment data.\n\nThe design prioritizes Authorization Independence by avoiding hierarchical dependencies. No `get()` calls are needed in security rules. Segregation is achieved by keeping doctor profiles and appointment data separate. This segregation simplifies list operations and ensures that rules are not used as filters (QAPs)."
+    "reasoning": "The Firestore structure is designed to optimize for the requirements of the Gopalganj Swasthya Seva app, focusing on displaying doctors and booking appointments. To ensure clarity and manageability of security rules, the data is structured as follows:\n\n1.  **Doctors Collection:** The `doctors` collection stores doctor profiles. Since the app focuses on doctors in a specific location (Gopalganj, Bihar, India), there's no need for complex location-based querying within Firestore itself. The `doctors` collection contains all necessary doctor information, including location details and Google Maps links. This supports the Doctor Directory feature and allows for easy listing and display of doctors. The `aiSpecializationSummary` is also stored here.\n\n2.  **Appointments Collection:** The `appointments` collection stores appointment data. Each document contains patient details, the associated doctor's ID (`doctorId`), and appointment specifics. Security rules will ensure that only authenticated users (patients or compounders) can access appointment data.\n\n3. **Hospitals Collection:** The `hospitals` collection stores hospital profiles. This allows for dynamic management of hospitals from an admin panel. \n\nThe design prioritizes Authorization Independence by avoiding hierarchical dependencies. No `get()` calls are needed in security rules. Segregation is achieved by keeping doctor profiles and appointment data separate. This segregation simplifies list operations and ensures that rules are not used as filters (QAPs)."
   }
 }
