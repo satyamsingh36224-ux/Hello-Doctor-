@@ -34,7 +34,7 @@ export const doctors: Doctor[] = [
             "bho": "एमबीबीएस, एमडी। डॉ. अशोक कुमार सिंह एगो अनुभवी साधारण डॉक्टर हईं जे सभे किसिम के आम बेमारी के इलाज करेनी।"
         },
         "fee": 300,
-        "imageUrl": "https://picsum.photos/seed/doc1/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "स्टेशन रोड, सीवान",
         "aiHint": "indian male doctor"
     },
@@ -55,7 +55,7 @@ export const doctors: Doctor[] = [
             "bho": "बोखार, सर्दी, आउर दोसर साधारण स्वास्थ्य समस्या के विशेषज्ञ।"
         },
         "fee": 250,
-        "imageUrl": "https://picsum.photos/seed/doc2/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "अस्पताल रोड, सीवान",
         "aiHint": "experienced indian doctor"
     },
@@ -76,7 +76,7 @@ export const doctors: Doctor[] = [
             "bho": "एमबीबीएस, डीजीओ। मेहरारू लोग के स्वास्थ्य, गर्भावस्था, आउर ओकरा से जुड़ल समस्या के विशेषज्ञ।"
         },
         "fee": 400,
-        "imageUrl": "https://picsum.photos/seed/doc3/400/400",
+        "imageUrl": "👩‍⚕️",
         "location": "राजेंद्र पथ, सीवान",
         "aiHint": "indian female doctor"
     },
@@ -97,7 +97,7 @@ export const doctors: Doctor[] = [
             "bho": "मेहरारू लोग से जुड़ल सभे बेमारी खातिर एगो भरोसेमंद नांव।"
         },
         "fee": 350,
-        "imageUrl": "https://picsum.photos/seed/doc4/400/400",
+        "imageUrl": "👩‍⚕️",
         "location": "महादेवा, सीवान",
         "aiHint": "professional female doctor"
     },
@@ -118,7 +118,7 @@ export const doctors: Doctor[] = [
             "bho": "एमडी (बाल रोग)। नया जनमल लइकन आउर छोट लइकन के स्वास्थ्य के विशेषज्ञ।"
         },
         "fee": 350,
-        "imageUrl": "https://picsum.photos/seed/doc5/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "शांति वट वृक्ष, सीवान",
         "aiHint": "male doctor smiling"
     },
@@ -139,7 +139,7 @@ export const doctors: Doctor[] = [
             "bho": "लइकन के टीकाकरण आउर पोषण सलाह खातिर जानल जानी।"
         },
         "fee": 300,
-        "imageUrl": "https://picsum.photos/seed/doc6/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "गोपाला मोड़, सीवान",
         "aiHint": "senior indian doctor"
     },
@@ -160,7 +160,7 @@ export const doctors: Doctor[] = [
             "bho": "एमबीबीएस, एमडी (चमड़ी)। चमड़ी, बार, आउर नाह से जुड़ल सभे समस्या के इलाज करेनी।"
         },
         "fee": 500,
-        "imageUrl": "https://picsum.photos/seed/doc7/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "बाबुनिया रोड, सीवान",
         "aiHint": "young male doctor"
     },
@@ -181,7 +181,7 @@ export const doctors: Doctor[] = [
             "bho": "चमड़ी के बेमारी के इलाज में माहिर।"
         },
         "fee": 450,
-        "imageUrl": "https://picsum.photos/seed/doc8/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "इस्लामिया नगर, सीवान",
         "aiHint": "doctor in clinic"
     },
@@ -202,7 +202,7 @@ export const doctors: Doctor[] = [
             "bho": "एमएस (ऑर्थो)। हड्डी, जोड़, आउर फ्रैक्चर के विशेषज्ञ।"
         },
         "fee": 500,
-        "imageUrl": "https://picsum.photos/seed/doc9/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "सदर अस्पताल के पास, सीवान",
         "aiHint": "mature doctor"
     },
@@ -223,7 +223,7 @@ export const doctors: Doctor[] = [
             "bho": "खेल के चोट आउर गठिया के इलाज में माहिर।"
         },
         "fee": 450,
-        "imageUrl": "https://picsum.photos/seed/doc10/400/400",
+        "imageUrl": "👨‍⚕️",
         "location": "लहेरी टोला, सीवान",
         "aiHint": "indian doctor portrait"
     }
