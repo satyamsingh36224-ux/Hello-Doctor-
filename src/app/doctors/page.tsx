@@ -7,35 +7,28 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
-import { doctors } from '@/lib/doctors';
 import type { Doctor } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { collection, query, where } from 'firebase/firestore';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
-  const [isLoading, setIsLoading] = useState(true);
-  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
+  const firestore = useFirestore();
 
-  useEffect(() => {
-    setIsLoading(true);
-    let doctorsToShow: Doctor[];
+  const doctorsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    const doctorsCollection = collection(firestore, 'doctors');
     if (selectedSpecialization === 'all') {
-      doctorsToShow = doctors;
-    } else {
-      doctorsToShow = doctors.filter(doctor => doctor.specialization.key === selectedSpecialization);
+      return doctorsCollection;
     }
-    setFilteredDoctors(doctorsToShow);
-    
-    // Simulate loading for better user experience
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
+    return query(doctorsCollection, where('specialization.key', '==', selectedSpecialization));
+  }, [firestore, selectedSpecialization]);
 
-    return () => clearTimeout(timer);
-  }, [selectedSpecialization]);
+  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsQuery);
 
   if (isLoading) {
     return (
@@ -65,8 +58,8 @@ function DoctorsList() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-        {filteredDoctors.length > 0 ? (
-          filteredDoctors.map((doctor) => (
+        {doctors && doctors.length > 0 ? (
+          doctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))
         ) : (
