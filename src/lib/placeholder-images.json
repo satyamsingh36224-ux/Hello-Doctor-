@@ -30,27 +30,27 @@
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc8/400/400",
-      "aiHint": "woman doctor"
+      "aiHint": "indian doctor"
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc9/400/400",
-      "aiHint": "man doctor"
+      "aiHint": "woman doctor smiling"
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc10/400/400",
-      "aiHint": "professional doctor"
+      "aiHint": "professional indian woman"
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc11/400/400",
-      "aiHint": "doctor face"
+      "aiHint": "doctor stethoscope"
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc12/400/400",
-      "aiHint": "doctor uniform"
+      "aiHint": "man doctor"
     },
     {
       "imageUrl": "https://picsum.photos/seed/doc13/400/400",
-      "aiHint": "doctor stethoscope"
+      "aiHint": "female doctor portrait"
     }
   ],
   "medical_stores": [
