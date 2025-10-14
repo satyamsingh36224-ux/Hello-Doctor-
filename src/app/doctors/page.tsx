@@ -7,28 +7,34 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
+import { doctors as allDoctors, specializationMap } from '@/lib/doctors';
 import type { Doctor } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
-  const firestore = useFirestore();
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const doctorsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    const doctorsCollection = collection(firestore, 'doctors');
+  useEffect(() => {
+    setIsLoading(true);
+    let filteredDoctors;
     if (selectedSpecialization === 'all') {
-      return doctorsCollection;
+      filteredDoctors = allDoctors;
+    } else {
+      filteredDoctors = allDoctors.filter(
+        (doctor) => doctor.specialization.key === selectedSpecialization
+      );
     }
-    return query(doctorsCollection, where('specialization.key', '==', selectedSpecialization));
-  }, [firestore, selectedSpecialization]);
-
-  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsQuery);
+    // Simulate network delay
+    setTimeout(() => {
+      setDoctors(filteredDoctors);
+      setIsLoading(false);
+    }, 500);
+  }, [selectedSpecialization]);
 
   if (isLoading) {
     return (
@@ -58,7 +64,7 @@ function DoctorsList() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-        {doctors && doctors.length > 0 ? (
+        {doctors.length > 0 ? (
           doctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))
