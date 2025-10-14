@@ -14,7 +14,7 @@ export function SplashScreen() {
           Hello Doctor
         </h1>
       </div>
-      <p className="animate-fade-in-up-delay absolute bottom-8 text-sm text-muted-foreground">
+      <p className="animate-fade-in-up-delay absolute bottom-8 text-lg text-muted-foreground font-cursive">
         Produce by Hello Group
       </p>
     </div>
