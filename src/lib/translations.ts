@@ -10,6 +10,7 @@ const translations = {
     },
     loginPage: {
         login: "लॉगिन करें",
+        subTitle: "आपके स्वास्थ्य का भरोसेमंद साथी",
         signInPrompt: "आगे बढ़ने के लिए, अपने खाते में साइन इन करें।",
         continueWithGoogle: "Google से जारी रखें",
         continueWithFacebook: "Facebook से जारी रखें",
@@ -20,6 +21,9 @@ const translations = {
         signUp: "साइन अप करें",
         selectLanguage: "भाषा चुनें",
         otherServices: "अन्य सेवाएं",
+        createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
+        googleFacebookLoginDisabledTitle: "सुविधा उपलब्ध नहीं",
+        googleFacebookLoginDisabledDesc: "अभी Google और Facebook का लॉगिन उपलब्ध नहीं है। कृपया अपने मोबाइल नंबर से लॉगिन करें।",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनें",
@@ -180,6 +184,7 @@ const translations = {
     },
     loginPage: {
         login: "Login",
+        subTitle: "Your trusted health partner",
         signInPrompt: "Sign in to your account to continue.",
         continueWithGoogle: "Continue with Google",
         continueWithFacebook: "Continue with Facebook",
@@ -190,6 +195,9 @@ const translations = {
         signUp: "Sign Up",
         selectLanguage: "Select Language",
         otherServices: "Other Services",
+        createdBy: "Produce by: Hello Group",
+        googleFacebookLoginDisabledTitle: "Feature Unavailable",
+        googleFacebookLoginDisabledDesc: "Google and Facebook login is currently unavailable. Please log in with your phone number.",
     },
     selectSpecializationPage: {
         title: "Select a Specialization",
@@ -350,6 +358,7 @@ const translations = {
     },
     loginPage: {
         login: "लॉगिन करीं",
+        subTitle: "राउर स्वास्थ्य के भरोसेमंद साथी",
         signInPrompt: "आगे बढ़े खातिर, आपन खाता में साइन इन करीं।",
         continueWithGoogle: "Google से जारी राखीं",
         continueWithFacebook: "Facebook से जारी राखीं",
@@ -360,6 +369,9 @@ const translations = {
         signUp: "साइन अप करीं",
         selectLanguage: "भाषा चुनीं",
         otherServices: "दोसर सेवा",
+        createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
+        googleFacebookLoginDisabledTitle: "सुविधा उपलब्ध नइखे",
+        googleFacebookLoginDisabledDesc: "अभी Google आ Facebook के लॉगिन उपलब्ध नइखे। किरपा करके आपन मोबाइल नंबर से लॉगिन करीं।",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनीं",
