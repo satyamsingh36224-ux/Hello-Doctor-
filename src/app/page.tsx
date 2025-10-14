@@ -179,7 +179,6 @@ export default function LoginPage() {
             </div>
             <div className="text-center text-xs text-muted-foreground mt-2">
                 <p>{t.signInPrompt}</p>
-                <p className="mt-2 font-medium">{t.createdBy}</p>
             </div>
           </CardContent>
         </Card>
