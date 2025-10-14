@@ -74,7 +74,7 @@ export default function SelectSpecializationPage() {
             ))}
           </div>
            <div className="mt-8 text-center">
-              <Button onClick={handleLogoutAndGoToLogin} variant="outline" className="rounded-full">
+              <Button suppressHydrationWarning onClick={handleLogoutAndGoToLogin} variant="outline" className="rounded-full">
                   <LogOut className="mr-2 h-4 w-4" />
                   {t.backToLogin}
               </Button>
