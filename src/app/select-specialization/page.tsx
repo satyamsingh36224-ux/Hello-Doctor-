@@ -52,6 +52,7 @@ export default function SelectSpecializationPage() {
           <div className="relative mb-6">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input 
+              suppressHydrationWarning
               placeholder={t.searchPlaceholder}
               className="pl-10 py-5 rounded-full"
               value={searchTerm}
