@@ -4,22 +4,29 @@
 import { notFound, useParams } from "next/navigation";
 import { DoctorProfileClient } from "@/components/DoctorProfileClient";
 import type { Doctor } from "@/types";
-import { useDoc, useFirestore, useMemoFirebase } from "@/firebase";
-import { doc } from "firebase/firestore";
+import { doctors } from "@/lib/doctors"; // Import static data
 import { Skeleton } from "@/components/ui/skeleton";
 import { Header } from "@/components/Header";
+import { useEffect, useState } from "react";
 
 export default function DoctorProfilePage() {
   const params = useParams();
   const id = params.id as string;
-  const firestore = useFirestore();
+  const [doctor, setDoctor] = useState<Doctor | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const docRef = useMemoFirebase(() => {
-    if (!firestore || !id) return null;
-    return doc(firestore, 'doctors', id);
-  }, [firestore, id]);
-  
-  const { data: doctor, isLoading } = useDoc<Doctor>(docRef);
+  useEffect(() => {
+    setIsLoading(true);
+    const foundDoctor = doctors.find((d) => d.id === id);
+    setDoctor(foundDoctor);
+    
+    // Simulate loading for a better UX, can be removed if not needed
+    const timer = setTimeout(() => {
+        setIsLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [id]);
 
   if (isLoading) {
     return (

@@ -7,32 +7,35 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where } from 'firebase/firestore';
+import { doctors } from '@/lib/doctors';
 import type { Doctor } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
 function DoctorsList() {
   const searchParams = useSearchParams();
-  const firestore = useFirestore();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
+  const [isLoading, setIsLoading] = useState(true);
+  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
 
-  const doctorsCollectionRef = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return collection(firestore, 'doctors');
-  }, [firestore]);
-
-  const doctorsQuery = useMemoFirebase(() => {
-    if (!doctorsCollectionRef) return null;
+  useEffect(() => {
+    setIsLoading(true);
+    let doctorsToShow: Doctor[];
     if (selectedSpecialization === 'all') {
-      return doctorsCollectionRef;
+      doctorsToShow = doctors;
+    } else {
+      doctorsToShow = doctors.filter(doctor => doctor.specialization.key === selectedSpecialization);
     }
-    return query(doctorsCollectionRef, where('specialization.key', '==', selectedSpecialization));
-  }, [doctorsCollectionRef, selectedSpecialization]);
+    setFilteredDoctors(doctorsToShow);
+    
+    // Simulate loading for better user experience
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
 
-  const { data: doctors, isLoading } = useCollection<Doctor>(doctorsQuery);
+    return () => clearTimeout(timer);
+  }, [selectedSpecialization]);
 
   if (isLoading) {
     return (
@@ -62,8 +65,8 @@ function DoctorsList() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-        {doctors && doctors.length > 0 ? (
-          doctors.map((doctor) => (
+        {filteredDoctors.length > 0 ? (
+          filteredDoctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))
         ) : (

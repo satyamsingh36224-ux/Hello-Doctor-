@@ -62,16 +62,6 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
 
   const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
-
-    if (!firestore || !user) {
-        toast({
-            title: "लॉग इन आवश्यक है",
-            description: "अपॉइंटमेंट बुक करने के लिए आपको लॉग इन होना चाहिए। कृपया पहले लॉग इन करें।",
-            variant: "destructive"
-        });
-        return;
-    }
 
     if (!date) {
       toast({
@@ -90,42 +80,22 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
     
     const formattedDate = date.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
-    // 1. Save to Firestore
-    const appointmentData = {
-        doctorId: doctor.id,
-        doctorName: doctor.name.en, // Storing English name for consistency
-        patientId: user.uid,
-        patientName: patientName,
-        patientPhone: patientPhone,
-        appointmentDate: date,
-        appointmentTime: selectedTime,
-        status: 'confirmed', // Or 'pending'
-        bookedAt: serverTimestamp()
-    };
+    // Although we are not saving appointments to Firebase in this simplified model,
+    // we keep the WhatsApp logic.
+    const clinicPhoneNumber = "9771264784";
+    const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nयह अपॉइंटमेंट ऐप के माध्यम से बुक किया गया है। कृपया पुष्टि करें। धन्यवाद!`;
+    const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
 
-    const appointmentsCollectionRef = collection(firestore, 'appointments');
-    addDocumentNonBlocking(appointmentsCollectionRef, appointmentData)
-        .then(() => {
-            // 2. Open WhatsApp on successful save
-            const clinicPhoneNumber = "9771264784";
-            const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nयह अपॉइंटमेंट ऐप के माध्यम से बुक किया गया है। कृपया पुष्टि करें। धन्यवाद!`;
-            const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
-
-            setIsBookingOpen(false);
-            toast({
-              title: t.appointmentBookedToast,
-              description: `${t.appointmentBookedToastDesc} ${doctorName}`,
-            });
-
-            window.open(whatsappUrl, '_blank');
-        })
-        .catch((error) => {
-            // Error is handled globally by the error emitter.
-            // No need for a specific toast here unless you want to show a generic message.
-        })
-        .finally(() => {
-            setIsSubmitting(false);
+    // Simulate a delay for user feedback
+    setTimeout(() => {
+        setIsSubmitting(false);
+        setIsBookingOpen(false);
+        toast({
+          title: t.appointmentBookedToast,
+          description: `${t.appointmentBookedToastDesc} ${doctorName}`,
         });
+        window.open(whatsappUrl, '_blank');
+    }, 1000);
   };
 
   const handleGetSummary = async () => {
