@@ -195,7 +195,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                              <div className="flex items-center gap-2">
                                 <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
                                 <span className="font-semibold text-base">4.8</span>
-                                <span className="text-sm">(245 {t.reviews})</span>
+                                <span className="text-sm">({t.reviews})</span>
                             </div>
                             <div className="flex items-center gap-2">
                                 <IndianRupee className="h-5 w-5" />

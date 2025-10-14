@@ -19,7 +19,10 @@ function DoctorsList() {
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
 
-  const doctorsCollectionRef = useMemoFirebase(() => collection(firestore, 'doctors'), [firestore]);
+  const doctorsCollectionRef = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return collection(firestore, 'doctors');
+  }, [firestore]);
 
   const doctorsQuery = useMemoFirebase(() => {
     if (!doctorsCollectionRef) return null;
