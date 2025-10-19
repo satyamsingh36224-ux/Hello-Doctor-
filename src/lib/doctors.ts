@@ -766,5 +766,255 @@ export const doctors: Doctor[] = [
         imageUrl: "🧑‍⚕️",
         location: "लाखीचंद हॉस्पिटल, अस्पताल रोड, अमलोरी, सीवान, बिहार",
         aiHint: "young male doctor smiling"
+    },
+    {
+        id: "dr-sandeep-kumar-mishra-31",
+        name: {
+            hi: "डॉ. संदीप कुमार मिश्रा",
+            en: "Dr. Sandeep Kumar Mishra",
+            bho: "डॉ. संदीप कुमार मिश्रा"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "त्वचा और लेजर क्लिनिक में माहिर।",
+            en: "Specialist in skin and laser treatments.",
+            bho: "चमड़ी आ लेजर क्लिनिक में माहिर।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "गौशाला रोड, सिवान (Sufia Memorial Hospital के सामने, Anupam Medical Hall के पास)",
+        aiHint: "dermatologist doctor"
+    },
+    {
+        id: "dr-binay-kumar-sharma-32",
+        name: {
+            hi: "डॉ. बिनय कुमार शर्मा",
+            en: "Dr. Binay Kumar Sharma",
+            bho: "डॉ. बिनय कुमार शर्मा"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "Derma Healer क्लिनिक में त्वचा की देखभाल के विशेषज्ञ।",
+            en: "Skin care expert at Derma Healer Clinic.",
+            bho: "Derma Healer क्लिनिक में चमड़ी के देखभाल के विशेषज्ञ।"
+        },
+        fee: 450,
+        imageUrl: "🧑‍⚕️",
+        location: "Derma Healer – Laser & Skin Care Clinic, सिवान",
+        aiHint: "skin specialist"
+    },
+    {
+        id: "dr-srishti-sinha-33",
+        name: {
+            hi: "डॉ. सृष्टि सिन्हा",
+            en: "Dr. Srishti Sinha",
+            bho: "डॉ. सृष्टि सिन्हा"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "एक महिला त्वचा विशेषज्ञ जो अस्पताल रोड पर प्रैक्टिस करती हैं।",
+            en: "A female dermatologist practicing on Hospital Road.",
+            bho: "एगो महिला चमड़ी के डॉक्टर जे अस्पताल रोड पर प्रैक्टिस करेनी।"
+        },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "Near Dr. A K Sinha, Phattehpur Durga Mandir, Hospital Road, सिवान",
+        aiHint: "female dermatologist"
+    },
+    {
+        id: "dr-manzoor-alam-34",
+        name: {
+            hi: "डॉ. मंजूर आलम",
+            en: "Dr. Manzoor Alam",
+            bho: "डॉ. मंजूर आलम"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "Skin and Beauty Care Centre में त्वचा और सौंदर्य विशेषज्ञ।",
+            en: "Skin and beauty expert at Skin and Beauty Care Centre.",
+            bho: "Skin and Beauty Care Centre में चमड़ी आ सुंदरता के विशेषज्ञ।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "Skin and Beauty Care Centre, सिवान",
+        aiHint: "male skin doctor"
+    },
+    {
+        id: "dr-rajeev-kumar-35",
+        name: {
+            hi: "डॉ. राजीव कुमार",
+            en: "Dr. Rajeev Kumar",
+            bho: "डॉ. राजीव कुमार"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "सिवान में एक जाने-माने त्वचा विशेषज्ञ।",
+            en: "A well-known dermatologist in Siwan.",
+            bho: "सिवान में एक जानल-मानल चमड़ी के डॉक्टर।"
+        },
+        fee: 350,
+        imageUrl: "🧑‍⚕️",
+        location: "सिवान",
+        aiHint: "indian doctor professional"
+    },
+    {
+        id: "dr-pravin-prasad-36",
+        name: {
+            hi: "डॉ. प्रवीण प्रसाद",
+            en: "Dr. Pravin Prasad",
+            bho: "डॉ. प्रवीण प्रसाद"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "सिवान में त्वचा संबंधी समस्याओं के लिए एक विश्वसनीय नाम।",
+            en: "A trusted name for skin-related issues in Siwan.",
+            bho: "सिवान में चमड़ी से जुड़ल समस्या खातिर एक विश्वसनीय नाम।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "doctor with coat"
+    },
+    {
+        id: "dr-vk-singh-37",
+        name: {
+            hi: "डॉ. वी.के. सिंह",
+            en: "Dr. V.K. Singh",
+            bho: "डॉ. वी.के. सिंह"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "Hope Hospital में त्वचा रोग विभाग का नेतृत्व करते हैं।",
+            en: "Heads the dermatology department at Hope Hospital.",
+            bho: "Hope Hospital में चमड़ी रोग विभाग के नेतृत्व करेनी।"
+        },
+        fee: 550,
+        imageUrl: "🧑‍⚕️",
+        location: "Hope Hospital, सिवान",
+        aiHint: "senior doctor serious"
+    },
+    {
+        id: "dr-ak-mishra-38",
+        name: {
+            hi: "डॉ. ए.के. मिश्रा",
+            en: "Dr. A.K. Mishra",
+            bho: "डॉ. ए.के. मिश्रा"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "एक वरिष्ठ त्वचा विशेषज्ञ जिन्हें कई वर्षों का अनुभव है।",
+            en: "A senior dermatologist with many years of experience.",
+            bho: "एगो वरिष्ठ चमड़ी के डॉक्टर जिनके कई साल के अनुभव बा।"
+        },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "experienced indian doctor"
+    },
+    {
+        id: "dr-ajay-kumar-pathak-39",
+        name: {
+            hi: "डॉ. अजय कुमार पाठक",
+            en: "Dr. Ajay Kumar Pathak",
+            bho: "डॉ. अजय कुमार पाठक"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "त्वचा रोगों के निदान और उपचार में विशेषज्ञ।",
+            en: "Specialist in diagnosing and treating skin diseases.",
+            bho: "चमड़ी के रोग के निदान आ उपचार में विशेषज्ञ।"
+        },
+        fee: 400,
+        imageUrl: "🧑‍⚕️",
+        location: "सिवान",
+        aiHint: "male doctor friendly"
+    },
+    {
+        id: "dr-abuzar-hussain-40",
+        name: {
+            hi: "डॉ. अबूज़र हुसैन",
+            en: "Dr. Abuzar Hussain",
+            bho: "डॉ. अबूज़र हुसैन"
+        },
+        specialization: {
+            key: "Dermatologist",
+            name: {
+                hi: "त्वचा विशेषज्ञ",
+                en: "Dermatologist",
+                bho: "चमड़ी के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "Aashia Shabbir Health Care में अपनी सेवाएं प्रदान करते हैं।",
+            en: "Provides his services at Aashia Shabbir Health Care.",
+            bho: "Aashia Shabbir Health Care में आपन सेवा देवेनी।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "Aashia Shabbir Health Care, सिवान",
+        aiHint: "doctor with a smile"
     }
 ];
