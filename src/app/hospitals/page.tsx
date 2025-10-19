@@ -5,11 +5,11 @@ import { Header } from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Hospital, MapPin, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
-import { collection } from "firebase/firestore";
-import type { Hospital as HospitalType } from "@/types";
+import { hospitals as allHospitals } from "@/lib/hospitals";
+import type { Hospital as HospitalType } from "@/lib/hospitals";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 function HospitalCard({ hospital }: { hospital: HospitalType }) {
     const { language } = useLanguage();
@@ -54,13 +54,16 @@ function HospitalCard({ hospital }: { hospital: HospitalType }) {
 
 
 function HospitalsList() {
-    const firestore = useFirestore();
-    const hospitalsCollectionRef = useMemoFirebase(() => {
-        if (!firestore) return null;
-        return collection(firestore, 'hospitals');
-    }, [firestore]);
+    const [hospitals, setHospitals] = useState<HospitalType[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const { data: hospitals, isLoading } = useCollection<HospitalType>(hospitalsCollectionRef);
+    useEffect(() => {
+        // Simulate network delay
+        setTimeout(() => {
+            setHospitals(allHospitals);
+            setIsLoading(false);
+        }, 300);
+    }, []);
 
     if (isLoading) {
         return (

@@ -24,8 +24,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
-import { useUser, useAuth } from "@/firebase";
-import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 import { useToast } from "@/hooks/use-toast";
 import { SplashScreen } from "@/components/SplashScreen";
 
@@ -33,8 +31,6 @@ import { SplashScreen } from "@/components/SplashScreen";
 export default function LoginPage() {
   const [showSplash, setShowSplash] = useState(true);
   const { language, setLanguage, translations } = useLanguage();
-  const { user, loading: isUserLoading } = useUser();
-  const auth = useAuth();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
@@ -47,21 +43,9 @@ export default function LoginPage() {
     return () => clearTimeout(timer);
   }, []);
 
-
-  useEffect(() => {
-    if (showSplash) return; // Do nothing if splash is showing
-
-    // Only redirect if the user is loaded and exists, and we are not on an admin page
-    if (!isUserLoading && user && window.location.pathname.startsWith('/admin')) {
-      return;
-    }
-    if (!isUserLoading && user) {
-      router.push('/select-specialization');
-    }
-  }, [user, isUserLoading, router, showSplash]);
-
   const handleAdminClick = () => {
-    router.push('/admin');
+    // This can be a hidden way to access an admin page if needed in the future
+    // For now, it does nothing or can be removed.
   };
 
   const handleSocialLoginClick = () => {
@@ -74,14 +58,6 @@ export default function LoginPage() {
 
   if (showSplash) {
     return <SplashScreen />;
-  }
-
-  if (isUserLoading || (user && !window.location.pathname.startsWith('/admin'))) {
-    return (
-        <div className="flex h-screen items-center justify-center">
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        </div>
-    )
   }
 
   return (

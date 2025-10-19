@@ -3,7 +3,7 @@ import type {Metadata, Viewport} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, LifeBuoy, BriefcaseMedical, History, Store, Shield, Hospital } from 'lucide-react';
+import { Home, LifeBuoy, BriefcaseMedical, History, Store, Shield, Hospital, TestTube } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Logo } from '@/components/Logo';
@@ -64,7 +64,17 @@ export default function RootLayout({
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild>
+                                        <Link href="/hospitals"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Hospital className="h-5 w-5" /></div> अस्पताल</Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
                                         <Link href="/home-visit"><div className="p-2 bg-primary/10 rounded-lg text-primary"><BriefcaseMedical className="h-5 w-5" /></div> डॉक्टर होम विज़िट</Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                 <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <Link href="/lab-test"><div className="p-2 bg-primary/10 rounded-lg text-primary"><TestTube className="h-5 w-5" /></div> लैब टेस्ट</Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
@@ -75,16 +85,6 @@ export default function RootLayout({
                                  <SidebarMenuItem>
                                     <SidebarMenuButton asChild>
                                         <Link href="/support"><div className="p-2 bg-primary/10 rounded-lg text-primary"><LifeBuoy className="h-5 w-5" /></div> सहायता और समर्थन</Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                                <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/admin"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Shield className="h-5 w-5" /></div> डॉक्टर प्रबंधित करें</Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                                <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/admin/hospitals"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Hospital className="h-5 w-5" /></div> अस्पताल प्रबंधित करें</Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             </SidebarMenu>

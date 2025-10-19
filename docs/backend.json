@@ -84,44 +84,6 @@
         "appointmentDateTime",
         "status"
       ]
-    },
-    "Hospital": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Hospital",
-      "type": "object",
-      "description": "Represents a hospital in the app.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Hospital entity."
-        },
-        "name": {
-          "type": "object",
-          "description": "The hospital's name, localized.",
-          "properties": {
-            "hi": { "type": "string" },
-            "en": { "type": "string" },
-            "bho": { "type": "string" }
-          }
-        },
-        "location": {
-          "type": "string",
-          "description": "The address of the hospital."
-        },
-        "phone": {
-          "type": "string",
-          "description": "The contact phone number for the hospital."
-        },
-        "imageUrl": {
-          "type": "string",
-          "description": "A URL for an image of the hospital."
-        },
-        "aiHint": {
-          "type": "string",
-          "description": "A hint for AI image generation."
-        }
-      },
-      "required": ["id", "name", "location"]
     }
   },
   "auth": {
@@ -160,20 +122,6 @@
             {
               "name": "appointmentId",
               "description": "The unique identifier of the appointment."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/hospitals/{hospitalId}",
-        "definition": {
-          "entityName": "Hospital",
-          "schema": { "$ref": "#/backend/entities/Hospital" },
-          "description": "Stores hospital information.",
-          "params": [
-            {
-              "name": "hospitalId",
-              "description": "The unique identifier for the hospital."
             }
           ]
         }
