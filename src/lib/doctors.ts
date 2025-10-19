@@ -18,11 +18,11 @@ export const specializationMap = [
 
 export const doctors: Doctor[] = [
     {
-        id: "dr-ramesh-kumar-1",
+        id: "dr-manoj-kumar-singh-1",
         name: {
-            hi: "डॉ. रमेश कुमार",
-            en: "Dr. Ramesh Kumar",
-            bho: "डॉ. रमेश कुमार"
+            hi: "डॉ. मनोज कुमार सिंह",
+            en: "Dr. Manoj Kumar Singh",
+            bho: "डॉ. मनोज कुमार सिंह"
         },
         specialization: {
             key: "General Physician",
@@ -33,138 +33,238 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. रमेश कुमार एक अनुभवी सामान्य चिकित्सक हैं जिन्हें 15 वर्षों का अनुभव है। वह सामान्य बीमारियों जैसे सर्दी, खांसी, बुखार और अन्य सामान्य स्वास्थ्य समस्याओं का इलाज करते हैं।",
-            en: "Dr. Ramesh Kumar is an experienced General Physician with 15 years of practice. He treats common ailments like colds, coughs, fever, and other general health issues.",
-            bho: "डॉ. रमेश कुमार एगो अनुभवी साधारण डॉक्टर हईं जिनके 15 साल के अनुभव बा। उ साधारण बेमारी जईसे सर्दी, खांसी, बोखार आ दोसर साधारण स्वास्थ्य समस्या के इलाज करेनी।"
+            hi: "डॉ. मनोज कुमार सिंह एक अनुभवी सामान्य चिकित्सक हैं जिन्हें 21 वर्षों का अनुभव है।",
+            en: "Dr. Manoj Kumar Singh is an experienced General Physician with 21 years of practice.",
+            bho: "डॉ. मनोज कुमार सिंह एगो अनुभवी साधारण डॉक्टर हईं जिनके 21 साल के अनुभव बा।"
         },
         fee: 300,
         imageUrl: "👨‍⚕️",
-        location: "अस्पताल रोड, सीवान",
+        location: "सीवान",
         aiHint: "indian male doctor"
     },
     {
-        id: "dr-sunita-sharma-2",
+        id: "dr-md-faizan-sarwar-2",
         name: {
-            hi: "डॉ. सुनीता शर्मा",
-            en: "Dr. Sunita Sharma",
-            bho: "डॉ. सुनीता शर्मा"
+            hi: "डॉ. मो. फैजान सरवर",
+            en: "Dr. Md Faizan Sarwar",
+            bho: "डॉ. मो. फैजान सरवर"
         },
         specialization: {
-            key: "Gynecologist",
+            key: "General Physician",
             name: {
-                hi: "स्त्री रोग विशेषज्ञ",
-                en: "Gynecologist",
-                bho: "मेहरारू के डॉक्टर"
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
             }
         },
         description: {
-            hi: "डॉ. सुनीता शर्मा एक प्रसिद्ध स्त्री रोग विशेषज्ञ हैं। वह महिलाओं के स्वास्थ्य, गर्भावस्था और संबंधित समस्याओं के लिए उत्कृष्ट देखभाल प्रदान करती हैं।",
-            en: "Dr. Sunita Sharma is a renowned Gynecologist. She provides excellent care for women's health, pregnancy, and related issues.",
-            bho: "डॉ. सुनीता शर्मा एगो प्रसिद्ध मेहरारू के डॉक्टर हईं। उ मेहरारू लोग के स्वास्थ्य, गर्भावस्था आ संबंधित समस्या खातिर बढ़िया देखभाल करेनी।"
+            hi: "डॉ. मो. फैजान सरवर एक सामान्य चिकित्सक हैं जिन्हें 11 वर्षों का अनुभव है।",
+            en: "Dr. Md Faizan Sarwar is a General Physician with 11 years of practice.",
+            bho: "डॉ. मो. फैजान सरवर एगो साधारण डॉक्टर हईं जिनके 11 साल के अनुभव बा।"
         },
-        fee: 500,
-        imageUrl: "👩‍⚕️",
-        location: "स्टेशन रोड, सीवान",
-        aiHint: "indian female doctor"
+        fee: 250,
+        imageUrl: "👨‍⚕️",
+        location: "सीवान",
+        aiHint: "male doctor"
     },
     {
-        id: "dr-anil-singh-3",
+        id: "dr-lal-babu-prasad-3",
         name: {
-            hi: "डॉ. अनिल सिंह",
-            en: "Dr. Anil Singh",
-            bho: "डॉ. अनिल सिंह"
+            hi: "डॉ. लाल बाबू प्रसाद",
+            en: "Dr. Lal Babu Prasad",
+            bho: "डॉ. लाल बाबू प्रसाद"
         },
         specialization: {
-            key: "Pediatrician",
+            key: "General Physician",
             name: {
-                hi: "बच्चों का चिकित्सक",
-                en: "Pediatrician",
-                bho: "लइकन के डॉक्टर"
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
             }
         },
         description: {
-            hi: "डॉ. अनिल सिंह बच्चों के विशेषज्ञ हैं और उन्हें बच्चों के रोगों का गहरा ज्ञान है। वह बच्चों के टीकाकरण और पोषण पर भी सलाह देते हैं।",
-            en: "Dr. Anil Singh is a specialist in pediatrics and has profound knowledge of children's diseases. He also advises on vaccination and nutrition.",
-            bho: "डॉ. अनिल सिंह लइकन के विशेषज्ञ हईं आ उनके लइकन के बेमारी के गहिर ज्ञान बा। उ लइकन के टीकाकरण आ पोषण पर भी सलाह देवेनी।"
+            hi: "डॉ. लाल बाबू प्रसाद एक वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 24 वर्षों का अनुभव है।",
+            en: "Dr. Lal Babu Prasad is a senior General Physician with 24 years of practice.",
+            bho: "डॉ. लाल बाबू प्रसाद एगो वरिष्ठ साधारण डॉक्टर हईं जिनके 24 साल के अनुभव बा।"
         },
         fee: 400,
         imageUrl: "👨‍⚕️",
-        location: "राजेंद्र पथ, सीवान",
-        aiHint: "male doctor smiling"
+        location: "सीवान",
+        aiHint: "experienced male doctor"
     },
     {
-        id: "dr-vikas-verma-4",
+        id: "dr-sanjay-kumar-pandey-4",
         name: {
-            hi: "डॉ. विकास वर्मा",
-            en: "Dr. Vikas Verma",
-            bho: "डॉ. विकास वर्मा"
+            hi: "डॉ. संजय कुमार पांडेय",
+            en: "Dr. Sanjay Kumar Pandey",
+            bho: "डॉ. संजय कुमार पांडेय"
         },
         specialization: {
-            key: "Dermatologist",
+            key: "General Physician",
             name: {
-                hi: "त्वचा विशेषज्ञ",
-                en: "Dermatologist",
-                bho: "चमड़ी के डॉक्टर"
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
             },
         },
         description: {
-            hi: "डॉ. विकास वर्मा त्वचा, बाल और नाखूनों से संबंधित समस्याओं के विशेषज्ञ हैं। वे मुहांसे, एक्जिमा और अन्य त्वचा रोगों का इलाज करते हैं।",
-            en: "Dr. Vikas Verma specializes in problems related to skin, hair, and nails. He treats acne, eczema, and other skin diseases.",
-            bho: "डॉ. विकास वर्मा चमड़ी, केश आ नाखून से जुड़ल समस्या के विशेषज्ञ हईं। उ मुहांसा, एक्जिमा आ दोसर चमड़ी के रोग के इलाज करेनी।"
+            hi: "डॉ. संजय कुमार पांडेय एक बहुत अनुभवी सामान्य चिकित्सक हैं जिन्हें 29 वर्षों का अनुभव है।",
+            en: "Dr. Sanjay Kumar Pandey is a very experienced General Physician with 29 years of practice.",
+            bho: "डॉ. संजय कुमार पांडेय एगो बहुत अनुभवी साधारण डॉक्टर हईं जिनके 29 साल के अनुभव बा।"
         },
-        fee: 450,
+        fee: 500,
         imageUrl: "👨‍⚕️",
-        location: "महादेवा, सीवान",
-        aiHint: "indian doctor"
+        location: "सीवान",
+        aiHint: "indian doctor professional"
     },
     {
-        id: "dr-priya-desai-5",
+        id: "dr-ajay-kumar-sinha-5",
         name: {
-            hi: "डॉ. प्रिया देसाई",
-            en: "Dr. Priya Desai",
-            bho: "डॉ. प्रिया देसाई"
+            hi: "डॉ. अजय कुमार सिन्हा",
+            en: "Dr. Ajay Kumar Sinha",
+            bho: "डॉ. अजय कुमार सिन्हा"
         },
         specialization: {
-            key: "Cardiologist",
+            key: "General Physician",
             name: {
-                hi: "हृदय रोग विशेषज्ञ",
-                en: "Cardiologist",
-                bho: "हृदय रोग विशेषज्ञ"
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
             }
         },
         description: {
-            hi: "डॉ. प्रिया देसाई सीवान की एक जानी-मानी हृदय रोग विशेषज्ञ हैं। वह उच्च रक्तचाप, कोलेस्ट्रॉल और हृदय संबंधी अन्य बीमारियों के लिए परामर्श देती हैं।",
-            en: "Dr. Priya Desai is a well-known cardiologist in Siwan. She provides consultation for high blood pressure, cholesterol, and other heart-related diseases.",
-            bho: "डॉ. प्रिया देसाई सीवान के एगो जानल-मानल हृदय रोग विशेषज्ञ हईं। उ उच्च रक्तचाप, कोलेस्ट्रॉल आ हृदय से जुड़ल दोसर बेमारी खातिर सलाह देवेनी।"
+            hi: "डॉ. अजय कुमार सिन्हा एक सामान्य चिकित्सक हैं जिन्हें 13 वर्षों का अनुभव है।",
+            en: "Dr. Ajay Kumar Sinha is a General Physician with 13 years of practice.",
+            bho: "डॉ. अजय कुमार सिन्हा एगो साधारण डॉक्टर हईं जिनके 13 साल के अनुभव बा।"
         },
-        fee: 600,
-        imageUrl: "👩‍⚕️",
-        location: "बाबू हाता, सीवान",
-        aiHint: "professional indian woman"
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "सीवान",
+        aiHint: "professional indian man"
     },
     {
-        id: "dr-arjun-mehta-6",
+        id: "dr-pradeep-kumar-singh-6",
         name: {
-            hi: "डॉ. अर्जुन मेहता",
-            en: "Dr. Arjun Mehta",
-            bho: "डॉ. अर्जुन मेहता"
+            hi: "डॉ. प्रदीप कुमार सिंह",
+            en: "Dr. Pradeep Kumar Singh",
+            bho: "डॉ. प्रदीप कुमार सिंह"
         },
         specialization: {
-            key: "Orthopedic Surgeon",
+            key: "General Physician",
             name: {
-                hi: "हड्डी रोग विशेषज्ञ",
-                en: "Orthopedic Surgeon",
-                bho: "हड्डी के डॉक्टर"
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
             }
         },
         description: {
-            hi: "डॉ. अर्जुन मेहता हड्डियों, जोड़ों और मांसपेशियों की समस्याओं के विशेषज्ञ हैं। वह फ्रैक्चर और गठिया का इलाज करते हैं।",
-            en: "Dr. Arjun Mehta is a specialist in problems of bones, joints, and muscles. He treats fractures and arthritis.",
-            bho: "डॉ. अर्जुन मेहता हड्डी, जोड़ आ मांसपेशी के समस्या के विशेषज्ञ हईं। उ फ्रैक्चर आ गठिया के इलाज करेनी।"
+            hi: "डॉ. प्रदीप कुमार सिंह एक सामान्य चिकित्सक हैं जिन्हें 15 वर्षों का अनुभव है।",
+            en: "Dr. Pradeep Kumar Singh is a General Physician with 15 years of practice.",
+            bho: "डॉ. प्रदीप कुमार सिंह एगो साधारण डॉक्टर हईं जिनके 15 साल के अनुभव बा।"
         },
-        fee: 550,
+        fee: 350,
         imageUrl: "👨‍⚕️",
-        location: "गोशाला रोड, सीवान",
+        location: "हॉस्पिटल रोड, सीवान",
         aiHint: "doctor stethoscope"
+    },
+    {
+        id: "dr-m-a-zahid-7",
+        name: {
+            hi: "डॉ. एम. ए. जाहिद",
+            en: "Dr. M A Zahid",
+            bho: "डॉ. एम. ए. जाहिद"
+        },
+        specialization: {
+            key: "General Physician",
+            name: {
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
+            }
+        },
+        description: {
+            hi: "डॉ. एम. ए. जाहिद एक ज्ञात सामान्य चिकित्सक हैं जो बबुनिया रोड में प्रैक्टिस करते हैं।",
+            en: "Dr. M A Zahid is a known General Physician practicing at Babunia Road.",
+            bho: "डॉ. एम. ए. जाहिद एगो ज्ञात साधारण डॉक्टर हईं जे बबुनिया रोड में प्रैक्टिस करेनी।"
+        },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "बबुनिया रोड, कागजी मुहल्ला, सीवान",
+        aiHint: "male doctor serious"
+    },
+    {
+        id: "dr-kafeel-ahmad-8",
+        name: {
+            hi: "डॉ. कफील अहमद",
+            en: "Dr. Kafeel Ahmad",
+            bho: "डॉ. कफील अहमद"
+        },
+        specialization: {
+            key: "General Physician",
+            name: {
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
+            }
+        },
+        description: {
+            hi: "डॉ. कफील अहमद ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एक सामान्य चिकित्सक हैं।",
+            en: "Dr. Kafeel Ahmad is a General Physician at Human Life Care, Andar Bazaar, Siwan.",
+            bho: "डॉ. कफील अहमद ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एगो साधारण डॉक्टर हईं।"
+        },
+        fee: 250,
+        imageUrl: "👨‍⚕️",
+        location: "ह्यूमन लाइफ केयर, अंदर बाजार, सीवान",
+        aiHint: "doctor friendly"
+    },
+    {
+        id: "dr-saurabh-singh-9",
+        name: {
+            hi: "डॉ. सौरव सिंह",
+            en: "Dr. Saurabh Singh",
+            bho: "डॉ. सौरव सिंह"
+        },
+        specialization: {
+            key: "General Physician",
+            name: {
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
+            }
+        },
+        description: {
+            hi: "डॉ. सौरव सिंह सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एक सामान्य चिकित्सक के रूप में सेवा प्रदान करते हैं।",
+            en: "Dr. Saurabh Singh serves as a General Physician at Saroj Healthcare Centre, Chakiya Mahadeva, Siwan.",
+            bho: "डॉ. सौरव सिंह सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एगो साधारण डॉक्टर के रूप में सेवा प्रदान करेनी।"
+        },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "सरोज हेल्थकेयर सेंटर, राजीव नगर रोड, चकिया महादेवा, सीवान",
+        aiHint: "young male doctor"
+    },
+    {
+        id: "dr-jamshed-ahmad-10",
+        name: {
+            hi: "डॉ. जमशेद अहमद",
+            en: "Dr. Jamshed Ahmad",
+            bho: "डॉ. जमशेद अहमद"
+        },
+        specialization: {
+            key: "General Physician",
+            name: {
+                hi: "सामान्य चिकित्सक",
+                en: "General Physician",
+                bho: "साधारण डॉक्टर"
+            }
+        },
+        description: {
+            hi: "डॉ. जमशेद अहमद एक बहुत ही वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 43 वर्षों का विशाल अनुभव है।",
+            en: "Dr. Jamshed Ahmad is a very senior General Physician with a vast experience of 43 years.",
+            bho: "डॉ. जमशेद अहमद एगो बहुत वरिष्ठ साधारण डॉक्टर हईं जिनके 43 साल के विशाल अनुभव बा।"
+        },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सीवान",
+        aiHint: "senior indian doctor"
     }
 ];
