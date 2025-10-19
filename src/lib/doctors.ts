@@ -1016,5 +1016,105 @@ export const doctors: Doctor[] = [
         imageUrl: "👨‍⚕️",
         location: "Aashia Shabbir Health Care, सिवान",
         aiHint: "doctor with a smile"
+    },
+    {
+        id: "dr-srishti-sinha-41",
+        name: { "hi": "डॉ. सृष्टि सिन्हा", "en": "Dr. Srishti Sinha", "bho": "डॉ. सृष्टि सिन्हा" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और कॉस्मेटोलॉजी में विशेषज्ञ।", en: "Specialist in Dermatology and Cosmetology.", bho: "चमड़ी के रोग आ कॉस्मेटोलॉजी में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "मेडिवर्सल मात्री हॉस्पिटल, सिवान",
+        aiHint: "female doctor professional"
+    },
+    {
+        id: "dr-aarti-kumari-42",
+        name: { "hi": "डॉ. आरती कुमारी", "en": "Dr. Aarti Kumari", "bho": "डॉ. आरती कुमारी" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा और बालों की देखभाल में विशेषज्ञ।", en: "Specialist in skin and hair care.", bho: "चमड़ी आ बाल के देखभाल में विशेषज्ञ।" },
+        fee: 450,
+        imageUrl: "👩‍⚕️",
+        location: "लक्ष्मी नर्सिंग होम, सिवान",
+        aiHint: "indian female doctor"
+    },
+    {
+        id: "dr-taranam-43",
+        name: { "hi": "डॉ. तारणम", "en": "Dr. Taranam", "bho": "डॉ. तारणम" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और लेजर उपचार में विशेषज्ञ।", en: "Specialist in dermatology and laser treatments.", bho: "चमड़ी के रोग आ लेजर उपचार में विशेषज्ञ।" },
+        fee: 550,
+        imageUrl: "👩‍⚕️",
+        location: "रेडियन्स स्किन एस्थेटिक्स एंड लेजर क्लिनिक, नया बाजार, सिवान",
+        aiHint: "professional woman doctor"
+    },
+    {
+        id: "dr-binay-kumar-sharma-44",
+        name: { "hi": "डॉ. बिनय कुमार शर्मा", "en": "Dr. Binay Kumar Sharma", "bho": "डॉ. बिनय कुमार शर्मा" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और कॉस्मेटोलॉजी में विशेषज्ञ।", en: "Specialist in Dermatology and Cosmetology.", bho: "चमड़ी के रोग आ कॉस्मेटोलॉजी में विशेषज्ञ।" },
+        fee: 450,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "male doctor serious"
+    },
+    {
+        id: "dr-narendra-kumar-45",
+        name: { "hi": "डॉ. नरेंद्र कुमार", "en": "Dr. Narendra Kumar", "bho": "डॉ. नरेंद्र कुमार" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "होम्योपैथिक त्वचा उपचार में विशेषज्ञ।", en: "Specialist in homeopathic skin treatments.", bho: "होम्योपैथिक चमड़ी उपचार में विशेषज्ञ।" },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "बाबा होमियो क्लिनिक, सिवान",
+        aiHint: "homeopathy doctor"
+    },
+    {
+        id: "dr-pankaj-kumar-gupta-46",
+        name: { "hi": "डॉ. पंकज कुमार गुप्ता", "en": "Dr. Pankaj Kumar Gupta", "bho": "डॉ. पंकज कुमार गुप्ता" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और सौंदर्य उपचार में विशेषज्ञ।", en: "Specialist in dermatology and beauty treatments.", bho: "चमड़ी के रोग आ सौंदर्य उपचार में विशेषज्ञ।" },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "स्किन एंड सौंदर्य केयर, सिवान",
+        aiHint: "indian male doctor"
+    },
+    {
+        id: "dr-abuzar-hussain-47",
+        name: { "hi": "डॉ. अबुजर हुसैन", "en": "Dr. Abuzar Hussain", "bho": "डॉ. अबुजर हुसैन" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और बालों की देखभाल में विशेषज्ञ।", en: "Specialist in dermatology and hair care.", bho: "चमड़ी के रोग आ बाल के देखभाल में विशेषज्ञ।" },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "आशिया शब्बीर हेल्थ केयर, सिवान",
+        aiHint: "male doctor smiling"
+    },
+    {
+        id: "dr-ajay-kumar-pathak-48",
+        name: { "hi": "डॉ. अजय कुमार पाठक", "en": "Dr. Ajay Kumar Pathak", "bho": "डॉ. अजय कुमार पाठक" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और कॉस्मेटोलॉजी में विशेषज्ञ।", en: "Specialist in Dermatology and Cosmetology.", bho: "चमड़ी के रोग आ कॉस्मेटोलॉजी में विशेषज्ञ।" },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "doctor professional"
+    },
+    {
+        id: "dr-md-rabiuddin-49",
+        name: { "hi": "डॉ. मो. रबीउद्दीन", "en": "Dr. Md. Rabiuddin", "bho": "डॉ. मो. रबीउद्दीन" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और बालों की देखभाल में विशेषज्ञ।", en: "Specialist in dermatology and hair care.", bho: "चमड़ी के रोग आ बाल के देखभाल में विशेषज्ञ।" },
+        fee: 450,
+        imageUrl: "👨‍⚕️",
+        location: "जेड ए एडवांस्ड स्किन एंड हेयर केयर सेंटर, सिवान",
+        aiHint: "doctor portrait"
+    },
+    {
+        id: "dr-suman-devi-50",
+        name: { "hi": "डॉ. सुमन देवी", "en": "Dr. Suman Devi", "bho": "डॉ. सुमन देवी" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "त्वचा रोग और कॉस्मेटोलॉजी में विशेषज्ञ।", en: "Specialist in Dermatology and Cosmetology.", bho: "चमड़ी के रोग आ कॉस्मेटोलॉजी में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "सिवान",
+        aiHint: "female doctor serious"
     }
 ];
