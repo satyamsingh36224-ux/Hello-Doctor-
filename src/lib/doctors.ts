@@ -516,5 +516,255 @@ export const doctors: Doctor[] = [
         imageUrl: "🧑‍⚕️",
         location: "डॉ. भानु प्रताप सिंह क्लिनिक, सदर अस्पताल के पास, अमलोरी, सीवान, बिहार",
         aiHint: "doctor with glasses"
+    },
+    {
+        id: "dr-dilip-kumar-21",
+        name: {
+            hi: "डॉ. दिलीप कुमार",
+            en: "Dr. Dilip Kumar",
+            bho: "डॉ. दिलीप कुमार"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "बच्चों के विशेषज्ञ, वैदेही न्यूबॉर्न एंड चाइल्ड केयर सेंटर में कार्यरत।",
+            en: "Pediatric specialist at Vaidehi Newborn & Child Care Center.",
+            bho: "लइकन के विशेषज्ञ, वैदेही न्यूबॉर्न एंड चाइल्ड केयर सेंटर में कार्यरत।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "वैदेही न्यूबॉर्न एंड चाइल्ड केयर सेंटर, न्यू डॉक्टर कॉलोनी, विजयहाटा, नज़दीक डॉ. शंकर सिंह, सीवान",
+        aiHint: "friendly male doctor"
+    },
+    {
+        id: "dr-om-prakash-singh-22",
+        name: {
+            hi: "डॉ. ओम प्रकाश सिंह",
+            en: "Dr. Om Prakash Singh",
+            bho: "डॉ. ओम प्रकाश सिंह"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "गोशाला रोड पर बच्चों के जाने-माने डॉक्टर।",
+            en: "A well-known pediatrician on Goshala Road.",
+            bho: "गोशाला रोड पर लइकन के जानल-मानल डॉक्टर।"
+        },
+        fee: 350,
+        imageUrl: "🧑‍⚕️",
+        location: "गोशाला रोड, सीवान - 841226, बिहार",
+        aiHint: "senior male doctor"
+    },
+    {
+        id: "dr-mridul-kumar-23",
+        name: {
+            hi: "डॉ. मृदुल कुमार",
+            en: "Dr. Mridul Kumar",
+            bho: "डॉ. मृदुल कुमार"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "मत्रुच्छाया हॉस्पिटल में बच्चों के अनुभवी डॉक्टर।",
+            en: "Experienced pediatrician at Matruchhaya Hospital.",
+            bho: "मत्रुच्छाया हॉस्पिटल में लइकन के अनुभवी डॉक्टर।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "मत्रुच्छाया हॉस्पिटल, हॉस्पिटल रोड, नज़दीक अड्डा नंबर 3, सीवान, बिहार",
+        aiHint: "professional male doctor"
+    },
+    {
+        id: "dr-vireshwar-prasad-24",
+        name: {
+            hi: "डॉ. वीरेश्वर प्रसाद",
+            en: "Dr. Vireshwar Prasad",
+            bho: "डॉ. वीरेश्वर प्रसाद"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "महादेवा में एक वरिष्ठ और सम्मानित बाल रोग विशेषज्ञ।",
+            en: "A senior and respected pediatrician in Mahadeva.",
+            bho: "महादेवा में एक वरिष्ठ आ सम्मानित बाल रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "महादेवा, सीवान, नज़दीक डॉ. रमा चौधरी के पास",
+        aiHint: "experienced senior doctor"
+    },
+    {
+        id: "dr-md-israil-25",
+        name: {
+            hi: "डॉ. एम.डी. इसराइल",
+            en: "Dr. M.D. Israil",
+            bho: "डॉ. एम.डी. इसराइल"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "साना चिल्ड्रन हॉस्पिटल में बच्चों के स्वास्थ्य की देखभाल करते हैं।",
+            en: "Takes care of children's health at Sana Children's Hospital.",
+            bho: "साना चिल्ड्रन हॉस्पिटल में लइकन के स्वास्थ्य के देखभाल करेनी।"
+        },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "साना चिल्ड्रन हॉस्पिटल, मखदूम सराय मोड़, बाबुनिया रोड, सीवान",
+        aiHint: "indian doctor smiling"
+    },
+    {
+        id: "dr-manoj-kumar-singh-26",
+        name: {
+            hi: "डॉ. मनोज कुमार सिंह",
+            en: "Dr. Manoj Kumar Singh",
+            bho: "डॉ. मनोज कुमार सिंह"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "चाइल्ड केयर क्लिनिक में बच्चों के विशेषज्ञ।",
+            en: "Child specialist at Child Care Clinic.",
+            bho: "चाइल्ड केयर क्लिनिक में लइकन के विशेषज्ञ।"
+        },
+        fee: 450,
+        imageUrl: "🧑‍⚕️",
+        location: "चाइल्ड केयर क्लिनिक, दुर्गा मंदिर के पास, बाबनौली, सीवान - 841226, बिहार",
+        aiHint: "kind male doctor"
+    },
+    {
+        id: "dr-dinesh-kumar-singh-27",
+        name: {
+            hi: "डॉ. दिनेश कुमार सिंह",
+            en: "Dr. Dinesh Kumar Singh",
+            bho: "डॉ. दिनेश कुमार सिंह"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "न्यू पूजा मेडिकल स्टोर के पास बच्चों का इलाज करते हैं।",
+            en: "Treats children near New Pooja Medical Store.",
+            bho: "न्यू पूजा मेडिकल स्टोर के पास लइकन के इलाज करेनी।"
+        },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "न्यू पूजा मेडिकल स्टोर, गोशाला रोड, नज़दीक डॉ. आर. किरण, सीवान",
+        aiHint: "indian male doctor serious"
+    },
+    {
+        id: "dr-ritu-kumari-28",
+        name: {
+            hi: "डॉ. रितु कुमारी",
+            en: "Dr. Ritu Kumari",
+            bho: "डॉ. रितु कुमारी"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "रितु हार्ट केयर सेंटर में बच्चों का भी इलाज करती हैं।",
+            en: "Also treats children at Ritu Heart Care Center.",
+            bho: "रितु हार्ट केयर सेंटर में लइकन के भी इलाज करेनी।"
+        },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "रितु हार्ट केयर सेंटर, सीवान, बिहार",
+        aiHint: "young female doctor"
+    },
+    {
+        id: "dr-krishna-kumar-shahi-29",
+        name: {
+            hi: "डॉ. कृष्ण कुमार शाही",
+            en: "Dr. Krishna Kumar Shahi",
+            bho: "डॉ. कृष्ण कुमार शाही"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल में बच्चों के विशेषज्ञ।",
+            en: "Pediatric specialist at Vartika Arna Heart Care & Multispeciality Hospital.",
+            bho: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल में लइकन के विशेषज्ञ।"
+        },
+        fee: 600,
+        imageUrl: "👨‍⚕️",
+        location: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल, सीवान, बिहार",
+        aiHint: "senior indian doctor glasses"
+    },
+    {
+        id: "dr-abhishek-kumar-yadav-30",
+        name: {
+            hi: "डॉ. अभिषेक कुमार यादव",
+            en: "Dr. Abhishek Kumar Yadav",
+            bho: "डॉ. अभिषेक कुमार यादव"
+        },
+        specialization: {
+            key: "Pediatrician",
+            name: {
+                hi: "बच्चों का चिकित्सक",
+                en: "Pediatrician",
+                bho: "लइकन के डॉक्टर"
+            }
+        },
+        description: {
+            hi: "लाखीचंद हॉस्पिटल में बाल रोग विशेषज्ञ।",
+            en: "Pediatrician at Lakhichand Hospital.",
+            bho: "लाखीचंद हॉस्पिटल में बाल रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "लाखीचंद हॉस्पिटल, अस्पताल रोड, अमलोरी, सीवान, बिहार",
+        aiHint: "young male doctor smiling"
     }
 ];
