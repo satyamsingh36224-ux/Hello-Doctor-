@@ -33,9 +33,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. मनोज कुमार सिंह एक अनुभवी सामान्य चिकित्सक हैं जिन्हें 21 वर्षों का अनुभव है।",
-            en: "Dr. Manoj Kumar Singh is an experienced General Physician with 21 years of practice.",
-            bho: "डॉ. मनोज कुमार सिंह एगो अनुभवी साधारण डॉक्टर हईं जिनके 21 साल के अनुभव बा।"
+            hi: "एक अनुभवी सामान्य चिकित्सक हैं जिन्हें 21 वर्षों का अनुभव है।",
+            en: "An experienced General Physician with 21 years of practice.",
+            bho: "एगो अनुभवी साधारण डॉक्टर हईं जिनके 21 साल के अनुभव बा।"
         },
         fee: 300,
         imageUrl: "👨‍⚕️",
@@ -58,9 +58,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. मो. फैजान सरवर एक सामान्य चिकित्सक हैं जिन्हें 11 वर्षों का अनुभव है।",
-            en: "Dr. Md Faizan Sarwar is a General Physician with 11 years of practice.",
-            bho: "डॉ. मो. फैजान सरवर एगो साधारण डॉक्टर हईं जिनके 11 साल के अनुभव बा।"
+            hi: "एक सामान्य चिकित्सक हैं जिन्हें 11 वर्षों का अनुभव है।",
+            en: "A General Physician with 11 years of practice.",
+            bho: "एगो साधारण डॉक्टर हईं जिनके 11 साल के अनुभव बा।"
         },
         fee: 250,
         imageUrl: "👨‍⚕️",
@@ -83,9 +83,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. लाल बाबू प्रसाद एक वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 24 वर्षों का अनुभव है।",
-            en: "Dr. Lal Babu Prasad is a senior General Physician with 24 years of practice.",
-            bho: "डॉ. लाल बाबू प्रसाद एगो वरिष्ठ साधारण डॉक्टर हईं जिनके 24 साल के अनुभव बा।"
+            hi: "एक वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 24 वर्षों का अनुभव है।",
+            en: "A senior General Physician with 24 years of practice.",
+            bho: "एगो वरिष्ठ साधारण डॉक्टर हईं जिनके 24 साल के अनुभव बा।"
         },
         fee: 400,
         imageUrl: "👨‍⚕️",
@@ -108,9 +108,9 @@ export const doctors: Doctor[] = [
             },
         },
         description: {
-            hi: "डॉ. संजय कुमार पांडेय एक बहुत अनुभवी सामान्य चिकित्सक हैं जिन्हें 29 वर्षों का अनुभव है।",
-            en: "Dr. Sanjay Kumar Pandey is a very experienced General Physician with 29 years of practice.",
-            bho: "डॉ. संजय कुमार पांडेय एगो बहुत अनुभवी साधारण डॉक्टर हईं जिनके 29 साल के अनुभव बा।"
+            hi: "एक बहुत अनुभवी सामान्य चिकित्सक हैं जिन्हें 29 वर्षों का अनुभव है।",
+            en: "A very experienced General Physician with 29 years of practice.",
+            bho: "एगो बहुत अनुभवी साधारण डॉक्टर हईं जिनके 29 साल के अनुभव बा।"
         },
         fee: 500,
         imageUrl: "👨‍⚕️",
@@ -133,9 +133,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. अजय कुमार सिन्हा एक सामान्य चिकित्सक हैं जिन्हें 13 वर्षों का अनुभव है।",
-            en: "Dr. Ajay Kumar Sinha is a General Physician with 13 years of practice.",
-            bho: "डॉ. अजय कुमार सिन्हा एगो साधारण डॉक्टर हईं जिनके 13 साल के अनुभव बा।"
+            hi: "एक सामान्य चिकित्सक हैं जिन्हें 13 वर्षों का अनुभव है।",
+            en: "A General Physician with 13 years of practice.",
+            bho: "एगो साधारण डॉक्टर हईं जिनके 13 साल के अनुभव बा।"
         },
         fee: 300,
         imageUrl: "👨‍⚕️",
@@ -158,9 +158,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. प्रदीप कुमार सिंह एक सामान्य चिकित्सक हैं जिन्हें 15 वर्षों का अनुभव है।",
-            en: "Dr. Pradeep Kumar Singh is a General Physician with 15 years of practice.",
-            bho: "डॉ. प्रदीप कुमार सिंह एगो साधारण डॉक्टर हईं जिनके 15 साल के अनुभव बा।"
+            hi: "एक सामान्य चिकित्सक हैं जिन्हें 15 वर्षों का अनुभव है।",
+            en: "A General Physician with 15 years of practice.",
+            bho: "एगो साधारण डॉक्टर हईं जिनके 15 साल के अनुभव बा।"
         },
         fee: 350,
         imageUrl: "👨‍⚕️",
@@ -183,9 +183,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. एम. ए. जाहिद एक ज्ञात सामान्य चिकित्सक हैं जो बबुनिया रोड में प्रैक्टिस करते हैं।",
-            en: "Dr. M A Zahid is a known General Physician practicing at Babunia Road.",
-            bho: "डॉ. एम. ए. जाहिद एगो ज्ञात साधारण डॉक्टर हईं जे बबुनिया रोड में प्रैक्टिस करेनी।"
+            hi: "एक ज्ञात सामान्य चिकित्सक हैं जो बबुनिया रोड में प्रैक्टिस करते हैं।",
+            en: "A known General Physician practicing at Babunia Road.",
+            bho: "एगो ज्ञात साधारण डॉक्टर हईं जे बबुनिया रोड में प्रैक्टिस करेनी।"
         },
         fee: 300,
         imageUrl: "👨‍⚕️",
@@ -208,9 +208,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. कफील अहमद ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एक सामान्य चिकित्सक हैं।",
-            en: "Dr. Kafeel Ahmad is a General Physician at Human Life Care, Andar Bazaar, Siwan.",
-            bho: "डॉ. कफील अहमद ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एगो साधारण डॉक्टर हईं।"
+            hi: "ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एक सामान्य चिकित्सक हैं।",
+            en: "Is a General Physician at Human Life Care, Andar Bazaar, Siwan.",
+            bho: "ह्यूमन लाइफ केयर, अंदर बाजार, सीवान में एगो साधारण डॉक्टर हईं।"
         },
         fee: 250,
         imageUrl: "👨‍⚕️",
@@ -233,9 +233,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. सौरव सिंह सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एक सामान्य चिकित्सक के रूप में सेवा प्रदान करते हैं।",
-            en: "Dr. Saurabh Singh serves as a General Physician at Saroj Healthcare Centre, Chakiya Mahadeva, Siwan.",
-            bho: "डॉ. सौरव सिंह सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एगो साधारण डॉक्टर के रूप में सेवा प्रदान करेनी।"
+            hi: "सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एक सामान्य चिकित्सक के रूप में सेवा प्रदान करते हैं।",
+            en: "Serves as a General Physician at Saroj Healthcare Centre, Chakiya Mahadeva, Siwan.",
+            bho: "सरोज हेल्थकेयर सेंटर, चकिया महादेवा, सीवान में एगो साधारण डॉक्टर के रूप में सेवा प्रदान करेनी।"
         },
         fee: 300,
         imageUrl: "👨‍⚕️",
@@ -258,13 +258,263 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "डॉ. जमशेद अहमद एक बहुत ही वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 43 वर्षों का विशाल अनुभव है।",
-            en: "Dr. Jamshed Ahmad is a very senior General Physician with a vast experience of 43 years.",
-            bho: "डॉ. जमशेद अहमद एगो बहुत वरिष्ठ साधारण डॉक्टर हईं जिनके 43 साल के विशाल अनुभव बा।"
+            hi: "एक बहुत ही वरिष्ठ सामान्य चिकित्सक हैं जिन्हें 43 वर्षों का विशाल अनुभव है।",
+            en: "A very senior General Physician with a vast experience of 43 years.",
+            bho: "एगो बहुत वरिष्ठ साधारण डॉक्टर हईं जिनके 43 साल के विशाल अनुभव बा।"
         },
         fee: 500,
         imageUrl: "👨‍⚕️",
         location: "सीवान",
         aiHint: "senior indian doctor"
+    },
+    {
+        id: "dr-ashutosh-kumar-sinha-11",
+        name: {
+            hi: "डॉ. आशुतोष कुमार सिन्हा",
+            en: "Dr. Ashutosh Kumar Sinha",
+            bho: "डॉ. आशुतोष कुमार सिन्हा"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist.",
+            bho: "एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "दुर्गा मंदिर के पास, फतेपुर, सीवान - 841226, बिहार",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-razi-ahmad-12",
+        name: {
+            hi: "डॉ. रज़ी अहमद",
+            en: "Dr. Razi Ahmad",
+            bho: "डॉ. रज़ी अहमद"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist.",
+            bho: "एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "चापिया, सीवान, बिहार 841226, भारत",
+        aiHint: "professional doctor"
+    },
+    {
+        id: "dr-sanjay-singh-13",
+        name: {
+            hi: "डॉ. संजय सिंह",
+            en: "Dr. Sanjay Singh",
+            bho: "डॉ. संजय सिंह"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "बरौदा हार्ट केयर इंस्टीट्यूट एंड हॉस्पिटल में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Baroda Heart Care Institute & Hospital.",
+            bho: "बरौदा हार्ट केयर इंस्टीट्यूट एंड हॉस्पिटल में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 600,
+        imageUrl: "🧑‍⚕️",
+        location: "बरौदा हार्ट केयर इंस्टीट्यूट एंड हॉस्पिटल, शाहजादा मार्केट, अस्पताल रोड, नाया बाजार, बाबनौली, सीवान, बिहार - 841210",
+        aiHint: "male doctor hospital"
+    },
+    {
+        id: "dr-ss-majidi-14",
+        name: {
+            hi: "डॉ. एस. एस. माजिदी",
+            en: "Dr. S. S. Majidi",
+            bho: "डॉ. एस. एस. माजिदी"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "अफीफा अस्पताल में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Afifa Hospital.",
+            bho: "अफीफा अस्पताल में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 550,
+        imageUrl: "👨‍⚕️",
+        location: "अफीफा अस्पताल, होटल ताजवर के पास, एम एम कॉलोनी, सिसवान टोला, सीवान, बिहार - 841226",
+        aiHint: "senior cardiologist"
+    },
+    {
+        id: "dr-ritu-kumari-15",
+        name: {
+            hi: "डॉ. रितु कुमारी",
+            en: "Dr. Ritu Kumari",
+            bho: "डॉ. रितु कुमारी"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "रितु हार्ट केयर सेंटर में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Ritu Heart Care Center.",
+            bho: "रितु हार्ट केयर सेंटर में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "रितु हार्ट केयर सेंटर, सीवान, बिहार",
+        aiHint: "female cardiologist"
+    },
+    {
+        id: "dr-deepak-verma-16",
+        name: {
+            hi: "डॉ. दीपक वर्मा",
+            en: "Dr. Deepak Verma",
+            bho: "डॉ. दीपक वर्मा"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "जीवन दीप हार्टकेयर सेंटर में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Jivan Deep Heartcare Center.",
+            bho: "जीवन दीप हार्टकेयर सेंटर में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "जीवन दीप हार्टकेयर सेंटर, सीवान, बिहार",
+        aiHint: "male doctor portrait"
+    },
+    {
+        id: "dr-krishna-kumar-shahi-17",
+        name: {
+            hi: "डॉ. कृष्ण कुमार शाही",
+            en: "Dr. Krishna Kumar Shahi",
+            bho: "डॉ. कृष्ण कुमार शाही"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Vartika Arna Heart Care & Multispeciality Hospital.",
+            bho: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 600,
+        imageUrl: "👨‍⚕️",
+        location: "वरतिका अर्ना हार्ट केयर एंड मल्टीस्पेशलिटी हॉस्पिटल, सीवान, बिहार",
+        aiHint: "experienced indian doctor"
+    },
+    {
+        id: "dr-ritu-kumari-18",
+        name: {
+            hi: "डॉ. रितु कुमारी",
+            en: "Dr. Ritu Kumari",
+            bho: "डॉ. रितु कुमारी"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "रितु हार्ट केयर सेंटर में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Ritu Heart Care Center.",
+            bho: "रितु हार्ट केयर सेंटर में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "रितु हार्ट केयर सेंटर, सीवान, बिहार",
+        aiHint: "indian female doctor"
+    },
+    {
+        id: "dr-abhishek-kumar-yadav-19",
+        name: {
+            hi: "डॉ. अभिषेक कुमार यादव",
+            en: "Dr. Abhishek Kumar Yadav",
+            bho: "डॉ. अभिषेक कुमार यादव"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "लाखीचंद हॉस्पिटल में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Lakhichand Hospital.",
+            bho: "लाखीचंद हॉस्पिटल में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "लाखीचंद हॉस्पिटल, अस्पताल रोड, अमलोरी, सीवान, बिहार",
+        aiHint: "young indian doctor"
+    },
+    {
+        id: "dr-bhanu-pratap-singh-20",
+        name: {
+            hi: "डॉ. भानु प्रताप सिंह",
+            en: "Dr. Bhanu Pratap Singh",
+            bho: "डॉ. भानु प्रताप सिंह"
+        },
+        specialization: {
+            key: "Cardiologist",
+            name: {
+                hi: "हृदय रोग विशेषज्ञ",
+                en: "Cardiologist",
+                bho: "हृदय रोग विशेषज्ञ"
+            }
+        },
+        description: {
+            hi: "डॉ. भानु प्रताप सिंह क्लिनिक में एक अनुभवी हृदय रोग विशेषज्ञ।",
+            en: "An experienced cardiologist at Dr. Bhanu Pratap Singh Clinic.",
+            bho: "डॉ. भानु प्रताप सिंह क्लिनिक में एगो अनुभवी हृदय रोग विशेषज्ञ।"
+        },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "डॉ. भानु प्रताप सिंह क्लिनिक, सदर अस्पताल के पास, अमलोरी, सीवान, बिहार",
+        aiHint: "doctor with glasses"
     }
 ];
