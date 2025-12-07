@@ -1250,7 +1250,7 @@ export const doctors: Doctor[] = [
     {
         id: "dr-ausaf-khan-64",
         name: { "hi": "डॉ. औसाफ खान", "en": "Dr. Ausaf Khan", "bho": "डॉ. औसाफ खान" },
-        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनral सर्जन" } },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
         description: { hi: "जनरल सर्जरी के क्षेत्र में सूचीबद्ध।", en: "Listed in the field of General Surgery.", bho: "जनरल सर्जरी के क्षेत्र में सूचीबद्ध।" },
         fee: 500,
         imageUrl: "👨‍⚕️",
@@ -1286,7 +1286,49 @@ export const doctors: Doctor[] = [
         imageUrl: "👨‍⚕️",
         location: "सिवान",
         aiHint: "doctor smiling"
+    },
+    {
+        id: "dr-m-shamim-rana-68",
+        name: { hi: "डॉ. एम शमीम राणा", en: "Dr. M Shamim Rana", bho: "डॉ. एम शमीम राणा" },
+        specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } },
+        description: { hi: "न्यूरोमैक्स क्लिनिक में विशेषज्ञ। फोन: 094712 49245", en: "Specialist at Neuromax Clinic. Phone: 094712 49245", bho: "न्यूरोमैक्स क्लिनिक में विशेषज्ञ। फोन: 094712 49245" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Neuromax Clinic, Doctor’s Colony, Siwan – 841226",
+        aiHint: "neurologist doctor"
+    },
+    {
+        id: "dr-arun-kumar-69",
+        name: { hi: "डॉ. अरुण कुमार", en: "Dr. Arun Kumar", bho: "डॉ. अरुण कुमार" },
+        specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } },
+        description: { hi: "अड्डा नंबर 3 के उत्तर में स्थित। फोन: 097718 73444", en: "Located north of Adda No. 3. Phone: 097718 73444", bho: "अड्डा नंबर 3 के उत्तर में स्थित। फोन: 097718 73444" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "North of Adda No. 3, Hospital Road, Naya Bazar / Babhnauli, Siwan – 841226",
+        aiHint: "senior neurologist"
+    },
+    {
+        id: "dr-anand-kumar-ujjwal-70",
+        name: { hi: "डॉ. आनंद कुमार उज्जवल", en: "Dr. Anand Kumar Ujjwal", bho: "डॉ. आनंद कुमार उज्जवल" },
+        specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } },
+        description: { hi: "मंगलम हॉस्पिटल में न्यूरोलॉजिस्ट।", en: "Neurologist at Manglam Hospital.", bho: "मंगलम हॉस्पिटल में न्यूरोलॉजिस्ट।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Manglam Hospital, Near Durga Mandir, Gaushala Road, Siwan – 841226 / 841227",
+        aiHint: "professional neurologist"
+    },
+    {
+        id: "dr-raginee-singh-71",
+        name: { hi: "डॉ. रागिनी सिंह", en: "Dr. Raginee Singh", bho: "डॉ. रागिनी सिंह" },
+        specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } },
+        description: { hi: "सिवान न्यूरोसाइकेट्री सेंटर में विशेषज्ञ। फोन: +91-9431871300", en: "Specialist at Siwan Neuropsychiatry Centre. Phone: +91-9431871300", bho: "सिवान न्यूरोसाइकेट्री सेंटर में विशेषज्ञ। फोन: +91-9431871300" },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "Siwan Neuropsychiatry Centre, Opposite Bindusar Prathmik Vidyalay, New Bypass Barharia Road, Hospital Road, Siwan – 841227",
+        aiHint: "female neurologist"
     }
 ];
+
+    
 
     
