@@ -783,9 +783,9 @@ export const doctors: Doctor[] = [
             }
         },
         description: {
-            hi: "त्वचा और लेजर क्लिनिक में माहिर।",
-            en: "Specialist in skin and laser treatments.",
-            bho: "चमड़ी आ लेजर क्लिनिक में माहिर।"
+            hi: "त्वचा और लेजर क्लिनिक में माहिर। सोमवार से शुक्रवार: 10:30 AM – 5:30 PM",
+            en: "Specialist in skin and laser treatments. Mon-Fri: 10:30 AM - 5:30 PM",
+            bho: "चमड़ी आ लेजर क्लिनिक में माहिर। सोमार से सुक: 10:30 AM – 5:30 PM"
         },
         fee: 400,
         imageUrl: "👨‍⚕️",
@@ -1186,5 +1186,107 @@ export const doctors: Doctor[] = [
         imageUrl: "🏥",
         location: "सिवान हसुआ रोड, Siwan",
         aiHint: "hospital building"
+    },
+    {
+        id: "dr-tribhuvan-narayan-singh-58",
+        name: { "hi": "डॉ. त्रिभुवन नारायण सिंह", "en": "Dr. Tribhuvan Narayan Singh", "bho": "डॉ. त्रिभुवन नारायण सिंह" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सरोज हेल्थकेयर सेंटर में जनरल सर्जन।", en: "General Surgeon at Saroj Healthcare Centre.", bho: "सरोज हेल्थकेयर सेंटर में जनरल सर्जन।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Saroj Healthcare Centre — Rajeev Nagar Road, Chakiya Mahadeva, Siwan",
+        aiHint: "senior surgeon"
+    },
+    {
+        id: "dr-vinoy-dubey-59",
+        name: { "hi": "डॉ. विनय दुबे", "en": "Dr. Vinoy Dubey", "bho": "डॉ. विनय दुबे" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "एडवांस सर्जिकल लैप्रोस्कोपी और मैटरनिटी सेंटर में विशेषज्ञ।", en: "Specialist at Advance Surgical Laparoscopy And Maternity Centre.", bho: "एडवांस सर्जिकल लैप्रोस्कोपी और मैटरनिटी सेंटर में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Advance Surgical Laparoscopy And Maternity Centre — Vijay Hata Road / Hospital Road, Siwan",
+        aiHint: "laparoscopic surgeon"
+    },
+    {
+        id: "dr-mohammed-muntazir-60",
+        name: { "hi": "डॉ. मोहम्मद मुंतजिर", "en": "Dr. Mohammed Muntazir", "bho": "डॉ. मोहम्मद मुंतजिर" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सुफिया मेमोरियल हॉस्पिटल में जनरल सर्जन।", en: "General Surgeon at Sufia Memorial Hospital.", bho: "सुफिया मेमोरियल हॉस्पिटल में जनरल सर्जन।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Sufia Memorial Hospital — Hospital Road, Siwan",
+        aiHint: "surgeon hospital"
+    },
+    {
+        id: "dr-panalal-61",
+        name: { "hi": "डॉ. पनलाल", "en": "Dr. Panalal", "bho": "डॉ. पनलाल" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "आर्यन हॉस्पिटल सिवान में जनरल सर्जन।", en: "General Surgeon at Aryan Hospital Siwan.", bho: "आर्यन हॉस्पिटल सिवान में जनरल सर्जन।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Aryan Hospital Siwan — Rajeev Nagar / Gaushala Road, Siwan",
+        aiHint: "indian surgeon smiling"
+    },
+    {
+        id: "dr-ashok-kumar-62",
+        name: { "hi": "डॉ. अशोक कुमार", "en": "Dr. Ashok Kumar", "bho": "डॉ. अशोक कुमार" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सिवान में जनरल सर्जरी के विशेषज्ञ।", en: "Specialist in General Surgery in Siwan.", bho: "सिवान में जनरल सर्जरी के विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "experienced surgeon"
+    },
+    {
+        id: "dr-vinay-kumar-singh-63",
+        name: { "hi": "डॉ. विनय कुमार सिंह", "en": "Dr. Vinay Kumar Singh", "bho": "डॉ. विनय कुमार सिंह" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सिवान में एक जाने-माने जनरल सर्जन।", en: "A well-known General Surgeon in Siwan.", bho: "सिवान में एक जानल-मानल जनरल सर्जन।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "professional indian surgeon"
+    },
+    {
+        id: "dr-ausaf-khan-64",
+        name: { "hi": "डॉ. औसाफ खान", "en": "Dr. Ausaf Khan", "bho": "डॉ. औसाफ खान" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनral सर्जन" } },
+        description: { hi: "जनरल सर्जरी के क्षेत्र में सूचीबद्ध।", en: "Listed in the field of General Surgery.", bho: "जनरल सर्जरी के क्षेत्र में सूचीबद्ध।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "male surgeon portrait"
+    },
+    {
+        id: "dr-faisal-nawaz-65",
+        name: { "hi": "डॉ. फैसल नवाज", "en": "Dr. Faisal Nawaz", "bho": "डॉ. फैसल नवाज" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सिवान में जनरल सर्जन के रूप में सेवा प्रदान करते हैं।", en: "Serves as a General Surgeon in Siwan.", bho: "सिवान में जनरल सर्जन के रूप में सेवा प्रदान करेनी।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "surgeon friendly"
+    },
+    {
+        id: "dr-mukesh-kumar-66",
+        name: { "hi": "डॉ. मुकेश कुमार", "en": "Dr. Mukesh Kumar", "bho": "डॉ. मुकेश कुमार" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "जनरल सर्जरी सूची में शामिल नाम।", en: "Name included in the General Surgery list.", bho: "जनरल सर्जरी सूची में शामिल नाम।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "young surgeon"
+    },
+    {
+        id: "dr-arfin-alam-67",
+        name: { "hi": "डॉ. आरफिन आलम", "en": "Dr. Arfin Alam", "bho": "डॉ. आरफिन आलम" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सिवान में जनरल सर्जन के रूप में सूचीबद्ध।", en: "Listed as a General Surgeon in Siwan.", bho: "सिवान में जनरल सर्जन के रूप में सूचीबद्ध।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सिवान",
+        aiHint: "doctor smiling"
     }
 ];
+
+    
