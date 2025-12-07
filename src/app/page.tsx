@@ -60,15 +60,17 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (!auth || user) return;
-    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-      'size': 'invisible',
-      'callback': (response: any) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-      }
-    });
-    return () => {
-        window.recaptchaVerifier.clear();
+    
+    if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response: any) => {
+            // reCAPTCHA solved, allow signInWithPhoneNumber.
+            }
+        });
     }
+    
+    // No explicit cleanup needed if you're guarding against re-creation
   }, [auth, user]);
 
   const handlePhoneLogin = async () => {
@@ -87,10 +89,8 @@ export default function LoginPage() {
     } catch (error: any) {
         console.error("Error sending OTP", error);
         toast({ title: "Error", description: error.message, variant: "destructive" });
-        // Reset reCAPTCHA
-        window.recaptchaVerifier.render().then((widgetId: any) => {
-            grecaptcha.reset(widgetId);
-        });
+        // It's good practice to offer a way for the user to retry, which might involve re-rendering reCAPTCHA.
+        // For invisible reCAPTCHA, this often means just letting them click the button again.
     } finally {
         setLoading(false);
     }
@@ -254,3 +254,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+    
