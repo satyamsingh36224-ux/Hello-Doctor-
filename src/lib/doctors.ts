@@ -1116,5 +1116,75 @@ export const doctors: Doctor[] = [
         imageUrl: "👩‍⚕️",
         location: "सिवान",
         aiHint: "female doctor serious"
+    },
+    {
+        id: "dr-rameshwar-kumar-singh-51",
+        name: { "hi": "डॉ. रामेश्वर कुमार सिंह", "en": "Dr. Rameshwar Kumar Singh", "bho": "डॉ. रामेश्वर कुमार सिंह" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "एक अनुभवी हड्डी रोग विशेषज्ञ। फोन: 090063 78765", en: "An experienced orthopedic surgeon. Phone: 090063 78765", bho: "एगो अनुभवी हड्डी रोग विशेषज्ञ। फोन: 090063 78765" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Surgeon Lane, Goushala Road, Hospital Rd, Siwan, Bihar 841226",
+        aiHint: "orthopedic surgeon"
+    },
+    {
+        id: "dr-sumit-kumar-singh-52",
+        name: { "hi": "डॉ. सुमित कुमार सिंह", "en": "Dr. Sumit Kumar Singh", "bho": "डॉ. सुमित कुमार सिंह" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "संजीवनी ऑर्थो क्लिनिक में विशेषज्ञ। फोन: 091997 71488", en: "Specialist at Sanjeevni Ortho Clinic. Phone: 091997 71488", bho: "संजीवनी ऑर्थो क्लिनिक में विशेषज्ञ। फोन: 091997 71488" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Gosala Road, Pakri More, नजदीक Hanuman Mandir, Siwan 841226",
+        aiHint: "orthopedic doctor"
+    },
+    {
+        id: "dr-arbind-kumar-53",
+        name: { "hi": "डॉ. अरबिंद कुमार", "en": "Dr. Arbind Kumar", "bho": "डॉ. अरबिंद कुमार" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "एक अनुभवी हड्डी रोग विशेषज्ञ। फोन: 085214 56333", en: "An experienced orthopedic surgeon. Phone: 085214 56333", bho: "एगो अनुभवी हड्डी रोग विशेषज्ञ। फोन: 085214 56333" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "69J9+5CH, Hospital Rd, Siwan 841226",
+        aiHint: "male surgeon"
+    },
+    {
+        id: "dr-neeraj-kumar-54",
+        name: { "hi": "डॉ. नीरज कुमार", "en": "Dr. Neeraj Kumar", "bho": "डॉ. नीरज कुमार" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "हड्डी रोग विशेषज्ञ।", en: "Orthopaedic specialist.", bho: "हड्डी रोग विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Modern Beauty Parlour Building No. 3, Hospital Road, Hardia, Siwan — Opposite Adda",
+        aiHint: "indian surgeon"
+    },
+    {
+        id: "dr-sandeep-kumar-chauhan-55",
+        name: { "hi": "डॉ. संदीप कुमार चौहान", "en": "Dr. Sandeep Kumar Chauhan", "bho": "डॉ. संदीप कुमार चौहान" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "नव्या हॉस्पिटल में सामान्य ऑर्थोपेडिक, हड्डी-जोड़, फ्रैक्चर, और स्पाइन के विशेषज्ञ।", en: "Specialist in general orthopedics, bone-joint, fractures, and spine at Navya Hospital.", bho: "नव्या हॉस्पिटल में सामान्य ऑर्थोपेडिक, हड्डी-जोड़, फ्रैक्चर, आ स्पाइन के विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Doctor’s Colony, Hospital Road, Siwan",
+        aiHint: "professional surgeon"
+    },
+    {
+        id: "dr-madhuresh-kumar-56",
+        name: { "hi": "डॉ. मधुरेश कुमार", "en": "Dr. Madhuresh Kumar", "bho": "डॉ. मधुरेश कुमार" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "स्टार ऑर्थो एंड मैटरनिटी सेंटर में 24 घंटे उपलब्ध।", en: "Available 24 hours at Star Ortho and Maternity Centre.", bho: "स्टार ऑर्थो एंड मैटरनिटी सेंटर में 24 घंटा उपलब्ध।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "बरहरिया रोड, अमलोरी, Siwan 841226",
+        aiHint: "surgeon smiling"
+    },
+    {
+        id: "new-jeevan-hospital-57",
+        name: { "hi": "न्यू जीवन हॉस्पिटल", "en": "New Jeevan Hospital", "bho": "न्यू जीवन हॉस्पिटल" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "ऑर्थोपेडिक सेवाएँ उपलब्ध।", en: "Orthopedic services available.", bho: "ऑर्थोपेडिक सेवा उपलब्ध बा।" },
+        fee: 500,
+        imageUrl: "🏥",
+        location: "सिवान हसुआ रोड, Siwan",
+        aiHint: "hospital building"
     }
 ];
