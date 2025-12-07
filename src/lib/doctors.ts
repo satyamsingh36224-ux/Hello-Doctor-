@@ -1326,6 +1326,46 @@ export const doctors: Doctor[] = [
         imageUrl: "👩‍⚕️",
         location: "Siwan Neuropsychiatry Centre, Opposite Bindusar Prathmik Vidyalay, New Bypass Barharia Road, Hospital Road, Siwan – 841227",
         aiHint: "female neurologist"
+    },
+    {
+        id: "dr-md-shadab-72",
+        name: { "hi": "डॉ. एम डी शादाब", "en": "Dr. M D Shadab", "bho": "डॉ. एम डी शादाब" },
+        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
+        description: { hi: "इस्मत ईएनटी अस्पताल में एक विशेषज्ञ।", en: "A specialist at Ismat ENT Hospital.", bho: "इस्मत ईएनटी अस्पताल में एक विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Dr Md Shadab’s Ismat ENT Hospital — 703, Siswan-Dhala, MM Colony, Gate, Siwan 841226",
+        aiHint: "ent specialist"
+    },
+    {
+        id: "dr-pradeep-kumar-73",
+        name: { "hi": "डॉ. प्रदीप कुमार", "en": "Dr Pradeep Kumar", "bho": "डॉ. प्रदीप कुमार" },
+        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
+        description: { hi: "मार्क हेल्थ केयर सेंटर में विशेषज्ञ।", en: "Specialist at Mark Health Care Center.", bho: "मार्क हेल्थ केयर सेंटर में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Mark Health Care Center, Gharbhanran Market, Goshala Road, Siwan, Bihar",
+        aiHint: "male ent doctor"
+    },
+    {
+        id: "dr-imran-wasfi-khan-74",
+        name: { "hi": "डॉ. इमरान वस्फी खान", "en": "Dr Imran Wasfi Khan", "bho": "डॉ. इमरान वस्फी खान" },
+        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
+        description: { hi: "फैज अस्पताल में ईएनटी सलाहकार।", en: "ENT Consultant at Faiz Hospital.", bho: "फैज अस्पताल में ईएनटी सलाहकार।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Faiz Hospital, Makhdoom Sarai, Siwan 841226",
+        aiHint: "professional ent doctor"
+    },
+    {
+        id: "dr-dhiren-kumar-75",
+        name: { "hi": "डॉ. धीरेन कुमार", "en": "Dr Dhiren Kumar", "bho": "डॉ. धीरेन कुमार" },
+        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
+        description: { hi: "उर्नीस ईएनटी क्लिनिक और अनुसंधान केंद्र में विशेषज्ञ।", en: "Specialist at Urniss ENT Clinic & Research Centre.", bho: "उर्नीस ईएनटी क्लिनिक और अनुसंधान केंद्र में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Urniss ENT Clinic & Research Centre — Hospital Road, Near Pakhri More, Gaushala Road, Siwan 841227",
+        aiHint: "experienced ent doctor"
     }
 ];
 
