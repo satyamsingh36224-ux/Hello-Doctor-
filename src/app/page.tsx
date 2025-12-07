@@ -66,14 +66,13 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-        const appVerifier = window.recaptchaVerifier || new RecaptchaVerifier(auth, 'recaptcha-container', {
+        const appVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             'size': 'invisible',
             'callback': (response: any) => {
                 // reCAPTCHA solved, allow signInWithPhoneNumber.
             }
         });
-        window.recaptchaVerifier = appVerifier;
-
+        
         const result = await signInWithPhoneNumber(auth, `+91${phoneNumber}`, appVerifier);
         setConfirmationResult(result);
         setOtpSent(true);
@@ -81,12 +80,12 @@ export default function LoginPage() {
     } catch (error: any) {
         console.error("Error sending OTP", error);
         toast({ title: "Error", description: error.message, variant: "destructive" });
-        if (window.recaptchaVerifier) {
-          window.recaptchaVerifier.render().then((widgetId: any) => {
-            if (window.grecaptcha) {
-              window.grecaptcha.reset(widgetId);
+        // It's possible window.recaptchaVerifier is not available on window in all cases
+        if ('grecaptcha' in window && window.grecaptcha && typeof window.grecaptcha.reset === 'function') {
+            // Check if a verifier has been rendered.
+            if (appVerifier.widgetId !== undefined) {
+                 window.grecaptcha.reset(appVerifier.widgetId);
             }
-          });
         }
     } finally {
         setLoading(false);
@@ -251,3 +250,5 @@ export default function LoginPage() {
     </div>
   );
 }
+
+    
