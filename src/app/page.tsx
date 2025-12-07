@@ -59,18 +59,15 @@ export default function LoginPage() {
   }, []);
 
   useEffect(() => {
-    if (!auth || user) return;
-    
-    // Ensure auth is available before creating the verifier.
-    if (auth && !window.recaptchaVerifier) {
-        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-            'size': 'invisible',
-            'callback': (response: any) => {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-            }
-        });
+    if (auth && !user && !window.recaptchaVerifier) {
+      // Ensure auth is available and user is not logged in before creating the verifier.
+      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+          'size': 'invisible',
+          'callback': (response: any) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+          }
+      });
     }
-    
   }, [auth, user]);
 
   const handlePhoneLogin = async () => {
