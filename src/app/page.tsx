@@ -37,14 +37,8 @@ export default function LoginPage() {
   const { toast } = useToast();
   const auth = useAuth();
   const { user, loading: userLoading } = useUser();
-
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [otp, setOtp] = useState("");
-  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
   const [loading, setLoading] = useState(false);
-  const [otpSent, setOtpSent] = useState(false);
-  const [appVerifier, setAppVerifier] = useState<RecaptchaVerifier | null>(null);
-  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     if (!userLoading && user) {
@@ -60,70 +54,17 @@ export default function LoginPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (auth && !appVerifier) {
-      const verifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        'size': 'invisible',
-        'callback': (response: any) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-        }
-      });
-      setAppVerifier(verifier);
-    }
-  }, [auth, appVerifier]);
-
-
-  const handlePhoneLogin = async () => {
-    if (!auth || !appVerifier) {
-        toast({ title: "Error", description: "Authentication service not ready.", variant: "destructive" });
-        return;
-    }
-
+  const handleLogin = () => {
     setLoading(true);
-    try {
-        const result = await signInWithPhoneNumber(auth, `+91${phoneNumber}`, appVerifier);
-        setConfirmationResult(result);
-        setOtpSent(true);
-        toast({ title: "OTP Sent", description: "An OTP has been sent to your phone number." });
-    } catch (error: any) {
-        console.error("Error sending OTP", error);
-        toast({ title: "Error", description: error.message, variant: "destructive" });
-         if (appVerifier) {
-            appVerifier.render().then((widgetId) => {
-                if (window.grecaptcha) {
-                    window.grecaptcha.reset(widgetId);
-                }
-            });
-        }
-    } finally {
-        setLoading(false);
-    }
-  };
-
-  const handleOtpConfirm = async () => {
-    if (!confirmationResult) return;
-    setLoading(true);
-    try {
-        await confirmationResult.confirm(otp);
-        toast({ title: "Login Successful!", description: "Welcome to Hello Doctor." });
+    toast({ title: "Login Successful!", description: "Welcome to Hello Doctor." });
+    setTimeout(() => {
         router.push("/select-specialization");
-    } catch (error: any) {
-        console.error("Error confirming OTP", error);
-        toast({ title: "Error", description: "Invalid OTP. Please try again.", variant: "destructive" });
-    } finally {
         setLoading(false);
-    }
-  };
+    }, 1000);
+  }
 
   const handleAdminClick = () => {};
 
-  const handleSocialLoginClick = () => {
-    toast({
-      title: t.googleFacebookLoginDisabledTitle,
-      description: t.googleFacebookLoginDisabledDesc,
-      variant: "destructive",
-    });
-  };
 
   if (showSplash || userLoading || user) {
     return <SplashScreen />;
@@ -131,7 +72,6 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-      <div id="recaptcha-container" ref={recaptchaContainerRef}></div>
       <div className="absolute top-4 right-4 z-20">
         <Select
           value={language}
@@ -169,18 +109,22 @@ export default function LoginPage() {
                <Button
                 suppressHydrationWarning
                 variant="outline"
-                onClick={handleSocialLoginClick}
+                onClick={handleLogin}
+                disabled={loading}
                 className="w-full py-5 rounded-full text-sm font-semibold"
               >
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 172.9 56.7L368.7 128C330.5 94.5 292.2 78.2 248 78.2c-101.7 0-184.4 82.7-184.4 184.4S146.3 437 248 437c58.4 0 106.3-24.2 138.6-56.6 27.8-27.5 41.6-67.7 44-114.8H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.8z"></path></svg>
                 {t.continueWithGoogle}
               </Button>
               <Button
                 suppressHydrationWarning
                 variant="outline"
-                onClick={handleSocialLoginClick}
+                onClick={handleLogin}
+                disabled={loading}
                 className="w-full py-5 rounded-full text-sm font-semibold"
               >
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
                 {t.continueWithFacebook}
               </Button>
@@ -192,7 +136,6 @@ export default function LoginPage() {
                     <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
                 </div>
               </div>
-              {!otpSent ? (
                 <div className="space-y-2">
                    <Input
                     suppressHydrationWarning
@@ -201,40 +144,17 @@ export default function LoginPage() {
                     placeholder={t.phonePlaceholder}
                     className="py-5 rounded-full bg-background"
                     required
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                   <Button
                     suppressHydrationWarning
-                    onClick={handlePhoneLogin}
-                    disabled={loading || phoneNumber.length !== 10}
+                    onClick={handleLogin}
+                    disabled={loading}
                     className="w-full py-5 rounded-full text-sm font-semibold"
                   >
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    {t.continueWithPhone}
+                    जारी रखें
                   </Button>
                 </div>
-              ) : (
-                <div className="space-y-2">
-                    <Input
-                        id="otp"
-                        type="number"
-                        placeholder="OTP દાખલ કરો"
-                        className="py-5 rounded-full bg-background"
-                        required
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                    />
-                    <Button
-                        onClick={handleOtpConfirm}
-                        disabled={loading || otp.length !== 6}
-                        className="w-full py-5 rounded-full text-sm font-semibold"
-                    >
-                         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        OTP की पुष्टि करें
-                    </Button>
-                </div>
-              )}
                <Button
                 suppressHydrationWarning
                 asChild
@@ -258,5 +178,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-    
