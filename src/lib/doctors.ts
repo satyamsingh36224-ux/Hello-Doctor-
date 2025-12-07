@@ -1366,9 +1366,90 @@ export const doctors: Doctor[] = [
         imageUrl: "👨‍⚕️",
         location: "Urniss ENT Clinic & Research Centre — Hospital Road, Near Pakhri More, Gaushala Road, Siwan 841227",
         aiHint: "experienced ent doctor"
+    },
+    {
+        id: "dr-sharad-chaudhary-76",
+        name: { hi: "डॉ. शरद चौधरी", en: "Dr. Sharad Chaudhary", bho: "डॉ. शरद चौधरी" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "एएमसी अस्पताल में विशेषज्ञ।", en: "Specialist at AMC Hospital.", bho: "एएमसी अस्पताल में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "AMC Hospital — Gaushala Road, Doctors Colony, Barharia Road, Siwan 841227",
+        aiHint: "ophthalmologist doctor"
+    },
+    {
+        id: "dr-mohd-amjad-khan-77",
+        name: { hi: "डॉ. मो. अमजद खान", en: "Dr. Mohd Amjad Khan", bho: "डॉ. मो. अमजद खान" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "अल-जिलानी आई केयर अस्पताल में विशेषज्ञ।", en: "Specialist at Al-Jilani Eye Care Hospital.", bho: "अल-जिलानी आई केयर अस्पताल में विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "Al-Jilani Eye Care Hospital, Hospital Road (near Adda no.3), Siwan, Bihar",
+        aiHint: "eye specialist"
+    },
+    {
+        id: "krishna-eye-care-78",
+        name: { hi: "कृष्णा आई केयर (डॉ. कुमार आशुतोष)", en: "Krishna Eye Care (Dr. Kumar Aashutosh)", bho: "कृष्णा आई केयर (डॉ. कुमार आशुतोष)" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "श्री कृष्ण टॉवर में स्थित आई केयर सेंटर।", en: "Eye care center located at Shri Krishna Tower.", bho: "श्री कृष्ण टावर में स्थित आई केयर सेंटर।" },
+        fee: 500,
+        imageUrl: "👁️",
+        location: "Shri Krishna Tower, Siwan-Barharia-Sarfara Road, near Sanjeevani Hospital, Siwan 841226",
+        aiHint: "eye care clinic"
+    },
+    {
+        id: "eye-care-centre-79",
+        name: { hi: "आई केयर सेंटर", en: "Eye Care Centre", bho: "आई केयर सेंटर" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "सदर अस्पताल के सामने स्थित।", en: "Located opposite Sadar Hospital.", bho: "सदर अस्पताल के सोझा स्थित।" },
+        fee: 500,
+        imageUrl: "👁️",
+        location: "Opposite Sadar Hospital, 1st Floor, Hospital Road, Siwan 841226",
+        aiHint: "eye clinic"
+    },
+    {
+        id: "akhand-jyoti-eye-hospital-80",
+        name: { hi: "अखंड ज्योति आई हॉस्पिटल", en: "Akhand Jyoti Eye Hospital", bho: "अखंड ज्योति आई हॉस्पिटल" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "आँखों की देखभाल के लिए एक प्रसिद्ध अस्पताल।", en: "A renowned hospital for eye care.", bho: "आँख के देखभाल खातिर एक प्रसिद्ध अस्पताल।" },
+        fee: 500,
+        imageUrl: "🏥",
+        location: "Hospital Road, Barharia Road, near Naka No. 3, Siwan 841226",
+        aiHint: "hospital building"
+    },
+    {
+        id: "lahan-eye-care-center-81",
+        name: { hi: "लाहान आई केयर सेंटर (डॉ. मो. जहीरुद्दीन)", en: "LAHAN Eye Care Center (Dr. Md. Zahiruddin)", bho: "लाहान आई केयर सेंटर (डॉ. मो. जहीरुद्दीन)" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "नया बाजार में स्थित आई केयर सेंटर।", en: "Eye care center located in Naya Bazar.", bho: "नया बाजार में स्थित आई केयर सेंटर।" },
+        fee: 500,
+        imageUrl: "👁️",
+        location: "Hospital Road, Naya Bazar, Babhnauli, Siwan 841226",
+        aiHint: "modern eye clinic"
+    },
+    {
+        id: "chennai-eye-care-center-82",
+        name: { hi: "चेन्नई आई केयर सेंटर (डॉ. एम. ए. अकबर / डॉ. शिमाइला हैदर)", en: "Chennai Eye Care Center (Dr. M. A. Akbar / Dr. Shimaila Haider)", bho: "चेन्नई आई केयर सेंटर (डॉ. एम. ए. अकबर / डॉ. शिमाइला हैदर)" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "आनंद मार्केट में स्थित एक आई केयर सेंटर।", en: "An eye care center located in Anand Market.", bho: "आनंद मार्केट में स्थित एक आई केयर सेंटर।" },
+        fee: 500,
+        imageUrl: "👁️",
+        location: "Anand Market, Hospital Road, near Pakri More, Siwan 841227",
+        aiHint: "eye care center"
+    },
+    {
+        id: "zakir-ent-clinic-eye-clinic-83",
+        name: { hi: "जाकिर ईएनटी क्लिनिक / आई क्लिनिक (डॉ. राहुल कुमार गुप्ता)", en: "Zakir ENT Clinic / Eye Clinic (Dr. Rahul Kumar Gupta)", bho: "जाकिर ईएनटी क्लिनिक / आई क्लिनिक (डॉ. राहुल कुमार गुप्ता)" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "ईएनटी और आँखों की देखभाल के लिए एक क्लिनिक।", en: "A clinic for ENT and eye care.", bho: "ईएनटी आ आँख के देखभाल खातिर एक क्लिनिक।" },
+        fee: 500,
+        imageUrl: "👁️",
+        location: "Hospital Road, behind Firoz Mobile, Naya Bazar / Babhnauli, Siwan 841226",
+        aiHint: "clinic building"
     }
 ];
 
     
 
     
+
