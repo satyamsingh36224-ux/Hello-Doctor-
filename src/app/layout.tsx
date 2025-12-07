@@ -7,7 +7,7 @@ import { Home, LifeBuoy, BriefcaseMedical, History, Store, Shield, Hospital, Tes
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Logo } from '@/components/Logo';
-import { FirebaseClientProvider } from '@/firebase';
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 
 export const metadata: Metadata = {
@@ -55,11 +55,6 @@ export default function RootLayout({
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild>
                                         <Link href="/doctors"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Home className="h-5 w-5" /></div> होम</Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/medical-stores"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Store className="h-5 w-5" /></div> मेडिकल स्टोर्स</Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>

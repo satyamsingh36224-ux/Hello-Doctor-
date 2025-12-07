@@ -16,7 +16,7 @@ const translations = {
         continueWithFacebook: "Facebook से जारी रखें",
         or: "या",
         phonePlaceholder: "फ़ोन नंबर",
-        continueWithPhone: "फ़ोन नंबर से जारी रखें",
+        continueWithPhone: "OTP भेजें",
         noAccount: "अकाउंट नहीं है?",
         signUp: "साइन अप करें",
         selectLanguage: "भाषा चुनें",
@@ -29,7 +29,7 @@ const translations = {
         title: "एक विशेषज्ञता चुनें",
         description: "बताइए, आप किस तरह के डॉक्टर को खोज रहे हैं?",
         searchPlaceholder: "विशेषज्ञता खोजें...",
-        backToLogin: "लॉगिन पेज पर वापस जाएं"
+        backToLogin: "लॉगआउट"
     },
     jaanchKendra: {
         title: "जांच केंद्र बुकिंग",
@@ -190,7 +190,7 @@ const translations = {
         continueWithFacebook: "Continue with Facebook",
         or: "OR",
         phonePlaceholder: "Phone Number",
-        continueWithPhone: "Continue with Phone Number",
+        continueWithPhone: "Send OTP",
         noAccount: "Don't have an account?",
         signUp: "Sign Up",
         selectLanguage: "Select Language",
@@ -203,7 +203,7 @@ const translations = {
         title: "Select a Specialization",
         description: "What kind of doctor are you looking for?",
         searchPlaceholder: "Search for a specialization...",
-        backToLogin: "Back to Login Page"
+        backToLogin: "Logout"
     },
     jaanchKendra: {
         title: "Diagnostic Center Booking",
@@ -364,7 +364,7 @@ const translations = {
         continueWithFacebook: "Facebook से जारी राखीं",
         or: "या",
         phonePlaceholder: "फोन नंबर",
-        continueWithPhone: "फोन नंबर से जारी राखीं",
+        continueWithPhone: "OTP भेजीं",
         noAccount: "खाता नइखे?",
         signUp: "साइन अप करीं",
         selectLanguage: "भाषा चुनीं",
@@ -377,7 +377,7 @@ const translations = {
         title: "एक विशेषज्ञता चुनीं",
         description: "बताईं, रउआ कइसन डॉक्टर खोजत बानी?",
         searchPlaceholder: "विशेषज्ञता खोजीं...",
-        backToLogin: "लॉगिन पेज पर वापस जाईं"
+        backToLogin: "लॉगआउट"
     },
     jaanchKendra: {
         title: "जांच केंद्र बुकिंग",

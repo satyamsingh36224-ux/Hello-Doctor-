@@ -26,3 +26,9 @@ export interface MedicalStore {
     imageUrl: string;
     aiHint: string;
 }
+
+declare global {
+    interface Window {
+        recaptchaVerifier: any;
+    }
+}

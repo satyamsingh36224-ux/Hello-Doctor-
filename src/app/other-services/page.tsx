@@ -25,22 +25,10 @@ export default function OtherServicesPage() {
             description: t.homeVisitDesc
         },
         {
-            title: t.medicineDelivery,
-            href: "/medicine",
-            icon: Pill,
-            description: t.medicineDeliveryDesc
-        },
-        {
             title: t.bookLabTest,
             href: "/lab-test",
             icon: TestTube,
             description: t.bookLabTestDesc
-        },
-        {
-            title: t.findMedicalStore,
-            href: "/medical-stores",
-            icon: Store,
-            description: t.findMedicalStoreDesc
         },
         {
             title: t.tbTreatment,

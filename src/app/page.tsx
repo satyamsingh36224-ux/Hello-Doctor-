@@ -26,7 +26,8 @@ import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { SplashScreen } from "@/components/SplashScreen";
-
+import { useAuth, useUser } from "@/firebase";
+import { RecaptchaVerifier, signInWithPhoneNumber, type ConfirmationResult } from "firebase/auth";
 
 export default function LoginPage() {
   const [showSplash, setShowSplash] = useState(true);
@@ -34,19 +35,83 @@ export default function LoginPage() {
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
-  
+  const auth = useAuth();
+  const { user, loading: userLoading } = useUser();
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [otp, setOtp] = useState("");
+  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+
+  useEffect(() => {
+    if (!userLoading && user) {
+      router.push("/select-specialization");
+    }
+  }, [user, userLoading, router]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 3000); // Show splash for 3 seconds
+    }, 3000); 
 
     return () => clearTimeout(timer);
   }, []);
 
-  const handleAdminClick = () => {
-    // This can be a hidden way to access an admin page if needed in the future
-    // For now, it does nothing or can be removed.
+  useEffect(() => {
+    if (!auth || user) return;
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      'size': 'invisible',
+      'callback': (response: any) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+      }
+    });
+    return () => {
+        window.recaptchaVerifier.clear();
+    }
+  }, [auth, user]);
+
+  const handlePhoneLogin = async () => {
+    if (!auth) {
+        toast({ title: "Error", description: "Authentication service not ready.", variant: "destructive" });
+        return;
+    }
+
+    setLoading(true);
+    try {
+        const appVerifier = window.recaptchaVerifier;
+        const result = await signInWithPhoneNumber(auth, `+91${phoneNumber}`, appVerifier);
+        setConfirmationResult(result);
+        setOtpSent(true);
+        toast({ title: "OTP Sent", description: "An OTP has been sent to your phone number." });
+    } catch (error: any) {
+        console.error("Error sending OTP", error);
+        toast({ title: "Error", description: error.message, variant: "destructive" });
+        // Reset reCAPTCHA
+        window.recaptchaVerifier.render().then((widgetId: any) => {
+            grecaptcha.reset(widgetId);
+        });
+    } finally {
+        setLoading(false);
+    }
   };
+
+  const handleOtpConfirm = async () => {
+    if (!confirmationResult) return;
+    setLoading(true);
+    try {
+        await confirmationResult.confirm(otp);
+        toast({ title: "Login Successful!", description: "Welcome to Hello Doctor." });
+        router.push("/select-specialization");
+    } catch (error: any) {
+        console.error("Error confirming OTP", error);
+        toast({ title: "Error", description: "Invalid OTP. Please try again.", variant: "destructive" });
+    } finally {
+        setLoading(false);
+    }
+  };
+
+  const handleAdminClick = () => {};
 
   const handleSocialLoginClick = () => {
     toast({
@@ -56,12 +121,13 @@ export default function LoginPage() {
     });
   };
 
-  if (showSplash) {
+  if (showSplash || userLoading || user) {
     return <SplashScreen />;
   }
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
+      <div id="recaptcha-container"></div>
       <div className="absolute top-4 right-4 z-20">
         <Select
           value={language}
@@ -122,23 +188,49 @@ export default function LoginPage() {
                     <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
                 </div>
               </div>
-               <Input
-                suppressHydrationWarning
-                id="phone"
-                type="tel"
-                placeholder={t.phonePlaceholder}
-                className="py-5 rounded-full bg-background"
-                required
-              />
-              <Button
-                suppressHydrationWarning
-                asChild
-                className="w-full py-5 rounded-full text-sm font-semibold"
-              >
-                <Link href="/select-specialization">
-                  {t.continueWithPhone}
-                </Link>
-              </Button>
+              {!otpSent ? (
+                <div className="space-y-2">
+                   <Input
+                    suppressHydrationWarning
+                    id="phone"
+                    type="tel"
+                    placeholder={t.phonePlaceholder}
+                    className="py-5 rounded-full bg-background"
+                    required
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                  <Button
+                    suppressHydrationWarning
+                    onClick={handlePhoneLogin}
+                    disabled={loading || phoneNumber.length !== 10}
+                    className="w-full py-5 rounded-full text-sm font-semibold"
+                  >
+                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {t.continueWithPhone}
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                    <Input
+                        id="otp"
+                        type="number"
+                        placeholder="OTP દાખલ કરો"
+                        className="py-5 rounded-full bg-background"
+                        required
+                        value={otp}
+                        onChange={(e) => setOtp(e.target.value)}
+                    />
+                    <Button
+                        onClick={handleOtpConfirm}
+                        disabled={loading || otp.length !== 6}
+                        className="w-full py-5 rounded-full text-sm font-semibold"
+                    >
+                         {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        OTP की पुष्टि करें
+                    </Button>
+                </div>
+              )}
                <Button
                 suppressHydrationWarning
                 asChild
