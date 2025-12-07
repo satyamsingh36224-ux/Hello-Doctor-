@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -43,6 +43,8 @@ export default function LoginPage() {
   const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
+  const [appVerifier, setAppVerifier] = useState<RecaptchaVerifier | null>(null);
+  const recaptchaContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!userLoading && user) {
@@ -58,21 +60,27 @@ export default function LoginPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (auth && !appVerifier) {
+      const verifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+        'size': 'invisible',
+        'callback': (response: any) => {
+          // reCAPTCHA solved, allow signInWithPhoneNumber.
+        }
+      });
+      setAppVerifier(verifier);
+    }
+  }, [auth, appVerifier]);
+
+
   const handlePhoneLogin = async () => {
-    if (!auth) {
+    if (!auth || !appVerifier) {
         toast({ title: "Error", description: "Authentication service not ready.", variant: "destructive" });
         return;
     }
 
     setLoading(true);
     try {
-        const appVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-            'size': 'invisible',
-            'callback': (response: any) => {
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
-            }
-        });
-        
         const result = await signInWithPhoneNumber(auth, `+91${phoneNumber}`, appVerifier);
         setConfirmationResult(result);
         setOtpSent(true);
@@ -80,12 +88,12 @@ export default function LoginPage() {
     } catch (error: any) {
         console.error("Error sending OTP", error);
         toast({ title: "Error", description: error.message, variant: "destructive" });
-        // It's possible window.recaptchaVerifier is not available on window in all cases
-        if ('grecaptcha' in window && window.grecaptcha && typeof window.grecaptcha.reset === 'function') {
-            // Check if a verifier has been rendered.
-            if (appVerifier.widgetId !== undefined) {
-                 window.grecaptcha.reset(appVerifier.widgetId);
-            }
+         if (appVerifier) {
+            appVerifier.render().then((widgetId) => {
+                if (window.grecaptcha) {
+                    window.grecaptcha.reset(widgetId);
+                }
+            });
         }
     } finally {
         setLoading(false);
@@ -123,7 +131,7 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-      <div id="recaptcha-container"></div>
+      <div id="recaptcha-container" ref={recaptchaContainerRef}></div>
       <div className="absolute top-4 right-4 z-20">
         <Select
           value={language}
