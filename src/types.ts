@@ -29,6 +29,10 @@ export interface MedicalStore {
 
 declare global {
     interface Window {
-        recaptchaVerifier: any;
+        recaptchaVerifier: RecaptchaVerifier;
+        grecaptcha: any;
     }
 }
+
+// We need to declare the RecaptchaVerifier type because it's not directly exported from firebase/auth
+import type { RecaptchaVerifier } from "firebase/auth";

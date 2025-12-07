@@ -58,18 +58,6 @@ export default function LoginPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    // Ensure auth is available and user is not logged in before creating the verifier.
-    if (auth && !user && !userLoading && !window.recaptchaVerifier) {
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-          'size': 'invisible',
-          'callback': (response: any) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          }
-      });
-    }
-  }, [auth, user, userLoading]);
-
   const handlePhoneLogin = async () => {
     if (!auth) {
         toast({ title: "Error", description: "Authentication service not ready.", variant: "destructive" });
@@ -78,7 +66,14 @@ export default function LoginPage() {
 
     setLoading(true);
     try {
-        const appVerifier = window.recaptchaVerifier;
+        const appVerifier = window.recaptchaVerifier || new RecaptchaVerifier(auth, 'recaptcha-container', {
+            'size': 'invisible',
+            'callback': (response: any) => {
+                // reCAPTCHA solved, allow signInWithPhoneNumber.
+            }
+        });
+        window.recaptchaVerifier = appVerifier;
+
         const result = await signInWithPhoneNumber(auth, `+91${phoneNumber}`, appVerifier);
         setConfirmationResult(result);
         setOtpSent(true);
@@ -86,8 +81,13 @@ export default function LoginPage() {
     } catch (error: any) {
         console.error("Error sending OTP", error);
         toast({ title: "Error", description: error.message, variant: "destructive" });
-        // It's good practice to offer a way for the user to retry, which might involve re-rendering reCAPTCHA.
-        // For invisible reCAPTCHA, this often means just letting them click the button again.
+        if (window.recaptchaVerifier) {
+          window.recaptchaVerifier.render().then((widgetId: any) => {
+            if (window.grecaptcha) {
+              window.grecaptcha.reset(widgetId);
+            }
+          });
+        }
     } finally {
         setLoading(false);
     }
@@ -251,7 +251,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-    
-
-    
