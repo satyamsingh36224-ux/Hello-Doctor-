@@ -61,7 +61,8 @@ export default function LoginPage() {
   useEffect(() => {
     if (!auth || user) return;
     
-    if (!window.recaptchaVerifier) {
+    // Ensure auth is available before creating the verifier.
+    if (auth && !window.recaptchaVerifier) {
         window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             'size': 'invisible',
             'callback': (response: any) => {
@@ -70,7 +71,6 @@ export default function LoginPage() {
         });
     }
     
-    // No explicit cleanup needed if you're guarding against re-creation
   }, [auth, user]);
 
   const handlePhoneLogin = async () => {
