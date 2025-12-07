@@ -1446,10 +1446,55 @@ export const doctors: Doctor[] = [
         imageUrl: "👁️",
         location: "Hospital Road, behind Firoz Mobile, Naya Bazar / Babhnauli, Siwan 841226",
         aiHint: "clinic building"
+    },
+    {
+        id: "dr-raginee-singh-84",
+        name: { hi: "डॉ. रागिनी सिंह", en: "Dr. Raginee Singh", bho: "डॉ. रागिनी सिंह" },
+        specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } },
+        description: { hi: "सिवान न्यूरोसाइकेट्री सेंटर के अंतर्गत।", en: "Associated with Siwan Neuropsychiatry Centre.", bho: "सिवान न्यूरोसाइकेट्री सेंटर के अंतर्गत।" },
+        fee: 500,
+        imageUrl: "👩‍⚕️",
+        location: "Gaushala Road, Siwan",
+        aiHint: "female psychiatrist"
+    },
+    {
+        id: "siwan-neuropsychiatry-centre-85",
+        name: { hi: "सिवान न्यूरोसाइकेट्री सेंटर", en: "Siwan Neuropsychiatry Centre", bho: "सिवान न्यूरोसाइकेट्री सेंटर" },
+        specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } },
+        description: { hi: "मनोरोग और तंत्रिका संबंधी समस्याओं के लिए एक केंद्र।", en: "A center for psychiatric and neurological problems.", bho: "मनोरोग आ तंत्रिका संबंधी समस्या खातिर एक केंद्र।" },
+        fee: 500,
+        imageUrl: "🧠",
+        location: "Bypass Road, Siwan Mission House, Siwan – 841227",
+        aiHint: "clinic building"
+    },
+    {
+        id: "shuddhikaran-nasha-mukti-kendra-86",
+        name: { hi: "शुद्धिकरण नशा मुक्ति केंद्र", en: "Shuddhikaran Nasha Mukti Kendra", bho: "शुद्धिकरण नशा मुक्ति केंद्र" },
+        specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } },
+        description: { hi: "नशा मुक्ति के लिए एक समर्पित केंद्र।", en: "A dedicated center for de-addiction.", bho: "नशा मुक्ति खातिर एक समर्पित केंद्र।" },
+        fee: 500,
+        imageUrl: "🧘",
+        location: "HO– Betiahata, Siwan Mission House, Siwan – 841227",
+        aiHint: "rehabilitation center"
+    },
+    {
+        id: "medaz-hospital-87",
+        name: { hi: "मेडाज़ हॉस्पिटल", en: "Medaz Hospital", bho: "मेडाज़ हॉस्पिटल" },
+        specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } },
+        description: { hi: "मनोचिकित्सा सेवाओं की पेशकश करने वाला एक मल्टी-स्पेशियलिटी अस्पताल।", en: "A multi-speciality hospital offering psychiatry services.", bho: "मनोचिकित्सा सेवा देवे वाला एक मल्टी-स्पेशियलिटी अस्पताल।" },
+        fee: 500,
+        imageUrl: "🏥",
+        location: "Patna Bajrangpuri / Amlori, Siwan – 841226",
+        aiHint: "modern hospital"
+    },
+    {
+        id: "healthy-mind-clinic-88",
+        name: { hi: "हेल्दी माइंड क्लिनिक", en: "Healthy Mind Clinic", bho: "हेल्दी माइंड क्लिनिक" },
+        specialization: { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" } },
+        description: { hi: "मानसिक स्वास्थ्य के लिए एक क्लिनिक।", en: "A clinic for mental wellness.", bho: "मानसिक स्वास्थ्य खातिर एक क्लिनिक।" },
+        fee: 500,
+        imageUrl: "🧠",
+        location: "Kachehri Road / Kagzi Mohalla Road, Siwan – 841226 (Kagzi Mohalla Chowk)",
+        aiHint: "wellness clinic"
     }
 ];
-
-    
-
-    
-
