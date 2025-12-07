@@ -18,7 +18,7 @@
 
 1.  **ज़रूरी सॉफ़्टवेयर इंस्टॉल करें:**
     *   **Node.js:** [इस लिंक पर क्लिक करके Node.js (LTS संस्करण) डाउनलोड और इंस्टॉल करें।](https://nodejs.org/en)
-    *   **Android Studio:** [इस लिंक पर क्लिक करके Android Studio डाउनलोड और इंस्टॉल करें।](https://developer.android.com/studio)
+    *   **Android Studio:** **[इस लिंक पर क्लिक करके Android Studio डाउनलोड और इंस्टॉल करें।](https://developer.android.com/studio)**
 
 2.  **टर्मिनल खोलें और प्रोजेक्ट सेट करें:**
     *   अपने कंप्यूटर पर टर्मिनल (Command Prompt या Terminal) खोलें।
