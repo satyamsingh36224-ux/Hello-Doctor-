@@ -59,8 +59,8 @@ export default function LoginPage() {
   }, []);
 
   useEffect(() => {
-    if (auth && !user && !window.recaptchaVerifier) {
-      // Ensure auth is available and user is not logged in before creating the verifier.
+    // Ensure auth is available and user is not logged in before creating the verifier.
+    if (auth && !user && !userLoading && !window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
           'size': 'invisible',
           'callback': (response: any) => {
@@ -68,7 +68,7 @@ export default function LoginPage() {
           }
       });
     }
-  }, [auth, user]);
+  }, [auth, user, userLoading]);
 
   const handlePhoneLogin = async () => {
     if (!auth) {
@@ -251,5 +251,7 @@ export default function LoginPage() {
     </div>
   );
 }
+
+    
 
     
