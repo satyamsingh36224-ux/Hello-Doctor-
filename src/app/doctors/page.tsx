@@ -7,7 +7,8 @@ import { Header } from "@/components/Header";
 import { DoctorCard } from "@/components/DoctorCard";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/context/LanguageContext';
-import { doctors as allDoctors, specializationMap } from '@/lib/doctors';
+import { useLocation } from '@/context/LocationContext';
+import { doctors as allDoctors } from '@/lib/doctors';
 import type { Doctor } from '@/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -15,26 +16,27 @@ function DoctorsList() {
   const searchParams = useSearchParams();
   const selectedSpecialization = searchParams.get('specialization') || 'all';
   const { translations } = useLanguage();
+  const { location } = useLocation();
   const t = translations.doctorsPage;
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    let filteredDoctors;
-    if (selectedSpecialization === 'all') {
-      filteredDoctors = allDoctors;
-    } else {
-      filteredDoctors = allDoctors.filter(
+    let filteredDoctors = allDoctors.filter(d => d.city === location);
+
+    if (selectedSpecialization !== 'all') {
+      filteredDoctors = filteredDoctors.filter(
         (doctor) => doctor.specialization.key === selectedSpecialization
       );
     }
+    
     // Simulate network delay
     setTimeout(() => {
       setDoctors(filteredDoctors);
       setIsLoading(false);
     }, 500);
-  }, [selectedSpecialization]);
+  }, [selectedSpecialization, location]);
 
   if (isLoading) {
     return (

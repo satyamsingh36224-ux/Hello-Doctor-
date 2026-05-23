@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,23 +19,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Globe, HeartPulse, Shield, Lock, Loader2 } from "lucide-react";
+import { Globe, HeartPulse, Loader2, MapPin } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
+import { useLocation } from "@/context/LocationContext";
+import type { Location } from "@/context/LocationContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { SplashScreen } from "@/components/SplashScreen";
-import { useAuth, useUser } from "@/firebase";
-import { RecaptchaVerifier, signInWithPhoneNumber, type ConfirmationResult } from "firebase/auth";
+import { useUser } from "@/firebase";
 
 export default function LoginPage() {
   const [showSplash, setShowSplash] = useState(true);
   const { language, setLanguage, translations } = useLanguage();
+  const { location, setLocation } = useLocation();
   const router = useRouter();
   const t = translations.loginPage;
   const { toast } = useToast();
-  const auth = useAuth();
   const { user, loading: userLoading } = useUser();
   const [loading, setLoading] = useState(false);
 
@@ -56,15 +57,12 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     setLoading(true);
-    toast({ title: "Login Successful!", description: "Welcome to Hello Doctor." });
+    toast({ title: "Login Successful!", description: `Welcome to Hello Doctor ${location === 'siwan' ? 'Siwan' : 'Gopalganj'}.` });
     setTimeout(() => {
         router.push("/select-specialization");
         setLoading(false);
     }, 1000);
   }
-
-  const handleAdminClick = () => {};
-
 
   if (showSplash || userLoading || user) {
     return <SplashScreen />;
@@ -72,7 +70,7 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
-      <div className="absolute top-4 right-4 z-20">
+      <div className="absolute top-4 right-4 z-20 flex gap-2">
         <Select
           value={language}
           onValueChange={(value: Language) => setLanguage(value)}
@@ -92,15 +90,38 @@ export default function LoginPage() {
         </Select>
       </div>
 
+      <div className="w-full max-w-sm mb-6 z-10">
+         <div className="flex bg-card/80 backdrop-blur-sm p-1 rounded-full border border-border/50 shadow-lg">
+            <button
+                onClick={() => setLocation('siwan')}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-sm font-bold transition-all ${location === 'siwan' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:bg-primary/5'}`}
+            >
+                <MapPin className="h-4 w-4" />
+                {t.siwan}
+            </button>
+            <button
+                onClick={() => setLocation('gopalganj')}
+                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-sm font-bold transition-all ${location === 'gopalganj' ? 'bg-primary text-primary-foreground shadow-md' : 'text-muted-foreground hover:bg-primary/5'}`}
+            >
+                <MapPin className="h-4 w-4" />
+                {t.gopalganj}
+            </button>
+         </div>
+      </div>
+
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
                 <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
-                    <div onClick={handleAdminClick} className="cursor-pointer flex flex-col items-center gap-2">
+                    <div className="flex flex-col items-center gap-2">
                       <Logo />
                       <CardTitle className="text-3xl font-bold tracking-tight">
                           Hello Doctor
                       </CardTitle>
+                      <div className="flex items-center gap-1 text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">
+                         <MapPin className="h-3 w-3" />
+                         {location === 'siwan' ? t.siwan : t.gopalganj}
+                      </div>
                     </div>
-                    <CardDescription className="text-base text-muted-foreground px-4">
+                    <CardDescription className="text-base text-muted-foreground px-4 mt-2">
                         {t.subTitle}
                     </CardDescription>
                 </CardHeader>

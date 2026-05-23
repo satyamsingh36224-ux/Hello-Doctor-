@@ -21,6 +21,9 @@ const translations = {
         continueWithPhone: "जारी रखें",
         otherServices: "अन्य सेवाएं",
         createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
+        selectCity: "अपना शहर चुनें",
+        siwan: "सीवान",
+        gopalganj: "गोपालगंज",
     },
     settingsPage: {
         title: "सेटिंग्स",
@@ -97,7 +100,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "आस-पास के अस्पताल",
-        hospitalsDesc: "यहाँ सीवान के कुछ जाने-माने अस्पतालों की सूची दी गई है।",
+        hospitalsDesc: "यहाँ के कुछ जाने-माने अस्पतालों की सूची दी गई है।",
     },
     homeVisitPage: {
         title: "डॉक्टर को घर पर बुलाएँ",
@@ -151,7 +154,7 @@ const translations = {
     },
     medicalStoresPage: {
         title: "आस-पास के मेडिकल स्टोर्स",
-        description: "यहाँ सीवान के कुछ प्रमुख मेडिकल स्टोर्स की सूची दी गई है।",
+        description: "यहाँ के कुछ प्रमुख मेडिकल स्टोर्स की सूची दी गई है।",
         callNow: "अभी कॉल करें",
         getDirections: "दिशा-निर्देश देखें",
     },
@@ -201,6 +204,9 @@ const translations = {
         continueWithPhone: "Continue",
         otherServices: "Other Services",
         createdBy: "Produce by: Hello Group",
+        selectCity: "Select Your City",
+        siwan: "Siwan",
+        gopalganj: "Gopalganj",
     },
     settingsPage: {
         title: "Settings",
@@ -277,7 +283,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "Nearby Hospitals",
-        hospitalsDesc: "Here is a list of some well-known hospitals in Siwan.",
+        hospitalsDesc: "Here is a list of some well-known hospitals.",
     },
     homeVisitPage: {
         title: "Request a Home Visit",
@@ -331,7 +337,7 @@ const translations = {
     },
     medicalStoresPage: {
         title: "Nearby Medical Stores",
-        description: "Here is a list of some of the major medical stores in Siwan.",
+        description: "Here is a list of some of the major medical stores.",
         callNow: "Call Now",
         getDirections: "Get Directions",
     },
@@ -381,6 +387,9 @@ const translations = {
         continueWithPhone: "जारी राखीं",
         otherServices: "दोसर सेवा",
         createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
+        selectCity: "आपन शहर चुनीं",
+        siwan: "सीवान",
+        gopalganj: "गोपालगंज",
     },
     settingsPage: {
         title: "सेटिंग्स",
@@ -457,7 +466,7 @@ const translations = {
     },
     hospitalsPage: {
         hospitalsTitle: "आस-पास के अस्पताल",
-        hospitalsDesc: "इहाँ सीवान के कुछ जानल-मानल अस्पताल के सूची दिहल गइल बा।",
+        hospitalsDesc: "इहाँ के कुछ जानल-मानल अस्पताल के सूची दिहल गइल बा।",
     },
     homeVisitPage: {
         title: "डॉक्टर के घर पर बुलाईं",
@@ -502,16 +511,16 @@ const translations = {
         medicineDelivery: "दवाई के होम डिलीवरी",
         medicineDeliveryDesc: "आपन दवाई सीधे आपन दरवाजा पर मंगवाईं।",
         bookLabTest: "लैब टेस्ट बुक करीं",
-        bookLabTestDesc: "घरे से आसानी से लैब टेस्ट शेड्यूल करीं।",
+        bookLabTestDesc: "Schedule lab tests easily from the convenience of home.",
         findMedicalStore: "मेडिकल स्टोर खोजीं",
-        findMedicalStoreDesc: "आपन आस-पास के नजदीकी मेडिकल स्टोर के पता लगाईं।",
+        findMedicalStoreDesc: "Locate the nearest medical stores in your vicinity.",
         tbTreatment: "टीबी उपचार सहायता",
-        tbTreatmentDesc: "टीबी के इलाज आ देखभाल खातिर विशेष सहायता पाईं।",
+        tbTreatmentDesc: "Get specialized support for tuberculosis treatment and care.",
         backToLogin: "लॉगिन पेज पर वापस जाईं"
     },
     medicalStoresPage: {
         title: "आस-पास के मेडिकल स्टोर",
-        description: "इहाँ सीवान के कुछ प्रमुख मेडिकल स्टोर के सूची दिहल गइल बा।",
+        description: "इहाँ के कुछ प्रमुख मेडिकल स्टोर के सूची दिहल गइल बा।",
         callNow: "अभी कॉल करीं",
         getDirections: "रास्ता देखीं",
     },

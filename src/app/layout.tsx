@@ -6,6 +6,7 @@ import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, 
 import { Home, LifeBuoy, BriefcaseMedical, History, Settings, Hospital, TestTube } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { LocationProvider } from '@/context/LocationContext';
 import { Logo } from '@/components/Logo';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
 
@@ -40,6 +41,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <LanguageProvider>
+          <LocationProvider>
             <FirebaseClientProvider>
                 <SidebarProvider>
                     <Sidebar>
@@ -96,6 +98,7 @@ export default function RootLayout({
                 </SidebarProvider>
                 <Toaster />
             </FirebaseClientProvider>
+          </LocationProvider>
         </LanguageProvider>
       </body>
     </html>
