@@ -1,4 +1,3 @@
-
 import { doctors } from "@/lib/doctors";
 import { DoctorProfileClient } from "@/components/DoctorProfileClient";
 import { notFound } from "next/navigation";
