@@ -3,10 +3,12 @@ const translations = {
   hi: {
     sidebar: {
         home: "होम",
+        hospitals: "अस्पताल",
         homeVisit: "डॉक्टर होम विज़िट",
+        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट हिस्ट्री",
         support: "सहायता और समर्थन",
-        medicalStores: "मेडिकल स्टोर्स",
+        settings: "सेटिंग्स",
     },
     loginPage: {
         login: "लॉगिन करें",
@@ -16,14 +18,15 @@ const translations = {
         continueWithFacebook: "Facebook से जारी रखें",
         or: "या",
         phonePlaceholder: "फ़ोन नंबर",
-        continueWithPhone: "OTP भेजें",
-        noAccount: "अकाउंट नहीं है?",
-        signUp: "साइन अप करें",
-        selectLanguage: "भाषा चुनें",
+        continueWithPhone: "जारी रखें",
         otherServices: "अन्य सेवाएं",
         createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
-        googleFacebookLoginDisabledTitle: "सुविधा उपलब्ध नहीं",
-        googleFacebookLoginDisabledDesc: "अभी Google और Facebook का लॉगिन उपलब्ध नहीं है। कृपया अपने मोबाइल नंबर से लॉगिन करें।",
+    },
+    settingsPage: {
+        title: "सेटिंग्स",
+        profileInfo: "प्रोफ़ाइल जानकारी",
+        name: "नाम",
+        phone: "फ़ोन नंबर",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनें",
@@ -136,11 +139,11 @@ const translations = {
         medicineDelivery: "दवा की होम डिलीवरी",
         medicineDeliveryDesc: "अपनी दवाइयां सीधे अपने दरवाजे पर मंगवाएं।",
         bookLabTest: "लैब टेस्ट बुक करें",
-        bookLabTestDesc: "घर से ही आसानी से लैब टेस्ट शेड्यूल करें।",
+        bookLabTestDesc: "Schedule lab tests easily from the convenience of home.",
         findMedicalStore: "मेडिकल स्टोर खोजें",
-        findMedicalStoreDesc: "अपने आस-पास के नज़दीकी मेडिकल स्टोर का पता लगाएं।",
+        findMedicalStoreDesc: "Locate the nearest medical stores in your vicinity.",
         tbTreatment: "टीबी उपचार सहायता",
-        tbTreatmentDesc: "टीबी के इलाज और देखभाल के लिए विशेष सहायता प्राप्त करें।",
+        tbTreatmentDesc: "Get specialized support for tuberculosis treatment and care.",
         backToLogin: "लॉगिन पेज पर वापस जाएं"
     },
     medicalStoresPage: {
@@ -177,10 +180,12 @@ const translations = {
   en: {
     sidebar: {
         home: "Home",
+        hospitals: "Hospitals",
         homeVisit: "Doctor Home Visit",
+        labTest: "Lab Test",
         appointmentHistory: "Appointment History",
         support: "Help & Support",
-        medicalStores: "Medical Stores",
+        settings: "Settings",
     },
     loginPage: {
         login: "Login",
@@ -190,14 +195,15 @@ const translations = {
         continueWithFacebook: "Continue with Facebook",
         or: "OR",
         phonePlaceholder: "Phone Number",
-        continueWithPhone: "Send OTP",
-        noAccount: "Don't have an account?",
-        signUp: "Sign Up",
-        selectLanguage: "Select Language",
+        continueWithPhone: "Continue",
         otherServices: "Other Services",
         createdBy: "Produce by: Hello Group",
-        googleFacebookLoginDisabledTitle: "Feature Unavailable",
-        googleFacebookLoginDisabledDesc: "Google and Facebook login is currently unavailable. Please log in with your phone number.",
+    },
+    settingsPage: {
+        title: "Settings",
+        profileInfo: "Profile Information",
+        name: "Name",
+        phone: "Phone Number",
     },
     selectSpecializationPage: {
         title: "Select a Specialization",
@@ -351,10 +357,12 @@ const translations = {
   bho: {
     sidebar: {
         home: "होम",
+        hospitals: "अस्पताल",
         homeVisit: "डॉक्टर होम विजिट",
+        labTest: "लैब टेस्ट",
         appointmentHistory: "अपॉइंटमेंट इतिहास",
         support: "मदद आ समर्थन",
-        medicalStores: "मेडिकल स्टोर",
+        settings: "सेटिंग्स",
     },
     loginPage: {
         login: "लॉगिन करीं",
@@ -364,14 +372,15 @@ const translations = {
         continueWithFacebook: "Facebook से जारी राखीं",
         or: "या",
         phonePlaceholder: "फोन नंबर",
-        continueWithPhone: "OTP भेजीं",
-        noAccount: "खाता नइखे?",
-        signUp: "साइन अप करीं",
-        selectLanguage: "भाषा चुनीं",
+        continueWithPhone: "जारी राखीं",
         otherServices: "दोसर सेवा",
         createdBy: "प्रोड्यूस द्वारा: हेलो ग्रुप",
-        googleFacebookLoginDisabledTitle: "सुविधा उपलब्ध नइखे",
-        googleFacebookLoginDisabledDesc: "अभी Google आ Facebook के लॉगिन उपलब्ध नइखे। किरपा करके आपन मोबाइल नंबर से लॉगिन करीं।",
+    },
+    settingsPage: {
+        title: "सेटिंग्स",
+        profileInfo: "प्रोफाइल जानकारी",
+        name: "नाम",
+        phone: "फोन नंबर",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनीं",
