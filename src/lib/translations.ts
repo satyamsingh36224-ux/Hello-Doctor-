@@ -27,6 +27,9 @@ const translations = {
         profileInfo: "प्रोफ़ाइल जानकारी",
         name: "नाम",
         phone: "फ़ोन नंबर",
+        helplineTitle: "हेल्पलाइन और सहायता",
+        bookingInfo: "यदि आप फोन के माध्यम से अपॉइंटमेंट बुक करना चाहते हैं, तो कृपया नीचे दिए गए नंबरों पर संपर्क करें:",
+        helplineNumbers: "9771264784 / 9007355062",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनें",
@@ -204,6 +207,9 @@ const translations = {
         profileInfo: "Profile Information",
         name: "Name",
         phone: "Phone Number",
+        helplineTitle: "Helpline & Support",
+        bookingInfo: "If you want to book an appointment via phone, please contact the following numbers:",
+        helplineNumbers: "9771264784 / 9007355062",
     },
     selectSpecializationPage: {
         title: "Select a Specialization",
@@ -381,6 +387,9 @@ const translations = {
         profileInfo: "प्रोफाइल जानकारी",
         name: "नाम",
         phone: "फोन नंबर",
+        helplineTitle: "हेल्पलाइन आ सहायता",
+        bookingInfo: "अगर रउआ फोन से अपॉइंटमेंट बुक कइल चाहत बानी, त कृपया नीचे दिहल नंबर पर संपर्क करीं:",
+        helplineNumbers: "9771264784 / 9007355062",
     },
     selectSpecializationPage: {
         title: "एक विशेषज्ञता चुनीं",

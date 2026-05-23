@@ -20,7 +20,6 @@ export default function SelectSpecializationPage() {
   const { translations, language } = useLanguage();
   const t = translations.selectSpecializationPage;
   const tSettings = translations.settingsPage;
-  const tSidebar = translations.sidebar;
 
   const handleSpecializationClick = (specializationKey: string) => {
     router.push(`/doctors?specialization=${encodeURIComponent(specializationKey)}`);
@@ -46,31 +45,25 @@ export default function SelectSpecializationPage() {
   return (
     <div className="flex flex-col items-center min-h-screen p-4 pt-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950">
       <Card className="w-full max-w-2xl shadow-xl rounded-2xl border-border/50 bg-card">
-        <CardHeader className="text-center pb-2">
+        <CardHeader className="text-center pb-2 relative">
+          <div className="absolute right-4 top-4">
+             <Button 
+                asChild 
+                variant="outline" 
+                size="icon"
+                className="rounded-full border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary h-10 w-10"
+                title={tSettings.title}
+            >
+                <Link href="/settings">
+                    <SettingsIcon className="h-5 w-5" />
+                </Link>
+            </Button>
+          </div>
           <CardTitle className="text-3xl font-bold">{t.title}</CardTitle>
           <CardDescription>{t.description}</CardDescription>
         </CardHeader>
         <CardContent>
-          {/* Settings Shortcut at the top */}
-          <div className="mb-6">
-            <Button 
-                asChild 
-                variant="outline" 
-                className="w-full justify-between py-6 rounded-2xl border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary transition-all"
-            >
-                <Link href="/settings">
-                    <div className="flex items-center">
-                        <div className="p-2 bg-primary/10 rounded-full mr-3">
-                            <SettingsIcon className="h-5 w-5" />
-                        </div>
-                        <span className="font-bold text-lg">{tSettings.title}</span>
-                    </div>
-                    <ChevronRight className="h-5 w-5" />
-                </Link>
-            </Button>
-          </div>
-
-          <div className="relative mb-6">
+          <div className="relative mb-6 mt-4">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input 
               suppressHydrationWarning
