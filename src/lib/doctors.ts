@@ -26,7 +26,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         description: { hi: "एक अनुभवी सामान्य चिकित्सक हैं जिन्हें 21 वर्षों का अनुभव है।", en: "An experienced General Physician with 21 years of practice.", bho: "एगो अनुभवी साधारण डॉक्टर हईं जिनके 21 साल के अनुभव बा।" },
         fee: 300,
         imageUrl: "👨‍⚕️",
-        location: "सीवान",
+        location: "महादेवा रोड, सीवान",
         aiHint: "indian male doctor"
     },
     {
@@ -51,7 +51,40 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         location: "न्यू डॉक्टर कॉलोनी, विजयहाटा, सीवान",
         aiHint: "friendly male doctor"
     },
-    // --- GOPALGANJ DOCTORS (Mock data until provided) ---
+    {
+        id: "dr-shailendra-kumar-31",
+        city: "siwan",
+        name: { hi: "डॉ. शैलेंद्र कुमार", en: "Dr. Shailendra Kumar", bho: "डॉ. शैलेंद्र कुमार" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "हड्डियों और जोड़ों के विशेषज्ञ।", en: "Specialist in bones and joints.", bho: "हड्डी आ जोड़ा के विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "शांति वटिका, सीवान",
+        aiHint: "orthopedic surgeon"
+    },
+    {
+        id: "dr-reena-kumari-41",
+        city: "siwan",
+        name: { hi: "डॉ. रीना कुमारी", en: "Dr. Reena Kumari", bho: "डॉ. रीना कुमारी" },
+        specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } },
+        description: { hi: "अनुभवी स्त्री रोग विशेषज्ञ।", en: "Experienced gynecologist.", bho: "अनुभवी स्त्री रोग विशेषज्ञ।" },
+        fee: 400,
+        imageUrl: "👩‍⚕️",
+        location: "हॉस्पिटल रोड, सीवान",
+        aiHint: "indian female doctor"
+    },
+    {
+        id: "dr-shashi-bhushan-51",
+        city: "siwan",
+        name: { hi: "डॉ. शशि भूषण", en: "Dr. Shashi Bhushan", bho: "डॉ. शशि भूषण" },
+        specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } },
+        description: { hi: "त्वचा और बालों के रोगों के विशेषज्ञ।", en: "Specialist in skin and hair diseases.", bho: "चमड़ी आ बाल के रोग के विशेषज्ञ।" },
+        fee: 350,
+        imageUrl: "👨‍⚕️",
+        location: "बबुनिया रोड, सीवान",
+        aiHint: "dermatologist doctor"
+    },
+    // --- GOPALGANJ DOCTORS ---
     {
         id: "dr-gopal-doctor-1",
         city: "gopalganj",
