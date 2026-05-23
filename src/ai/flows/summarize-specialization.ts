@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -14,7 +15,7 @@ import {z} from 'genkit';
 const SummarizeSpecializationInputSchema = z.object({
   specializationText: z
     .string()
-    .describe('The text describing the doctor\u0027s specialization.'),
+    .describe('The text describing the doctor\'s specialization.'),
 });
 export type SummarizeSpecializationInput = z.infer<
   typeof SummarizeSpecializationInputSchema
@@ -24,7 +25,7 @@ const SummarizeSpecializationOutputSchema = z.object({
   summary: z
     .string()
     .describe(
-      'A concise summary of the doctor\u0027s specialization, no more than 50 words, in Hindi.'
+      'A concise summary of the doctor\'s specialization, no more than 50 words, in Hindi.'
     ),
 });
 export type SummarizeSpecializationOutput = z.infer<
@@ -41,9 +42,10 @@ const summarizeSpecializationPrompt = ai.definePrompt({
   name: 'summarizeSpecializationPrompt',
   input: {schema: SummarizeSpecializationInputSchema},
   output: {schema: SummarizeSpecializationOutputSchema},
-  prompt: `You are an AI assistant specializing in summarizing doctor specializations for patients.
+  prompt: `You are an AI assistant specializing in summarizing doctor specializations for patients in India.
 
-  Given the following text describing a doctor's specialization, create a concise and easy-to-understand summary in HINDI, no more than 50 words, highlighting the key areas of their expertise.
+  Given the following text describing a doctor's specialization, create a concise, friendly, and easy-to-understand summary in HINDI. 
+  The summary should be no more than 50 words and should highlight the key areas of their expertise for a layperson.
 
   Specialization Text: {{{specializationText}}}`,
 });
@@ -55,7 +57,13 @@ const summarizeSpecializationFlow = ai.defineFlow(
     outputSchema: SummarizeSpecializationOutputSchema,
   },
   async input => {
-    const {output} = await summarizeSpecializationPrompt(input);
-    return output!;
+    const response = await summarizeSpecializationPrompt(input);
+    const output = response.output;
+    
+    if (!output) {
+      throw new Error('AI failed to generate a summary.');
+    }
+    
+    return output;
   }
 );
