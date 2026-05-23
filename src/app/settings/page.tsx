@@ -68,12 +68,6 @@ export default function SettingsPage() {
                                     </span>
                                 </div>
                             </div>
-                            
-                            <Separator className="opacity-50" />
-                            
-                            <div className="text-center text-xs text-muted-foreground/60 font-medium">
-                                <p>© 2024 Hello Doctor - All Rights Reserved</p>
-                            </div>
                         </CardContent>
                     </Card>
                 </div>
