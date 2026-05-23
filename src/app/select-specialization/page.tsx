@@ -4,13 +4,14 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Search, LogOut } from 'lucide-react';
+import { Search, LogOut, Settings as SettingsIcon, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { specializationMap } from '@/lib/doctors';
 import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/firebase';
 import { signOut as firebaseSignOut } from 'firebase/auth';
+import Link from 'next/link';
 
 export default function SelectSpecializationPage() {
   const router = useRouter();
@@ -18,6 +19,8 @@ export default function SelectSpecializationPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const { translations, language } = useLanguage();
   const t = translations.selectSpecializationPage;
+  const tSettings = translations.settingsPage;
+  const tSidebar = translations.sidebar;
 
   const handleSpecializationClick = (specializationKey: string) => {
     router.push(`/doctors?specialization=${encodeURIComponent(specializationKey)}`);
@@ -29,7 +32,6 @@ export default function SelectSpecializationPage() {
         router.push('/');
       }).catch((error) => {
         console.error("Sign out error", error);
-        // Even if sign out fails, try to go to login page
         router.push('/');
       });
     } else {
@@ -44,11 +46,30 @@ export default function SelectSpecializationPage() {
   return (
     <div className="flex flex-col items-center min-h-screen p-4 pt-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950">
       <Card className="w-full max-w-2xl shadow-xl rounded-2xl border-border/50 bg-card">
-        <CardHeader className="text-center">
+        <CardHeader className="text-center pb-2">
           <CardTitle className="text-3xl font-bold">{t.title}</CardTitle>
           <CardDescription>{t.description}</CardDescription>
         </CardHeader>
         <CardContent>
+          {/* Settings Shortcut at the top */}
+          <div className="mb-6">
+            <Button 
+                asChild 
+                variant="outline" 
+                className="w-full justify-between py-6 rounded-2xl border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary transition-all"
+            >
+                <Link href="/settings">
+                    <div className="flex items-center">
+                        <div className="p-2 bg-primary/10 rounded-full mr-3">
+                            <SettingsIcon className="h-5 w-5" />
+                        </div>
+                        <span className="font-bold text-lg">{tSettings.title}</span>
+                    </div>
+                    <ChevronRight className="h-5 w-5" />
+                </Link>
+            </Button>
+          </div>
+
           <div className="relative mb-6">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input 
@@ -59,6 +80,7 @@ export default function SelectSpecializationPage() {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+          
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center">
             {filteredSpecializations.map((spec) => (
               <div 
@@ -74,7 +96,7 @@ export default function SelectSpecializationPage() {
             ))}
           </div>
            <div className="mt-8 text-center">
-              <Button suppressHydrationWarning onClick={handleLogoutAndGoToLogin} variant="outline" className="rounded-full">
+              <Button suppressHydrationWarning onClick={handleLogoutAndGoToLogin} variant="ghost" className="rounded-full text-muted-foreground hover:text-destructive">
                   <LogOut className="mr-2 h-4 w-4" />
                   {t.backToLogin}
               </Button>
