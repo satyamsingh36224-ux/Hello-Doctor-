@@ -76,7 +76,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
     {
         id: "dr-shashi-bhushan-51",
         city: "siwan",
-        name: { hi: "डॉ. शशि भूषण", en: "Dr. Shashi Bhushan", bho: "डॉ. शशि भूषण" },
+        name: { hi: "डॉ. शशि भूषण", en: "Dr. Shashi भूषण", bho: "डॉ. शशि भूषण" },
         specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } },
         description: { hi: "त्वचा और बालों के रोगों के विशेषज्ञ।", en: "Specialist in skin and hair diseases.", bho: "चमड़ी आ बाल के रोग के विशेषज्ञ।" },
         fee: 350,
@@ -85,7 +85,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         aiHint: "dermatologist doctor"
     },
 
-    // --- GOPALGANJ DOCTORS (GENERAL & PREVIOUS) ---
+    // --- GOPALGANJ GENERAL PHYSICIANS (10 Doctors) ---
     {
         id: "dr-piyush-kumar-gp-1",
         city: "gopalganj",
@@ -101,12 +101,23 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         id: "dr-r-sunil-kumar-gp-2",
         city: "gopalganj",
         name: { hi: "डॉ. आर. सुनील कुमार", en: "Dr. R. Sunil Kumar", bho: "डॉ. आर. सुनील कुमार" },
-        specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } },
-        description: { hi: "तुलसी नर्सिंग होम में बच्चों के विशेषज्ञ।", en: "Child specialist at Tulsi Nursing Home.", bho: "तुलसी नर्सिंग होम में लइकन के विशेषज्ञ।" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "तुलसी नर्सिंग होम में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Tulsi Nursing Home.", bho: "तुलसी नर्सिंग होम में कार्यरत अनुभवी डॉक्टर।" },
         fee: 400,
         imageUrl: "🧑‍⚕️",
         location: "तुलसी नर्सिंग होम, जंगलिया रोड, पुरानी चौक, गोपालगंज",
         aiHint: "pediatrician doctor"
+    },
+    {
+        id: "dr-rajeev-ranjan-gp-3",
+        city: "gopalganj",
+        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "एटलांटिस अस्पताल में अनुभवी चिकित्सक।", en: "Experienced physician at Atlantis Hospital.", bho: "एटलांटिस अस्पताल में अनुभवी डॉक्टर।" },
+        fee: 400,
+        imageUrl: "🧑‍⚕️",
+        location: "एटलांटिस अस्पताल, गोसाईं टोला रोड, तकिया, गोपालगंज",
+        aiHint: "experienced doctor"
     },
     {
         id: "dr-rahul-kumar-singh-gp-4",
@@ -123,8 +134,8 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         id: "dr-sk-pathak-gp-5",
         city: "gopalganj",
         name: { hi: "डॉ. एस. के. पाठक", en: "Dr. S. K. Pathak", bho: "डॉ. एस. के. पाठक" },
-        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
-        description: { hi: "हर्षण अस्पताल में हड्डी रोग विशेषज्ञ।", en: "Orthopedic Surgeon at Harsan Hospital.", bho: "हर्षण अस्पताल में हड्डी के डॉक्टर।" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "हर्षण अस्पताल में अनुभवी सामान्य चिकित्सक।", en: "Experienced physician at Harsan Hospital.", bho: "हर्षण अस्पताल में अनुभवी साधारण डॉक्टर।" },
         fee: 450,
         imageUrl: "👨‍⚕️",
         location: "हर्षण अस्पताल, मालवीय नगर, पुरानी चौक, गोपालगंज",
@@ -134,8 +145,8 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         id: "dr-suman-kumar-gp-6",
         city: "gopalganj",
         name: { hi: "डॉ. सुमन कुमार", en: "Dr. Suman Kumar", bho: "डॉ. सुमन कुमार" },
-        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
-        description: { hi: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी सर्जन।", en: "Experienced Surgeon at Suman Medical Research Centre.", bho: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी सर्जन।" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी चिकित्सक।", en: "Experienced physician at Suman Medical Research Centre.", bho: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी डॉक्टर।" },
         fee: 500,
         imageUrl: "👨‍⚕️",
         location: "सुमन मेडिकल रिसर्च सेंटर, मेन मार्केट एरिया, मीरगंज, गोपालगंज",
@@ -145,8 +156,8 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         id: "dr-rahul-ranjan-gp-7",
         city: "gopalganj",
         name: { hi: "डॉ. राहुल रंजन", en: "Dr. Rahul Ranjan", bho: "डॉ. राहुल रंजन" },
-        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
-        description: { hi: "नाक, कान और गला रोगों के विशेषज्ञ।", en: "ENT specialist in Gopalganj.", bho: "नाक, कान आ गला रोग के विशेषज्ञ।" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "जंगलिया मोड़ रोड पर स्थित क्लीनिक में अनुभवी चिकित्सक।", en: "Experienced physician at Jangalia More Road clinic.", bho: "जंगलिया मोड़ रोड पर स्थित क्लीनिक में अनुभवी डॉक्टर।" },
         fee: 300,
         imageUrl: "🧑‍⚕️",
         location: "क्लीनिक - जंगलिया मोड़ रोड, अंबेडकर चौक, गोपालगंज",
@@ -167,8 +178,8 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         id: "dr-anup-kumar-tiwari-gp-9",
         city: "gopalganj",
         name: { hi: "डॉ. अनुप कुमार तिवारी", en: "Dr. Anup Kumar Tiwari", bho: "डॉ. अनुप कुमार तिवारी" },
-        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
-        description: { hi: "आँखों के रोगों के विशेषज्ञ।", en: "Specialist in eye diseases.", bho: "आँख के रोग के विशेषज्ञ।" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "पुलिस लाइन रोड पर स्थित क्लीनिक में अनुभवी चिकित्सक।", en: "Experienced physician at Police Line Road clinic.", bho: "पुलिस लाइन रोड पर स्थित क्लीनिक में अनुभवी डॉक्टर।" },
         fee: 350,
         imageUrl: "🧑‍⚕️",
         location: "क्लीनिक - पुलिस लाइन रोड, भितभेरवा, गोपालगंज",
@@ -177,7 +188,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
     {
         id: "dr-mm-prasad-gp-10",
         city: "gopalganj",
-        name: { hi: "डॉ. एम. एम. प्रसाद", en: "Dr. M. M. Prasad", bho: "डॉ. एम. एम. प्रसाद" },
+        name: { hi: "डॉ. एम. एम. प्रसाद", en: "Dr. M. M. प्रसाद", bho: "डॉ. एम. एम. प्रसाद" },
         specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
         description: { hi: "अमृतेश अस्पताल में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Amritesh Hospital.", bho: "अमृतेश अस्पताल में कार्यरत अनुभवी डॉक्टर।" },
         fee: 300,
@@ -186,7 +197,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         aiHint: "experienced doctor"
     },
 
-    // --- GOPALGANJ SPECIALIZED CARDIOLOGISTS (NEW LIST) ---
+    // --- GOPALGANJ CARDIOLOGISTS (10 Doctors) ---
     {
         id: "dr-shadab-ahmad-gp-cardio-1",
         city: "gopalganj",
@@ -245,7 +256,7 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
     {
         id: "dr-shashi-bhushan-prasad-gp-cardio-6",
         city: "gopalganj",
-        name: { hi: "डॉ. शशि भूषण प्रसाद", en: "Dr. Shashi Bhushan Prasad", bho: "डॉ. शशि भूषण प्रसाद" },
+        name: { hi: "डॉ. शशि भूषण प्रसाद", en: "Dr. Shashi भूषण प्रसाद", bho: "डॉ. शशि भूषण प्रसाद" },
         specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
         description: { hi: "सलाहकार फिजिशियन और नॉन-इनवेसिव कार्डियोलॉजी केयर", en: "Consultant Physician & Non-Invasive Cardiology Care", bho: "सलाहकार फिजिशियन आ नॉन-इनवेसिव कार्डियोलॉजी केयर" },
         fee: 400,
@@ -298,3 +309,4 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         aiHint: "critical care doctor"
     }
 ];
+
