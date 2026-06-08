@@ -1,6 +1,6 @@
 
 import type { Doctor } from "@/types";
-import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, UserCog } from 'lucide-react';
+import { Brain, Heart, Stethoscope, Bone, Baby, User, Ear, Eye, UserCog, Activity } from 'lucide-react';
 
 export const specializationMap = [
   { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" }, icon: Stethoscope },
@@ -9,10 +9,11 @@ export const specializationMap = [
   { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" }, icon: User },
   { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" }, icon: Stethoscope },
   { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" }, icon: Bone },
-  { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" }, icon: Stethoscope },
   { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" }, icon: Brain },
   { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" }, icon: Ear },
   { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" }, icon: Eye },
+  { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" }, icon: Stethoscope },
+  { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" }, icon: Activity },
   { key: "Psychiatrist", name: { hi: "मनोचिकित्सक", en: "Psychiatrist", bho: "दिमागी डॉक्टर" }, icon: UserCog },
 ];
 
@@ -85,228 +86,137 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         aiHint: "dermatologist doctor"
     },
 
-    // --- GOPALGANJ GENERAL PHYSICIANS (10 Doctors) ---
-    {
-        id: "dr-piyush-kumar-gp-1",
-        city: "gopalganj",
-        name: { hi: "डॉ. पीयूष कुमार", en: "Dr. Piyush Kumar", bho: "डॉ. पीयूष कुमार" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "माया अस्पताल में कार्यरत अनुभवी सामान्य चिकित्सक।", en: "Experienced General Physician at Maya Hospital.", bho: "माया अस्पताल में कार्यरत अनुभवी साधारण डॉक्टर।" },
-        fee: 300,
-        imageUrl: "👨‍⚕️",
-        location: "माया अस्पताल, हॉस्पिटल रोड, बनकटा, गोपालगंज",
-        aiHint: "indian male doctor"
-    },
-    {
-        id: "dr-r-sunil-kumar-gp-2",
-        city: "gopalganj",
-        name: { hi: "डॉ. आर. सुनील कुमार", en: "Dr. R. Sunil Kumar", bho: "डॉ. आर. सुनील कुमार" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "तुलसी नर्सिंग होम में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Tulsi Nursing Home.", bho: "तुलसी नर्सिंग होम में कार्यरत अनुभवी डॉक्टर।" },
-        fee: 400,
-        imageUrl: "🧑‍⚕️",
-        location: "तुलसी नर्सिंग होम, जंगलिया रोड, पुरानी चौक, गोपालगंज",
-        aiHint: "pediatrician doctor"
-    },
-    {
-        id: "dr-rajeev-ranjan-gp-3",
-        city: "gopalganj",
-        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "एटलांटिस अस्पताल में अनुभवी चिकित्सक।", en: "Experienced physician at Atlantis Hospital.", bho: "एटलांटिस अस्पताल में अनुभवी डॉक्टर।" },
-        fee: 400,
-        imageUrl: "🧑‍⚕️",
-        location: "एटलांटिस अस्पताल, गोसाईं टोला रोड, तकिया, गोपालगंज",
-        aiHint: "experienced doctor"
-    },
-    {
-        id: "dr-rahul-kumar-singh-gp-4",
-        city: "gopalganj",
-        name: { hi: "डॉ. राहुल कुमार सिंह", en: "Dr. Rahul Kumar Singh", bho: "डॉ. राहुल कुमार सिंह" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "मधुमेह प्रबंधन के विशेषज्ञ चिकित्सक।", en: "Specialist in Diabetes Management.", bho: "मधुमेह प्रबंधन के विशेषज्ञ डॉक्टर।" },
-        fee: 350,
-        imageUrl: "🧑‍⚕️",
-        location: "एडवांस सेंटर फॉर डायबिटीज मैनेजमेंट, कॉलेज रोड, बनकटा, गोपालगंज",
-        aiHint: "diabetes specialist"
-    },
-    {
-        id: "dr-sk-pathak-gp-5",
-        city: "gopalganj",
-        name: { hi: "डॉ. एस. के. पाठक", en: "Dr. S. K. Pathak", bho: "डॉ. एस. के. पाठक" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "हर्षण अस्पताल में अनुभवी सामान्य चिकित्सक।", en: "Experienced physician at Harsan Hospital.", bho: "हर्षण अस्पताल में अनुभवी साधारण डॉक्टर।" },
-        fee: 450,
-        imageUrl: "👨‍⚕️",
-        location: "हर्षण अस्पताल, मालवीय नगर, पुरानी चौक, गोपालगंज",
-        aiHint: "orthopedic surgeon"
-    },
-    {
-        id: "dr-suman-kumar-gp-6",
-        city: "gopalganj",
-        name: { hi: "डॉ. सुमन कुमार", en: "Dr. Suman Kumar", bho: "डॉ. सुमन कुमार" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी चिकित्सक।", en: "Experienced physician at Suman Medical Research Centre.", bho: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी डॉक्टर।" },
-        fee: 500,
-        imageUrl: "👨‍⚕️",
-        location: "सुमन मेडिकल रिसर्च सेंटर, मेन मार्केट एरिया, मीरगंज, गोपालगंज",
-        aiHint: "general surgeon"
-    },
-    {
-        id: "dr-rahul-ranjan-gp-7",
-        city: "gopalganj",
-        name: { hi: "डॉ. राहुल रंजन", en: "Dr. Rahul Ranjan", bho: "डॉ. राहुल रंजन" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "जंगलिया मोड़ रोड पर स्थित क्लीनिक में अनुभवी चिकित्सक।", en: "Experienced physician at Jangalia More Road clinic.", bho: "जंगलिया मोड़ रोड पर स्थित क्लीनिक में अनुभवी डॉक्टर।" },
-        fee: 300,
-        imageUrl: "🧑‍⚕️",
-        location: "क्लीनिक - जंगलिया मोड़ रोड, अंबेडकर चौक, गोपालगंज",
-        aiHint: "ent specialist"
-    },
-    {
-        id: "dr-rp-singh-gp-8",
-        city: "gopalganj",
-        name: { hi: "डॉ. आर. पी. सिंह", en: "Dr. R. P. Singh", bho: "डॉ. आर. पी. सिंह" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "अमृतेश अस्पताल में वरिष्ठ सामान्य चिकित्सक।", en: "Senior General Physician at Amritesh Hospital.", bho: "अमृतेश अस्पताल में वरिष्ठ साधारण डॉक्टर।" },
-        fee: 300,
-        imageUrl: "👨‍⚕️",
-        location: "अमृतेश अस्पताल, आर्ट कॉलेज रोड, NH-85, भितभेरवा, गोपालगंज",
-        aiHint: "senior physician"
-    },
-    {
-        id: "dr-anup-kumar-tiwari-gp-9",
-        city: "gopalganj",
-        name: { hi: "डॉ. अनुप कुमार तिवारी", en: "Dr. Anup Kumar Tiwari", bho: "डॉ. अनुप कुमार तिवारी" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "पुलिस लाइन रोड पर स्थित क्लीनिक में अनुभवी चिकित्सक।", en: "Experienced physician at Police Line Road clinic.", bho: "पुलिस लाइन रोड पर स्थित क्लीनिक में अनुभवी डॉक्टर।" },
-        fee: 350,
-        imageUrl: "🧑‍⚕️",
-        location: "क्लीनिक - पुलिस लाइन रोड, भितभेरवा, गोपालगंज",
-        aiHint: "eye specialist"
-    },
-    {
-        id: "dr-mm-prasad-gp-10",
-        city: "gopalganj",
-        name: { hi: "डॉ. एम. एम. प्रसाद", en: "Dr. M. M. प्रसाद", bho: "डॉ. एम. एम. प्रसाद" },
-        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "अमृतेश अस्पताल में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Amritesh Hospital.", bho: "अमृतेश अस्पताल में कार्यरत अनुभवी डॉक्टर।" },
-        fee: 300,
-        imageUrl: "👨‍⚕️",
-        location: "अमृतेश अस्पताल, आर्ट कॉलेज रोड, NH-85, भितभेरवा, गोपालगंज",
-        aiHint: "experienced doctor"
-    },
+    // --- GOPALGANJ DOCTORS ---
+    
+    // 1. General Physician
+    { id: "g-gp-1", city: "gopalganj", name: { hi: "डॉ. पीयूष कुमार", en: "Dr. Piyush Kumar", bho: "डॉ. पीयूष कुमार" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "अनुभवी सामान्य चिकित्सक।", en: "Experienced General Physician.", bho: "अनुभवी साधारण डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "माया हॉस्पिटल, हॉस्पिटल रोड, बनकटा, गोपालगंज", aiHint: "male doctor" },
+    { id: "g-gp-2", city: "gopalganj", name: { hi: "डॉ. आर. सुनील कुमार", en: "Dr. R. Sunil Kumar", bho: "डॉ. आर. सुनील कुमार" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "तुलसी नर्सिंग होम में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Tulsi Nursing Home.", bho: "तुलसी नर्सिंग होम में डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "तुलसी नर्सिंग होम, जंगालिया रोड, पुरानी चौक, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-3", city: "gopalganj", name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "अटलांटिस हॉस्पिटल में अनुभवी चिकित्सक।", en: "Physician at Atlantis Hospital.", bho: "अटलांटिस हॉस्पिटल में डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "अटलांटिस हॉस्पिटल, गोसाईं टोला रोड, तकिया, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-4", city: "gopalganj", name: { hi: "डॉ. राहुल कुमार सिंह", en: "Dr. Rahul Kumar Singh", bho: "डॉ. राहुल कुमार सिंह" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "मधुमेह और सामान्य चिकित्सा विशेषज्ञ।", en: "Diabetes and general medicine specialist.", bho: "शुगर आ साधारण डॉक्टर।" }, fee: 350, imageUrl: "🧑‍⚕️", location: "एडवांस सेंटर फॉर डायबिटीज मैनेजमेंट, कॉलेज रोड, बनकटा, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-5", city: "gopalganj", name: { hi: "डॉ. एस. के. पाठक", en: "Dr. S. K. Pathak", bho: "डॉ. एस. के. पाठक" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "हरसन हॉस्पिटल में वरिष्ठ चिकित्सक।", en: "Senior physician at Harsan Hospital.", bho: "हरसन हॉस्पिटल में डॉक्टर।" }, fee: 450, imageUrl: "👨‍⚕️", location: "हरसन हॉस्पिटल, मालवीय नगर, पुरानी चौक, गोपालगंज", aiHint: "senior doctor" },
+    { id: "g-gp-6", city: "gopalganj", name: { hi: "डॉ. आर. पी. सिंह", en: "Dr. R. P. Singh", bho: "डॉ. आर. पी. सिंह" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "अमृतेश हॉस्पिटल में अनुभवी चिकित्सक।", en: "Experienced physician at Amritesh Hospital.", bho: "अमृतेश हॉस्पिटल में डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "अमृतेश हॉस्पिटल, आर्ट कॉलेज रोड, NH-85, भीतभेरवा, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-7", city: "gopalganj", name: { hi: "डॉ. अनूप कुमार तिवारी", en: "Dr. Anup Kumar Tiwari", bho: "डॉ. अनूप कुमार तिवारी" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "पुलिस लाइन रोड पर अनुभवी चिकित्सक।", en: "Experienced physician at Police Line Road.", bho: "पुलिस लाइन रोड पर डॉक्टर।" }, fee: 350, imageUrl: "🧑‍⚕️", location: "डॉ. अनूप तिवारी क्लिनिक, पुलिस लाइन रोड, भीतभेरवा, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-8", city: "gopalganj", name: { hi: "डॉ. एम. एम. प्रसाद", en: "Dr. M. M. Prasad", bho: "डॉ. एम. एम. प्रसाद" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "अमृतेश हॉस्पिटल में वरिष्ठ चिकित्सक।", en: "Senior physician at Amritesh Hospital.", bho: "अमृतेश हॉस्पिटल में डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "अमृतेश हॉस्पिटल, आर्ट कॉलेज रोड, NH-85, भीतभेरवा, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-9", city: "gopalganj", name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "मौनिया चौक पर अनुभवी चिकित्सक।", en: "Physician at Mauniya Chowk.", bho: "मौनिया चौक पर डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "सिंह क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "doctor" },
+    { id: "g-gp-10", city: "gopalganj", name: { hi: "डॉ. के. के. मिश्रा", en: "Dr. K. K. Mishra", bho: "डॉ. के. के. मिश्रा" }, specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } }, description: { hi: "थावे रोड पर अनुभवी चिकित्सक।", en: "Physician at Thawe Road.", bho: "थावे रोड पर डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "मिश्रा मेडिकल हॉल एंड क्लिनिक, थावे रोड, गोपालगंज", aiHint: "doctor" },
 
-    // --- GOPALGANJ CARDIOLOGISTS (10 Doctors) ---
-    {
-        id: "dr-shadab-ahmad-gp-cardio-1",
-        city: "gopalganj",
-        name: { hi: "डॉ. शादाब अहमद", en: "Dr. Shadab Ahmad", bho: "डॉ. शादाब अहमद" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "इंटरवेंशनल कार्डियोलॉजिस्ट (MBBS, MD, DM कार्डियोलॉजी)", en: "Interventional Cardiologist (MBBS, MD, DM Cardiology)", bho: "इंटरवेंशनल कार्डियोलॉजिस्ट (MBBS, MD, DM कार्डियोलॉजी)" },
-        fee: 600,
-        imageUrl: "🧑‍⚕️",
-        location: "शादाब हार्ट एंड लंग केयर सेंटर, गोपालगंज",
-        aiHint: "cardiologist doctor"
-    },
-    {
-        id: "dr-rajeev-dayal-gp-cardio-2",
-        city: "gopalganj",
-        name: { hi: "डॉ. राजीव दयाल", en: "Dr. Rajeev Dayal", bho: "डॉ. राजीव दयाल" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "कार्डियोलॉजिस्ट (MBBS, MD कार्डियो)", en: "Cardiologist (MBBS, MD Cardio)", bho: "कार्डियोलॉजिस्ट (MBBS, MD कार्डियो)" },
-        fee: 500,
-        imageUrl: "👨‍⚕️",
-        location: "माया अस्पताल, सदर अस्पताल गेट के सामने, अम्बेडकर चौक, गोपालगंज",
-        aiHint: "cardiologist doctor"
-    },
-    {
-        id: "dr-rajeev-ranjan-gp-cardio-3",
-        city: "gopalganj",
-        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "क्लिनिकल कार्डियोलॉजिस्ट और सलाहकार फिजिशियन (MBBS, MD)", en: "Clinical Cardiologist & Consultant Physician (MBBS, MD)", bho: "क्लिनिकल कार्डियोलॉजिस्ट आ सलाहकार फिजिशियन (MBBS, MD)" },
-        fee: 500,
-        imageUrl: "🧑‍⚕️",
-        location: "एटलांटिस अस्पताल, ग्राउंड फ्लोर, कौशल्या चौक, गोसाईं टोला रोड, तकिया, गोपालगंज",
-        aiHint: "cardiologist doctor"
-    },
-    {
-        id: "dr-kunal-kumar-singh-gp-cardio-4",
-        city: "gopalganj",
-        name: { hi: "डॉ. कुणाल कुमार सिंह", en: "Dr. Kunal Kumar Singh", bho: "डॉ. कुणाल कुमार सिंह" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "कार्डियोलॉजिस्ट / हृदय रोग विशेषज्ञ", en: "Cardiologist / Heart Specialist", bho: "कार्डियोलॉजिस्ट / हृदय रोग विशेषज्ञ" },
-        fee: 500,
-        imageUrl: "👨‍⚕️",
-        location: "सर्वज्ञ अस्पताल, SBI बैंक के पास, जंगलिया मोहल्ला, गोपालगंज",
-        aiHint: "heart specialist"
-    },
-    {
-        id: "dr-prakash-chand-shahi-gp-cardio-5",
-        city: "gopalganj",
-        name: { hi: "डॉ. प्रकाश चंद शाही", en: "Dr. Prakash Chand Shahi", bho: "डॉ. प्रकाश चंद शाही" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "हृदय रोग विशेषज्ञ", en: "Heart Specialist", bho: "हृदय रोग विशेषज्ञ" },
-        fee: 500,
-        imageUrl: "🧑‍⚕️",
-        location: "पल्स हार्ट सेंटर, गोपालगंज",
-        aiHint: "cardiologist doctor"
-    },
-    {
-        id: "dr-shashi-bhushan-prasad-gp-cardio-6",
-        city: "gopalganj",
-        name: { hi: "डॉ. शशि भूषण प्रसाद", en: "Dr. Shashi भूषण प्रसाद", bho: "डॉ. शशि भूषण प्रसाद" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "सलाहकार फिजिशियन और नॉन-इनवेसिव कार्डियोलॉजी केयर", en: "Consultant Physician & Non-Invasive Cardiology Care", bho: "सलाहकार फिजिशियन आ नॉन-इनवेसिव कार्डियोलॉजी केयर" },
-        fee: 400,
-        imageUrl: "👨‍⚕️",
-        location: "प्रसाद क्लिनिक, अस्पताल रोड, गोपालगंज",
-        aiHint: "indian doctor"
-    },
-    {
-        id: "dr-s-ahmad-gp-cardio-7",
-        city: "gopalganj",
-        name: { hi: "डॉ. एस. अहमद", en: "Dr. S. Ahmad", bho: "डॉ. एस. अहमद" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "हृदय रोग सलाहकार", en: "Heart Care Consultant", bho: "हृदय रोग सलाहकार" },
-        fee: 400,
-        imageUrl: "🧑‍⚕️",
-        location: "गोपालगंज हार्ट क्लिनिक, मेन मार्केट, गोपालगंज",
-        aiHint: "cardiologist doctor"
-    },
-    {
-        id: "dr-r-k-singh-gp-cardio-8",
-        city: "gopalganj",
-        name: { hi: "डॉ. आर. के. सिंह", en: "Dr. R. K. Singh", bho: "डॉ. आर. के. सिंह" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "सलाहकार फिजिशियन और कार्डियो-डायबिटिक प्रबंधन", en: "Consultant Physician & Cardio-Diabetic Management", bho: "सलाहकार फिजिशियन आ कार्डियो-डायबिटिक प्रबंधन" },
-        fee: 450,
-        imageUrl: "👨‍⚕️",
-        location: "शाम्भवी अस्पताल और हृदय देखभाल केंद्र, गोपालगंज",
-        aiHint: "diabetes specialist"
-    },
-    {
-        id: "dr-gaurav-pandy-gp-cardio-9",
-        city: "gopalganj",
-        name: { hi: "डॉ. गौरव पाण्डेय", en: "Dr. Gaurav Pandey", bho: "डॉ. गौरव पाण्डेय" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "विजिटिंग कार्डियोलॉजिस्ट / आपातकालीन कार्डियक केयर", en: "Visiting Cardiologist / Emergency Cardiac Care", bho: "विजिटिंग कार्डियोलॉजिस्ट / आपातकालीन कार्डियक केयर" },
-        fee: 600,
-        imageUrl: "🧑‍⚕️",
-        location: "न्यू गोरखपुर मेडिसिटी अस्पताल शाखा, गोपालगंज",
-        aiHint: "emergency cardiologist"
-    },
-    {
-        id: "dr-abhishek-ranjan-gp-cardio-10",
-        city: "gopalganj",
-        name: { hi: "डॉ. अभिषेक रंजन", en: "Dr. Abhishek Ranjan", bho: "डॉ. अभिषेक रंजन" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "क्रिटिकल केयर और आपातकालीन कार्डियक प्रबंधन", en: "Critical Care & Emergency Cardiac Management", bho: "क्रिटिकल केयर आ आपातकालीन कार्डियक प्रबंधन" },
-        fee: 500,
-        imageUrl: "👨‍⚕️",
-        location: "सक्षम अस्पताल, कमला राय कॉलेज रोड, भितभेरवा, गोपालगंज",
-        aiHint: "critical care doctor"
-    }
+    // 2. Cardiologist
+    { id: "g-cardio-1", city: "gopalganj", name: { hi: "डॉ. राजीव दयाल", en: "Dr. Rajeev Dayal", bho: "डॉ. राजीव दयाल" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "अनुभवी हृदय रोग विशेषज्ञ।", en: "Experienced cardiologist.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "माया क्लिनिक, सदर हॉस्पिटल गेट के सामने, अम्बेडकर चौक, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-2", city: "gopalganj", name: { hi: "डॉ. शादाब अहमद", en: "Dr. Shadab Ahmad", bho: "डॉ. शादाब अहमद" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "हृदय और फेफड़ा रोग विशेषज्ञ।", en: "Heart and lung specialist.", bho: "हृदय आ फेफड़ा के डॉक्टर।" }, fee: 600, imageUrl: "🧑‍⚕️", location: "शादाब हार्ट एंड लंग केयर सेंटर, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-3", city: "gopalganj", name: { hi: "डॉ. कुणाल कुमार सिंह", en: "Dr. Kunal Kumar Singh", bho: "डॉ. कुणाल कुमार सिंह" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "सर्वज्ञ हॉस्पिटल में हृदय विशेषज्ञ।", en: "Heart specialist at Sarvagnya Hospital.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सर्वज्ञ हॉस्पिटल, एसबीआई बैंक के पास, जंगालिया, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-4", city: "gopalganj", name: { hi: "डॉ. प्रकाश चंद शाही", en: "Dr. Prakash Chand Shahi", bho: "डॉ. प्रकाश चंद शाही" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "पल्स हार्ट सेंटर में विशेषज्ञ।", en: "Specialist at Pulse Heart Centre.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "🧑‍⚕️", location: "पल्स हार्ट सेंटर, गोपालगंज", aiHint: "heart specialist" },
+    { id: "g-cardio-5", city: "gopalganj", name: { hi: "डॉ. शशी भूषण प्रसाद", en: "Dr. Shashi Bhushan Prasad", bho: "डॉ. शशी भूषण प्रसाद" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "प्रसाद क्लिनिक में हृदय रोग विशेषज्ञ।", en: "Cardiologist at Prasad Clinic.", bho: "हृदय के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "प्रसाद क्लिनिक, हॉस्पिटल रोड, गोपालगंज", aiHint: "doctor" },
+    { id: "g-cardio-6", city: "gopalganj", name: { hi: "डॉ. एस. अहमद", en: "Dr. S. Ahmad", bho: "डॉ. एस. अहमद" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "गोपालगंज हार्ट क्लिनिक में विशेषज्ञ।", en: "Heart specialist at Gopalganj Heart Clinic.", bho: "हृदय के डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "गोपालगंज हार्ट क्लिनिक, मेन मार्केट, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-7", city: "gopalganj", name: { hi: "डॉ. आर. के. सिंह", en: "Dr. R. K. Singh", bho: "डॉ. आर. के. सिंह" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "शाम्भवी हॉस्पिटल में हृदय विशेषज्ञ।", en: "Heart specialist at Shambhavi Hospital.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "शाम्भवी हॉस्पिटल एंड हार्ट केयर सेंटर, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-8", city: "gopalganj", name: { hi: "डॉ. गौरव पांडे", en: "Dr. Gaurav Pandey", bho: "डॉ. गौरव पांडे" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "आपातकालीन हृदय देखभाल विशेषज्ञ।", en: "Emergency heart care specialist.", bho: "हृदय के डॉक्टर।" }, fee: 600, imageUrl: "🧑‍⚕️", location: "न्यू गोरखपुर मेडिसिटी हॉस्पिटल Branch, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-9", city: "gopalganj", name: { hi: "डॉ. अभिषेक रंजन", en: "Dr. Abhishek रंजन", bho: "डॉ. अभिषेक रंजन" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "सक्षम हॉस्पिटल में हृदय विशेषज्ञ।", en: "Heart specialist at Saksham Hospital.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सक्षम हॉस्पिटल, कमला राय कॉलेज रोड, भीतभेरवा, गोपालगंज", aiHint: "cardiologist" },
+    { id: "g-cardio-10", city: "gopalganj", name: { hi: "डॉ. विवेक कुमार", en: "Dr. Vivek Kumar", bho: "डॉ. विवेक कुमार" }, specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } }, description: { hi: "केयर हार्ट क्लिनिक में विशेषज्ञ।", en: "Specialist at Care Heart Clinic.", bho: "हृदय के डॉक्टर।" }, fee: 500, imageUrl: "🧑‍⚕️", location: "केयर हार्ट क्लिनिक, बंजारी रोड, गोपालगंज", aiHint: "cardiologist" },
+
+    // 3. Pediatrician
+    { id: "g-pedia-1", city: "gopalganj", name: { hi: "डॉ. आई. अहमद", en: "Dr. I. Ahmad", bho: "डॉ. आई. अहमद" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "अनुभवी बाल रोग विशेषज्ञ।", en: "Experienced pediatrician.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "अहमद चाइल्ड केयर, पुरानी चौक रोड, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-2", city: "gopalganj", name: { hi: "डॉ. ओ. पी. सिंह", en: "Dr. O. P. Singh", bho: "डॉ. ओ. पी. सिंह" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "सिंह नवजात एवं शिशु रोग केंद्र।", en: "Neonatal and child specialist.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "सिंह नवजात एवं शिशु रोग केंद्र, जंगालिया, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-3", city: "gopalganj", name: { hi: "डॉ. अमर कुमार", en: "Dr. Amar Kumar", bho: "डॉ. अमर कुमार" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "अमर शिशु क्लिनिक में विशेषज्ञ।", en: "Specialist at Amar Child Clinic.", bho: "लइकन के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "अमर शिशु क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-4", city: "gopalganj", name: { hi: "डॉ. मुश्ताक अहमद", en: "Dr. Mushtaq Ahmad", bho: "डॉ. मुश्ताक अहमद" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "अहमद हॉस्पिटल में बाल रोग विशेषज्ञ।", en: "Pediatrician at Ahmad Hospital.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "अहमद हॉस्पिटल, हॉस्पिटल रोड, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-5", city: "gopalganj", name: { hi: "डॉ. रणजीत कुमार", en: "Dr. Ranjeet Kumar", bho: "डॉ. रणजीत कुमार" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "शिशु कल्याण क्लिनिक में विशेषज्ञ।", en: "Specialist at Child Welfare Clinic.", bho: "लइकन के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "शिशु कल्याण क्लिनिक, थावे रोड, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-6", city: "gopalganj", name: { hi: "डॉ. एस. के. गुप्ता", en: "Dr. S. K. Gupta", bho: "डॉ. एस. के. गुप्ता" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "गुप्ता चाइल्ड केयर में विशेषज्ञ।", en: "Specialist at Gupta Child Care.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "गुप्ता चाइल्ड केयर, कॉलेज रोड, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-7", city: "gopalganj", name: { hi: "डॉ. अनवर हुसैन", en: "Dr. Anwar Hussain", bho: "डॉ. अनवर हुसैन" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "हुसैन चिल्ड्रेन क्लिनिक में विशेषज्ञ।", en: "Specialist at Hussain Children Clinic.", bho: "लइकन के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "हुसैन चिल्ड्रेन क्लिनिक, सिनेमा रोड, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-8", city: "gopalganj", name: { hi: "डॉ. पी. के. चौधरी", en: "Dr. P. K. Chaudhary", bho: "डॉ. पी. के. चौधरी" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "चौधरी नवजात शिशु केंद्र में विशेषज्ञ।", en: "Specialist at Chaudhary Neonatal Center.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "चौधरी नवजात शिशु केंद्र, बनकटा, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-9", city: "gopalganj", name: { hi: "डॉ. आर. के. प्रसाद", en: "Dr. R. K. Prasad", bho: "डॉ. आर. के. प्रसाद" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "प्रसाद चाइल्ड हॉस्पिटल में विशेषज्ञ।", en: "Specialist at Prasad Child Hospital.", bho: "लइकन के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "प्रसाद चाइल्ड हॉस्पिटल, भीतभेरवा, गोपालगंज", aiHint: "pediatrician" },
+    { id: "g-pedia-10", city: "gopalganj", name: { hi: "डॉ. नीलमणि कुमार", en: "Dr. Neelmani Kumar", bho: "डॉ. नीलमणि कुमार" }, specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } }, description: { hi: "शिशु रक्षा क्लिनिक में विशेषज्ञ।", en: "Specialist at Child Protection Clinic.", bho: "लइकन के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "शिशु रक्षा क्लिनिक, पुरानी चौक, गोपालगंज", aiHint: "pediatrician" },
+
+    // 4. Gynecologist
+    { id: "g-gyn-1", city: "gopalganj", name: { hi: "डॉ. संगीता सिंह", en: "Dr. Sangeeta Singh", bho: "डॉ. संगीता सिंह" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "सिंह नर्सिंग होम में अनुभवी स्त्री रोग विशेषज्ञ।", en: "Experienced gynecologist at Singh Nursing Home.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "सिंह नर्सिंग होम, जंगालिया रोड, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-2", city: "gopalganj", name: { hi: "डॉ. नूतन सिंह", en: "Dr. Nutan Singh", bho: "डॉ. नूतन सिंह" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "मौनिया चौक पर अनुभवी स्त्री रोग विशेषज्ञ।", en: "Experienced gynecologist at Mauniya Chowk.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "नूतन क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-3", city: "gopalganj", name: { hi: "डॉ. कनक रंजन", en: "Dr. Kanak Ranjan", bho: "डॉ. कनक रंजन" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "अटलांटिस हॉस्पिटल में स्त्री रोग विशेषज्ञ।", en: "Gynecologist at Atlantis Hospital.", bho: "मेहरारू के डॉक्टर।" }, fee: 450, imageUrl: "👩‍⚕️", location: "अटलांटिस हॉस्पिटल, गोसाईं टोला रोड, तकिया, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-4", city: "gopalganj", name: { hi: "डॉ. रीता कुमारी", en: "Dr. Rita Kumari", bho: "डॉ. रीता कुमारी" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "रीता नर्सिंग होम में अनुभवी विशेषज्ञ।", en: "Experienced specialist at Rita Nursing Home.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "रीता नर्सिंग होम, हॉस्पिटल रोड, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-5", city: "gopalganj", name: { hi: "डॉ. नीलम सिंह", en: "Dr. Neelam Singh", bho: "डॉ. नीलम सिंह" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "सिंह मैटरनिटी सेंटर में विशेषज्ञ।", en: "Specialist at Singh Maternity Center.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "सिंह मैटरनिटी सेंटर, बंजारी रोड, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-6", city: "gopalganj", name: { hi: "डॉ. सविता सिंह", en: "Dr. Savita Singh", bho: "डॉ. सविता सिंह" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "सविता क्लिनिक में विशेषज्ञ।", en: "Specialist at Savita Clinic.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "सविता क्लिनिक, थावे रोड, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-7", city: "gopalganj", name: { hi: "डॉ. आभा कुमारी", en: "Dr. Abha Kumari", bho: "डॉ. आभा कुमारी" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "आभा मैटरनिटी होम में विशेषज्ञ।", en: "Specialist at Abha Maternity Home.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "आभा मैटरनिटी होम, पुरानी चौक, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-8", city: "gopalganj", name: { hi: "डॉ. विभा सिंह", en: "Dr. Vibha Singh", bho: "डॉ. विभा सिंह" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "विभा क्लिनिक में विशेषज्ञ।", en: "Specialist at Vibha Clinic.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "विभा क्लिनिक, बनकटा, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-9", city: "gopalganj", name: { hi: "डॉ. शबाना परवीन", en: "Dr. Shabana Parveen", bho: "डॉ. शबाना परवीन" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "परवीन नर्सिंग होम में विशेषज्ञ।", en: "Specialist at Parveen Nursing Home.", bho: "मेहरारू के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "परवीन नर्सिंग होम, सिनेमा रोड, गोपालगंज", aiHint: "gynecologist" },
+    { id: "g-gyn-10", city: "gopalganj", name: { hi: "डॉ. सुनीता कुमारी", en: "Dr. Sunita Kumari", bho: "डॉ. सुनीता कुमारी" }, specialization: { key: "Gynecologist", name: { hi: "स्त्री रोग विशेषज्ञ", en: "Gynecologist", bho: "मेहरारू के डॉक्टर" } }, description: { hi: "महिला कल्याण केंद्र में विशेषज्ञ।", en: "Specialist at Women Welfare Center.", bho: "मेहरारू के डॉक्टर।" }, fee: 350, imageUrl: "👩‍⚕️", location: "महिला कल्याण केंद्र, भीतभेरवा, गोपालगंज", aiHint: "gynecologist" },
+
+    // 5. Orthopedic Surgeon
+    { id: "g-ortho-1", city: "gopalganj", name: { hi: "डॉ. पी. सी. सिन्हा", en: "Dr. P. C. Sinha", bho: "डॉ. पी. सी. सिन्हा" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "सिन्हा ऑर्थोपेडिक सेंटर में विशेषज्ञ।", en: "Specialist at Sinha Ortho Center.", bho: "हड्डी के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सिन्हा ऑर्थोपेडिक सेंटर, बंजारी रोड, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-2", city: "gopalganj", name: { hi: "डॉ. डी. के. सिंह", en: "Dr. D. K. Singh", bho: "डॉ. डी. के. सिंह" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "सिंह ऑर्थो हॉस्पिटल में विशेषज्ञ।", en: "Specialist at Singh Ortho Hospital.", bho: "हड्डी के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सिंह ऑर्थो हॉस्पिटल, जंगालिया रोड, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-3", city: "gopalganj", name: { hi: "डॉ. अमृतेश कुमार", en: "Dr. Amritesh Kumar", bho: "डॉ. अमृतेश कुमार" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "अमृतेश हॉस्पिटल में वरिष्ठ हड्डी रोग विशेषज्ञ।", en: "Senior orthopedic surgeon at Amritesh Hospital.", bho: "हड्डी के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "अमृतेश हॉस्पिटल, आर्ट कॉलेज रोड, NH-85, भीतभेरवा, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-4", city: "gopalganj", name: { hi: "डॉ. राकेश कुमार", en: "Dr. Rakesh Kumar", bho: "डॉ. राकेश कुमार" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "राकेश ऑर्थो क्लिनिक में विशेषज्ञ।", en: "Specialist at Rakesh Ortho Clinic.", bho: "हड्डी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "राकेश ऑर्थो क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-5", city: "gopalganj", name: { hi: "डॉ. अमित रंजन", en: "Dr. Amit Ranjan", bho: "डॉ. अमित रंजन" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "सक्षम हॉस्पिटल में हड्डी विशेषज्ञ।", en: "Ortho specialist at Saksham Hospital.", bho: "हड्डी के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सक्षम हॉस्पिटल, कमला राय कॉलेज रोड, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-6", city: "gopalganj", name: { hi: "डॉ. एस. के. राय", en: "Dr. S. K. Rai", bho: "डॉ. एस. के. राय" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "राय हड्डी रोग केंद्र में विशेषज्ञ।", en: "Specialist at Rai Ortho Center.", bho: "हड्डी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "राय हड्डी रोग केंद्र, थावे रोड, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-7", city: "gopalganj", name: { hi: "डॉ. बी. के. प्रसाद", en: "Dr. B. K. Prasad", bho: "डॉ. बी. के. प्रसाद" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "प्रसाद ऑर्थो केयर में विशेषज्ञ।", en: "Specialist at Prasad Ortho Care.", bho: "हड्डी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "प्रसाद ऑर्थो केयर, पुरानी चौक, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-8", city: "gopalganj", name: { hi: "डॉ. वी. के. सिंह", en: "Dr. V. K. Singh", bho: "डॉ. वी. के. सिंह" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "सिंह हड्डी अस्पताल में विशेषज्ञ।", en: "Specialist at Singh Bone Hospital.", bho: "हड्डी के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सिंह हड्डी अस्पताल, हॉस्पिटल रोड, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-9", city: "gopalganj", name: { hi: "डॉ. रौशन कुमार", en: "Dr. Roushan Kumar", bho: "डॉ. रौशन कुमार" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "रौशन ऑर्थो क्लिनिक में विशेषज्ञ।", en: "Specialist at Roushan Ortho Clinic.", bho: "हड्डी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "रौशन कुमार ऑर्थो क्लिनिक, बनकटा, गोपालगंज", aiHint: "orthopedic" },
+    { id: "g-ortho-10", city: "gopalganj", name: { hi: "डॉ. संजय कुमार", en: "Dr. Sanjay Kumar", bho: "डॉ. संजय कुमार" }, specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } }, description: { hi: "संजय फ्रैक्चर क्लिनिक में विशेषज्ञ।", en: "Specialist at Sanjay Fracture Clinic.", bho: "हड्डी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "संजय कुमार फ्रैक्चर क्लिनिक, सिनेमा रोड, गोपालगंज", aiHint: "orthopedic" },
+
+    // 6. Dermatologist
+    { id: "g-skin-1", city: "gopalganj", name: { hi: "डॉ. एस. के. सिंह", en: "Dr. S. K. Singh", bho: "डॉ. एस. के. सिंह" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "सिनेमा रोड पर अनुभवी त्वचा रोग विशेषज्ञ।", en: "Experienced dermatologist at Cinema Road.", bho: "चमड़ी के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "स्किन केयर क्लिनिक, सिनेमा रोड, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-2", city: "gopalganj", name: { hi: "डॉ. अभय कुमार", en: "Dr. Abhay Kumar", bho: "डॉ. अभय कुमार" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "अभय स्किन एंड लेजर सेंटर में विशेषज्ञ।", en: "Specialist at Abhay Skin & Laser Center.", bho: "चमड़ी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "अभय स्किन एंड लेजर सेंटर, मौनिया चौक, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-3", city: "gopalganj", name: { hi: "डॉ. आर. के. गुप्ता", en: "Dr. R. K. Gupta", bho: "डॉ. आर. के. गुप्ता" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "गुप्ता स्किन क्लिनिक में विशेषज्ञ।", en: "Specialist at Gupta Skin Clinic.", bho: "चमड़ी के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "गुप्ता स्किन क्लिनिक, थावे रोड, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-4", city: "gopalganj", name: { hi: "डॉ. आलोक कुमार", en: "Dr. Alok Kumar", bho: "डॉ. आलोक कुमार" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "आलोक त्वचा रोग केंद्र में विशेषज्ञ।", en: "Specialist at Alok Dermatology Center.", bho: "चमड़ी के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "आलोक त्वचा रोग केंद्र, जंगालिया, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-5", city: "gopalganj", name: { hi: "डॉ. नीतू सिंह", en: "Dr. Neetu Singh", bho: "डॉ. नीतू सिंह" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "नीतू स्किन क्लिनिक में विशेषज्ञ।", en: "Specialist at Neetu Skin Clinic.", bho: "चमड़ी के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "नीतू सिंह स्किन क्लिनिक, बंजारी रोड, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-6", city: "gopalganj", name: { hi: "डॉ. विकास रंजन", en: "Dr. Vikas Ranjan", bho: "डॉ. विकास रंजन" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "रंजन स्किन केयर में विशेषज्ञ।", en: "Specialist at Ranjan Skin Care.", bho: "चमड़ी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "विकास रंजन स्किन केयर, हॉस्पिटल रोड, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-7", city: "gopalganj", name: { hi: "डॉ. प्रियांशू कुमार", en: "Dr. Priyanshu Kumar", bho: "डॉ. प्रियांशू कुमार" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "प्रियांशू डर्मा सेंटर में विशेषज्ञ।", en: "Specialist at Priyanshu Derma Center.", bho: "चमड़ी के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "प्रियांशू कुमार डर्मा सेंटर, बनकटा, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-8", city: "gopalganj", name: { hi: "डॉ. एन. के. राय", en: "Dr. N. K. Rai", bho: "डॉ. एन. के. राय" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "राय स्किन क्लिनिक में विशेषज्ञ।", en: "Specialist at Rai Skin Clinic.", bho: "चमड़ी के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "एन. के. राय स्किन क्लिनिक, पुरानी चौक, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-9", city: "gopalganj", name: { hi: "डॉ. स्वाति कुमारी", en: "Dr. Swati Kumari", bho: "डॉ. स्वाति कुमारी" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "स्वाति स्किन एंड हेयर क्लिनिक।", en: "Skin and hair clinic.", bho: "चमड़ी के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "स्वाति कुमारी स्किन एंड हेयर क्लिनिक, भीतभेरवा, गोपालगंज", aiHint: "dermatologist" },
+    { id: "g-skin-10", city: "gopalganj", name: { hi: "डॉ. मनोज कुमार", en: "Dr. Manoj Kumar", bho: "डॉ. मनोज कुमार" }, specialization: { key: "Dermatologist", name: { hi: "त्वचा विशेषज्ञ", en: "Dermatologist", bho: "चमड़ी के डॉक्टर" } }, description: { hi: "मनोज चर्म रोग क्लिनिक में विशेषज्ञ।", en: "Specialist at Manoj Dermatology Clinic.", bho: "चमड़ी के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "मनोज कुमार चर्म रोग क्लिनिक, कॉलेज रोड, गोपालगंज", aiHint: "dermatologist" },
+
+    // 7. Neurologist
+    { id: "g-neuro-1", city: "gopalganj", name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "अटलांटिस हॉस्पिटल में न्यूरो विशेषज्ञ।", en: "Neuro specialist at Atlantis Hospital.", bho: "नशा के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "अटलांटिस हॉस्पिटल, गोसाईं टोला रोड, तकिया, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-2", city: "gopalganj", name: { hi: "डॉ. अनवर अली", en: "Dr. Anwar Ali", bho: "डॉ. अनवर अली" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "अली न्यूरो क्लिनिक में विशेषज्ञ।", en: "Specialist at Ali Neuro Clinic.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "अली न्यूरो क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-3", city: "gopalganj", name: { hi: "डॉ. एस. पी. सिंह", en: "Dr. S. P. Singh", bho: "डॉ. एस. पी. सिंह" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "सिंह न्यूरो एंड मनोरोग केंद्र।", en: "Neuro and psychiatric center.", bho: "नशा के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सिंह न्यूरो एंड मनोरोग केंद्र, बंजारी रोड, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-4", city: "gopalganj", name: { hi: "डॉ. विवेक रंजन", en: "Dr. Vivek Ranjan", bho: "डॉ. विवेक रंजन" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "न्यूरो केयर सेंटर में विशेषज्ञ।", en: "Specialist at Neuro Care Center.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "विवेक रंजन न्यूरो केयर सेंटर, जंगालिया, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-5", city: "gopalganj", name: { hi: "डॉ. के. के. सिंह", en: "Dr. K. K. Singh", bho: "डॉ. के. के. सिंह" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "सिंह माइंड एंड नर्व क्लिनिक।", en: "Mind and nerve clinic.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "के. के. सिंह माइंड एंड नर्व क्लिनिक, थावे रोड, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-6", city: "gopalganj", name: { hi: "डॉ. आर. एन. प्रसाद", en: "Dr. R. N. Prasad", bho: "डॉ. आर. एन. प्रसाद" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "प्रसाद न्यूरो केयर में विशेषज्ञ।", en: "Specialist at Prasad Neuro Care.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "आर. एन. प्रसाद न्यूरो केयर, हॉस्पिटल रोड, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-7", city: "gopalganj", name: { hi: "डॉ. राहुल सिन्हा", en: "Dr. Rahul Sinha", bho: "डॉ. राहुल सिन्हा" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "सिन्हा न्यूरो क्लिनिक में विशेषज्ञ।", en: "Specialist at Sinha Neuro Clinic.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "राहुल सिन्हा न्यूरो क्लिनिक, पुरानी चौक, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-8", city: "gopalganj", name: { hi: "डॉ. आशुतोष कुमार", en: "Dr. Ashutosh Kumar", bho: "डॉ. आशुतोष कुमार" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "आशुतोष नर्व क्लिनिक में विशेषज्ञ।", en: "Specialist at Ashutosh Nerve Clinic.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "आशुतोष कुमार नर्व क्लिनिक, बनकटा, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-9", city: "gopalganj", name: { hi: "डॉ. शशिकांत कुमार", en: "Dr. Shashikant Kumar", bho: "डॉ. शशिकांत कुमार" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "शशिकांत न्यूरो सेंटर में विशेषज्ञ।", en: "Specialist at Shashikant Neuro Center.", bho: "नशा के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "शशिकांत कुमार न्यूरो सेंटर, सिनेमा रोड, गोपालगंज", aiHint: "neurologist" },
+    { id: "g-neuro-10", city: "gopalganj", name: { hi: "डॉ. अमित पाठक", en: "Dr. Amit Pathak", bho: "डॉ. अमित पाठक" }, specialization: { key: "Neurologist", name: { hi: "तंत्रिका विज्ञानी", en: "Neurologist", bho: "नशा के डॉक्टर" } }, description: { hi: "पाठक न्यूरो एंड स्पाइन क्लिनिक।", en: "Neuro and spine clinic.", bho: "नशा के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "अमित पाठक न्यूरो एंड स्पाइन क्लिनिक, भीतभेरवा, गोपालगंज", aiHint: "neurologist" },
+
+    // 8. Ophthalmologist
+    { id: "g-eye-1", city: "gopalganj", name: { hi: "डॉ. के. पी. सिंह", en: "Dr. K. P. Singh", bho: "डॉ. के. पी. सिंह" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "विज़न आई केयर में अनुभवी नेत्र विशेषज्ञ।", en: "Eye specialist at Vision Eye Care.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "विज़न आई केयर, कलेक्ट्रेट रोड, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-2", city: "gopalganj", name: { hi: "डॉ. आर. पी. सिन्हा", en: "Dr. R. P. Sinha", bho: "डॉ. आर. पी. सिन्हा" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "सिन्हा आई हॉस्पिटल में विशेषज्ञ।", en: "Specialist at Sinha Eye Hospital.", bho: "आँख के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "आर. पी. सिन्हा आई हॉस्पिटल, मौनिया चौक, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-3", city: "gopalganj", name: { hi: "डॉ. एस. के. मिश्रा", en: "Dr. S. K. Mishra", bho: "डॉ. एस. के. मिश्रा" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "मिश्रा नेत्रालय में विशेषज्ञ।", en: "Specialist at Mishra Netralaya.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "एस. के. मिश्रा नेत्रालय, जंगालिया, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-4", city: "gopalganj", name: { hi: "डॉ. अनामिका कुमारी", en: "Dr. Anamika Kumari", bho: "डॉ. अनामिका कुमारी" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "अनामिका आई क्लिनिक में विशेषज्ञ।", en: "Specialist at Anamika Eye Clinic.", bho: "आँख के डॉक्टर।" }, fee: 300, imageUrl: "👩‍⚕️", location: "अनामिका कुमारी आई क्लिनिक, बंजारी रोड, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-5", city: "gopalganj", name: { hi: "डॉ. अजीत कुमार", en: "Dr. Ajit Kumar", bho: "डॉ. अजीत कुमार" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "अजीत नेत्र क्लिनिक में विशेषज्ञ।", en: "Specialist at Ajit Eye Clinic.", bho: "आँख के डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "अजीत कुमार नेत्र क्लिनिक, थावे रोड, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-6", city: "gopalganj", name: { hi: "डॉ. रंजन कुमार", en: "Dr. Ranjan Kumar", bho: "डॉ. रंजन कुमार" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "रंजन आई केयर में विशेषज्ञ।", en: "Specialist at Ranjan Eye Care.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "रंजन कुमार आई केयर, हॉस्पिटल रोड, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-7", city: "gopalganj", name: { hi: "डॉ. आर. के. वर्मा", en: "Dr. R. K. Verma", bho: "डॉ. आर. के. वर्मा" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "वर्मा नेत्र केंद्र में विशेषज्ञ।", en: "Specialist at Verma Eye Center.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "आर. के. वर्मा नेत्र केंद्र, पुरानी चौक, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-8", city: "gopalganj", name: { hi: "डॉ. खुशबू कुमारी", en: "Dr. Khushbu Kumari", bho: "डॉ. खुशबू कुमारी" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "खुशबू आई हॉस्पिटल में विशेषज्ञ।", en: "Specialist at Khushbu Eye Hospital.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👩‍⚕️", location: "खुशबू कुमारी आई हॉस्पिटल, बनकटा, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-9", city: "gopalganj", name: { hi: "डॉ. विकास सिंह", en: "Dr. Vikas Singh", bho: "डॉ. विकास सिंह" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "विकास नेत्रालय में विशेषज्ञ।", en: "Specialist at Vikas Netralaya.", bho: "आँख के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "विकास सिंह नेत्रालय, सिनेमा रोड, गोपालगंज", aiHint: "eye specialist" },
+    { id: "g-eye-10", city: "gopalganj", name: { hi: "डॉ. एन. के. ओझा", en: "Dr. N. K. Ojha", bho: "डॉ. एन. के. ओझा" }, specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } }, description: { hi: "ओझा आई क्लिनिक में विशेषज्ञ।", en: "Specialist at Ojha Eye Clinic.", bho: "आँख के डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "एन. के. ओझा आई क्लिनिक, भीतभेरवा, गोपालगंज", aiHint: "eye specialist" },
+
+    // 9. Dentist
+    { id: "g-dent-1", city: "gopalganj", name: { hi: "डॉ. अमित कुमार", en: "Dr. Amit Kumar", bho: "डॉ. अमित कुमार" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "डेंटल केयर सेंटर में अनुभवी दंत चिकित्सक।", en: "Experienced dentist at Dental Care Center.", bho: "दाँत के डॉक्टर।" }, fee: 200, imageUrl: "👨‍⚕️", location: "डेंटल केयर सेंटर, मौनिया चौक, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-2", city: "gopalganj", name: { hi: "डॉ. एस. के. गुप्ता", en: "Dr. S. K. Gupta", bho: "डॉ. एस. के. गुप्ता" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "गुप्ता डेंटल क्लिनिक में विशेषज्ञ।", en: "Specialist at Gupta Dental Clinic.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👨‍⚕️", location: "गुप्ता डेंटल क्लिनिक, थावे रोड, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-3", city: "gopalganj", name: { hi: "डॉ. प्रियंका कुमारी", en: "Dr. Priyanka Kumari", bho: "डॉ. प्रियंका कुमारी" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "प्रियंका डेंटल केयर में विशेषज्ञ।", en: "Specialist at Priyanka Dental Care.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👩‍⚕️", location: "प्रियंका कुमारी डेंटल केयर, जंगालिया, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-4", city: "gopalganj", name: { hi: "डॉ. विकास रंजन", en: "Dr. Vikas Ranjan", bho: "डॉ. विकास रंजन" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "रंजन डेंटल क्लिनिक में विशेषज्ञ।", en: "Specialist at Ranjan Dental Clinic.", bho: "दाँत के डॉक्टर।" }, fee: 300, imageUrl: "👨‍⚕️", location: "विकास रंजन डेंटल क्लिनिक, बंजारी रोड, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-5", city: "gopalganj", name: { hi: "डॉ. आर. के. तिवारी", en: "Dr. R. K. Tiwari", bho: "डॉ. आर. के. तिवारी" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "तिवारी दंत चिकित्सालय में विशेषज्ञ।", en: "Specialist at Tiwari Dental Clinic.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👨‍⚕️", location: "आर. के. तिवारी दंत चिकित्सालय, हॉस्पिटल रोड, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-6", city: "gopalganj", name: { hi: "डॉ. आलोक ओझा", en: "Dr. Alok Ojha", bho: "डॉ. आलोक ओझा" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "ओझा डेंटल क्लिनिक में विशेषज्ञ।", en: "Specialist at Ojha Dental Clinic.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👨‍⚕️", location: "आलोक ओझा डेंटल क्लिनिक, पुरानी चौक, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-7", city: "gopalganj", name: { hi: "डॉ. निधि सिंह", en: "Dr. Nidhi Singh", bho: "डॉ. निधि सिंह" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "निधि ओरल एंड डेंटल केयर में विशेषज्ञ।", en: "Specialist at Nidhi Oral & Dental Care.", bho: "दाँत के डॉक्टर।" }, fee: 300, imageUrl: "👩‍⚕️", location: "निधि सिंह ओरल एंड डेंटल केयर, बनकटा, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-8", city: "gopalganj", name: { hi: "डॉ. मनीष कुमार", en: "Dr. Manish Kumar", bho: "डॉ. मनीष कुमार" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "मनीष डेंटल क्लिनिक में विशेषज्ञ।", en: "Specialist at Manish Dental Clinic.", bho: "दाँत के डॉक्टर।" }, fee: 200, imageUrl: "👨‍⚕️", location: "मनीष कुमार डेंटल क्लिनिक, सिनेमा रोड, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-9", city: "gopalganj", name: { hi: "डॉ. राहुल रंजन", en: "Dr. Rahul Ranjan", bho: "डॉ. राहुल रंजन" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "राहुल डेंटल केयर में विशेषज्ञ।", en: "Specialist at Rahul Dental Care.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👨‍⚕️", location: "राहुल रंजन डेंटल केयर, भीतभेरवा, गोपालगंज", aiHint: "dentist" },
+    { id: "g-dent-10", city: "gopalganj", name: { hi: "डॉ. श्वेता कुमारी", en: "Dr. Shweta Kumari", bho: "डॉ. श्वेता कुमारी" }, specialization: { key: "Dentist", name: { hi: "दंत चिकित्सक", en: "Dentist", bho: "दाँत के डॉक्टर" } }, description: { hi: "श्वेता डेंटल हॉस्पिटल में विशेषज्ञ।", en: "Specialist at Shweta Dental Hospital.", bho: "दाँत के डॉक्टर।" }, fee: 250, imageUrl: "👩‍⚕️", location: "श्वेता कुमारी डेंटल हॉस्पिटल, कॉलेज रोड, गोपालगंज", aiHint: "dentist" },
+
+    // 10. ENT Specialist
+    { id: "g-ent-1", city: "gopalganj", name: { hi: "डॉ. आर. के. सिंह", en: "Dr. R. K. Singh", bho: "डॉ. आर. के. सिंह" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "ईएनटी केयर क्लिनिक में अनुभवी विशेषज्ञ।", en: "Experienced ENT specialist.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "ईएनटी केयर क्लिनिक, थावे रोड, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-2", city: "gopalganj", name: { hi: "डॉ. ए. के. मिश्रा", en: "Dr. A. K. Mishra", bho: "डॉ. ए. के. मिश्रा" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "मिश्रा ईएनटी क्लिनिक में विशेषज्ञ।", en: "Specialist at Mishra ENT Clinic.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "मिश्रा ईएनटी क्लिनिक, मौनिया चौक, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-3", city: "gopalganj", name: { hi: "डॉ. संजय कुमार", en: "Dr. Sanjay Kumar", bho: "डॉ. संजय कुमार" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "संजय ईएनटी सेंटर में विशेषज्ञ।", en: "Specialist at Sanjay ENT Center.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "संजय कुमार ईएनटी सेंटर, जंगालिया, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-4", city: "gopalganj", name: { hi: "डॉ. एन. के. सिंह", en: "Dr. N. K. Singh", bho: "डॉ. एन. के. सिंह" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "सिंह ईएनटी क्लिनिक में विशेषज्ञ।", en: "Specialist at Singh ENT Clinic.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "सिंह ईएनटी क्लिनिक, बंजारी रोड, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-5", city: "gopalganj", name: { hi: "डॉ. पल्लवी कुमारी", en: "Dr. Pallavi Kumari", bho: "डॉ. पल्लवी कुमारी" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "पल्लवी ईएनटी केयर में विशेषज्ञ।", en: "Specialist at Pallavi ENT Care.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 400, imageUrl: "👩‍⚕️", location: "पल्लवी कुमारी ईएनटी केयर, हॉस्पिटल रोड, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-6", city: "gopalganj", name: { hi: "डॉ. राकेश रंजन", en: "Dr. Rakesh Ranjan", bho: "डॉ. राकेश रंजन" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "रंजन ईएनटी अस्पताल में विशेषज्ञ।", en: "Specialist at Ranjan ENT Hospital.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "रंजन ईएनटी अस्पताल, पुरानी चौक, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-7", city: "gopalganj", name: { hi: "डॉ. विवेक कुमार", en: "Dr. Vivek Kumar", bho: "डॉ. विवेक कुमार" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "विवेक कान नाक गला क्लिनिक।", en: "ENT clinic.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "विवेक कुमार कान नाक गला क्लिनिक, बनकटा, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-8", city: "gopalganj", name: { hi: "डॉ. एस. एन. ओझा", en: "Dr. S. N. Ojha", bho: "डॉ. एस. एन. ओझा" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "ओझा ईएनटी केयर में विशेषज्ञ।", en: "Specialist at Ojha ENT Care.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "ओझा ईएनटी केयर, सिनेमा रोड, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-9", city: "gopalganj", name: { hi: "डॉ. दिव्या कुमारी", en: "Dr. Divya Kumari", bho: "डॉ. दिव्या कुमारी" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "दिव्या ईएनटी क्लिनिक में विशेषज्ञ।", en: "Specialist at Divya ENT Clinic.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 350, imageUrl: "👩‍⚕️", location: "दिव्या कुमारी ईएनटी क्लिनिक, भीतभेरवा, गोपालगंज", aiHint: "ent specialist" },
+    { id: "g-ent-10", city: "gopalganj", name: { hi: "डॉ. मनोज पाठक", en: "Dr. Manoj Pathak", bho: "डॉ. मनोज पाठक" }, specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } }, description: { hi: "पाठक ईएनटी सेंटर में विशेषज्ञ।", en: "Specialist at Pathak ENT Center.", bho: "नाक-कान-गला के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "मनोज पाठक ईएनटी सेंटर, कॉलेज रोड, गोपालगंज", aiHint: "ent specialist" },
+
+    // 11. Gastroenterologist
+    { id: "g-gastro-1", city: "gopalganj", name: { hi: "डॉ. अभिषेक रंजन", en: "Dr. Abhishek Ranjan", bho: "डॉ. अभिषेक रंजन" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "सक्षम हॉस्पिटल में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Saksham Hospital.", bho: "पेट के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सक्षम हॉस्पिटल, कमला राय कॉलेज रोड, भीतभेरवा, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-2", city: "gopalganj", name: { hi: "डॉ. राहुल कुमार सिंह", en: "Dr. Rahul Kumar Singh", bho: "डॉ. राहुल कुमार सिंह" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "एडवांस सेंटर में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Advance Centre.", bho: "पेट के डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "एडवांस सेंटर, कॉलेज रोड, बनकटा, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-3", city: "gopalganj", name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "अटलांटिस हॉस्पिटल में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Atlantis Hospital.", bho: "पेट के डॉक्टर।" }, fee: 500, imageUrl: "🧑‍⚕️", location: "अटलांटिस हॉस्पिटल, गोसाईं टोला रोड, तकिया, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-4", city: "gopalganj", name: { hi: "डॉ. पीयूष कुमार", en: "Dr. Piyush Kumar", bho: "डॉ. पीयूष कुमार" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "माया हॉस्पिटल में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Maya Hospital.", bho: "पेट के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "माया हॉस्पिटल, हॉस्पिटल रोड, बनकटा, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-5", city: "gopalganj", name: { hi: "डॉ. आर. सुनील कुमार", en: "Dr. R. Sunil Kumar", bho: "डॉ. आर. सुनील कुमार" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "पुरानी चौक पर पेट रोग विशेषज्ञ।", en: "Gastro specialist at Purani Chowk.", bho: "पेट के डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "क्लिनिक एट पुरानी चौक, जंगालिया रोड, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-6", city: "gopalganj", name: { hi: "डॉ. एस. के. पाठक", en: "Dr. S. K. Pathak", bho: "डॉ. एस. के. पाठक" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "हरसन हॉस्पिटल में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Harsan Hospital.", bho: "पेट के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "हरसन हॉस्पिटल, मालवीय नगर, पुरानी चौक, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-7", city: "gopalganj", name: { hi: "डॉ. अमित रंजन", en: "Dr. Amit Ranjan", bho: "डॉ. अमित रंजन" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "सक्षम हॉस्पिटल में पेट विशेषज्ञ।", en: "Gastro specialist at Saksham Hospital.", bho: "पेट के डॉक्टर।" }, fee: 500, imageUrl: "👨‍⚕️", location: "सक्षम हॉस्पिटल, कमला राय कॉलेज रोड, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-8", city: "gopalganj", name: { hi: "डॉ. अनूप कुमार तिवारी", en: "Dr. Anup Kumar Tiwari", bho: "डॉ. अनूप कुमार तिवारी" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "डॉ. अनूप तिवारी क्लिनिक में विशेषज्ञ।", en: "Gastro specialist at Anup Tiwari Clinic.", bho: "पेट के डॉक्टर।" }, fee: 400, imageUrl: "🧑‍⚕️", location: "डॉ. अनूप तिवारी क्लिनिक, पुलिस लाइन रोड, भीतभेरवा, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-9", city: "gopalganj", name: { hi: "डॉ. एस. एन. सिंह", en: "Dr. S. N. Singh", bho: "डॉ. एस. एन. सिंह" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "मौनिया चौक पर पेट रोग विशेषज्ञ।", en: "Gastro specialist at Mauniya Chowk.", bho: "पेट के डॉक्टर।" }, fee: 350, imageUrl: "👨‍⚕️", location: "मौनिया चौक, गोपालगंज", aiHint: "gastroenterologist" },
+    { id: "g-gastro-10", city: "gopalganj", name: { hi: "डॉ. कुणाल कुमार", en: "Dr. Kunal Kumar", bho: "डॉ. कुणाल कुमार" }, specialization: { key: "Gastroenterologist", name: { hi: "पेट रोग विशेषज्ञ", en: "Gastroenterologist", bho: "पेट के डॉक्टर" } }, description: { hi: "सर्वज्ञ हॉस्पिटल में पेट रोग विशेषज्ञ।", en: "Gastro specialist at Sarvagnya Hospital.", bho: "पेट के डॉक्टर।" }, fee: 400, imageUrl: "👨‍⚕️", location: "सर्वज्ञ हॉस्पिटल, जंगालिया, गोपालगंज", aiHint: "gastroenterologist" }
 ];
-
