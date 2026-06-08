@@ -19,7 +19,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Globe, HeartPulse, Loader2, MapPin } from "lucide-react";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+import { Globe, HeartPulse, Loader2, MapPin, Lock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { useLocation } from "@/context/LocationContext";
@@ -36,9 +45,13 @@ export default function LoginPage() {
   const { location, setLocation } = useLocation();
   const router = useRouter();
   const t = translations.loginPage;
+  const tAdmin = translations.admin;
   const { toast } = useToast();
   const { user, loading: userLoading } = useUser();
   const [loading, setLoading] = useState(false);
+
+  const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
+  const [adminPassword, setAdminPassword] = useState("");
 
 
   useEffect(() => {
@@ -63,6 +76,20 @@ export default function LoginPage() {
         setLoading(false);
     }, 1000);
   }
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (adminPassword === "9007355062") {
+        toast({ title: "Admin Login Successful!" });
+        router.push("/admin");
+    } else {
+        toast({ 
+            title: language === 'hi' ? "गलत पासवर्ड" : "Incorrect Password", 
+            description: language === 'hi' ? "कृपया सही पासवर्ड डालें।" : "Please enter the correct password.",
+            variant: "destructive" 
+        });
+    }
+  };
 
   if (showSplash || userLoading || user) {
     return <SplashScreen />;
@@ -112,7 +139,9 @@ export default function LoginPage() {
         <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
                 <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
                     <div className="flex flex-col items-center gap-2">
-                      <Logo />
+                      <div onClick={() => setIsAdminDialogOpen(true)} className="cursor-pointer hover:scale-105 transition-transform">
+                        <Logo />
+                      </div>
                       <CardTitle className="text-3xl font-bold tracking-tight">
                           Hello Doctor
                       </CardTitle>
@@ -193,6 +222,37 @@ export default function LoginPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Admin Password Dialog */}
+        <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
+            <DialogContent className="sm:max-w-[425px] rounded-3xl">
+                <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                        <Lock className="h-5 w-5 text-primary" />
+                        {tAdmin.title}
+                    </DialogTitle>
+                    <DialogDescription>
+                        {tAdmin.enterPassword}
+                    </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleAdminLogin} className="space-y-4 py-4">
+                    <Input
+                        type="password"
+                        placeholder={tAdmin.passwordPlaceholder}
+                        value={adminPassword}
+                        onChange={(e) => setAdminPassword(e.target.value)}
+                        className="rounded-full py-6"
+                        autoFocus
+                    />
+                    <DialogFooter>
+                        <Button type="submit" className="w-full rounded-full py-6 font-bold">
+                            {tAdmin.loginButton}
+                        </Button>
+                    </DialogFooter>
+                </form>
+            </DialogContent>
+        </Dialog>
+
         <p className="absolute bottom-4 text-muted-foreground font-cursive text-lg">
             {t.createdBy}
         </p>

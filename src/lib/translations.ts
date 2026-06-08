@@ -169,6 +169,18 @@ const translations = {
         requestSentToast: "अनुरोध भेज दिया गया! ✅",
         requestSentToastDesc: "हमारी टीम जल्द ही आपसे संपर्क करेगी।",
     },
+    admin: {
+        title: "एडमिन पैनल",
+        enterPassword: "एडमिन पासवर्ड डालें",
+        passwordPlaceholder: "पासवर्ड यहाँ लिखें...",
+        loginButton: "प्रवेश करें",
+        doctorList: "सभी डॉक्टरों की सूची",
+        name: "नाम",
+        specialty: "विशेषज्ञता",
+        city: "शहर",
+        location: "पता",
+        totalDoctors: "कुल डॉक्टर"
+    },
     statuses: {
         completed: "पूर्ण",
         confirmed: "कन्फर्म",
@@ -352,6 +364,18 @@ const translations = {
         requestSentToast: "Request Sent! ✅",
         requestSentToastDesc: "Our team will contact you shortly.",
     },
+    admin: {
+        title: "Admin Panel",
+        enterPassword: "Enter Admin Password",
+        passwordPlaceholder: "Type password here...",
+        loginButton: "Login",
+        doctorList: "All Doctors List",
+        name: "Name",
+        specialty: "Specialty",
+        city: "City",
+        location: "Location",
+        totalDoctors: "Total Doctors"
+    },
     statuses: {
         completed: "Completed",
         confirmed: "Confirmed",
@@ -488,8 +512,8 @@ const translations = {
         uploadButton: "डॉक्टर के परचा अपलोड करीं",
         uploadHint: "रउआ से व्हाट्सएप पर परचा भेजे के कहल जाई।",
         orderButton: "व्हाट्सएप पर ऑर्डर भेजीं",
-        orderSentToast: "ऑर्डर भेज दिहल गइल! 💊",
-        orderSentToastDesc: "हमनी जल्दिए रउआ से संपर्क करब।",
+        orderSentToast: "Order Sent! 💊",
+        orderSentToastDesc: "We will get in touch with you shortly.",
     },
     labTestPage: {
         title: "लैब टेस्ट बुक करीं",
@@ -534,6 +558,18 @@ const translations = {
         requestButton: "व्हाट्सएप पर अनुरोध भेजीं",
         requestSentToast: "अनुरोध भेज दिहल गइल! ✅",
         requestSentToastDesc: "हमनी के टीम जल्दिए रउआ से संपर्क करी।",
+    },
+    admin: {
+        title: "एडमिन पैनल",
+        enterPassword: "एडमिन पासवर्ड डालीं",
+        passwordPlaceholder: "पासवर्ड इहाँ लिखीं...",
+        loginButton: "प्रवेश करीं",
+        doctorList: "सब डॉक्टर लोग के सूची",
+        name: "नाम",
+        specialty: "विशेषज्ञता",
+        city: "शहर",
+        location: "जगह",
+        totalDoctors: "कुल डॉक्टर"
     },
     statuses: {
         completed: "पूरा भइल",
