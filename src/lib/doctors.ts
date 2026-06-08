@@ -84,7 +84,8 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         location: "बबुनिया रोड, सीवान",
         aiHint: "dermatologist doctor"
     },
-    // --- GOPALGANJ DOCTORS ---
+
+    // --- GOPALGANJ DOCTORS (GENERAL & PREVIOUS) ---
     {
         id: "dr-piyush-kumar-gp-1",
         city: "gopalganj",
@@ -106,17 +107,6 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         imageUrl: "🧑‍⚕️",
         location: "तुलसी नर्सिंग होम, जंगलिया रोड, पुरानी चौक, गोपालगंज",
         aiHint: "pediatrician doctor"
-    },
-    {
-        id: "dr-rajeev-ranjan-gp-3",
-        city: "gopalganj",
-        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
-        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
-        description: { hi: "एटलांटिस अस्पताल में हृदय रोग विशेषज्ञ।", en: "Cardiologist at Atlantis Hospital.", bho: "एटलांटिस अस्पताल में हृदय रोग विशेषज्ञ।" },
-        fee: 500,
-        imageUrl: "👨‍⚕️",
-        location: "एटलांटिस अस्पताल, गोसाई टोला रोड, तकिया, गोपालगंज",
-        aiHint: "cardiologist doctor"
     },
     {
         id: "dr-rahul-kumar-singh-gp-4",
@@ -194,5 +184,117 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
         imageUrl: "👨‍⚕️",
         location: "अमृतेश अस्पताल, आर्ट कॉलेज रोड, NH-85, भितभेरवा, गोपालगंज",
         aiHint: "experienced doctor"
+    },
+
+    // --- GOPALGANJ SPECIALIZED CARDIOLOGISTS (NEW LIST) ---
+    {
+        id: "dr-shadab-ahmad-gp-cardio-1",
+        city: "gopalganj",
+        name: { hi: "डॉ. शादाब अहमद", en: "Dr. Shadab Ahmad", bho: "डॉ. शादाब अहमद" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "इंटरवेंशनल कार्डियोलॉजिस्ट (MBBS, MD, DM कार्डियोलॉजी)", en: "Interventional Cardiologist (MBBS, MD, DM Cardiology)", bho: "इंटरवेंशनल कार्डियोलॉजिस्ट (MBBS, MD, DM कार्डियोलॉजी)" },
+        fee: 600,
+        imageUrl: "🧑‍⚕️",
+        location: "शादाब हार्ट एंड लंग केयर सेंटर, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-rajeev-dayal-gp-cardio-2",
+        city: "gopalganj",
+        name: { hi: "डॉ. राजीव दयाल", en: "Dr. Rajeev Dayal", bho: "डॉ. राजीव दयाल" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "कार्डियोलॉजिस्ट (MBBS, MD कार्डियो)", en: "Cardiologist (MBBS, MD Cardio)", bho: "कार्डियोलॉजिस्ट (MBBS, MD कार्डियो)" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "माया अस्पताल, सदर अस्पताल गेट के सामने, अम्बेडकर चौक, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-rajeev-ranjan-gp-cardio-3",
+        city: "gopalganj",
+        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "क्लिनिकल कार्डियोलॉजिस्ट और सलाहकार फिजिशियन (MBBS, MD)", en: "Clinical Cardiologist & Consultant Physician (MBBS, MD)", bho: "क्लिनिकल कार्डियोलॉजिस्ट आ सलाहकार फिजिशियन (MBBS, MD)" },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "एटलांटिस अस्पताल, ग्राउंड फ्लोर, कौशल्या चौक, गोसाईं टोला रोड, तकिया, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-kunal-kumar-singh-gp-cardio-4",
+        city: "gopalganj",
+        name: { hi: "डॉ. कुणाल कुमार सिंह", en: "Dr. Kunal Kumar Singh", bho: "डॉ. कुणाल कुमार सिंह" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "कार्डियोलॉजिस्ट / हृदय रोग विशेषज्ञ", en: "Cardiologist / Heart Specialist", bho: "कार्डियोलॉजिस्ट / हृदय रोग विशेषज्ञ" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सर्वज्ञ अस्पताल, SBI बैंक के पास, जंगलिया मोहल्ला, गोपालगंज",
+        aiHint: "heart specialist"
+    },
+    {
+        id: "dr-prakash-chand-shahi-gp-cardio-5",
+        city: "gopalganj",
+        name: { hi: "डॉ. प्रकाश चंद शाही", en: "Dr. Prakash Chand Shahi", bho: "डॉ. प्रकाश चंद शाही" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "हृदय रोग विशेषज्ञ", en: "Heart Specialist", bho: "हृदय रोग विशेषज्ञ" },
+        fee: 500,
+        imageUrl: "🧑‍⚕️",
+        location: "पल्स हार्ट सेंटर, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-shashi-bhushan-prasad-gp-cardio-6",
+        city: "gopalganj",
+        name: { hi: "डॉ. शशि भूषण प्रसाद", en: "Dr. Shashi Bhushan Prasad", bho: "डॉ. शशि भूषण प्रसाद" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "सलाहकार फिजिशियन और नॉन-इनवेसिव कार्डियोलॉजी केयर", en: "Consultant Physician & Non-Invasive Cardiology Care", bho: "सलाहकार फिजिशियन आ नॉन-इनवेसिव कार्डियोलॉजी केयर" },
+        fee: 400,
+        imageUrl: "👨‍⚕️",
+        location: "प्रसाद क्लिनिक, अस्पताल रोड, गोपालगंज",
+        aiHint: "indian doctor"
+    },
+    {
+        id: "dr-s-ahmad-gp-cardio-7",
+        city: "gopalganj",
+        name: { hi: "डॉ. एस. अहमद", en: "Dr. S. Ahmad", bho: "डॉ. एस. अहमद" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "हृदय रोग सलाहकार", en: "Heart Care Consultant", bho: "हृदय रोग सलाहकार" },
+        fee: 400,
+        imageUrl: "🧑‍⚕️",
+        location: "गोपालगंज हार्ट क्लिनिक, मेन मार्केट, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-r-k-singh-gp-cardio-8",
+        city: "gopalganj",
+        name: { hi: "डॉ. आर. के. सिंह", en: "Dr. R. K. Singh", bho: "डॉ. आर. के. सिंह" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "सलाहकार फिजिशियन और कार्डियो-डायबिटिक प्रबंधन", en: "Consultant Physician & Cardio-Diabetic Management", bho: "सलाहकार फिजिशियन आ कार्डियो-डायबिटिक प्रबंधन" },
+        fee: 450,
+        imageUrl: "👨‍⚕️",
+        location: "शाम्भवी अस्पताल और हृदय देखभाल केंद्र, गोपालगंज",
+        aiHint: "diabetes specialist"
+    },
+    {
+        id: "dr-gaurav-pandy-gp-cardio-9",
+        city: "gopalganj",
+        name: { hi: "डॉ. गौरव पाण्डेय", en: "Dr. Gaurav Pandey", bho: "डॉ. गौरव पाण्डेय" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "विजिटिंग कार्डियोलॉजिस्ट / आपातकालीन कार्डियक केयर", en: "Visiting Cardiologist / Emergency Cardiac Care", bho: "विजिटिंग कार्डियोलॉजिस्ट / आपातकालीन कार्डियक केयर" },
+        fee: 600,
+        imageUrl: "🧑‍⚕️",
+        location: "न्यू गोरखपुर मेडिसिटी अस्पताल शाखा, गोपालगंज",
+        aiHint: "emergency cardiologist"
+    },
+    {
+        id: "dr-abhishek-ranjan-gp-cardio-10",
+        city: "gopalganj",
+        name: { hi: "डॉ. अभिषेक रंजन", en: "Dr. Abhishek Ranjan", bho: "डॉ. अभिषेक रंजन" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "क्रिटिकल केयर और आपातकालीन कार्डियक प्रबंधन", en: "Critical Care & Emergency Cardiac Management", bho: "क्रिटिकल केयर आ आपातकालीन कार्डियक प्रबंधन" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सक्षम अस्पताल, कमला राय कॉलेज रोड, भितभेरवा, गोपालगंज",
+        aiHint: "critical care doctor"
     }
 ];
