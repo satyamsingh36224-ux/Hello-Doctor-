@@ -86,25 +86,113 @@ export const doctors: (Doctor & { city: 'siwan' | 'gopalganj' })[] = [
     },
     // --- GOPALGANJ DOCTORS ---
     {
-        id: "dr-gopal-doctor-1",
+        id: "dr-piyush-kumar-gp-1",
         city: "gopalganj",
-        name: { hi: "डॉ. गोपाल सिंह", en: "Dr. Gopal Singh", bho: "डॉ. गोपाल सिंह" },
+        name: { hi: "डॉ. पीयूष कुमार", en: "Dr. Piyush Kumar", bho: "डॉ. पीयूष कुमार" },
         specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
-        description: { hi: "गोपालगंज के एक प्रसिद्ध सामान्य चिकित्सक।", en: "A famous General Physician in Gopalganj.", bho: "गोपालगंज के एगो प्रसिद्ध साधारण डॉक्टर।" },
+        description: { hi: "माया अस्पताल में कार्यरत अनुभवी सामान्य चिकित्सक।", en: "Experienced General Physician at Maya Hospital.", bho: "माया अस्पताल में कार्यरत अनुभवी साधारण डॉक्टर।" },
         fee: 300,
         imageUrl: "👨‍⚕️",
-        location: "हॉस्पिटल रोड, गोपालगंज",
-        aiHint: "indian doctor"
+        location: "माया अस्पताल, हॉस्पिटल रोड, बनकटा, गोपालगंज",
+        aiHint: "indian male doctor"
     },
     {
-        id: "dr-gopal-ped-1",
+        id: "dr-r-sunil-kumar-gp-2",
         city: "gopalganj",
-        name: { hi: "डॉ. विकास कुमार", en: "Dr. Vikas Kumar", bho: "डॉ. विकास कुमार" },
+        name: { hi: "डॉ. आर. सुनील कुमार", en: "Dr. R. Sunil Kumar", bho: "डॉ. आर. सुनील कुमार" },
         specialization: { key: "Pediatrician", name: { hi: "बच्चों का चिकित्सक", en: "Pediatrician", bho: "लइकन के डॉक्टर" } },
-        description: { hi: "बच्चों के स्वास्थ्य विशेषज्ञ।", en: "Child health specialist.", bho: "लइकन के स्वास्थ्य विशेषज्ञ।" },
+        description: { hi: "तुलसी नर्सिंग होम में बच्चों के विशेषज्ञ।", en: "Child specialist at Tulsi Nursing Home.", bho: "तुलसी नर्सिंग होम में लइकन के विशेषज्ञ।" },
         fee: 400,
         imageUrl: "🧑‍⚕️",
-        location: "अंबेडकर चौक, गोपालगंज",
-        aiHint: "pediatrician"
+        location: "तुलसी नर्सिंग होम, जंगलिया रोड, पुरानी चौक, गोपालगंज",
+        aiHint: "pediatrician doctor"
+    },
+    {
+        id: "dr-rajeev-ranjan-gp-3",
+        city: "gopalganj",
+        name: { hi: "डॉ. राजीव रंजन", en: "Dr. Rajeev Ranjan", bho: "डॉ. राजीव रंजन" },
+        specialization: { key: "Cardiologist", name: { hi: "हृदय रोग विशेषज्ञ", en: "Cardiologist", bho: "हृदय रोग विशेषज्ञ" } },
+        description: { hi: "एटलांटिस अस्पताल में हृदय रोग विशेषज्ञ।", en: "Cardiologist at Atlantis Hospital.", bho: "एटलांटिस अस्पताल में हृदय रोग विशेषज्ञ।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "एटलांटिस अस्पताल, गोसाई टोला रोड, तकिया, गोपालगंज",
+        aiHint: "cardiologist doctor"
+    },
+    {
+        id: "dr-rahul-kumar-singh-gp-4",
+        city: "gopalganj",
+        name: { hi: "डॉ. राहुल कुमार सिंह", en: "Dr. Rahul Kumar Singh", bho: "डॉ. राहुल कुमार सिंह" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "मधुमेह प्रबंधन के विशेषज्ञ चिकित्सक।", en: "Specialist in Diabetes Management.", bho: "मधुमेह प्रबंधन के विशेषज्ञ डॉक्टर।" },
+        fee: 350,
+        imageUrl: "🧑‍⚕️",
+        location: "एडवांस सेंटर फॉर डायबिटीज मैनेजमेंट, कॉलेज रोड, बनकटा, गोपालगंज",
+        aiHint: "diabetes specialist"
+    },
+    {
+        id: "dr-sk-pathak-gp-5",
+        city: "gopalganj",
+        name: { hi: "डॉ. एस. के. पाठक", en: "Dr. S. K. Pathak", bho: "डॉ. एस. के. पाठक" },
+        specialization: { key: "Orthopedic Surgeon", name: { hi: "हड्डी रोग विशेषज्ञ", en: "Orthopedic Surgeon", bho: "हड्डी के डॉक्टर" } },
+        description: { hi: "हर्षण अस्पताल में हड्डी रोग विशेषज्ञ।", en: "Orthopedic Surgeon at Harsan Hospital.", bho: "हर्षण अस्पताल में हड्डी के डॉक्टर।" },
+        fee: 450,
+        imageUrl: "👨‍⚕️",
+        location: "हर्षण अस्पताल, मालवीय नगर, पुरानी चौक, गोपालगंज",
+        aiHint: "orthopedic surgeon"
+    },
+    {
+        id: "dr-suman-kumar-gp-6",
+        city: "gopalganj",
+        name: { hi: "डॉ. सुमन कुमार", en: "Dr. Suman Kumar", bho: "डॉ. सुमन कुमार" },
+        specialization: { key: "General Surgeon", name: { hi: "जनरल सर्जन", en: "General Surgeon", bho: "जनरल सर्जन" } },
+        description: { hi: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी सर्जन।", en: "Experienced Surgeon at Suman Medical Research Centre.", bho: "सुमन मेडिकल रिसर्च सेंटर में अनुभवी सर्जन।" },
+        fee: 500,
+        imageUrl: "👨‍⚕️",
+        location: "सुमन मेडिकल रिसर्च सेंटर, मेन मार्केट एरिया, मीरगंज, गोपालगंज",
+        aiHint: "general surgeon"
+    },
+    {
+        id: "dr-rahul-ranjan-gp-7",
+        city: "gopalganj",
+        name: { hi: "डॉ. राहुल रंजन", en: "Dr. Rahul Ranjan", bho: "डॉ. राहुल रंजन" },
+        specialization: { key: "ENT Specialist", name: { hi: "ईएनटी विशेषज्ञ", en: "ENT Specialist", bho: "नाक-कान-गला के डॉक्टर" } },
+        description: { hi: "नाक, कान और गला रोगों के विशेषज्ञ।", en: "ENT specialist in Gopalganj.", bho: "नाक, कान आ गला रोग के विशेषज्ञ।" },
+        fee: 300,
+        imageUrl: "🧑‍⚕️",
+        location: "क्लीनिक - जंगलिया मोड़ रोड, अंबेडकर चौक, गोपालगंज",
+        aiHint: "ent specialist"
+    },
+    {
+        id: "dr-rp-singh-gp-8",
+        city: "gopalganj",
+        name: { hi: "डॉ. आर. पी. सिंह", en: "Dr. R. P. Singh", bho: "डॉ. आर. पी. सिंह" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "अमृतेश अस्पताल में वरिष्ठ सामान्य चिकित्सक।", en: "Senior General Physician at Amritesh Hospital.", bho: "अमृतेश अस्पताल में वरिष्ठ साधारण डॉक्टर।" },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "अमृतेश अस्पताल, आर्ट कॉलेज रोड, NH-85, भितभेरवा, गोपालगंज",
+        aiHint: "senior physician"
+    },
+    {
+        id: "dr-anup-kumar-tiwari-gp-9",
+        city: "gopalganj",
+        name: { hi: "डॉ. अनुप कुमार तिवारी", en: "Dr. Anup Kumar Tiwari", bho: "डॉ. अनुप कुमार तिवारी" },
+        specialization: { key: "Ophthalmologist", name: { hi: "नेत्र रोग विशेषज्ञ", en: "Ophthalmologist", bho: "आँख के डॉक्टर" } },
+        description: { hi: "आँखों के रोगों के विशेषज्ञ।", en: "Specialist in eye diseases.", bho: "आँख के रोग के विशेषज्ञ।" },
+        fee: 350,
+        imageUrl: "🧑‍⚕️",
+        location: "क्लीनिक - पुलिस लाइन रोड, भितभेरवा, गोपालगंज",
+        aiHint: "eye specialist"
+    },
+    {
+        id: "dr-mm-prasad-gp-10",
+        city: "gopalganj",
+        name: { hi: "डॉ. एम. एम. प्रसाद", en: "Dr. M. M. Prasad", bho: "डॉ. एम. एम. प्रसाद" },
+        specialization: { key: "General Physician", name: { hi: "सामान्य चिकित्सक", en: "General Physician", bho: "साधारण डॉक्टर" } },
+        description: { hi: "अमृतेश अस्पताल में कार्यरत अनुभवी चिकित्सक।", en: "Experienced physician at Amritesh Hospital.", bho: "अमृतेश अस्पताल में कार्यरत अनुभवी डॉक्टर।" },
+        fee: 300,
+        imageUrl: "👨‍⚕️",
+        location: "अमृतेश अस्पताल, आर्ट कॉलेज रोड, NH-85, भितभेरवा, गोपालगंज",
+        aiHint: "experienced doctor"
     }
 ];
