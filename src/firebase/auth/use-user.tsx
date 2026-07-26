@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from 'react';
@@ -13,9 +14,12 @@ export const useUser = () => {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!auth) {
-      // Auth service is not available yet, wait for it.
-      // Loading is true by default.
+    // If auth is explicitly null (initialization failed or not yet done), 
+    // we stop loading to prevent being stuck on splash screen forever.
+    if (auth === undefined) return;
+    
+    if (auth === null) {
+      setLoading(false);
       return;
     }
 

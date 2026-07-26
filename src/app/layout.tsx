@@ -35,58 +35,78 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased selection:bg-primary/20" suppressHydrationWarning>
         <LanguageProvider>
           <LocationProvider>
             <FirebaseClientProvider>
                 <SidebarProvider>
-                    <Sidebar>
-                        <SidebarHeader className="p-4 flex items-center gap-2">
-                            <Logo />
+                    <Sidebar className="border-r border-border/50">
+                        <SidebarHeader className="p-6 flex flex-row items-center gap-3">
+                            <div className="p-2 bg-primary/10 rounded-xl">
+                                <Logo className="h-8 w-8" />
+                            </div>
                             <div className="flex flex-col">
-                              <h2 className="text-lg font-semibold text-sidebar-foreground">Hello Doctor</h2>
-                              <p className="text-xs text-sidebar-foreground/70">आपका स्वास्थ्य, हमारी प्राथमिकता</p>
+                              <h2 className="text-xl font-bold text-sidebar-foreground tracking-tight">Hello Doctor</h2>
+                              <p className="text-[10px] text-sidebar-foreground/60 font-medium uppercase tracking-widest">Bihar Health Care</p>
                             </div>
                         </SidebarHeader>
-                        <SidebarContent>
+                        <SidebarContent className="px-2">
                             <SidebarMenu>
                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/doctors"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Home className="h-5 w-5" /></div> होम</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/doctors" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Home className="h-5 w-5" /></div> 
+                                            होम
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/hospitals"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Hospital className="h-5 w-5" /></div> अस्पताल</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/hospitals" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Hospital className="h-5 w-5" /></div> 
+                                            अस्पताल
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/home-visit"><div className="p-2 bg-primary/10 rounded-lg text-primary"><BriefcaseMedical className="h-5 w-5" /></div> डॉक्टर होम विज़िट</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/home-visit" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><BriefcaseMedical className="h-5 w-5" /></div> 
+                                            होम विज़िट
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                  <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/lab-test"><div className="p-2 bg-primary/10 rounded-lg text-primary"><TestTube className="h-5 w-5" /></div> लैब टेस्ट</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/lab-test" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><TestTube className="h-5 w-5" /></div> 
+                                            लैब टेस्ट
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/history"><div className="p-2 bg-primary/10 rounded-lg text-primary"><History className="h-5 w-5" /></div> अपॉइंटमेंट हिस्ट्री</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/history" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><History className="h-5 w-5" /></div> 
+                                            हिस्ट्री
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/settings"><div className="p-2 bg-primary/10 rounded-lg text-primary"><Settings className="h-5 w-5" /></div> सेटिंग्स</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/settings" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Settings className="h-5 w-5" /></div> 
+                                            सेटिंग्स
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                  <SidebarMenuItem>
-                                    <SidebarMenuButton asChild>
-                                        <Link href="/support"><div className="p-2 bg-primary/10 rounded-lg text-primary"><LifeBuoy className="h-5 w-5" /></div> सहायता और समर्थन</Link>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/support" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><LifeBuoy className="h-5 w-5" /></div> 
+                                            सहायता
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             </SidebarMenu>

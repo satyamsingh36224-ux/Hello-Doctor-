@@ -26,13 +26,11 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
   } from "@/components/ui/dialog"
 import { Globe, HeartPulse, Loader2, MapPin, Lock } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import type { Language } from "@/context/LanguageContext";
 import { useLocation } from "@/context/LocationContext";
-import type { Location } from "@/context/LocationContext";
 import { Logo } from "@/components/Logo";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
@@ -53,24 +51,31 @@ export default function LoginPage() {
   const [isAdminDialogOpen, setIsAdminDialogOpen] = useState(false);
   const [adminPassword, setAdminPassword] = useState("");
 
-
   useEffect(() => {
+    // Redirect if user is already logged in
     if (!userLoading && user) {
       router.push("/select-specialization");
     }
   }, [user, userLoading, router]);
 
   useEffect(() => {
+    // Splash screen timer
     const timer = setTimeout(() => {
       setShowSplash(false);
-    }, 3000); 
+    }, 2500); 
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleLogin = () => {
     setLoading(true);
-    toast({ title: "Login Successful!", description: `Welcome to Hello Doctor ${location === 'siwan' ? 'Siwan' : 'Gopalganj'}.` });
+    toast({ 
+      title: language === 'hi' ? "लॉगिन सफल!" : "Login Successful!", 
+      description: `Welcome to Hello Doctor ${location === 'siwan' ? 'Siwan' : 'Gopalganj'}.` 
+    });
+    
+    // In this demo, we simulate a successful login. 
+    // In production, you'd use signInWithPhoneNumber or similar.
     setTimeout(() => {
         router.push("/select-specialization");
         setLoading(false);
@@ -91,12 +96,14 @@ export default function LoginPage() {
     }
   };
 
-  if (showSplash || userLoading || user) {
+  // If splash is active or we are actively checking the user session, show splash.
+  // We check 'user' to ensure that if someone is logged in, they don't see the login form flicker.
+  if (showSplash || (userLoading && !user)) {
     return <SplashScreen />;
   }
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 overflow-hidden">
       <div className="absolute top-4 right-4 z-20 flex gap-2">
         <Select
           value={language}
@@ -117,7 +124,7 @@ export default function LoginPage() {
         </Select>
       </div>
 
-      <div className="w-full max-w-sm mb-6 z-10">
+      <div className="w-full max-w-sm mb-6 z-10 animate-fade-in-up">
          <div className="flex bg-card/80 backdrop-blur-sm p-1 rounded-full border border-border/50 shadow-lg">
             <button
                 onClick={() => setLocation('siwan')}
@@ -136,10 +143,10 @@ export default function LoginPage() {
          </div>
       </div>
 
-        <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10">
+        <Card className="max-w-sm w-full shadow-2xl rounded-2xl border-border/50 bg-card/80 backdrop-blur-sm z-10 animate-fade-in-up">
                 <CardHeader className="text-center flex flex-col items-center gap-2 pt-8">
                     <div className="flex flex-col items-center gap-2">
-                      <div onClick={() => setIsAdminDialogOpen(true)} className="cursor-pointer hover:scale-105 transition-transform">
+                      <div onClick={() => setIsAdminDialogOpen(true)} className="cursor-pointer hover:scale-105 transition-transform p-3 bg-primary/5 rounded-full">
                         <Logo />
                       </div>
                       <CardTitle className="text-3xl font-bold tracking-tight">
@@ -161,7 +168,7 @@ export default function LoginPage() {
                 variant="outline"
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full py-5 rounded-full text-sm font-semibold"
+                className="w-full py-6 rounded-full text-sm font-semibold border-border/50 hover:bg-primary/5 hover:text-primary transition-all"
               >
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 172.9 56.7L368.7 128C330.5 94.5 292.2 78.2 248 78.2c-101.7 0-184.4 82.7-184.4 184.4S146.3 437 248 437c58.4 0 106.3-24.2 138.6-56.6 27.8-27.5 41.6-67.7 44-114.8H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.8z"></path></svg>
@@ -172,66 +179,70 @@ export default function LoginPage() {
                 variant="outline"
                 onClick={handleLogin}
                 disabled={loading}
-                className="w-full py-5 rounded-full text-sm font-semibold"
+                className="w-full py-6 rounded-full text-sm font-semibold border-border/50 hover:bg-primary/5 hover:text-primary transition-all"
               >
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
                 {t.continueWithFacebook}
               </Button>
-              <div className="relative my-2">
+              
+              <div className="relative my-4">
                 <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t" />
+                    <span className="w-full border-t border-border/50" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">{t.or}</span>
+                    <span className="bg-card px-2 text-muted-foreground font-medium">{t.or}</span>
                 </div>
               </div>
-                <div className="space-y-2">
+
+                <div className="space-y-3">
                    <Input
                     suppressHydrationWarning
                     id="phone"
                     type="tel"
                     placeholder={t.phonePlaceholder}
-                    className="py-5 rounded-full bg-background"
+                    className="py-6 rounded-full bg-background border-border/50 text-center"
                     required
                   />
                   <Button
                     suppressHydrationWarning
                     onClick={handleLogin}
                     disabled={loading}
-                    className="w-full py-5 rounded-full text-sm font-semibold"
+                    className="w-full py-6 rounded-full text-base font-bold shadow-lg"
                   >
                     {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    जारी रखें
+                    {language === 'hi' ? 'जारी रखें' : 'Continue'}
                   </Button>
                 </div>
+
                <Button
                 suppressHydrationWarning
                 asChild
-                variant="outline"
-                className="w-full py-5 rounded-full text-sm font-semibold mt-2 text-primary border-primary/50 hover:bg-primary/5 hover:text-primary"
+                variant="ghost"
+                className="w-full py-6 rounded-full text-sm font-semibold mt-4 text-primary hover:bg-primary/5"
               >
                 <Link href="/other-services">
-                  <HeartPulse className="mr-2 h-4 w-4" />
+                  <HeartPulse className="mr-2 h-5 w-5" />
                   {t.otherServices}
                 </Link>
               </Button>
             </div>
-            <div className="text-center text-xs text-muted-foreground mt-2">
+            <div className="text-center text-xs text-muted-foreground mt-4 italic">
                 <p>{t.signInPrompt}</p>
             </div>
           </CardContent>
         </Card>
 
-        {/* Admin Password Dialog */}
         <Dialog open={isAdminDialogOpen} onOpenChange={setIsAdminDialogOpen}>
-            <DialogContent className="sm:max-w-[425px] rounded-3xl">
-                <DialogHeader>
-                    <DialogTitle className="flex items-center gap-2">
-                        <Lock className="h-5 w-5 text-primary" />
+            <DialogContent className="sm:max-w-[425px] rounded-3xl border-none">
+                <DialogHeader className="items-center pb-2">
+                    <div className="p-3 bg-primary/10 rounded-full mb-2">
+                        <Lock className="h-6 w-6 text-primary" />
+                    </div>
+                    <DialogTitle className="text-2xl font-bold">
                         {tAdmin.title}
                     </DialogTitle>
-                    <DialogDescription>
+                    <DialogDescription className="text-center">
                         {tAdmin.enterPassword}
                     </DialogDescription>
                 </DialogHeader>
@@ -241,11 +252,11 @@ export default function LoginPage() {
                         placeholder={tAdmin.passwordPlaceholder}
                         value={adminPassword}
                         onChange={(e) => setAdminPassword(e.target.value)}
-                        className="rounded-full py-6"
+                        className="rounded-full py-6 text-center text-lg tracking-widest border-border/50"
                         autoFocus
                     />
-                    <DialogFooter>
-                        <Button type="submit" className="w-full rounded-full py-6 font-bold">
+                    <DialogFooter className="sm:justify-center">
+                        <Button type="submit" className="w-full rounded-full py-6 font-bold text-lg shadow-md">
                             {tAdmin.loginButton}
                         </Button>
                     </DialogFooter>
@@ -253,7 +264,7 @@ export default function LoginPage() {
             </DialogContent>
         </Dialog>
 
-        <p className="absolute bottom-4 text-muted-foreground font-cursive text-lg">
+        <p className="absolute bottom-6 text-muted-foreground font-cursive text-xl opacity-80">
             {t.createdBy}
         </p>
     </div>
