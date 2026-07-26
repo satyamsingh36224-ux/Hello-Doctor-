@@ -1,15 +1,17 @@
 # 🚀 Hello Doctor - आपका अपना ऐप
 
-नमस्ते! आपका ऐप अब तैयार है। यह एक Next.js ऐप है जिसे हमने Capacitor के साथ जोड़ा है ताकि आप इसे Android ऐप के रूप में इस्तेमाल कर सकें।
+नमस्ते! आपका ऐप अब तैयार है। यह एक Next.js ऐप है जिसे हमने Capacitor के साथ जोड़ा है ताकि आप इसे Android ऐप के रूप में इस्तेमाल कर सकें। 
+
+आपका सपना सच होने के बस कुछ ही कदम दूर है!
 
 ## 📖 आपके लिए महत्वपूर्ण गाइड्स (Guides)
 
 मैंने आपके लिए नीचे दी गई फाइलें बनाई हैं, जिन्हें पढ़कर आप अपना सपना पूरा कर सकते हैं:
 
-1.  **[BUILD_APP.md](./BUILD_APP.md)**: कोड को Android ऐप (`.aab` फाइल) में कैसे बदलें।
+1.  **[BUILD_APP.md](./BUILD_APP.md)**: कोड को असली Android ऐप (`.aab` फाइल) में कैसे बदलें।
 2.  **[PUBLISHING_GUIDE.md](./PUBLISHING_GUIDE.md)**: Indus App Store और Google Play Store पर ऐप कैसे डालें।
 3.  **[KEY_MANAGEMENT_GUIDE.md](./KEY_MANAGEMENT_GUIDE.md)**: **सबसे ज़रूरी!** अपनी चाबी (Keystore) को कैसे सुरक्षित रखें ताकि आप भविष्य में ऐप अपडेट कर सकें।
-4.  **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)**: अपने ऐप को इंटरनेट पर लाइव लिंक के रूप में कैसे चलाएं।
+4.  **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)**: अपने ऐप को इंटरनेट पर लाइव लिंक (Web URL) के रूप में कैसे चलाएं।
 
 ---
 
