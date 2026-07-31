@@ -9,6 +9,7 @@ interface LogoProps {
 /**
  * Using an Inline SVG for the logo to ensure it always renders correctly,
  * even during app store reviews or offline mode, avoiding external image loading issues.
+ * Set to a vibrant sky blue tone.
  */
 export function Logo({ className, size = 40 }: LogoProps) {
   return (
