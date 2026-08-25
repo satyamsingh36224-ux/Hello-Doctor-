@@ -1,23 +1,21 @@
 {
   "name": "Hello Doctor",
-  "short_name": "HelloDoctor",
-  "description": "Bihar's Trusted Medical Directory for Siwan and Gopalganj",
+  "short_name": "Hello Doctor",
+  "description": "Your trusted health partner for Siwan and Gopalganj.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
+  "background_color": "#ffffff",
   "theme_color": "#0ea5e9",
   "icons": [
     {
-      "src": "https://picsum.photos/seed/hello-doctor-icon/192/192",
+      "src": "https://picsum.photos/seed/hello-doctor-logo/192/192",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "https://picsum.photos/seed/hello-doctor-icon/512/512",
+      "src": "https://picsum.photos/seed/hello-doctor-logo/512/512",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

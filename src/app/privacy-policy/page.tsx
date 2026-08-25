@@ -45,21 +45,21 @@ export default function PrivacyPolicyPage() {
                     <div className="p-2 bg-white rounded-lg shadow-sm"><User className="h-5 w-5 text-primary" /></div>
                     <div>
                       <p className="text-xs font-black uppercase text-slate-400">डेवलपर का नाम</p>
-                      <p className="font-bold text-slate-700">Hello Group (Satyam Singh)</p>
+                      <p className="font-bold text-slate-700">Satyam Singh (Hello Group)</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-white rounded-lg shadow-sm"><Mail className="h-5 w-5 text-primary" /></div>
                     <div>
                       <p className="text-xs font-black uppercase text-slate-400">सपोर्ट ईमेल</p>
-                      <p className="font-bold text-slate-700">support@hellodoctor.app</p>
+                      <p className="font-bold text-slate-700">satyamsingh36224@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="p-2 bg-white rounded-lg shadow-sm"><MapPin className="h-5 w-5 text-primary" /></div>
                     <div>
                       <p className="text-xs font-black uppercase text-slate-400">लोकेशन</p>
-                      <p className="font-bold text-slate-700">सिवान, बिहार, भारत - 841226</p>
+                      <p className="font-bold text-slate-700">Gopalganj, Bihar, India</p>
                     </div>
                   </div>
                 </div>
