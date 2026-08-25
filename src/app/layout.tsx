@@ -1,5 +1,6 @@
+"use client";
 
-import type {Metadata, Viewport} from 'next';
+import { useEffect, useState } from "react";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
@@ -9,42 +10,51 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import { LocationProvider } from '@/context/LocationContext';
 import { Logo } from '@/components/Logo';
 import { FirebaseClientProvider } from '@/firebase/client-provider';
-
-
-export const metadata: Metadata = {
-  title: 'Hello Doctor',
-  description: 'Hello Doctor - बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।',
-  manifest: '/manifest.json',
-};
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-};
+import { BottomNav } from "@/components/BottomNav";
+import { OfflineScreen } from "@/components/OfflineScreen";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [isOnline, setIsOnline] = useState(true);
+
+  useEffect(() => {
+    setIsOnline(navigator.onLine);
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
   return (
     <html lang="hi" suppressHydrationWarning>
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#0ea5e9" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased selection:bg-primary/20" suppressHydrationWarning>
+      <body className="font-body antialiased selection:bg-primary/20 overflow-x-hidden" suppressHydrationWarning>
+        {!isOnline && <OfflineScreen />}
         <LanguageProvider>
           <LocationProvider>
             <FirebaseClientProvider>
                 <SidebarProvider>
-                    <Sidebar className="border-r border-border/50">
+                    <Sidebar className="border-r border-border/50 hidden md:flex">
                         <SidebarHeader className="p-6 flex flex-row items-center gap-3">
                             <div className="p-2 bg-primary/10 rounded-xl">
-                                <Logo className="h-8 w-8" />
+                                <Logo size={32} />
                             </div>
                             <div className="flex flex-col">
                               <h2 className="text-xl font-bold text-sidebar-foreground tracking-tight">Hello Doctor</h2>
@@ -77,14 +87,6 @@ export default function RootLayout({
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
-                                        <Link href="/lab-test" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><TestTube className="h-5 w-5" /></div> 
-                                            लैब टेस्ट
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/history" className="flex items-center gap-3 font-medium">
@@ -101,19 +103,12 @@ export default function RootLayout({
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                                 <SidebarMenuItem>
-                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
-                                        <Link href="/support" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><LifeBuoy className="h-5 w-5" /></div> 
-                                            सहायता
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
                             </SidebarMenu>
                         </SidebarContent>
                     </Sidebar>
-                    <SidebarInset className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950">
+                    <SidebarInset className="bg-slate-50 pb-20 md:pb-0">
                         {children}
+                        <BottomNav />
                     </SidebarInset>
                 </SidebarProvider>
                 <Toaster />

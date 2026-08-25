@@ -1,22 +1,23 @@
-
 {
   "name": "Hello Doctor",
-  "short_name": "HelloDoc",
-  "description": "Hello Doctor - बिहार में डॉक्टर से अपॉइंटमेंट बुक करें।",
+  "short_name": "HelloDoctor",
+  "description": "Bihar's Trusted Medical Directory for Siwan and Gopalganj",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
+  "background_color": "#f8fafc",
+  "theme_color": "#0ea5e9",
   "icons": [
     {
-      "src": "/icon-192x192.svg",
+      "src": "https://picsum.photos/seed/hello-doctor-icon/192/192",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/icon-512x512.svg",
+      "src": "https://picsum.photos/seed/hello-doctor-icon/512/512",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
