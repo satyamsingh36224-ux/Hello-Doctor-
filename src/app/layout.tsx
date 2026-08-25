@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, LifeBuoy, BriefcaseMedical, History, Settings, Hospital, TestTube } from 'lucide-react';
+import { Home, LifeBuoy, BriefcaseMedical, History, Settings, Hospital, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { LocationProvider } from '@/context/LocationContext';
@@ -28,24 +28,33 @@ export default function RootLayout({
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
 
+    // Handle Android physical back button (basic prevention for unintentional exit)
+    const handleBack = (e: PopStateEvent) => {
+        // In a real mobile environment, Capacitor handles this better, 
+        // but for a web-app, we ensure we stay within history.
+    };
+    window.addEventListener("popstate", handleBack);
+
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("popstate", handleBack);
     };
   }, []);
 
   return (
     <html lang="hi" suppressHydrationWarning>
       <head>
-        <link rel="manifest" href="/manifest.json" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
         <meta name="theme-color" content="#0ea5e9" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="description" content="Hello Doctor - Bihar's trusted health partner for Siwan and Gopalganj." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased selection:bg-primary/20 overflow-x-hidden" suppressHydrationWarning>
+      <body className="font-body antialiased selection:bg-primary/20 overflow-x-hidden bg-slate-50" suppressHydrationWarning>
         {!isOnline && <OfflineScreen />}
         <LanguageProvider>
           <LocationProvider>
@@ -66,7 +75,7 @@ export default function RootLayout({
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/doctors" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Home className="h-5 w-5" /></div> 
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><Home className="h-5 w-5" /></div> 
                                             होम
                                         </Link>
                                     </SidebarMenuButton>
@@ -74,7 +83,7 @@ export default function RootLayout({
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/hospitals" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Hospital className="h-5 w-5" /></div> 
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><Hospital className="h-5 w-5" /></div> 
                                             अस्पताल
                                         </Link>
                                     </SidebarMenuButton>
@@ -82,23 +91,23 @@ export default function RootLayout({
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/home-visit" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><BriefcaseMedical className="h-5 w-5" /></div> 
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><BriefcaseMedical className="h-5 w-5" /></div> 
                                             होम विज़िट
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
-                                        <Link href="/history" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><History className="h-5 w-5" /></div> 
-                                            हिस्ट्री
+                                        <Link href="/support" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><HelpCircle className="h-5 w-5" /></div> 
+                                            मदद
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/settings" className="flex items-center gap-3 font-medium">
-                                            <div className="p-2 bg-primary/10 rounded-lg text-primary transition-transform group-hover:scale-110"><Settings className="h-5 w-5" /></div> 
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><Settings className="h-5 w-5" /></div> 
                                             सेटिंग्स
                                         </Link>
                                     </SidebarMenuButton>
@@ -106,7 +115,7 @@ export default function RootLayout({
                             </SidebarMenu>
                         </SidebarContent>
                     </Sidebar>
-                    <SidebarInset className="bg-slate-50 pb-20 md:pb-0">
+                    <SidebarInset className="bg-slate-50 pb-24 md:pb-0">
                         {children}
                         <BottomNav />
                     </SidebarInset>

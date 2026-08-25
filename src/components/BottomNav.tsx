@@ -20,7 +20,7 @@ export function BottomNav() {
   if (pathname === "/" || pathname === "/other-services") return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-t border-slate-100 flex items-center justify-around px-2 py-3 pb-6 md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-t border-slate-100 flex items-center justify-around px-2 py-3 pb-8 md:hidden shadow-[0_-4px_20px_-10px_rgba(0,0,0,0.1)]">
       {navItems.map((item) => {
         const isActive = pathname === item.href;
         return (
@@ -28,7 +28,7 @@ export function BottomNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex flex-col items-center gap-1 transition-all duration-300 relative",
+              "flex flex-col items-center gap-1 transition-all duration-300 relative px-3 py-1 rounded-2xl",
               isActive ? "text-primary scale-110" : "text-slate-400"
             )}
           >

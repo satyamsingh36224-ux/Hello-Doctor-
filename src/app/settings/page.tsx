@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { User, Phone, Settings as SettingsIcon, Info, PhoneCall, ShieldCheck, ChevronRight } from "lucide-react";
+import { User, Phone, Settings as SettingsIcon, Info, PhoneCall, ShieldCheck, ChevronRight, FileText, HelpCircle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 
@@ -35,7 +35,7 @@ export default function SettingsPage() {
                             <CardTitle className="text-3xl font-extrabold pt-4 tracking-tight">{t.title}</CardTitle>
                             <CardDescription className="text-base">{t.profileInfo}</CardDescription>
                         </CardHeader>
-                        <CardContent className="space-y-6 px-6 pb-10">
+                        <CardContent className="space-y-4 px-6 pb-10">
                             <div className="flex items-center gap-5 p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
                                 <div className="p-4 bg-white rounded-2xl shadow-sm">
                                     <User className="h-7 w-7 text-primary" />
@@ -48,7 +48,7 @@ export default function SettingsPage() {
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-5 p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm">
+                            <div className="flex items-center gap-5 p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm mb-2">
                                 <div className="p-4 bg-white rounded-2xl shadow-sm">
                                     <Phone className="h-7 w-7 text-primary" />
                                 </div>
@@ -58,21 +58,48 @@ export default function SettingsPage() {
                                 </div>
                             </div>
 
-                            {/* Privacy Policy Link for Store Review */}
-                            <Link href="/privacy-policy" className="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm transition-all hover:bg-primary/5 active:scale-95">
-                                <div className="flex items-center gap-5">
-                                    <div className="p-4 bg-white rounded-2xl shadow-sm text-primary">
-                                        <ShieldCheck className="h-7 w-7" />
+                            <div className="grid gap-2">
+                                <Link href="/support" className="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm transition-all hover:bg-primary/5 active:scale-95">
+                                    <div className="flex items-center gap-5">
+                                        <div className="p-4 bg-white rounded-2xl shadow-sm text-primary">
+                                            <HelpCircle className="h-7 w-7" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-lg font-bold text-slate-700">मदद और सपोर्ट</span>
+                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Help & Support</span>
+                                        </div>
                                     </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-lg font-bold text-slate-700">Privacy Policy</span>
-                                        <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">गोपनीयता और डेटा सुरक्षा</span>
+                                    <ChevronRight className="h-6 w-6 text-slate-300" />
+                                </Link>
+
+                                <Link href="/privacy-policy" className="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm transition-all hover:bg-primary/5 active:scale-95">
+                                    <div className="flex items-center gap-5">
+                                        <div className="p-4 bg-white rounded-2xl shadow-sm text-primary">
+                                            <ShieldCheck className="h-7 w-7" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-lg font-bold text-slate-700">Privacy Policy</span>
+                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">गोपनीयता नीति</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <ChevronRight className="h-6 w-6 text-slate-300" />
-                            </Link>
+                                    <ChevronRight className="h-6 w-6 text-slate-300" />
+                                </Link>
+
+                                <Link href="/terms-of-service" className="flex items-center justify-between p-5 bg-slate-50 rounded-3xl border border-slate-100 shadow-sm transition-all hover:bg-primary/5 active:scale-95">
+                                    <div className="flex items-center gap-5">
+                                        <div className="p-4 bg-white rounded-2xl shadow-sm text-primary">
+                                            <FileText className="h-7 w-7" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-lg font-bold text-slate-700">Terms of Service</span>
+                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest">नियम और शर्तें</span>
+                                        </div>
+                                    </div>
+                                    <ChevronRight className="h-6 w-6 text-slate-300" />
+                                </Link>
+                            </div>
                             
-                            <div className="p-6 bg-primary/5 rounded-[2rem] border border-primary/20 space-y-4 shadow-inner">
+                            <div className="p-6 bg-primary/5 rounded-[2rem] border border-primary/20 space-y-4 shadow-inner mt-4">
                                 <div className="flex items-center gap-3 text-primary">
                                     <Info className="h-6 w-6" />
                                     <h3 className="text-lg font-black tracking-tight">{t.helplineTitle}</h3>
