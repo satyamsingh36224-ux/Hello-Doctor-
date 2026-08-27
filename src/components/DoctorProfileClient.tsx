@@ -66,6 +66,12 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
         setIsSubmitting(false);
         setIsBookingOpen(false);
         setIsSuccessOpen(true);
+        
+        toast({
+            title: t.appointmentBookedToast,
+            description: `${t.tokenNumber}: #${token}`,
+        });
+
         window.open(whatsappUrl, '_blank');
     }, 1200);
   };
@@ -94,7 +100,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                     {t.backToAllDoctors}
                 </Link>
 
-                <Card className="shadow-2xl rounded-[2.5rem] overflow-hidden border-none bg-white">
+                <Card className="shadow-2xl rounded-[2.5rem] overflow-hidden border-none bg-white animate-fade-in-up">
                     <div className="relative h-72 w-full">
                         <Image
                             src={doctor.imageUrl.includes('http') ? doctor.imageUrl : `https://picsum.photos/seed/${doctor.id}/800/600`}
@@ -137,8 +143,8 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                             </h3>
                             <p className="text-slate-600 leading-relaxed font-medium">{doctor.description[language]}</p>
                             
-                            <Button variant="outline" className="w-full rounded-2xl py-6 border-primary/20 bg-primary/5 text-primary font-bold" onClick={handleGetSummary}>
-                                <Sparkles className="mr-2 h-5 w-5" />
+                            <Button variant="outline" className="w-full rounded-2xl py-6 border-primary/20 bg-primary/5 text-primary font-bold shadow-sm" onClick={handleGetSummary} disabled={isLoadingSummary}>
+                                {isLoadingSummary ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Sparkles className="mr-2 h-5 w-5" />}
                                 {t.getAISummary}
                             </Button>
                         </div>
@@ -199,7 +205,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                                                     </SelectContent>
                                                 </Select>
                                             </div>
-                                            <Button type="submit" className="w-full rounded-2xl py-7 font-black text-lg" disabled={isSubmitting}>
+                                            <Button type="submit" className="w-full rounded-2xl py-7 font-black text-lg shadow-lg shadow-primary/20" disabled={isSubmitting}>
                                                 {isSubmitting ? <Loader2 className="animate-spin" /> : <MessageSquare className="mr-2" />}
                                                 {t.confirmOnWhatsApp.toUpperCase()}
                                             </Button>
@@ -216,10 +222,12 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
         {/* Success Confirmation Modal */}
         <Dialog open={isSuccessOpen} onOpenChange={setIsSuccessOpen}>
             <DialogContent className="rounded-[3rem] border-none shadow-2xl p-0 overflow-hidden max-w-sm">
-                <div className="bg-primary p-8 text-center text-white">
-                    <CheckCircle2 className="h-20 w-20 mx-auto mb-4 animate-bounce" />
-                    <DialogTitle className="text-2xl font-black leading-tight">{t.bookingSuccessTitle}</DialogTitle>
-                </div>
+                <DialogHeader className="p-0">
+                    <div className="bg-primary p-8 text-center text-white w-full">
+                        <CheckCircle2 className="h-20 w-20 mx-auto mb-4 animate-bounce" />
+                        <DialogTitle className="text-2xl font-black leading-tight text-white">{t.bookingSuccessTitle}</DialogTitle>
+                    </div>
+                </DialogHeader>
                 <div className="p-8 space-y-6">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="p-4 bg-slate-50 rounded-2xl border text-center">

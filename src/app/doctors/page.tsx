@@ -28,19 +28,22 @@ function DoctorsList() {
 
   useEffect(() => {
     setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 800);
+    const timer = setTimeout(() => setIsLoading(false), 600);
     return () => clearTimeout(timer);
   }, [location, selectedSpec]);
 
   const filteredDoctors = useMemo(() => {
     return allDoctors.filter((doc) => {
       const matchesLocation = doc.city === location;
-      const matchesSpec = selectedSpec === 'all' || doc.specialization.key === selectedSpec;
-      const matchesSearch = 
-        doc.name[language].toLowerCase().includes(searchTerm.toLowerCase()) ||
-        doc.location.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSpecPill = selectedSpec === 'all' || doc.specialization.key === selectedSpec;
       
-      return matchesLocation && matchesSpec && matchesSearch;
+      const search = searchTerm.toLowerCase();
+      const matchesSearch = 
+        doc.name[language].toLowerCase().includes(search) ||
+        doc.specialization.name[language].toLowerCase().includes(search) ||
+        doc.location.toLowerCase().includes(search);
+      
+      return matchesLocation && matchesSpecPill && matchesSearch;
     });
   }, [location, selectedSpec, searchTerm, language]);
 
@@ -69,7 +72,7 @@ function DoctorsList() {
   return (
     <div className="space-y-6">
       {/* Search Bar */}
-      <div className="relative group">
+      <div className="relative group animate-fade-in-up">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
         <Input 
           placeholder={t.searchPlaceholder}
@@ -80,7 +83,7 @@ function DoctorsList() {
       </div>
 
       {/* Specialization Filter Pills */}
-      <ScrollArea className="w-full whitespace-nowrap pb-2">
+      <ScrollArea className="w-full whitespace-nowrap pb-2 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
         <div className="flex gap-2">
           <Badge 
             variant={selectedSpec === 'all' ? 'default' : 'outline'}
@@ -104,14 +107,14 @@ function DoctorsList() {
         <ScrollBar orientation="horizontal" className="hidden" />
       </ScrollArea>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <h2 className="text-2xl font-black tracking-tight">{t.topDoctors}</h2>
           <Badge variant="secondary" className="bg-primary/10 text-primary font-black">
               {filteredDoctors.length} {language === 'hi' ? 'डॉक्टर मिले' : 'Doctors'}
           </Badge>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 pb-20">
+      <div className="grid grid-cols-1 gap-6 pb-20 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         {filteredDoctors.length > 0 ? (
           filteredDoctors.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
@@ -128,20 +131,8 @@ function DoctorsList() {
 }
 
 export default function DoctorsPage() {
-  const { toast } = useToast();
   const { translations } = useLanguage();
   const t = translations.doctorsPage;
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-    if (isMounted) {
-      toast({
-        title: t.welcomeToast,
-        description: t.welcomeToastDesc,
-      });
-    }
-  }, [isMounted, t.welcomeToast, t.welcomeToastDesc, toast]);
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">

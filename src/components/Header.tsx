@@ -1,5 +1,4 @@
-
-import { Bell, LogOut, Shield, User } from "lucide-react";
+import { Bell, LogOut, Phone, Shield, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -37,15 +36,18 @@ export function Header() {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center space-x-3">
           <SidebarTrigger className="md:hidden" />
+          <Link href="/doctors" className="hidden md:block">
+            <h1 className="font-black text-primary text-xl tracking-tighter">HELLO DOCTOR</h1>
+          </Link>
         </div>
         <div className="flex items-center gap-2">
-            <ThemeSwitcher />
-            <Button asChild variant="ghost" size="icon" className="rounded-full">
-                <a href="#" className="flex items-center justify-center">
-                    <Bell className="h-5 w-5" />
-                    <span className="sr-only">सूचनाएं</span>
+            <Button asChild variant="destructive" size="sm" className="rounded-full px-4 h-9 shadow-lg shadow-red-500/20 animate-pulse">
+                <a href="tel:9771264784" className="flex items-center gap-2">
+                    <Phone className="h-4 w-4 fill-current" />
+                    <span className="hidden xs:inline font-bold">EMERGENCY</span>
                 </a>
             </Button>
+            <ThemeSwitcher />
             {user ? (
                <DropdownMenu>
                 <DropdownMenuTrigger asChild>
