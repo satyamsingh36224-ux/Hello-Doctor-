@@ -218,7 +218,7 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
             <DialogContent className="rounded-[3rem] border-none shadow-2xl p-0 overflow-hidden max-w-sm">
                 <div className="bg-primary p-8 text-center text-white">
                     <CheckCircle2 className="h-20 w-20 mx-auto mb-4 animate-bounce" />
-                    <h2 className="text-2xl font-black leading-tight">{t.bookingSuccessTitle}</h2>
+                    <DialogTitle className="text-2xl font-black leading-tight">{t.bookingSuccessTitle}</DialogTitle>
                 </div>
                 <div className="p-8 space-y-6">
                     <div className="grid grid-cols-2 gap-4">
