@@ -1,9 +1,8 @@
-
 "use client";
 
 import * as React from "react";
 import Image from "next/image";
-import { Heart, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles, Star, ChevronLeft, MessageSquare } from "lucide-react";
+import { Heart, MapPin, Calendar, Clock, IndianRupee, Bot, Info, Loader2, User, Phone, Sparkles, Star, ChevronLeft, MessageSquare, CheckCircle2, Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
@@ -18,262 +17,192 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Header } from "@/components/Header";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useAuth, useFirestore, useUser, addDocumentNonBlocking } from "@/firebase";
-import { collection, serverTimestamp } from "firebase/firestore";
+import { useUser } from "@/firebase";
 
 const timeSlotKeys = ["10:00", "11:00", "12:00", "14:00", "15:00", "16:00"];
-
-const isEmoji = (str: string) => {
-    if (!str) return false;
-    const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
-    return emojiRegex.test(str);
-};
 
 export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
   const { toast } = useToast();
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const [isBookingOpen, setIsBookingOpen] = React.useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
+  const [bookingDetails, setBookingDetails] = React.useState<any>(null);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [summary, setSummary] = React.useState("");
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
   const { language, translations } = useLanguage();
   const t = translations.doctorProfilePage;
-  const tCard = translations.doctorCard;
   const tTime = translations.timeSlots;
-  const pathname = usePathname();
-  const firestore = useFirestore();
   const { user } = useUser();
 
-
-  React.useEffect(() => {
-    if (window.location.hash === '#booking') {
-      setIsBookingOpen(true);
-    }
-  }, [pathname]);
-  
   const doctorName = doctor.name[language];
   const doctorSpecialization = doctor.specialization.name[language];
-  const doctorDescription = doctor.description[language];
-
 
   const handleBooking = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!date) {
-      toast({
-        title: "तारीख चुनें",
-        description: "कृपया अपॉइंटमेंट के लिए एक तारीख चुनें।",
-        variant: "destructive",
-      });
-      return;
-    }
+    if (!date) return;
     
     setIsSubmitting(true);
     const formData = new FormData(event.currentTarget);
-    const patientName = formData.get("name") as string;
-    const patientPhone = formData.get("phone") as string;
-    const selectedTime = formData.get("time") as string;
+    const name = formData.get("name") as string;
+    const phone = formData.get("phone") as string;
+    const time = formData.get("time") as string;
     
-    const formattedDate = date.toLocaleDateString('hi-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    const formattedDate = date.toLocaleDateString(language === 'hi' ? 'hi-IN' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' });
+    const token = Math.floor(100 + Math.random() * 900);
 
-    // Although we are not saving appointments to Firebase in this simplified model,
-    // we keep the WhatsApp logic.
-    const clinicPhoneNumber = "9771264784";
-    const message = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n\n*मरीज का नाम:* ${patientName}\n*फ़ोन नंबर:* ${patientPhone}\n*पसंदीदा तारीख:* ${formattedDate}\n*पसंदीदा समय:* ${selectedTime}\n\nयह अपॉइंटमेंट ऐप के माध्यम से बुक किया गया है। कृपया पुष्टि करें। धन्यवाद!`;
-    const whatsappUrl = `https://wa.me/${clinicPhoneNumber}?text=${encodeURIComponent(message)}`;
+    const details = { name, phone, date: formattedDate, time, token };
+    setBookingDetails(details);
 
-    // Simulate a delay for user feedback
+    // WhatsApp Message
+    const clinicPhone = "9771264784";
+    const msg = `नमस्ते, मैं ${doctorName} के साथ अपॉइंटमेंट बुक करना चाहता हूँ।\n*मरीज:* ${name}\n*टोकन:* ${token}\n*समय:* ${formattedDate}, ${time}\nधन्यवाद!`;
+    const whatsappUrl = `https://wa.me/${clinicPhone}?text=${encodeURIComponent(msg)}`;
+
     setTimeout(() => {
         setIsSubmitting(false);
         setIsBookingOpen(false);
-        toast({
-          title: t.appointmentBookedToast,
-          description: `${t.appointmentBookedToastDesc} ${doctorName}`,
-        });
+        setIsSuccessOpen(true);
         window.open(whatsappUrl, '_blank');
-    }, 1000);
+    }, 1200);
   };
 
   const handleGetSummary = async () => {
     setIsLoadingSummary(true);
-    setSummary("");
     try {
-      // Use Hindi description for summary as the model is prompted in Hindi
       const result = await getSpecializationSummary({ specializationText: doctor.description.hi });
       setSummary(result.summary);
     } catch (error) {
       setSummary(t.aiSummaryError);
-      console.error(error);
     } finally {
       setIsLoadingSummary(false);
     }
   };
 
-  const handleFavoriteToggle = () => {
-    setIsFavorite(!isFavorite);
-    toast({
-        title: isFavorite ? tCard.removedFromFavToast : tCard.addedToFavToast,
-        description: `${doctorName} ${isFavorite ? tCard.removedFromFavToastDesc : tCard.addedToFavToastDesc}`,
-    })
-  }
-
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.location)}`;
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-slate-50">
         <Header />
-        <main className="flex-1 container mx-auto px-4 py-8">
-            <div className="max-w-4xl mx-auto">
-                <Link href="/doctors" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4">
+        <main className="flex-1 container mx-auto px-4 py-8 mb-20">
+            <div className="max-w-4xl mx-auto space-y-6">
+                <Link href="/doctors" className="flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-primary transition-colors">
                     <ChevronLeft className="h-4 w-4" />
                     {t.backToAllDoctors}
                 </Link>
-                <Card className="shadow-lg rounded-2xl overflow-hidden border-none">
-                    <CardHeader className="p-6">
-                        <div className="flex justify-between items-start">
-                             <div>
-                                <CardTitle className="text-3xl">{doctorName}</CardTitle>
-                                <CardDescription className="text-primary text-lg font-medium">{doctorSpecialization}</CardDescription>
+
+                <Card className="shadow-2xl rounded-[2.5rem] overflow-hidden border-none bg-white">
+                    <div className="relative h-72 w-full">
+                        <Image
+                            src={doctor.imageUrl.includes('http') ? doctor.imageUrl : `https://picsum.photos/seed/${doctor.id}/800/600`}
+                            alt={doctorName}
+                            fill
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+                             <Badge className="w-fit mb-2 bg-primary/90 text-white border-none px-4 py-1">{doctorSpecialization}</Badge>
+                             <h1 className="text-4xl font-black text-white tracking-tight">{doctorName}</h1>
+                        </div>
+                        <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            className="absolute top-4 right-4 rounded-full bg-white/20 backdrop-blur-md text-white hover:bg-white/40"
+                            onClick={() => setIsFavorite(!isFavorite)}
+                        >
+                            <Heart className={`h-6 w-6 ${isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
+                        </Button>
+                    </div>
+
+                    <CardContent className="p-8 space-y-8">
+                        <div className="grid grid-cols-2 gap-4">
+                             <div className="p-4 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center">
+                                <Star className="h-6 w-6 text-yellow-400 fill-yellow-400 mb-2" />
+                                <span className="text-xl font-black">4.8</span>
+                                <span className="text-xs text-muted-foreground font-bold uppercase tracking-widest">{t.reviews}</span>
                             </div>
-                             <Button size="icon" variant="ghost" className="rounded-full h-10 w-10 bg-secondary hover:bg-primary/10" onClick={handleFavoriteToggle}>
-                                <Heart className={`h-5 w-5 transition-all ${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-400'}`} />
-                                <span className="sr-only">{t.favorite}</span>
+                            <div className="p-4 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col items-center text-center">
+                                <IndianRupee className="h-6 w-6 text-primary mb-2" />
+                                <span className="text-xl font-black">{doctor.fee}</span>
+                                <span className="text-xs text-muted-foreground font-bold uppercase tracking-widest">{t.consultationFee}</span>
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h3 className="text-xl font-black flex items-center gap-2">
+                                <Info className="h-5 w-5 text-primary" />
+                                {t.description}
+                            </h3>
+                            <p className="text-slate-600 leading-relaxed font-medium">{doctor.description[language]}</p>
+                            
+                            <Button variant="outline" className="w-full rounded-2xl py-6 border-primary/20 bg-primary/5 text-primary font-bold" onClick={handleGetSummary}>
+                                <Sparkles className="mr-2 h-5 w-5" />
+                                {t.getAISummary}
                             </Button>
                         </div>
-                    </CardHeader>
-                    <CardContent className="p-6 pt-0">
-                        <div className="relative h-60 w-full mb-6">
-                            {isEmoji(doctor.imageUrl) ? (
-                                <div className="flex items-center justify-center h-full w-full bg-secondary rounded-2xl">
-                                    <span className="text-8xl">{doctor.imageUrl}</span>
-                                </div>
-                            ) : (
-                                <Image
-                                    src={doctor.imageUrl}
-                                    alt={doctorName}
-                                    fill
-                                    className="rounded-2xl object-cover"
-                                    data-ai-hint={doctor.aiHint}
-                                />
-                            )}
-                        </div>
-                        <div className="flex items-center gap-6 text-sm text-muted-foreground mb-4">
-                             <div className="flex items-center gap-2">
-                                <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-                                <span className="font-semibold text-base">4.8</span>
-                                <span className="text-sm">({t.reviews})</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <IndianRupee className="h-5 w-5" />
-                                <span className="font-semibold text-base">{doctor.fee} {t.consultationFee}</span>
-                            </div>
-                        </div>
 
-                        <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6">
-                            <MapPin className="h-5 w-5" />
-                            <span className="text-base">{doctor.location}</span>
-                        </a>
+                        <Separator />
 
-                        <Separator className="my-6" />
-
-                        <div>
-                            <h4 className="font-semibold text-xl mb-2">{t.description}</h4>
-                            <p className="text-muted-foreground leading-relaxed">{doctorDescription}</p>
-                        </div>
-                        
-                        <Separator className="my-6" />
-
-                        <div id="booking" className="flex flex-col sm:flex-row gap-4">
-                            <AlertDialog>
-                                <AlertDialogTrigger asChild>
-                                    <Button variant="outline" className="flex-1 rounded-full py-6 text-base" onClick={handleGetSummary}>
-                                        <Sparkles className="mr-2 h-5 w-5" />
-                                        {t.getAISummary}
+                        <div className="flex flex-col gap-4">
+                             <div className="flex items-start gap-4">
+                                <div className="p-3 bg-primary/10 rounded-2xl text-primary"><MapPin className="h-6 w-6" /></div>
+                                <div className="flex-1">
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{t.location}</p>
+                                    <p className="font-bold text-slate-700">{doctor.location}</p>
+                                    <Button asChild variant="link" className="p-0 h-auto text-primary font-black">
+                                        <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                                            <Navigation className="h-3 w-3 mr-1" />
+                                            View on Maps
+                                        </a>
                                     </Button>
-                                </AlertDialogTrigger>
-                                <AlertDialogContent>
-                                    <AlertDialogHeader>
-                                        <AlertDialogTitle className="flex items-center gap-2"><Bot /> {t.aiSummaryFor} {doctorName}</AlertDialogTitle>
-                                        {isLoadingSummary ? (
-                                            <div className="flex items-center justify-center p-8">
-                                                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                                            </div>
-                                        ) : (
-                                            <AlertDialogDescription className="pt-4">
-                                                {summary || "एआई-संचालित सारांश उत्पन्न करने के लिए बटन पर क्लिक करें।"}
-                                            </AlertDialogDescription>
-                                        )}
-                                    </AlertDialogHeader>
-                                    <AlertDialogFooter>
-                                        <AlertDialogCancel>{t.close}</AlertDialogCancel>
-                                    </AlertDialogFooter>
-                                </AlertDialogContent>
-                            </AlertDialog>
+                                </div>
+                             </div>
+                        </div>
 
+                        <div className="pt-4">
                             <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
                                 <DialogTrigger asChild>
-                                    <Button className="flex-1 rounded-full py-6 text-base">{t.bookAppointmentNow}</Button>
+                                    <Button className="w-full rounded-[1.5rem] py-8 text-xl font-black shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                                        {t.bookAppointmentNow.toUpperCase()}
+                                    </Button>
                                 </DialogTrigger>
-                                <DialogContent>
-                                    <DialogHeader>
-                                        <DialogTitle>📝 {t.bookAppointmentWith} {doctorName}</DialogTitle>
-
-                                        <DialogDescription>
-                                            {t.bookingFormDesc}
-                                        </DialogDescription>
+                                <DialogContent className="rounded-[2.5rem] border-none shadow-2xl max-w-sm sm:max-w-md">
+                                    <DialogHeader className="items-center">
+                                        <div className="p-4 bg-primary/10 rounded-full mb-2"><Calendar className="h-8 w-8 text-primary" /></div>
+                                        <DialogTitle className="text-2xl font-black">{t.bookAppointmentWith}</DialogTitle>
+                                        <DialogDescription className="font-bold text-primary">{doctorName}</DialogDescription>
                                     </DialogHeader>
-                                    <ScrollArea className="max-h-[70vh] p-1">
-                                        <form onSubmit={handleBooking} className="space-y-4 p-1">
-                                            <div className="space-y-4 py-4">
-                                                <div className="relative">
-                                                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="name" id="name" placeholder={t.patientName} className="pl-10 rounded-full" required defaultValue={user?.displayName || ''} />
-                                                </div>
-                                                <div className="relative">
-                                                    <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Input name="phone" id="phone" type="tel" placeholder={t.phoneNumber} className="pl-10 rounded-full" required defaultValue={user?.phoneNumber || ''}/>
-                                                </div>
-                                                <div className="flex justify-center">
+                                    <ScrollArea className="max-h-[60vh] px-1">
+                                        <form onSubmit={handleBooking} className="space-y-5 p-1">
+                                            <div className="space-y-4">
+                                                <Input name="name" placeholder={t.patientName} className="rounded-2xl py-6 font-bold" required defaultValue={user?.displayName || ''} />
+                                                <Input name="phone" type="tel" placeholder={t.phoneNumber} className="rounded-2xl py-6 font-bold" required defaultValue={user?.phoneNumber || ''} />
+                                                <div className="border rounded-3xl p-4 bg-slate-50">
                                                     <CalendarPicker
                                                         mode="single"
                                                         selected={date}
                                                         onSelect={setDate}
-                                                        className="w-full rounded-md border"
-                                                        disabled={(d) => d < new Date(new Date().setDate(new Date().getDate() - 1))}
+                                                        className="w-full"
+                                                        disabled={(d) => d < new Date(new Date().setHours(0,0,0,0))}
                                                     />
                                                 </div>
-                                                <div className="relative">
-                                                    <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                                    <Select name="time" required>
-                                                        <SelectTrigger className="pl-10 rounded-full">
-                                                            <SelectValue placeholder={t.selectTimeSlot} />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            {timeSlotKeys.map(slot => (
-                                                                <SelectItem key={slot} value={tTime[slot as keyof typeof tTime]}>{tTime[slot as keyof typeof tTime]}</SelectItem>
-                                                            ))}
-                                                        </SelectContent>
-                                                    </Select>
-                                                </div>
+                                                <Select name="time" required>
+                                                    <SelectTrigger className="rounded-2xl py-6 font-bold">
+                                                        <SelectValue placeholder={t.selectTimeSlot} />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        {timeSlotKeys.map(slot => (
+                                                            <SelectItem key={slot} value={tTime[slot as keyof typeof tTime]}>{tTime[slot as keyof typeof tTime]}</SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
                                             </div>
-                                            <Separator />
-                                            <div className="flex justify-between items-center text-lg font-semibold">
-                                                <span>{t.totalPayable}</span>
-                                                <div className="flex items-center">
-                                                    <IndianRupee className="h-5 w-5 mr-1" />
-                                                    <span>{doctor.fee}</span>
-                                                </div>
-                                            </div>
-                                            <DialogFooter className="pt-2 sticky bottom-0 bg-background pb-1">
-                                                <Button type="submit" className="w-full rounded-full" disabled={isSubmitting}>
-                                                     {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />}
-                                                    {t.confirmOnWhatsApp}
-                                                </Button>
-                                            </DialogFooter>
+                                            <Button type="submit" className="w-full rounded-2xl py-7 font-black text-lg" disabled={isSubmitting}>
+                                                {isSubmitting ? <Loader2 className="animate-spin" /> : <MessageSquare className="mr-2" />}
+                                                {t.confirmOnWhatsApp.toUpperCase()}
+                                            </Button>
                                         </form>
                                     </ScrollArea>
                                 </DialogContent>
@@ -283,6 +212,64 @@ export function DoctorProfileClient({ doctor }: { doctor: Doctor }) {
                 </Card>
             </div>
         </main>
+
+        {/* Success Confirmation Modal */}
+        <Dialog open={isSuccessOpen} onOpenChange={setIsSuccessOpen}>
+            <DialogContent className="rounded-[3rem] border-none shadow-2xl p-0 overflow-hidden max-w-sm">
+                <div className="bg-primary p-8 text-center text-white">
+                    <CheckCircle2 className="h-20 w-20 mx-auto mb-4 animate-bounce" />
+                    <h2 className="text-2xl font-black leading-tight">{t.bookingSuccessTitle}</h2>
+                </div>
+                <div className="p-8 space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="p-4 bg-slate-50 rounded-2xl border text-center">
+                            <p className="text-[10px] font-black uppercase text-slate-400 mb-1">{t.tokenNumber}</p>
+                            <p className="text-2xl font-black text-primary">#{bookingDetails?.token}</p>
+                        </div>
+                        <div className="p-4 bg-slate-50 rounded-2xl border text-center">
+                            <p className="text-[10px] font-black uppercase text-slate-400 mb-1">{t.phoneNumber}</p>
+                            <p className="text-sm font-black">{bookingDetails?.phone}</p>
+                        </div>
+                    </div>
+                    <div className="space-y-3">
+                         <div className="flex items-center justify-between text-sm font-bold">
+                            <span className="text-slate-400">Doctor:</span>
+                            <span className="text-slate-700">{doctorName}</span>
+                         </div>
+                         <div className="flex items-center justify-between text-sm font-bold">
+                            <span className="text-slate-400">Date & Time:</span>
+                            <span className="text-slate-700">{bookingDetails?.date}, {bookingDetails?.time}</span>
+                         </div>
+                    </div>
+                    <div className="p-5 bg-yellow-50 rounded-[1.5rem] border border-yellow-100">
+                        <div className="flex items-center gap-3 text-yellow-700 font-black mb-1">
+                            <Phone className="h-4 w-4" />
+                            <span>{t.helpline}</span>
+                        </div>
+                        <p className="text-xl font-black text-yellow-800 tracking-widest">9771264784</p>
+                    </div>
+                    <Button onClick={() => setIsSuccessOpen(false)} className="w-full rounded-2xl py-6 font-black uppercase tracking-widest">
+                        Great!
+                    </Button>
+                </div>
+            </DialogContent>
+        </Dialog>
+
+        {/* AI Summary Dialog */}
+        <AlertDialog open={!!summary} onOpenChange={() => setSummary("")}>
+            <AlertDialogContent className="rounded-[2.5rem] border-none shadow-2xl">
+                <AlertDialogHeader className="items-center">
+                    <div className="p-4 bg-primary/10 rounded-full mb-2"><Bot className="h-8 w-8 text-primary" /></div>
+                    <AlertDialogTitle className="text-2xl font-black">{t.aiSummaryFor} {doctorName}</AlertDialogTitle>
+                    <AlertDialogDescription className="text-slate-600 font-medium text-center pt-4 leading-relaxed">
+                        {summary}
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter className="sm:justify-center">
+                    <AlertDialogAction className="rounded-2xl px-12 py-6 font-black uppercase tracking-widest">Got it!</AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
     </div>
   );
 }

@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Hello Doctor',
     short_name: 'Hello Doctor',
-    description: 'Bihar Health Care - Trusted Health Partner',
+    description: 'Bihar Health Care - Trusted Health Partner for Siwan & Gopalganj',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
