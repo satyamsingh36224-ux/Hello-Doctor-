@@ -67,7 +67,7 @@ export default function LoginPage() {
   const handleLogin = () => {
     setLoading(true);
     toast({ 
-      title: language === 'hi' ? "लॉगिन सफल!" : "Login Successful!", 
+      title: language === 'hi' ? "लॉगिन सफल!" : language === 'en' ? "Login Successful!" : "लॉगिन सफल!", 
       description: `Welcome to Hello Doctor ${location === 'siwan' ? 'Siwan' : 'Gopalganj'}.` 
     });
     
@@ -177,7 +177,7 @@ export default function LoginPage() {
                     <span className="w-full border-t border-slate-200" />
                 </div>
                 <div className="relative flex justify-center text-[10px] uppercase font-bold">
-                    <span className="bg-[#f8fafc] px-3 text-slate-400 tracking-widest">{t.or}</span>
+                    <span className="bg-white/80 px-3 text-slate-400 tracking-widest">{t.or}</span>
                 </div>
               </div>
 
@@ -229,16 +229,16 @@ export default function LoginPage() {
                         <Lock className="h-6 w-6 text-primary" />
                     </div>
                     <DialogTitle className="text-2xl font-black tracking-tighter">
-                        {tAdmin.title}
+                        {tAdmin?.title || "Admin"}
                     </DialogTitle>
                     <DialogDescription className="text-center font-medium">
-                        {tAdmin.enterPassword}
+                        {tAdmin?.enterPassword || "Enter Password"}
                     </DialogDescription>
                 </DialogHeader>
                 <form onSubmit={handleAdminLogin} className="space-y-5 py-4">
                     <Input
                         type="password"
-                        placeholder={tAdmin.passwordPlaceholder}
+                        placeholder={tAdmin?.passwordPlaceholder || "Password"}
                         value={adminPassword}
                         onChange={(e) => setAdminPassword(e.target.value)}
                         className="rounded-2xl py-7 text-center text-xl tracking-[0.5em] border-slate-200 focus:border-primary font-bold shadow-inner"
@@ -246,7 +246,7 @@ export default function LoginPage() {
                     />
                     <DialogFooter className="sm:justify-center">
                         <Button type="submit" className="w-full rounded-2xl py-7 font-black text-lg shadow-xl shadow-primary/20 tracking-widest">
-                            {tAdmin.loginButton.toUpperCase()}
+                            {(tAdmin?.loginButton || "LOGIN").toUpperCase()}
                         </Button>
                     </DialogFooter>
                 </form>
