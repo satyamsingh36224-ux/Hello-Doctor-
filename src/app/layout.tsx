@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, LifeBuoy, BriefcaseMedical, History, Settings, Hospital, HelpCircle } from 'lucide-react';
+import { Home, BriefcaseMedical, History, Settings, Hospital, HelpCircle, LayoutGrid } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { LocationProvider } from '@/context/LocationContext';
@@ -21,25 +21,19 @@ export default function RootLayout({
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
-    setIsOnline(navigator.onLine);
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
+    if (typeof window !== "undefined") {
+      setIsOnline(navigator.onLine);
+      const handleOnline = () => setIsOnline(true);
+      const handleOffline = () => setIsOnline(false);
 
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
+      window.addEventListener("online", handleOnline);
+      window.addEventListener("offline", handleOffline);
 
-    // Handle Android physical back button (basic prevention for unintentional exit)
-    const handleBack = (e: PopStateEvent) => {
-        // In a real mobile environment, Capacitor handles this better, 
-        // but for a web-app, we ensure we stay within history.
-    };
-    window.addEventListener("popstate", handleBack);
-
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-      window.removeEventListener("popstate", handleBack);
-    };
+      return () => {
+        window.removeEventListener("online", handleOnline);
+        window.removeEventListener("offline", handleOffline);
+      };
+    }
   }, []);
 
   return (
@@ -98,9 +92,17 @@ export default function RootLayout({
                                 </SidebarMenuItem>
                                 <SidebarMenuItem>
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
+                                        <Link href="/history" className="flex items-center gap-3 font-medium">
+                                            <div className="p-2 bg-primary/10 rounded-lg text-primary"><History className="h-5 w-5" /></div> 
+                                            अपॉइंटमेंट इतिहास
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/support" className="flex items-center gap-3 font-medium">
                                             <div className="p-2 bg-primary/10 rounded-lg text-primary"><HelpCircle className="h-5 w-5" /></div> 
-                                            मदद
+                                            मदद और सपोर्ट
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
