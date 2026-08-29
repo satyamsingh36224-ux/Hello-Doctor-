@@ -1,10 +1,11 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { SidebarProvider, Sidebar, SidebarInset, SidebarHeader, SidebarContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Home, BriefcaseMedical, History, Settings, Hospital, HelpCircle, LayoutGrid } from 'lucide-react';
+import { Home, BriefcaseMedical, History, Settings, Hospital, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { LocationProvider } from '@/context/LocationContext';
@@ -48,7 +49,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased selection:bg-primary/20 overflow-x-hidden bg-slate-50" suppressHydrationWarning>
+      <body className="font-body antialiased selection:bg-primary/20 overflow-x-hidden bg-slate-50 min-h-screen" suppressHydrationWarning>
         {!isOnline && <OfflineScreen />}
         <LanguageProvider>
           <LocationProvider>
@@ -117,8 +118,10 @@ export default function RootLayout({
                             </SidebarMenu>
                         </SidebarContent>
                     </Sidebar>
-                    <SidebarInset className="bg-slate-50 pb-24 md:pb-0">
-                        {children}
+                    <SidebarInset className="bg-slate-50 relative">
+                        <div className="pb-32 md:pb-0">
+                          {children}
+                        </div>
                         <BottomNav />
                     </SidebarInset>
                 </SidebarProvider>
