@@ -21,26 +21,33 @@ export function BottomNav() {
   if (pathname === "/" || pathname === "/other-services") return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-md border-t border-slate-200 flex items-center justify-around px-2 py-3 pb-safe-bottom md:hidden shadow-[0_-10px_30px_rgba(0,0,0,0.08)]">
-      {navItems.map((item) => {
-        const isActive = pathname === item.href || (item.href === "/doctors" && pathname?.startsWith("/doctors"));
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            className={cn(
-              "flex flex-col items-center gap-1 transition-all duration-300 relative px-2 py-1 rounded-xl flex-1",
-              isActive ? "text-primary scale-110" : "text-slate-400 hover:text-primary/70"
-            )}
-          >
-            <item.icon className={cn("h-6 w-6", isActive ? "stroke-[2.5px]" : "stroke-2")} />
-            <span className="text-[10px] font-black uppercase tracking-tighter">{item.label}</span>
-            {isActive && (
-              <span className="absolute -top-1 w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_#0ea5e9] animate-pulse" />
-            )}
-          </Link>
-        );
-      })}
-    </nav>
+    <div className="fixed bottom-0 left-0 right-0 z-[100] px-4 pb-4 pointer-events-none">
+      <nav className={cn(
+        "mx-auto w-full max-w-md pointer-events-auto",
+        "bg-white/95 backdrop-blur-xl border border-slate-200/50",
+        "flex items-center justify-around px-2 py-3 rounded-[2rem]",
+        "shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5"
+      )}>
+        {navItems.map((item) => {
+          const isActive = pathname === item.href || (item.href === "/doctors" && pathname?.startsWith("/doctors"));
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex flex-col items-center gap-1 transition-all duration-300 relative px-2 py-1 rounded-2xl flex-1",
+                isActive ? "text-primary scale-110" : "text-slate-400 hover:text-primary/70"
+              )}
+            >
+              <item.icon className={cn("h-6 w-6", isActive ? "stroke-[2.5px]" : "stroke-2")} />
+              <span className="text-[10px] font-black uppercase tracking-tighter">{item.label}</span>
+              {isActive && (
+                <span className="absolute -top-1 w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_#0ea5e9] animate-pulse" />
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
   );
 }

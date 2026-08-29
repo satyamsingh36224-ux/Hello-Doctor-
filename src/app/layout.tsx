@@ -55,14 +55,14 @@ export default function RootLayout({
           <LocationProvider>
             <FirebaseClientProvider>
                 <SidebarProvider>
-                    <Sidebar className="border-r border-border/50 hidden md:flex">
+                    <Sidebar className="border-r border-border/50 hidden lg:flex">
                         <SidebarHeader className="p-6 flex flex-row items-center gap-3">
                             <div className="p-2 bg-primary/10 rounded-xl">
                                 <Logo size={32} />
                             </div>
                             <div className="flex flex-col">
                               <h2 className="text-xl font-bold text-sidebar-foreground tracking-tight">Hello Doctor</h2>
-                              <p className="text-[10px] text-sidebar-foreground/60 font-medium uppercase tracking-widest">Bihar Health Care</p>
+                              <p className="text-[10px] text-sidebar-foreground/60 font-medium uppercase tracking-widest">GOPALGANJ SIWAN</p>
                             </div>
                         </SidebarHeader>
                         <SidebarContent className="px-2">
@@ -95,7 +95,7 @@ export default function RootLayout({
                                     <SidebarMenuButton asChild className="hover:bg-primary/5">
                                         <Link href="/history" className="flex items-center gap-3 font-medium">
                                             <div className="p-2 bg-primary/10 rounded-lg text-primary"><History className="h-5 w-5" /></div> 
-                                            अपॉइंटमेंट इतिहास
+                                            इतिहास
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
@@ -119,7 +119,7 @@ export default function RootLayout({
                         </SidebarContent>
                     </Sidebar>
                     <SidebarInset className="bg-slate-50 relative">
-                        <div className="pb-32 md:pb-0">
+                        <div className="pb-32">
                           {children}
                         </div>
                         <BottomNav />
