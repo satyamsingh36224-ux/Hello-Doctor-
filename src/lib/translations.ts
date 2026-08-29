@@ -55,6 +55,64 @@ const translations = {
         date: "दिनांक",
         status: "स्थिति",
     },
+    hospitalsPage: {
+        hospitalsTitle: "अस्पताल",
+        hospitalsDesc: "सीवान और गोपालगंज के प्रमुख अस्पताल",
+    },
+    otherServicesPage: {
+        title: "अन्य स्वास्थ्य सेवाएं",
+        description: "हम आपकी हर ज़रूरत के लिए यहाँ हैं",
+        findDoctor: "डॉक्टर खोजें",
+        findDoctorDesc: "विशेषज्ञ डॉक्टरों से मिलें",
+        homeVisit: "होम विज़िट",
+        homeVisitDesc: "डॉक्टर को घर बुलाएं",
+        bookLabTest: "लैब टेस्ट",
+        bookLabTestDesc: "जांच घर बैठे बुक करें",
+        tbTreatment: "टीबी मुक्त अभियान",
+        tbTreatmentDesc: "मुफ्त सहायता और सलाह"
+    },
+    homeVisitPage: {
+        title: "डॉक्टर होम विज़िट",
+        description: "घर बैठे डॉक्टर से परामर्श लें",
+        patientNamePlaceholder: "मरीज का नाम",
+        addressPlaceholder: "पूरा पता",
+        phonePlaceholder: "फ़ोन नंबर",
+        problemPlaceholder: "अपनी समस्या संक्षेप में लिखें...",
+        requestButton: "विज़िट के लिए अनुरोध करें",
+        requestSentToast: "अनुरोध प्राप्त हुआ!",
+        requestSentToastDesc: "हमारी टीम जल्द ही आपसे संपर्क करेगी।"
+    },
+    labTestPage: {
+        title: "लैब टेस्ट बुकिंग",
+        description: "खून जांच और अन्य टेस्ट घर से कराएं",
+        patientNamePlaceholder: "मरीज का नाम",
+        phonePlaceholder: "फ़ोन नंबर",
+        testNamePlaceholder: "जांच का नाम (जैसे: Blood Test)",
+        requestButton: "टेस्ट बुक करें",
+        requestSentToast: "बुकिंग अनुरोध भेजा गया!",
+        requestSentToastDesc: "हम पुष्टि के लिए कॉल करेंगे।"
+    },
+    tbFreePage: {
+        title: "टीबी मुक्त भारत",
+        description: "टीबी के इलाज के लिए मुफ्त सहायता लें",
+        patientNamePlaceholder: "मरीज का नाम",
+        addressPlaceholder: "पता",
+        phonePlaceholder: "फ़ोन नंबर",
+        problemPlaceholder: "अपनी समस्या या लक्षण बताएं...",
+        requestButton: "सहायता मांगें",
+        requestSentToast: "जानकारी भेज दी गई!",
+        requestSentToastDesc: "स्वास्थ्य मित्र आपसे जल्द संपर्क करेंगे।"
+    },
+    jaanchKendra: {
+        title: "जांच केंद्र",
+        description: "सभी प्रकार की मेडिकल जांच",
+        patientNamePlaceholder: "मरीज का नाम",
+        phonePlaceholder: "फ़ोन नंबर",
+        testNamePlaceholder: "जांच का नाम",
+        requestButton: "बुक करें",
+        requestSentToast: "अनुरोध भेजा गया",
+        requestSentToastDesc: "संपर्क किया जाएगा"
+    },
     doctorCard: {
         consultationFee: "परामर्श शुल्क",
         reviews: "समीक्षाएं",
@@ -170,6 +228,64 @@ const translations = {
         date: "Date",
         status: "Status",
     },
+    hospitalsPage: {
+        hospitalsTitle: "Hospitals",
+        hospitalsDesc: "Top hospitals in Siwan and Gopalganj",
+    },
+    otherServicesPage: {
+        title: "Other Health Services",
+        description: "We are here for all your needs",
+        findDoctor: "Find Doctor",
+        findDoctorDesc: "Consult specialists",
+        homeVisit: "Home Visit",
+        homeVisitDesc: "Get doctor at home",
+        bookLabTest: "Lab Test",
+        bookLabTestDesc: "Book tests from home",
+        tbTreatment: "TB Free Mission",
+        tbTreatmentDesc: "Free support & advice"
+    },
+    homeVisitPage: {
+        title: "Home Visit",
+        description: "Consult a doctor at your doorstep",
+        patientNamePlaceholder: "Patient Name",
+        addressPlaceholder: "Full Address",
+        phonePlaceholder: "Phone Number",
+        problemPlaceholder: "Describe your problem...",
+        requestButton: "Request Visit",
+        requestSentToast: "Request Received!",
+        requestSentToastDesc: "Our team will contact you soon."
+    },
+    labTestPage: {
+        title: "Lab Test Booking",
+        description: "Book blood tests & more from home",
+        patientNamePlaceholder: "Patient Name",
+        phonePlaceholder: "Phone Number",
+        testNamePlaceholder: "Test Name (e.g. Blood Test)",
+        requestButton: "Book Test",
+        requestSentToast: "Booking Requested!",
+        requestSentToastDesc: "We will call you to confirm."
+    },
+    tbFreePage: {
+        title: "TB Free India",
+        description: "Get free help for TB treatment",
+        patientNamePlaceholder: "Patient Name",
+        addressPlaceholder: "Address",
+        phonePlaceholder: "Phone Number",
+        problemPlaceholder: "Describe symptoms...",
+        requestButton: "Get Help",
+        requestSentToast: "Info Sent!",
+        requestSentToastDesc: "A counselor will call you soon."
+    },
+    jaanchKendra: {
+        title: "Diagnostic Center",
+        description: "All types of medical tests",
+        patientNamePlaceholder: "Patient Name",
+        phonePlaceholder: "Phone Number",
+        testNamePlaceholder: "Test Name",
+        requestButton: "Book Now",
+        requestSentToast: "Request Sent",
+        requestSentToastDesc: "We will contact you"
+    },
     doctorCard: {
         consultationFee: "Consultation Fee",
         reviews: "reviews",
@@ -284,6 +400,64 @@ const translations = {
         doctor: "डॉक्टर",
         date: "तारीख",
         status: "हालचाल",
+    },
+    hospitalsPage: {
+        hospitalsTitle: "अस्पताल",
+        hospitalsDesc: "सीवान अउर गोपालगंज के बड़हन अस्पताल",
+    },
+    otherServicesPage: {
+        title: "अउर सेहत सेवा",
+        description: "हम राउर हर जरूरत खातिर तैयार बानी",
+        findDoctor: "डॉक्टर खोजीं",
+        findDoctorDesc: "बड़हन डॉक्टरन से मिलीं",
+        homeVisit: "घरे बुलाईं",
+        homeVisitDesc: "डॉक्टर घरे अईहें",
+        bookLabTest: "जांच बुक करीं",
+        bookLabTestDesc: "घरे से जांच कराईं",
+        tbTreatment: "टीबी मुक्त अभियान",
+        tbTreatmentDesc: "मुफ्त मदद अउर सलाह"
+    },
+    homeVisitPage: {
+        title: "डॉक्टर घरे विज़िट",
+        description: "घरे बइठल डॉक्टर से बात करीं",
+        patientNamePlaceholder: "मरीज के नाम",
+        addressPlaceholder: "पूरा पता",
+        phonePlaceholder: "फोन नंबर",
+        problemPlaceholder: "का दिक्कत बा, लिखीं...",
+        requestButton: "डॉक्टर बुलाईं",
+        requestSentToast: "खबर मिल गइल!",
+        requestSentToastDesc: "हमनी के टीम जल्दीये फोन करी।"
+    },
+    labTestPage: {
+        title: "जांच बुकिंग",
+        description: "खून जांच अउर दोसर टेस्ट घरे से",
+        patientNamePlaceholder: "मरीज के नाम",
+        phonePlaceholder: "फोन नंबर",
+        testNamePlaceholder: "जांच के नाम (जैसे: Blood Test)",
+        requestButton: "टेस्ट बुक करीं",
+        requestSentToast: "बुकिंग खबर गइल!",
+        requestSentToastDesc: "फोन पर पक्का कइल जाई।"
+    },
+    tbFreePage: {
+        title: "टीबी मुक्त भारत",
+        description: "टीबी के इलाज खातिर मुफ्त मदद लीं",
+        patientNamePlaceholder: "मरीज के नाम",
+        addressPlaceholder: "पता",
+        phonePlaceholder: "फोन नंबर",
+        problemPlaceholder: "का लक्षण बा, बताईं...",
+        requestButton: "मदद मांगीं",
+        requestSentToast: "खबर भेजल गइल!",
+        requestSentToastDesc: "स्वास्थ्य मित्र फोन करिहें।"
+    },
+    jaanchKendra: {
+        title: "जांच केंद्र",
+        description: "सब तरह के मेडिकल जांच",
+        patientNamePlaceholder: "मरीज के नाम",
+        phonePlaceholder: "फोन नंबर",
+        testNamePlaceholder: "जांच के नाम",
+        requestButton: "बुक करीं",
+        requestSentToast: "खबर भेजल गइल",
+        requestSentToastDesc: "फोन कइल जाई"
     },
     doctorCard: {
         consultationFee: "फीस",
