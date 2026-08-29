@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -41,8 +42,8 @@ export default function LoginPage() {
   const { language, setLanguage, translations } = useLanguage();
   const { location, setLocation } = useLocation();
   const router = useRouter();
-  const t = translations.loginPage;
-  const tAdmin = translations.admin;
+  const t = translations?.loginPage || {};
+  const tAdmin = translations?.admin || {};
   const { toast } = useToast();
   const { user, loading: userLoading } = useUser();
   const [loading, setLoading] = useState(false);
@@ -67,7 +68,7 @@ export default function LoginPage() {
   const handleLogin = () => {
     setLoading(true);
     toast({ 
-      title: language === 'hi' ? "लॉगिन सफल!" : language === 'en' ? "Login Successful!" : "लॉगिन सफल!", 
+      title: language === 'hi' ? "लॉगिन सफल!" : "Login Successful!", 
       description: `Welcome to Hello Doctor ${location === 'siwan' ? 'Siwan' : 'Gopalganj'}.` 
     });
     
@@ -97,7 +98,6 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-slate-900 dark:to-blue-950 overflow-hidden">
-      {/* Background blobs for attraction */}
       <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-60"></div>
       <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl opacity-60"></div>
 
@@ -107,11 +107,10 @@ export default function LoginPage() {
           onValueChange={(value: Language) => setLanguage(value)}
         >
           <SelectTrigger
-            suppressHydrationWarning
             className="w-auto rounded-full border-primary/20 bg-white/60 backdrop-blur-md text-xs h-9 px-4 shadow-sm"
           >
             <Globe className="h-3.5 w-3.5 mr-2 text-primary" />
-            <SelectValue placeholder={t.selectLanguage} />
+            <SelectValue placeholder={t.selectLanguage || "Language"} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="hi">हिन्दी</SelectItem>
@@ -128,14 +127,14 @@ export default function LoginPage() {
                 className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 ${location === 'siwan' ? 'bg-primary text-primary-foreground shadow-lg' : 'text-muted-foreground hover:bg-primary/5'}`}
             >
                 <MapPin className="h-3.5 w-3.5" />
-                {t.siwan}
+                {t.siwan || "Siwan"}
             </button>
             <button
                 onClick={() => setLocation('gopalganj')}
                 className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-300 ${location === 'gopalganj' ? 'bg-primary text-primary-foreground shadow-lg' : 'text-muted-foreground hover:bg-primary/5'}`}
             >
                 <MapPin className="h-3.5 w-3.5" />
-                {t.gopalganj}
+                {t.gopalganj || "Gopalganj"}
             </button>
          </div>
       </div>
@@ -151,17 +150,16 @@ export default function LoginPage() {
                       </CardTitle>
                       <div className="flex items-center gap-1.5 text-primary font-black bg-primary/10 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest border border-primary/5">
                          <MapPin className="h-3 w-3" />
-                         {location === 'siwan' ? t.siwan : t.gopalganj}
+                         {location === 'siwan' ? (t.siwan || 'Siwan') : (t.gopalganj || 'Gopalganj')}
                       </div>
                     </div>
                     <CardDescription className="text-sm font-medium text-slate-500 dark:text-slate-400 px-6 mt-2 leading-relaxed">
-                        {t.subTitle}
+                        {t.subTitle || "Your Health Partner"}
                     </CardDescription>
                 </CardHeader>
           <CardContent className="flex flex-col gap-5 px-8 pb-10">
             <div className="flex flex-col gap-3">
                <Button
-                suppressHydrationWarning
                 variant="outline"
                 onClick={handleLogin}
                 disabled={loading}
@@ -169,7 +167,7 @@ export default function LoginPage() {
               >
                   {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                   {!loading && <svg className="mr-3 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="#4285F4" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 126 21.2 172.9 56.7L368.7 128C330.5 94.5 292.2 78.2 248 78.2c-101.7 0-184.4 82.7-184.4 184.4S146.3 437 248 437c58.4 0 106.3-24.2 138.6-56.6 27.8-27.5 41.6-67.7 44-114.8H248v-85.3h236.1c2.3 12.7 3.9 26.9 3.9 41.8z"></path></svg>}
-                {t.continueWithGoogle}
+                {t.continueWithGoogle || "Continue with Google"}
               </Button>
               
               <div className="relative my-2">
@@ -177,7 +175,7 @@ export default function LoginPage() {
                     <span className="w-full border-t border-slate-200" />
                 </div>
                 <div className="relative flex justify-center text-[10px] uppercase font-bold">
-                    <span className="bg-white/80 px-3 text-slate-400 tracking-widest">{t.or}</span>
+                    <span className="bg-white/80 px-3 text-slate-400 tracking-widest">{t.or || "OR"}</span>
                 </div>
               </div>
 
@@ -185,39 +183,36 @@ export default function LoginPage() {
                    <div className="relative group">
                      <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-300 group-focus-within:text-primary transition-colors" />
                      <Input
-                        suppressHydrationWarning
                         id="phone"
                         type="tel"
-                        placeholder={t.phonePlaceholder}
+                        placeholder={t.phonePlaceholder || "Phone Number"}
                         className="py-7 rounded-2xl bg-white border-slate-200 focus:border-primary/50 text-center text-base font-bold shadow-inner pl-10"
                         required
                       />
                    </div>
                   <Button
-                    suppressHydrationWarning
                     onClick={handleLogin}
                     disabled={loading}
                     className="w-full py-7 rounded-2xl text-base font-black shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
                   >
                     {loading && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}
-                    {language === 'hi' ? 'जारी रखें' : 'CONTINUE'}
+                    {language === 'hi' ? 'जारी रखें' : language === 'bho' ? 'आगे बढ़ीं' : 'CONTINUE'}
                   </Button>
                 </div>
 
                <Button
-                suppressHydrationWarning
                 asChild
                 variant="ghost"
                 className="w-full py-6 rounded-2xl text-xs font-black mt-2 text-primary hover:bg-primary/5 tracking-wider"
               >
                 <Link href="/other-services">
                   <HeartPulse className="mr-2 h-4 w-4" />
-                  {t.otherServices.toUpperCase()}
+                  {(t.otherServices || "Other Services").toUpperCase()}
                 </Link>
               </Button>
             </div>
             <div className="text-center text-[10px] text-slate-400 mt-2 font-medium tracking-tight">
-                <p>{t.signInPrompt}</p>
+                <p>{t.signInPrompt || "Sign in to continue."}</p>
             </div>
           </CardContent>
         </Card>
@@ -253,8 +248,8 @@ export default function LoginPage() {
             </DialogContent>
         </Dialog>
 
-        <p className="absolute bottom-8 text-primary/60 font-cursive text-2xl tracking-wide opacity-90 animate-pulse-slow">
-            {t.createdBy}
+        <p className="absolute bottom-8 text-primary/60 font-cursive text-2xl tracking-wide opacity-90">
+            {t.createdBy || "By Hello Group"}
         </p>
     </div>
   );

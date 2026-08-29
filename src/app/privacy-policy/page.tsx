@@ -1,8 +1,9 @@
+
 "use client";
 
 import { Header } from "@/components/Header";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ShieldCheck, Mail, MapPin, User, ChevronLeft } from "lucide-react";
+import { ShieldCheck, Mail, MapPin, User, ChevronLeft, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 export default function PrivacyPolicyPage() {
@@ -27,12 +28,20 @@ export default function PrivacyPolicyPage() {
             <CardContent className="p-8 space-y-6 text-slate-600 leading-relaxed">
               <section>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">1. जानकारी का संग्रह</h3>
-                <p>Hello Doctor ऐप केवल आपके नाम और फोन नंबर का उपयोग अपॉइंटमेंट बुकिंग के लिए करता है। हम आपका व्यक्तिगत डेटा किसी तीसरे पक्ष के साथ साझा नहीं करते हैं।</p>
+                <p>Hello Doctor ऐप केवल आपके नाम और फोन नंबर का उपयोग अपॉइंटमेंट बुकिंग के लिए करता है। यह जानकारी केवल आपकी पहचान और डॉक्टर के साथ संपर्क के लिए आवश्यक है।</p>
               </section>
 
               <section>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">2. डेटा का उपयोग</h3>
-                <p>आपके द्वारा प्रदान की गई जानकारी का उपयोग केवल डॉक्टरों के साथ अपॉइंटमेंट बुक करने और आपको स्वास्थ्य सेवाओं की सूचना देने के लिए किया जाता है।</p>
+                <p>आपके द्वारा प्रदान की गई जानकारी का उपयोग केवल डॉक्टरों के साथ अपॉइंटमेंट बुक करने और आपको स्वास्थ्य सेवाओं की सूचना देने के लिए किया जाता है। हम आपका व्यक्तिगत डेटा किसी भी तीसरे पक्ष (Third Party) के साथ साझा नहीं करते हैं।</p>
+              </section>
+
+              <section className="p-6 bg-red-50 rounded-2xl border border-red-100">
+                <h3 className="text-lg font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <Trash2 className="h-5 w-5" />
+                    3. डेटा हटाना (Data Deletion)
+                </h3>
+                <p className="text-red-700">Google की नीतियों के अनुसार, आप किसी भी समय अपना डेटा हटाने का अनुरोध कर सकते हैं। इसके लिए आप हमें <b>satyamsingh36224@gmail.com</b> पर "Delete My Account" विषय के साथ ईमेल कर सकते हैं।</p>
               </section>
 
               <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 mt-8">
